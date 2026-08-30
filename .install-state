@@ -34,3 +34,8 @@ notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
   wife: explicitly excluded from the workspace, not part of the business.
   private/ now holds real margin detail and the family-motivation background
   Theo asked to keep out of shared context.
+  Standing permission (given after Step 2): keep origin/main automatically
+  synced with this install branch after each step, so a fresh session Theo
+  opens always has working /prime and the rest of the commands. Merge
+  claude/install-command-uvkm36 into main and push both after every step
+  lands, no need to ask again each time.
