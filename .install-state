@@ -1,0 +1,27 @@
+format: 1
+founder: unknown (asked in Step 1)
+os: windows
+plan: pro
+structure: not yet decided (Step 2c)
+steps:
+  0: done
+  1: pending
+  2: pending
+  3: pending
+  4: pending
+  5: pending
+  6: pending
+  7: pending
+  8: pending
+  9: pending
+  10: pending
+keys: none
+tools: none
+runtime: pending
+remote: https://github.com/oldish1/chales-website (branch claude/install-command-uvkm36)
+notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
+  GitHub backup already exist (repo cloned remotely, pushed to the branch above),
+  so Step 4 is mostly a walkthrough. Repo also holds pre-existing website photos
+  and one video at the root; leave them alone. Glaido voice dictation and Desktop
+  connector panes are local-machine features - adapt those steps to what this
+  remote session can reach.
