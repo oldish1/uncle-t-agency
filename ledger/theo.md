@@ -10,3 +10,5 @@
 - 2026-08-30 16:35 · theo · context/build · Wrote all seven core context docs (business, you, offer, strategy, numbers, team, tech-stack) plus two satellite pages, stamped CLAUDE.md with the real company name, structure decision, and standing instructions (ZAR pricing, light-theme interfaces, Gloria protocol)
 - 2026-08-30 16:35 · theo · workspace/note · Wrote private/numbers-detail.md (real margins) and private/motivation.md (family context, kept out of shared docs per Theo's instruction), both git-ignored
 - 2026-08-30 16:50 · theo · workspace/decision · Step 2 locked after readback: added named competitors (Nextapt, WAFlowBot, BizAI) to business.md and "done = deployed and making money" as a standing working rule in CLAUDE.md
+- 2026-08-30 17:05 · theo · workspace/note · Step 3 proven: /prime ran cold and reported back accurately after the install branch was merged into main
+- 2026-08-30 17:10 · theo · workspace/note · Step 4 done: verified private/, context/import/, and .env are all correctly git-ignored, nothing sensitive has ever reached GitHub
