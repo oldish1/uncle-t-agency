@@ -21,3 +21,7 @@ Solo operation. Theo owns sales, relationships, and strategy. Claude is the tech
 Still a side venture against a full-time trade job (boilermaker and sheet metal work), built in evenings and weekends. Current stage: one live proof-of-concept client (CHALES Hair Boutique, his daughter Chante's salon), five warm leads in the pipeline, and a 20-prospect outreach list running. No paying agency client yet, that's deliberately gated behind fixing Lexi's response speed first.
 
 What makes it different: pricing positioned well below corporate agencies (Telecloud charges R2,000 to R11,000 once-off for comparable work, with hosting extra; Uncle T Agency charges R1,499 once-off plus R499/month, hosting included), and a trust advantage no outside agency can match, being from the same community as the client.
+
+## Competitors
+
+Telecloud, the clearest price contrast (see above). Also on the radar: Nextapt, WAFlowBot, and BizAI, all WhatsApp/AI booking automation players. None of them are positioned for Cape Flats-adjacent community businesses the way Uncle T Agency is, that's the gap being worked.
