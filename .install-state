@@ -2,11 +2,11 @@ format: 1
 founder: Theo
 os: windows
 plan: pro
-structure: not yet decided (Step 2c)
+structure: one primary (Uncle T Agency, full context/), light satellites (Uncle T's cannabis, Rags to Riches, one page each). CHALES is the agency's flagship client, not a satellite.
 steps:
   0: done
   1: done
-  2: pending
+  2: done
   3: pending
   4: pending
   5: pending
@@ -22,6 +22,15 @@ remote: https://github.com/oldish1/chales-website (branch claude/install-command
 notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
   GitHub backup already exist (repo cloned remotely, pushed to the branch above),
   so Step 4 is mostly a walkthrough. Repo also holds pre-existing website photos
-  and one video at the root; leave them alone. Glaido voice dictation and Desktop
-  connector panes are local-machine features - adapt those steps to what this
-  remote session can reach.
+  and one video at the root (CHALES salon photos, Lexi's WhatsApp profile photo);
+  leave them alone. Glaido voice dictation and Desktop connector panes are
+  local-machine features - adapt those steps to what this remote session can reach.
+  Business is Uncle T Agency (WhatsApp/AI automation for Cape Town small
+  businesses, flagship product The Lexi System). CHALES Hair Boutique is the
+  agency's live flagship client (Theo's daughter Chante's salon), not a separate
+  business. Repo is still named chales-website; Theo wants it renamed to reflect
+  Uncle T Agency but no rename tool is available here, he'll do it in GitHub
+  settings. No repo-rename tool exists in this session's toolset.
+  wife: explicitly excluded from the workspace, not part of the business.
+  private/ now holds real margin detail and the family-motivation background
+  Theo asked to keep out of shared context.

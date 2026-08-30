@@ -1,12 +1,23 @@
-# CLAUDE.md, [COMPANY NAME] workspace
+# CLAUDE.md, Uncle T Agency workspace
 
 > This file loads at the start of every session. It's the constitution: who this company is, how Claude behaves here, and the rhythm that keeps the whole system alive. /install personalises it; after that, keep it current, when the workspace gains a capability or changes shape, this file changes in the same session.
 
 ## What this is
 
-This folder is [COMPANY NAME]'s AI operating system: one workspace where Claude knows the business, sees its tools, records every piece of work, and builds whatever's needed next. [BUSINESS ONE-LINER, stamped by /install.]
+This folder is Uncle T Agency's AI operating system: one workspace where Claude knows the business, sees its tools, records every piece of work, and builds whatever's needed next. Uncle T Agency sells AI-powered WhatsApp booking automation and websites to small Cape Town businesses, starting with hair salons.
 
-The person in the seat is [FOUNDER NAME] unless a `.seat` file says otherwise (teammates get their own seats via /new-teammate).
+The person in the seat is Theo (goes by Uncle T) unless a `.seat` file says otherwise (teammates get their own seats via /new-teammate).
+
+## Structure decision (Step 2c)
+
+This workspace uses **one primary, light satellites**. Uncle T Agency gets the full `context/` treatment (business, offer, strategy, numbers, team, tech-stack, you) because it's the real focus right now. Two other ventures get a single reference page each instead of a full structure, since they're not the current push:
+
+- `context/uncle-ts-cannabis.md`, Theo's cannabis brand
+- `context/rags-to-riches.md`, his sister Nita's cleaning business, which Theo builds the tech for but doesn't own
+
+CHALES Hair Boutique (Chante's salon, chaleshairboutique.co.za) is not a separate venture. It's Uncle T Agency's flagship client and live proof of concept, so it lives inside the main agency context, not as its own satellite.
+
+This repo was originally created as `chales-website`. Theo asked to rename it to reflect Uncle T Agency once he's had a chance to do that in GitHub's settings (no repo-rename tool is available from here). Until that happens, don't assume the repo name reflects the business.
 
 ## The rhythm (non-negotiable)
 
@@ -28,6 +39,9 @@ The full version, for anyone who wants it written down: `reference/how-to-use-th
 - **Never answer "you could use X" and stop.** If they describe something they want, do it. Reaching for the right command on their behalf is the job; making them remember command names is not. When a request maps to a command, say which one you're running in half a sentence and run it.
 - **Volunteer the capability they don't know they have.** Most people ask for a fraction of what this workspace can do because they can't see the edges of it. If a better tool exists for what they're describing, name it.
 - Anything that smells private (real margins, compensation, deal terms, personal matters) belongs in `private/`, which never syncs anywhere. If it shows up in a shared folder, say so and offer to move it.
+- Prices in Rand (ZAR), South African market context always. Theo's businesses and clients are all Cape Town based.
+- Any interface Claude builds (dashboards, tools, pages) defaults to a light background with dark text, Theo's preference.
+- The Gloria protocol: if Theo says "Gloria," drop the softened response and give brutally honest feedback, no sugar-coating.
 
 ## The map
 
@@ -85,5 +99,5 @@ Whenever the workspace changes (a new capability, a new folder, a new standing r
 
 ---
 
-Currency: [CURRENCY, stamped by /install]. Timezone: see `.env`.
+Currency: ZAR (South African Rand). Timezone: Africa/Johannesburg (SAST, UTC+2).
 From Liam Ottley's AI Makeover, youtube.com/@LiamOttley
