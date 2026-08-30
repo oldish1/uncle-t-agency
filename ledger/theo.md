@@ -12,3 +12,5 @@
 - 2026-08-30 16:50 · theo · workspace/decision · Step 2 locked after readback: added named competitors (Nextapt, WAFlowBot, BizAI) to business.md and "done = deployed and making money" as a standing working rule in CLAUDE.md
 - 2026-08-30 17:05 · theo · workspace/note · Step 3 proven: /prime ran cold and reported back accurately after the install branch was merged into main
 - 2026-08-30 17:10 · theo · workspace/note · Step 4 done: verified private/, context/import/, and .env are all correctly git-ignored, nothing sensitive has ever reached GitHub
+- 2026-08-30 17:25 · theo · tools/connect · Step 5 done: confirmed Google Calendar, Gmail, and Drive are already live (found the real salon prospect sheet, Chante's client database, and the Lexi Airtime reminder). Netlify flagged for Theo to authorize himself. Theo lives in WhatsApp and Google Calendar day to day, both already accounted for
+- 2026-08-30 17:25 · theo · workspace/note · Repo renamed by Theo: chales-website is now oldish1/uncle-t-agency on GitHub, old pushes still redirect automatically

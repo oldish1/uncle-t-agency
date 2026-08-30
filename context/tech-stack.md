@@ -1,5 +1,7 @@
 # Tech stack
 
+Theo lives in two of these day to day: **WhatsApp** (client-facing, where Lexi runs) and **Google Calendar** (booking backend). Everything else supports those two.
+
 ## Platforms
 
 | Platform | What it does for us | Wired in? |

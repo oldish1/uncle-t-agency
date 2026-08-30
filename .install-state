@@ -9,14 +9,14 @@ steps:
   2: done
   3: done
   4: done
-  5: pending
+  5: done
   6: pending
   7: pending
   8: pending
   9: pending
   10: pending
 keys: none
-tools: none
+tools: google-calendar, gmail, google-drive (all confirmed live, adamst70@gmail.com). netlify not yet authorized. whatsapp/make.com/meta business manager have no connector, not covered.
 runtime: pending
 remote: https://github.com/oldish1/chales-website (branch claude/install-command-uvkm36)
 notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
