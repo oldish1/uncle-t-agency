@@ -1,0 +1,34 @@
+# Secrets. Never committed, never pushed.
+.env
+credentials/
+tokens.json
+*-oauth-token.json
+
+# The owner-only drawer. Lives on this machine only.
+private/
+
+# The raw dump. Whatever gets thrown in here (client lists, financial summaries,
+# chat exports, half-finished docs) stays on this machine. /install reads it and
+# distils it into context/; the originals never reach the backup.
+context/import/*
+!context/import/.gitkeep
+
+# Local state
+# .install-state is deliberately NOT ignored: it holds a first name, an OS and how
+# far the setup got, nothing sensitive, and committing it is what lets someone resume
+# on a new machine after a dead laptop.
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+
+# Databases and big local files
+*.db
+*.db-shm
+*.db-wal
+*.zip
+
+# Per-machine seat identity
+.seat
