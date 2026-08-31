@@ -63,7 +63,7 @@ plans/       build plans from /create-plan
 ## Tool routing
 
 - Writing anything: `reference/writing-style.md` rules apply.
-- Researching or scraping the web: use **Firecrawl** if it's set up, not the default fetch tools. It's a high-quality scraping service and worth the money vs the basic built-in one: JavaScript-heavy sites, bot-protected pages, PDFs, cleaner content. [/install updates this line at the Firecrawl cutover.]
+- Researching or scraping the web: use **Firecrawl**, not the default fetch tools. It's set up (key in `.env`), high-quality scraping worth the money vs the basic built-in one: JavaScript-heavy sites, bot-protected pages, PDFs, cleaner content.
 - Scraping social platforms and marketplaces the other tools can't reach (Instagram, TikTok, LinkedIn): ask for **Apify**; the skill sets itself up on first use.
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.

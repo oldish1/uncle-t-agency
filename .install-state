@@ -10,14 +10,18 @@ steps:
   3: done
   4: done
   5: done
-  6: pending
+  6: done
   7: pending
   8: pending
   9: pending
   10: pending
-keys: none
+keys: firecrawl, supadata (both saved in .env; live test blocked by this cloud
+  session's network policy, which only allows a short allowlist of outbound
+  domains. Theo agreed to trust the setup and test both live next time he's
+  in a normal Claude Code session.)
 tools: google-calendar, gmail, google-drive (all confirmed live, adamst70@gmail.com). netlify not yet authorized. whatsapp/make.com/meta business manager have no connector, not covered.
-runtime: pending
+runtime: ready (uv venv + requirements.txt installed, verified with the
+  import check)
 remote: https://github.com/oldish1/chales-website (branch claude/install-command-uvkm36)
 notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
   GitHub backup already exist (repo cloned remotely, pushed to the branch above),
