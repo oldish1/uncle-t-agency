@@ -11,7 +11,7 @@ steps:
   4: done
   5: done
   6: done
-  7: pending
+  7: done
   8: pending
   9: pending
   10: pending
@@ -43,3 +43,20 @@ notes: Running in a Claude Code cloud session, not the Desktop app. Git and the
   opens always has working /prime and the rest of the commands. Merge
   claude/install-command-uvkm36 into main and push both after every step
   lands, no need to ask again each time.
+  Repo also confirmed renamed on GitHub: oldish1/chales-website is now
+  oldish1/uncle-t-agency. Old remote URL still works (GitHub redirects
+  pushes automatically), left as-is rather than risk changing the git
+  remote config.
+  Step 7 proof: triaged the 201-email unread backlog live. No client leads
+  were sitting unanswered. Found and flagged a real problem: Theo's card
+  (Mastercard ...4218) has been declining across Google One, ChatGPT, and
+  his Claude subscription itself, which was briefly suspended around
+  Aug 19. He still needs to fix that payment method himself, unresolved.
+  Trashed roughly 137 pieces of recurring newsletter/community noise
+  (Skool, Tate, Discord, AI newsletters, marketing blasts) at Theo's
+  request. Explicitly told to keep: Dan Martell's emails, Liam Ottley's
+  emails, and all real invoices/bills (Cartrack, Incredible Connection
+  statement, Google Play payment/subscription emails). Cleanup was paused
+  partway through at Theo's request to get back to the install; more
+  noise likely remains further back in the inbox if he wants it finished
+  later.
