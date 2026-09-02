@@ -12,7 +12,7 @@ steps:
   5: done
   6: done
   7: done
-  8: pending
+  8: skipped
   9: pending
   10: pending
 keys: firecrawl, supadata (both saved in .env; live test blocked by this cloud
