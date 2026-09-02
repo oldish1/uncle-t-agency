@@ -13,8 +13,9 @@ steps:
   6: done
   7: done
   8: skipped
-  9: pending
-  10: pending
+  9: done
+  10: done
+complete: yes
 keys: firecrawl, supadata (both saved in .env; live test blocked by this cloud
   session's network policy, which only allows a short allowlist of outbound
   domains. Theo agreed to trust the setup and test both live next time he's
