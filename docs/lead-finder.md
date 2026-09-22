@@ -59,4 +59,4 @@ Default areas: Bellville, Parow, Goodwood, Mitchells Plain, Kuils River, Bracken
 - The review check reads for key phrases. It catches the obvious complaints and will miss sarcasm or unusual wording. Claude can read the full reviews of any shortlisted salon on request.
 - Only 5 reviews per salon from Google, sorted by Google's "most relevant", so pain can be hidden. Apify fixes this.
 - Website checks need open internet. In a locked-down cloud session the sites can't be opened, so booking tools like Fresha go undetected and those salons score a little high on need. Run from your laptop for the full check.
-- Messages are drafts. Read each one before sending, and stop if someone asks you to.
+- Messages are drafts. Each one asks a single yes/no question (can I send the 90-second demo video?). One message, one follow-up a week later, then stop. A yes is their permission to keep talking, which is what POPIA asks for. Video script: `outputs/lexi-demo-video/script.md`.

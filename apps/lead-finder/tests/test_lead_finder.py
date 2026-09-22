@@ -124,6 +124,7 @@ class SiteAndMessage(unittest.TestCase):
         s = salon(reviews=[Review("never replied to my whatsapp", 2, RECENT)])
         msg = outreach.first_message(s, score(s))
         self.assertIn("struggling to get a reply", msg)
+        self.assertTrue(msg.endswith("Just reply yes or no."))
         self.assertNotRegex(msg.lower(), r"\bai\b|chatbot|—")
 
     def test_whatsapp_link(self):
@@ -147,6 +148,7 @@ class EndToEnd(unittest.TestCase):
             report = (out / "report.md").read_text()
             csv_text = (out / "leads.csv").read_text()
         self.assertIn("Glow Hair Studio", report)
+        self.assertIn("send this once, then stop", report)
         self.assertNotIn("## 2.", report)          # chain and pipeline salon aren't written up
         self.assertIn("already in the pipeline", csv_text)
         self.assertIn("chain or franchise", csv_text)

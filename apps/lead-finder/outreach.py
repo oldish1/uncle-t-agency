@@ -1,7 +1,8 @@
 """First WhatsApp message for each lead, led by the pain their own customers named.
 
 Rules: short, sounds like Theo, never says "AI" or "chatbot", never quotes a
-customer by name, one clear ask. Edit freely before sending.
+customer by name, one clear yes/no ask. One message, then at most one follow-up
+a week later, then stop. Edit freely before sending.
 """
 
 from __future__ import annotations
@@ -10,7 +11,10 @@ from scoring import Salon, Score
 
 INTRO = "Hi, it's Theo from Uncle T Agency, I'm local here in Cape Town."
 PROOF = "My daughter's salon, CHALES Hair Boutique, runs on it."
-ASK = "Can I show you a 2-minute demo on WhatsApp? No cost to look."
+# One approach only, asking permission (POPIA). A yes means they get the demo video.
+ASK = "Can I send you a 90-second video of it working in my daughter's salon? Just reply yes or no."
+FOLLOW_UP = ("Hi, Theo from Uncle T Agency again. Just checking you saw my message last week. "
+             "Happy to send the 90-second video if you're keen, and if not, no stress, I won't message again.")
 
 HOOKS = {
     "missed_messages": (
@@ -41,7 +45,8 @@ HOOKS = {
 }
 NO_WEBSITE = (
     "I noticed {name} doesn't have its own website yet, so people who Google you only find the Maps listing. "
-    "I build simple mobile websites for salons, R1,499 once-off, with hosting included."
+    "I build simple mobile websites for salons, R1,499 once-off, with hosting included, "
+    "and a WhatsApp receptionist that books clients in for you."
 )
 GENERAL = (
     "I help salons like {name} stop losing bookings on WhatsApp. "

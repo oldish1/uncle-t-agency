@@ -117,7 +117,8 @@ def write_outputs(ranked: list[tuple[Salon, Score]], out_dir: Path, top: int, se
         ]
         if sc.evidence:
             lines += ["", "What their customers wrote:", *[f"> {q}" for q in sc.evidence]]
-        lines += ["", "First message (edit before sending):", "", "```", outreach.first_message(s, sc), "```", ""]
+        lines += ["", "First message (edit before sending):", "", "```", outreach.first_message(s, sc), "```",
+                  "", "If no reply after a week, send this once, then stop:", "", "```", outreach.FOLLOW_UP, "```", ""]
     (out_dir / "report.md").write_text("\n".join(lines))
 
 
