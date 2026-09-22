@@ -47,7 +47,7 @@ Sales Lexi is the agent that "speaks to the clients". She's legal and safe becau
 | 5 | 20 to 26 Oct | **Client 1 signed** (most likely a warm lead). Live in 4 days. | Client 1 live. |
 | 6 to 7 | 27 Oct to 9 Nov | Sales Lexi live on the demo number. Keep up 5 messages a day. Ask client 1 for two introductions. | **Client 2 signed.** |
 | 8 to 10 | 10 to 30 Nov | Push hard before the festive rush: "Get set up before December so Lexi handles the Christmas bookings." | **Clients 3, 4 and 5 signed** by 30 Nov. |
-| 11 to 14 | 1 to 31 Dec | Go live, fix issues fast, count bookings to 20, send first invoices, collect testimonials. | 5 paying. |
+| 11 to 14 | 1 to 31 Dec | Go live, fix issues fast, count bookings to 10, send first invoices, collect testimonials. | 5 paying. |
 
 ## Your daily 20 minutes (Theo)
 
