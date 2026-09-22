@@ -24,7 +24,7 @@
 
 | When you're working on... | Doc | What it covers |
 |---|---|---|
-| *(nothing built yet)* | | |
+| Finding new salon prospects, outreach lists, "who should I pitch next" | `docs/lead-finder.md` | The salon lead finder: how salons are scored for Lexi pain and ability to pay, the Google/Apify keys, how to run it |
 
 ## Reference
 

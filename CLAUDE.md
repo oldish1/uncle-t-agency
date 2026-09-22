@@ -67,6 +67,7 @@ plans/       build plans from /create-plan
 - Scraping social platforms and marketplaces the other tools can't reach (Instagram, TikTok, LinkedIn): ask for **Apify**; the skill sets itself up on first use.
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.
+- Finding new prospects ("who should I pitch", "find salons in Parow"): run the **salon lead finder** (`apps/lead-finder/`, guide in `docs/lead-finder.md`). It ranks salons by the Lexi pain in their own Google reviews and drafts the first WhatsApp message. Needs `GOOGLE_PLACES_API_KEY`.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
 - Connecting a business tool with no connector (a niche or regional platform, an internal API, a bespoke system): **/new-capability**. Check the connector list first.
 
