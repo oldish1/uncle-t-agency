@@ -15,7 +15,7 @@ Every day, something moves a salon one step closer to paying. Research, polish a
 | First WhatsApp sent (one message, asks "can I send the 90-second video?") | 20% say yes | about 210 messages |
 | Video watched, they reply | 30% agree to a visit | about 42 yeses |
 | 15-minute visit with a live demo on their own phone | 40% sign | about 13 visits |
-| Signed, live in 4 days, pays after 20 bookings | | **5 clients** |
+| Signed, live in 4 days, pays after 10 bookings | | **5 clients** |
 
 That's about **5 messages a day, weekdays, for 8 weeks**. The five warm leads (Zanzibar, Sistergirl, Reeva, JEM, Jason) skip the first step, so they're worth the most. Contact them first.
 

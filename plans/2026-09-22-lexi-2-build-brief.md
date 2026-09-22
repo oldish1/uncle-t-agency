@@ -7,7 +7,7 @@
 ## Read these first
 
 - `context/lexi.md`: what Lexi is, the speed problem, the cancel/reschedule spec
-- `context/offer.md`: the Founding 10 offer (R1,000 a month, R0 setup, pay after 20 bookings, month-free if she double-books)
+- `context/offer.md`: the Founding 10 offer (R1,000 a month, R0 setup, pay after 10 bookings, month-free if she double-books)
 - `plans/2026-09-22-five-clients-by-december.md`: the goal and timeline this build serves
 - `outputs/research/2026-09-22-booking-competitors.md`, section 4: the ranked copy list
 - `outputs/research/2026-09-22-solo-salon-pains-and-offer.md`, sections 4 and 7: costs per client and the onboarding flow
@@ -32,7 +32,7 @@
 | 3 | **Day-before reminder with Confirm / Reschedule / Cancel buttons** | A WhatsApp template with three quick-reply buttons. Reschedule and Cancel feed straight into #2. Confirm marks the booking confirmed in the sheet. |
 | 4 | **Replies in the client's language** | A client who writes in Afrikaans gets Afrikaans, a client who writes in English gets English, a mix gets whichever they mostly used. One instruction in the prompt, plus 5 Afrikaans test chats. |
 | 5 | **Hand-off to the owner** | For anything outside the price list (custom colour, a complaint, a price she doesn't have), Lexi says the owner will reply and sends the owner an alert on their personal WhatsApp with the client's name and message. She never guesses a price. |
-| 6 | **Booking counter** | Each client's sheet counts bookings Lexi made, so Theo can prove the 20 that trigger the first bill. A simple row per booking with a "made by Lexi" flag. |
+| 6 | **Booking counter** | Each client's sheet counts bookings Lexi made, so Theo can prove the 10 that trigger the first bill. A simple row per booking with a "made by Lexi" flag. |
 
 ## Stage 2: onboarding a new salon in 4 days (target 20 October)
 

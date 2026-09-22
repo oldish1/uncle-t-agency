@@ -46,7 +46,7 @@ HOOKS = {
 NO_WEBSITE = (
     "I noticed {name} doesn't have its own website yet, so people who Google you only find the Maps listing. "
     "For my first ten salons I'm building the website and a WhatsApp receptionist that books clients in for you, "
-    "no setup fee, and you pay nothing until she's booked your first 20 clients."
+    "no setup fee, and you pay nothing until she's booked your first 10 clients."
 )
 GENERAL = (
     "I help salons like {name} stop losing bookings on WhatsApp. "

@@ -5,7 +5,7 @@
 **"The Founding 10": Lexi + website for R1,000 a month.**
 
 - R0 setup (normal price R2,998 for Lexi and website setup).
-- They pay nothing until Lexi has booked their first 20 clients. If she hasn't booked 20 in the first 60 days, it's switched off and there's no bill.
+- They pay nothing until Lexi has booked their first 10 clients (changed from 20 on 2026-09-22 so Theo gets paid sooner; a busy salon hits 10 in about a week). If she hasn't booked 10 in the first 30 days, it's switched off and there's no bill.
 - If Lexi ever double-books them, that month is free.
 - Month to month, no contract, cancel with one WhatsApp. Price locked at R1,000 for as long as they stay.
 - Includes: Lexi on WhatsApp (English and Afrikaans, day and night, books into Google Calendar, reminders), a mobile website with a "Book on WhatsApp" button, domain and hosting, Google Business Profile cleaned up, a QR code poster for the door, and new features as they ship (deposits, cancel/reschedule, review requests).
