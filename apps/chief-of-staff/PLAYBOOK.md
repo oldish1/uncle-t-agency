@@ -22,6 +22,7 @@ This file is its job description. The scheduled run reads it top to bottom every
 | Inbox scout | Looks for unread emails from salons, clients, Meta/WhatsApp, Make.com or Google about billing or errors. Drafts replies as Gmail drafts, never sends. | Every run | Gmail connector |
 | Diary check | Today's and tomorrow's calendar: demos, visits, anything clashing with Theo's day job. | Every run | Google Calendar connector |
 | Work tracker | Reads `ledger/` and `context/strategy.md`. Names the one thing that most moves toward the next paying client today. | Every run | This repo |
+| Scoreboard | Counts the funnel from the prospect sheet: first messages sent, yeses, visits, signed, against the targets in `plans/2026-09-22-five-clients-by-december.md` (5 messages a weekday, 5 clients signed by 30 Nov). Says plainly if Theo is behind and what to change. | Mondays | Prospect sheet + the plan |
 
 Coming later, as clients come on (add a row here when each one is built): monthly client report agent, Google review request agent, rebooking nudge agent, website uptime check.
 
@@ -52,6 +53,7 @@ TODAY: <the one thing to do, with the exact step>
 FOLLOW UP: <names due a nudge, max 5, with their WhatsApp link>
 SAID YES: <names waiting for the demo video>
 NEW LEADS (Mondays): <top 3 by name and why, full list in outputs/leads/>
+SCOREBOARD (Mondays): <sent / yes / visits / signed this week and in total, vs target>
 INBOX: <anything needing Theo, drafts waiting in Gmail>
 DIARY: <today's appointments>
 ```
