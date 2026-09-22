@@ -21,8 +21,8 @@
 | 20 to 40s | Client picks the service and "Saturday morning". Lexi offers 9:00, 10:30, 12:00. Client taps 10:30. Lexi confirms with name, service, time, price | "She knows the prices, she knows what's free. No double bookings, because she checks the diary first." | **Booked in 14 seconds** (use the real number) |
 | 40 to 52s | Phone B: Google Calendar, the Saturday 10:30 booking appears | "And it's already in the diary. Chante didn't touch her phone." | **In the diary, automatically** |
 | 52 to 60s | Phone A: the reminder message the day before ("Hi Lisa, just a reminder of your wash and blow tomorrow at 10:30…") | "The day before, the client gets a reminder. Fewer no-shows." | **Reminder sent. Fewer no-shows.** |
-| 60 to 72s | chaleshairboutique.co.za scrolling on a phone | "I can build your website too. Mobile-first, looks like this, hosting included." | **Your own website** |
-| 72 to 85s | Plain white screen with the offer | "Setup is R1,499. Then R499 a month. Live in four days. Website, R1,499 once-off." | **Lexi: R1,499 setup + R499/month · Live in 4 days · Website: R1,499** |
+| 60 to 72s | chaleshairboutique.co.za scrolling on a phone | "And you get your own website too, like this one, with a button that books straight on WhatsApp." | **Your own website, included** |
+| 72 to 85s | Plain white screen with the offer | "For my first ten salons: Lexi and your website, R1,000 a month. No setup fee. And you pay nothing until she's booked your first 20 clients." | **Founding 10: Lexi + website, R1,000/month · R0 setup · Pay nothing until 20 bookings · Live in 4 days** |
 | 85 to 90s | You, on camera, 3 seconds, in the salon if possible | "I'm Theo, Uncle T Agency. Reply to this message and I'll set yours up." | **Uncle T Agency · reply to book a setup** |
 
 **Don't say** "AI", "chatbot" or "automation" anywhere. She's a receptionist who never sleeps.
@@ -38,11 +38,11 @@ Same shots, same captions translated. Read it over and change anything that does
 | 20 to 40s | "Sy ken die pryse, sy weet watter tye oop is. Geen dubbel besprekings nie, want sy kyk eers in die dagboek." |
 | 40 to 52s | "En dis klaar in die dagboek. Chante het nie eers aan haar foon geraak nie." |
 | 52 to 60s | "Die dag voor die tyd kry die kliënt 'n herinnering. Minder mense wat nie opdaag nie." |
-| 60 to 72s | "Ek bou ook jou website. Mooi op die foon, hosting ingesluit." |
-| 72 to 85s | "Opstel is R1,499. Dan R499 'n maand. Binne vier dae aan die gang. Website, R1,499 eenmalig." |
+| 60 to 72s | "En jy kry ook jou eie website, soos hierdie een, met 'n knoppie wat reg op WhatsApp bespreek." |
+| 72 to 85s | "Vir my eerste tien salons: Lexi en jou website, R1,000 'n maand. Geen opstelfooi nie. En jy betaal niks totdat sy jou eerste 20 kliënte bespreek het." |
 | 85 to 90s | "Ek is Theo, Uncle T Agency. Antwoord op hierdie boodskap en ek sit joune op." |
 
-Captions in Afrikaans: **21:14. Salon toe.** · **Bespreek in 14 sekondes** · **Klaar in die dagboek** · **Herinnering gestuur** · **Jou eie website** · **Lexi: R1,499 opstel + R499/maand · Binne 4 dae** · **Uncle T Agency · antwoord om te begin**
+Captions in Afrikaans: **21:14. Salon toe.** · **Bespreek in 14 sekondes** · **Klaar in die dagboek** · **Herinnering gestuur** · **Jou eie website** · **Founding 10: Lexi + website, R1,000/maand · R0 opstel · Betaal niks tot 20 besprekings · Binne 4 dae** · **Uncle T Agency · antwoord om te begin**
 
 ## Recording tips
 

@@ -6,6 +6,10 @@
 2. **Land the first paying client.** Convert one of the five warm leads (Zanzibar, Sistergirl, Reeva, JEM, Jason) once Lexi is fast and stable.
 3. **Finish everything CHALES needs.** Beyond Lexi itself: Google review automation, then an SEO push to get Chante onto page one of Google and bring her more clients. Then move to the same playbook for Nita's business.
 
+## The goal (set 2026-09-22)
+
+**5 paying clients by 31 December 2026**, all on the Founding 10 offer (R1,000 a month). That's R5,000 a month recurring going into 2027. The week-by-week plan is in `plans/2026-09-22-five-clients-by-december.md`.
+
 ## What success looks like
 
 Three paying recurring clients within 90 days. Five founding clients (discounted, testimonial for price) after that. Once five clients are stable, the plan is to leave the day job and grow toward a broader retainer model, priced for Western Cape small businesses rather than copied from US or UK agency rates.

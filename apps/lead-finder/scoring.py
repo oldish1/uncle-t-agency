@@ -3,7 +3,7 @@
 Three questions, each worth points:
   need     (0-50)  Do their own customers complain about the thing Lexi fixes?
   website  (0-15)  Do they have no real website, so a site is an easy second sale?
-  can_pay  (0-35)  Are they busy and established enough to pay R499 a month?
+  can_pay  (0-35)  Are they busy and established enough to pay R1,000 a month?
 
 Total is out of 100. Hot = 60+, Warm = 40-59, Cold = under 40.
 Every point comes with a plain-English reason so Theo can see why.

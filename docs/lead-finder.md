@@ -1,6 +1,6 @@
 # Salon lead finder
 
-Finds Cape Town salons whose own Google reviews complain about the things Lexi fixes, checks they're busy enough to pay R499 a month, and drafts a first WhatsApp message for each one. Code lives in `apps/lead-finder/`.
+Finds Cape Town salons whose own Google reviews complain about the things Lexi fixes, checks they're busy enough to pay R1,000 a month, and drafts a first WhatsApp message for each one. Code lives in `apps/lead-finder/`.
 
 ## What it looks for
 
