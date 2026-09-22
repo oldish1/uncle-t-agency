@@ -24,6 +24,7 @@
 
 | When you're working on... | Doc | What it covers |
 |---|---|---|
+| The morning brief, what the Chief of Staff checks, adding a client to Lexi monitoring | `apps/chief-of-staff/PLAYBOOK.md` | The Chief of Staff agent: hard rules, the agents it runs, live Lexi scenarios to watch, brief format, how to switch the schedule on |
 | Finding new salon prospects, outreach lists, "who should I pitch next" | `docs/lead-finder.md` | The salon lead finder: how salons are scored for Lexi pain and ability to pay, the Google/Apify keys, how to run it |
 
 ## Reference

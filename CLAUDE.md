@@ -68,6 +68,7 @@ plans/       build plans from /create-plan
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.
 - Finding new prospects ("who should I pitch", "find salons in Parow"): run the **salon lead finder** (`apps/lead-finder/`, guide in `docs/lead-finder.md`). It ranks salons by the Lexi pain in their own Google reviews and drafts the first WhatsApp message. Needs `GOOGLE_PLACES_API_KEY`.
+- The daily run of everything ("what needs doing today", "is Lexi OK", "who do I follow up"): the **Chief of Staff** (`apps/chief-of-staff/PLAYBOOK.md`). It runs the other agents, checks every client's Lexi in Make.com, and writes a morning brief to `outputs/briefs/`. Read-only toward the outside world, drafts only. When a client goes live, add their scenario to its watch table.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
 - Connecting a business tool with no connector (a niche or regional platform, an internal API, a bespoke system): **/new-capability**. Check the connector list first.
 
