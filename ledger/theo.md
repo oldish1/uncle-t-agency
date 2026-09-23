@@ -47,3 +47,4 @@
 - 2026-09-23 18:29 · theo · lexi/build · Caught fix2 dropping module 41's send address; corrected file fix3 sent to Theo for import
 - 2026-09-23 18:38 · theo · lexi/ship · Fix3 imported by Theo and live; 'Cancell' now gets the cancel-or-reschedule question on WhatsApp
 - 2026-09-23 18:41 · theo · lexi/ship · Live test passed: cancel with no booking gets 'nothing booked yet' and clears the half-finished session
+- 2026-09-23 18:51 · theo · lexi/build · Fix4: cancel/reschedule read wrong sheet columns (reschedule crashed). Now picks the client's next upcoming confirmed booking, ignores past and already-cancelled ones
