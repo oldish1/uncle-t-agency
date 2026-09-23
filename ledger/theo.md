@@ -49,3 +49,4 @@
 - 2026-09-23 18:41 · theo · lexi/ship · Live test passed: cancel with no booking gets 'nothing booked yet' and clears the half-finished session
 - 2026-09-23 18:51 · theo · lexi/build · Fix4: cancel/reschedule read wrong sheet columns (reschedule crashed). Now picks the client's next upcoming confirmed booking, ignores past and already-cancelled ones
 - 2026-09-23 19:02 · theo · lexi/build · Fix5: reschedule found the booking but the calendar delete step sent no event ID; swapped both delete steps to a direct Google Calendar call. Confirmed live max_tokens is still a number (old email)
+- 2026-09-23 19:08 · theo · lexi/build · Fix6: calendar search step gave no event ID; now lists events via Google API (time window + client phone) and deletes by real ID; delete failure no longer stops the reschedule/cancel reply
