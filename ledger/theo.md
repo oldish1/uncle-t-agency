@@ -52,3 +52,4 @@
 - 2026-09-23 19:08 · theo · lexi/build · Fix6: calendar search step gave no event ID; now lists events via Google API (time window + client phone) and deletes by real ID; delete failure no longer stops the reschedule/cancel reply
 - 2026-09-23 19:12 · theo · lexi/build · Fix7: calendar lookup 404 from encoded calendar address; switched to plain address. max_tokens email confirmed as a repeat of the old error (same request ID, no failing runs today)
 - 2026-09-23 19:18 · theo · lexi/ship · Fix7 live: reschedule works end to end on WhatsApp (offer, new day list, new time, name, confirmation, new calendar event Wed 30 Sep 11:00)
+- 2026-09-23 19:24 · theo · lexi/ship · Cancel with the different-date offer verified live: booking cancelled and removed from calendar, no failed runs. Full test (book, reschedule, cancel, no-booking cancel) passed
