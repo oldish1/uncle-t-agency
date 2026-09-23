@@ -48,3 +48,4 @@
 - 2026-09-23 18:38 · theo · lexi/ship · Fix3 imported by Theo and live; 'Cancell' now gets the cancel-or-reschedule question on WhatsApp
 - 2026-09-23 18:41 · theo · lexi/ship · Live test passed: cancel with no booking gets 'nothing booked yet' and clears the half-finished session
 - 2026-09-23 18:51 · theo · lexi/build · Fix4: cancel/reschedule read wrong sheet columns (reschedule crashed). Now picks the client's next upcoming confirmed booking, ignores past and already-cancelled ones
+- 2026-09-23 19:02 · theo · lexi/build · Fix5: reschedule found the booking but the calendar delete step sent no event ID; swapped both delete steps to a direct Google Calendar call. Confirmed live max_tokens is still a number (old email)
