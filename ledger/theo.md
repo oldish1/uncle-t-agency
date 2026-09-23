@@ -56,3 +56,4 @@
 - 2026-09-23 19:26 · theo · lexi/build · Fix8 (speed): AI + free-times check moved into a typed-message-only branch; taps, greeting and name capture no longer wait on the AI (was 11-20 s per tap). Also stops Hi triggering greeting and AI together
 - 2026-09-23 19:31 · theo · lexi/ship · Cancel with different-date offer verified live: offer shown, cancel confirmed, Wed 30 Sep removed from calendar, Cancelled row added, other clients' bookings untouched. Full flow test passed
 - 2026-09-23 19:40 · theo · lexi/build · Fix8 live: taps 8-10 s (from 11-20 s), AI skipped on taps. Fix9 built: chat-history lookup + aggregator moved into the AI branch, day-list step moved to the service-tap branch (3 fewer steps per tap)
+- 2026-09-23 19:49 · theo · lexi/research · Fix9 live, measured: greeting 4-5 s (was ~10), taps 6-12 s (avg ~9, each step ~0.8 s). No failures. Next speed lever: merge the 3 BookingSession lookups and delete+add into single steps
