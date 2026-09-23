@@ -45,3 +45,4 @@
 - 2026-09-23 18:10 · theo · product/note · Theo's main number still got no replies after both fixes. Meta sent back one delivery receipt (probably "failed") where a normal reply gets two. A real client (Sherees) booked successfully at 17:47 the same evening, so Lexi itself was working. Replies started arriving again when Theo retested. Live test of booking, cancel with the new retention offer, and reschedule is now under way.
 - 2026-09-23 18:17 · theo · lexi/build · Lexi fix2 ready (cancel reply fixed, AND-guards, no-booking reply). Automatic push blocked, blueprint saved to private/ for manual import into Make
 - 2026-09-23 18:29 · theo · lexi/build · Caught fix2 dropping module 41's send address; corrected file fix3 sent to Theo for import
+- 2026-09-23 18:38 · theo · lexi/ship · Fix3 imported by Theo and live; 'Cancell' now gets the cancel-or-reschedule question on WhatsApp
