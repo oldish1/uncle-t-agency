@@ -1,8 +1,8 @@
 # The offer
 
-## The founding offer (locked 2026-09-22, first 10 clients only)
+## The founding offer (locked 2026-09-22, first 5 clients only)
 
-**"The Founding 10": Lexi + website for R1,000 a month.**
+**"The Founding 5": Lexi + website for R1,000 a month.** These first 5 are the testimonial clients: they get the easy yes, and Theo gets proof to sell the rest.
 
 - R0 setup (normal price R2,998 for Lexi and website setup).
 - They pay nothing until Lexi has booked their first 10 clients (changed from 20 on 2026-09-22 so Theo gets paid sooner; a busy salon hits 10 in about a week). If she hasn't booked 10 in the first 30 days, it's switched off and there's no bill.
@@ -14,6 +14,14 @@
 - In return: a voice note or video testimonial after month one, a Google review, and introductions to two other owners.
 - Lexi introduces herself as the salon's booking assistant. She never pretends to be a person.
 
+## After the first 5 (from client 6)
+
+Once 5 salons have Lexi working and testimonials are in, new clients pay a setup fee. Proposed, Theo to confirm the amounts:
+
+- **Clients 6 to 10:** R1,499 once-off setup, then R1,000 a month from go-live. No "pay after 10 bookings", because the testimonials and the demo video are the proof now.
+- **From client 11:** the full R2,998 setup (Lexi R1,499 + website R1,499), then R1,000 a month.
+- Keep month to month, so the setup fee is the only commitment.
+
 **Still open:** a R599 "Lexi Solo" tier for one-chair braiders and nail techs (researched, not approved yet).
 
 Full reasoning, payback maths and onboarding steps: `outputs/research/2026-09-22-solo-salon-pains-and-offer.md`.
@@ -22,7 +30,7 @@ Full reasoning, payback maths and onboarding steps: `outputs/research/2026-09-22
 
 **The Lexi System**, the flagship. A WhatsApp AI booking assistant that lives inside the client's own WhatsApp Business number. Greets the customer, lists services, takes date and time, checks live calendar availability so nothing double-books, confirms, and sends reminders to cut no-shows. Sold as "a receptionist who never sleeps and never double-books," never as "a chatbot" or "AI technology," the pitch leads with the pain (missed messages at night, no-shows, double bookings, the owner personally fielding WhatsApp between clients), not the tech.
 
-Standard price (after the founding 10): R1,499 once-off setup, R499/month recurring. Under review, since the founding bundle is R1,000/month with the website included. Rollout: 4 days, build, connect, test, live.
+Old standard price (before the founding offer): R1,499 once-off setup, R499/month recurring. Under review, since the founding bundle is R1,000/month with the website included. Rollout: 4 days, build, connect, test, live.
 
 **Websites.** A single mobile-first HTML site, built and hosted, R1,499 once-off with hosting and domain included in the R499/month. Positioned directly against Telecloud, who charge R2,000 to R11,000 once-off for the same tier of work and bill hosting separately.
 

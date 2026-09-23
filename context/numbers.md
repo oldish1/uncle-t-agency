@@ -13,7 +13,8 @@
 | Lexi System pricing | R1,499 once-off + R499/month | 2026-08-30 |
 | Website pricing | R1,499 once-off + R499/month (hosting included) | 2026-08-30 |
 | 90-day target | 3 paying recurring clients | 2026-08-30 |
-| Founding 10 offer | R1,000/month, R0 setup, pay after 10 bookings | 2026-09-22 |
+| Founding 5 offer (clients 1 to 5) | R1,000/month, R0 setup, pay after 10 bookings | 2026-09-23 |
+| From client 6 (proposed) | R1,499 setup (clients 6 to 10), R2,998 from client 11, then R1,000/month | 2026-09-23 |
 | December goal | 5 paying clients by 31 Dec 2026 (R5,000/month recurring) | 2026-09-22 |
 | Growth milestone | 5 founding clients, then leave day job | 2026-08-30 |
 

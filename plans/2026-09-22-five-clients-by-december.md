@@ -2,7 +2,7 @@
 
 **Status:** Ready
 **Owner:** Theo. Built with Claude, 22 September 2026.
-**Goal:** 5 salons paying R1,000 a month on the Founding 10 offer by 31 December 2026. That's R5,000 a month recurring going into 2027.
+**Goal:** 5 salons paying R1,000 a month on the Founding 5 offer by 31 December 2026. That's R5,000 a month recurring going into 2027.
 
 ## The one rule
 
@@ -40,7 +40,7 @@ Sales Lexi is the agent that "speaks to the clients". She's legal and safe becau
 
 | Week | Dates | What happens | Done when |
 |---|---|---|---|
-| 1 | 22 to 28 Sep | Get the Google key and run the Hunter. Switch on the Chief of Staff. Test "keep your own number" on the demo number. Re-contact the 5 warm leads with the Founding 10 offer by voice note. | First lead report in `outputs/leads/`. 5 warm leads contacted. |
+| 1 | 22 to 28 Sep | Get the Google key and run the Hunter. Switch on the Chief of Staff. Test "keep your own number" on the demo number. Re-contact the 5 warm leads with the Founding 5 offer by voice note. | First lead report in `outputs/leads/`. 5 warm leads contacted. |
 | 2 | 29 Sep to 5 Oct | Meta starts charging per reply on 1 Oct, so check Lexi's real costs. Start 5 first messages a day from the Hunter's list. | 25 messages sent. |
 | 3 | 6 to 12 Oct | Lexi 2.0 fast (under 20 seconds). Record the demo video the same day. | Video recorded. |
 | 4 | 13 to 19 Oct | Send the video to everyone who said yes. First visits. | 3 visits booked. |

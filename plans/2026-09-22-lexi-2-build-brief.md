@@ -7,7 +7,7 @@
 ## Read these first
 
 - `context/lexi.md`: what Lexi is, the speed problem, the cancel/reschedule spec
-- `context/offer.md`: the Founding 10 offer (R1,000 a month, R0 setup, pay after 10 bookings, month-free if she double-books)
+- `context/offer.md`: the Founding 5 offer (R1,000 a month, R0 setup, pay after 10 bookings, month-free if she double-books)
 - `plans/2026-09-22-five-clients-by-december.md`: the goal and timeline this build serves
 - `outputs/research/2026-09-22-booking-competitors.md`, section 4: the ranked copy list
 - `outputs/research/2026-09-22-solo-salon-pains-and-offer.md`, sections 4 and 7: costs per client and the onboarding flow
@@ -48,7 +48,7 @@ This is the agent that talks to prospects. It's Lexi with a different settings r
 
 - **Who she talks to:** only salon owners who message the Uncle T demo number after Theo sends them the demo video ("WhatsApp my assistant and try it yourself").
 - **What she does:**
-  - Explains the Founding 10 offer (from `context/offer.md`) and answers the objections in section 8 of the offer research.
+  - Explains whichever offer is current (from `context/offer.md`: the Founding 5 while spots are left, then the setup-fee price from client 6; she must say honestly how many founding spots are left) and answers the objections in section 8 of the offer research.
   - Lets the owner make a pretend booking at "Demo Salon" so they feel how fast it is.
   - Books a real 15-minute visit with Theo into Theo's Google Calendar, after work or on Saturdays only.
   - Alerts Theo on WhatsApp when a visit is booked or a question needs him.

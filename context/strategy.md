@@ -8,7 +8,7 @@
 
 ## The goal (set 2026-09-22)
 
-**5 paying clients by 31 December 2026**, all on the Founding 10 offer (R1,000 a month). That's R5,000 a month recurring going into 2027. Then keep adding batches of 5. The bigger target is R40,000 a month, which is 40 clients at R1,000. The week-by-week plan is in `plans/2026-09-22-five-clients-by-december.md`.
+**5 paying clients by 31 December 2026**, all on the Founding 5 offer (R1,000 a month). That's R5,000 a month recurring going into 2027. Then keep adding batches of 5. The bigger target is R40,000 a month, which is 40 clients at R1,000. The week-by-week plan is in `plans/2026-09-22-five-clients-by-december.md`.
 
 ## What success looks like
 
