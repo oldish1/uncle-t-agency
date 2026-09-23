@@ -53,3 +53,4 @@
 - 2026-09-23 19:12 · theo · lexi/build · Fix7: calendar lookup 404 from encoded calendar address; switched to plain address. max_tokens email confirmed as a repeat of the old error (same request ID, no failing runs today)
 - 2026-09-23 19:18 · theo · lexi/ship · Fix7 live: reschedule works end to end on WhatsApp (offer, new day list, new time, name, confirmation, new calendar event Wed 30 Sep 11:00)
 - 2026-09-23 19:24 · theo · lexi/note · Correction: old Thursday booking confirmed removed from calendar after reschedule. Cancel-with-offer test not yet run (no runs after 19:16)
+- 2026-09-23 19:26 · theo · lexi/build · Fix8 (speed): AI + free-times check moved into a typed-message-only branch; taps, greeting and name capture no longer wait on the AI (was 11-20 s per tap). Also stops Hi triggering greeting and AI together
