@@ -32,8 +32,23 @@ Status: **waiting on Chanté's answers** (Theo is asking her on 2026-09-24). Not
 
 ## Open questions for Chanté
 
-- **No-show policy.** Spec default: the wash counts once the booking is confirmed, so a no-show uses a wash. Built to be switchable. Does she agree?
-- **Cancellations.** If a member cancels with notice, do they get the wash back? (Recommended: yes, if they cancel before the day.)
-- **Alerts.** Does she want them on WhatsApp (needs a second template) or by email?
-- **Expiry.** 3 months from the date she activates the card, or from the first wash?
-- **Member warning.** When a member books something other than Wash and Blowdry, should Lexi mention it won't come off their card?
+Sent to Theo on 2026-09-24 to forward to Chanté:
+
+1. **No-shows.** Spec default: the wash counts once the booking is confirmed, so a no-show uses a wash. Does she agree, or should a no-show not count?
+2. **Cancellations.** If a member cancels with notice (not a no-show), do they get the wash back? (Recommended: yes.)
+3. **Alerts.** Does she want alerts (last wash, renew requests) on WhatsApp or by email?
+4. **Expiry.** 3 months from the date she activates the card, or from the first wash?
+5. **Member warning.** When a member books something other than Wash and Blowdry, should Lexi mention it won't come off their card, or stay quiet?
+6. **Salon photo.** She also asked for a photo of the salon on the booking confirmation, Fresha-style. Need one photo from her (inside, looking nice) — this part doesn't need a decision, just the image, and can be built as soon as it arrives, independent of the membership answers.
+
+## Reusable client template (separate track, not blocked on the above)
+
+Theo asked how to turn Chanté's Lexi into a template for the next client. Claude can't create WhatsApp numbers or sign into a new client's Google account (browser-only steps), so the split is:
+
+**Theo does, per new client (~30-45 min):**
+1. Get the client's WhatsApp Business number added in Meta (WhatsApp Manager → Phone Numbers).
+2. Copy the Chales Hair Boutique Google Sheet for the new client.
+3. Add that client's Google Sheets/Calendar/WhatsApp as new connections in Make.
+4. Send Claude: the new phone number ID, sheet ID, services list, salon rules text.
+
+**Claude does:** clones Chales Hair Boutique's blueprint, swaps in the new client's number/sheet/calendar/services, hands back the file to import as a new scenario.
