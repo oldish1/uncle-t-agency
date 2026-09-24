@@ -41,6 +41,8 @@ Sent to Theo on 2026-09-24 to forward to Chanté:
 5. **Member warning.** When a member books something other than Wash and Blowdry, should Lexi mention it won't come off their card, or stay quiet?
 6. **Salon photo.** She also asked for a photo of the salon on the booking confirmation, Fresha-style (photo header, bold booking details, a button). Chales has no separate booking site, so the button becomes "Get Directions" → Google Maps, not Fresha's "Manage appointment". Needs: the photo, plus a new WhatsApp template approval (same process as `appointment_reminder`). Can be built as soon as the photo arrives, independent of the membership answers.
    - Draft layout: photo header; body "Hi {{1}}, your appointment with Chales Hair Boutique is confirmed! ✨" + Date/time, Service, Address; button "Get Directions" linking to the salon's Google Maps location.
+   - Photo needs a professional edit pass (better lighting/colour, tighter crop) before use, not the raw phone photo as-is. Claude to produce 2-3 edited versions from the photo Chanté sent for Theo/Chanté to pick from.
+7. **Calendar visit tracking.** Chanté wants to see the membership count in Google Calendar itself, the way she already manually writes "Suzaan week4" on repeat clients. Plan: when the membership tracker books a member, the GCal event title includes "(Visit X of 6)", e.g. "Booking-Wash and Blowdry-Sarah (Visit 4 of 6)". No extra tool for her to check, same place she already looks.
 
 ## Reusable client template (separate track, not blocked on the above)
 
