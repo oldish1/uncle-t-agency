@@ -39,7 +39,8 @@ Sent to Theo on 2026-09-24 to forward to Chanté:
 3. **Alerts.** Does she want alerts (last wash, renew requests) on WhatsApp or by email?
 4. **Expiry.** 3 months from the date she activates the card, or from the first wash?
 5. **Member warning.** When a member books something other than Wash and Blowdry, should Lexi mention it won't come off their card, or stay quiet?
-6. **Salon photo.** She also asked for a photo of the salon on the booking confirmation, Fresha-style. Need one photo from her (inside, looking nice) — this part doesn't need a decision, just the image, and can be built as soon as it arrives, independent of the membership answers.
+6. **Salon photo.** She also asked for a photo of the salon on the booking confirmation, Fresha-style (photo header, bold booking details, a button). Chales has no separate booking site, so the button becomes "Get Directions" → Google Maps, not Fresha's "Manage appointment". Needs: the photo, plus a new WhatsApp template approval (same process as `appointment_reminder`). Can be built as soon as the photo arrives, independent of the membership answers.
+   - Draft layout: photo header; body "Hi {{1}}, your appointment with Chales Hair Boutique is confirmed! ✨" + Date/time, Service, Address; button "Get Directions" linking to the salon's Google Maps location.
 
 ## Reusable client template (separate track, not blocked on the above)
 
