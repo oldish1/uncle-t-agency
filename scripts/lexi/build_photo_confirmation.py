@@ -43,7 +43,7 @@ const body = [
   `You're all set, *${first}*! ✨`,
   '',
   `\u{1F487}‍♀️ *${clean(input.service)}*`,
-  `\u{1F4C5} *${clean(input.day)}*`,
+  `\u{1F5D3}️ *${clean(input.day)}*`,
   `\u{1F550} *${clean(input.time)}*`,
   '\u{1F4CD} 46 Alexandra Street, Oakdale, Bellville',
   '',

@@ -1,4 +1,5 @@
 """Fix15: answer the day and time lists by voice note or typing, not only by tapping.
+Also: naming a different service mid-booking switches to it (synthetic service tap).
 
 While a client's BookingSession row has a service but no day (or a day but no time), a
 text message (typed, or a transcribed voice note) is matched to a day or time.
@@ -105,8 +106,26 @@ function matchTime(day) {
   if (!slots.includes(slot)) return null;
   return { id: 'time_' + (slots.indexOf(slot) + 1), title: slot };
 }
-const stage = clean(input.day) ? 'time' : 'day';
-const hit = stage === 'day' ? matchDay() : matchTime(input.day);
+const SERVICES = { service_1: 'Hair Colour & Highlights', service_2: 'Precision Cut', service_3: 'Brazilian & Keratin', service_4: 'Botox & Glowtox', service_5: 'Nanoplastia', service_6: 'Wash and Blowdry', service_7: 'Basin Treatment', service_8: 'Full Color', service_9: 'Root Touch Up', service_10: 'Trim' };
+function matchService() {           // same rules as the first-message shortcut (fix13)
+  const has = re => re.test(txt); const f = new Set();
+  if (has(/root/)) f.add('service_9');
+  if (has(/highlight/)) f.add('service_1');
+  if (!f.has('service_9') && !f.has('service_1') && has(/colou?r|\bdye\b|\btint\b/)) f.add('service_8');
+  if (has(/\btrim\b/)) f.add('service_10'); else if (has(/precision|hair ?cut|\bcut\b/)) f.add('service_2');
+  if (has(/brazilian|keratin/)) f.add('service_3');
+  if (has(/botox|glow ?tox/)) f.add('service_4');
+  if (has(/nano/)) f.add('service_5');
+  if (!f.has('service_3') && has(/\bwash|blow ?dry|blow ?out|blowdr/)) f.add('service_6');
+  if (has(/basin/) || (has(/treatment/) && !f.has('service_3') && !f.has('service_4') && !f.has('service_5'))) f.add('service_7');
+  if (f.size !== 1) return null;
+  const id = [...f][0];
+  return { id, title: SERVICES[id] };
+}
+const svc = matchService();
+const changed = svc && svc.title.toLowerCase() !== clean(input.service).toLowerCase();
+const stage = changed ? 'service' : (clean(input.day) ? 'time' : 'day');
+const hit = changed ? svc : (stage === 'day' ? matchDay() : matchTime(input.day));
 const msg = { from: input.from, id: input.msgId, timestamp: input.ts };
 if (hit) { msg.type = 'interactive'; msg.interactive = { type: 'list_reply', list_reply: hit }; msg.spoken_tap = 'yes'; }
 else { msg.type = 'text'; msg.text = { body: clean(input.text) }; msg.lexi_passthrough = 'yes'; }
@@ -122,6 +141,7 @@ code = {"id": 340, "module": "code:ExecuteCode", "version": 1, "parameters": {},
         "mapper": {"input": [
             {"name": "text", "value": M + "text.body}}"},
             {"name": "day", "value": S2},
+            {"name": "service", "value": S1},
             {"name": "entryId", "value": "{{1.entry[].id}}"},
             {"name": "displayPhone", "value": V + "metadata.display_phone_number}}"},
             {"name": "phoneId", "value": V + "metadata.phone_number_id}}"},

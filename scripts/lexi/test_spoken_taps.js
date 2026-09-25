@@ -3,7 +3,7 @@ const JS = require('fs').readFileSync(process.argv[2], 'utf8');
 const run = new Function('input', JS);
 // Friday 25 Sept 2026, 20:00 SAST (18:00 UTC)
 const realNow = Date.now; Date.now = () => Date.UTC(2026, 8, 25, 18, 0);
-const base = { entryId:'E', displayPhone:'1', phoneId:'2', name:'N', waId:'3', from:'3', msgId:'m', ts:'1' };
+const base = { service:'Wash and Blowdry', entryId:'E', displayPhone:'1', phoneId:'2', name:'N', waId:'3', from:'3', msgId:'m', ts:'1' };
 const cases = [
  ['day','', 'Saturday please','day_1 Saturday 26 September'],
  ['day','', 'saterdag asseblief','day_1 Saturday 26 September'],
@@ -26,6 +26,10 @@ const cases = [
  ['time','Friday 26 September','I will bring 2 friends with me','-'],
  ['time','Friday 26 September','6pm','-'],
  ['time','Friday 26 September','noon','12:00 PM'],
+ ['day','', 'actually can I do a precision cut instead','service_2 Precision Cut'],
+ ['time','Saturday 26 September','sorry make it nanoplastia','service_5 Nanoplastia'],
+ ['day','', 'wash and blowdry on Saturday','day_1 Saturday 26 September'],
+ ['day','', 'precision cut and a wash','-'],
 ];
 let bad = 0;
 for (const [stage, day, text, exp] of cases) {
