@@ -47,3 +47,11 @@ Nothing in the existing 94 modules changes. A new route at the very front handle
 ## Phase 2 (the extra wow, optional)
 
 Lexi **replies** with a voice note too, using an SA-sounding voice (ElevenLabs). Costs more per message and adds a few seconds, so offer it as an option, not the default. Only once phase 1 is solid.
+
+## Build notes (25 Sept)
+
+- Builder: `scripts/lexi/build_voice_notes.py`. It takes the live "Chales Hair Boutique" blueprint and adds a router (301) in front. Route A (filter: message type = audio): 302 ack, 303 get media link, 304 download, 305 OpenAI transcription, 306 code step that rebuilds the Meta message as a text message, 307 router, 308 re-post to Lexi's own webhook, or 309 "please type it". Steps 303 to 305 fall back to the "please type it" reply (310 to 315) if they error. Route B is the whole existing flow, unchanged.
+- The WhatsApp key is copied inside the script from module 240 and never printed. The finished import file goes to `private/` (git-ignored).
+- Lexi runs sequentially, so the re-posted message is queued and handled straight after the voice-note run finishes. No deadlock.
+- Tested: dry run with no duplicate IDs; the rebuild code tested with normal, empty and Afrikaans-with-quotes transcripts.
+- Waiting on: exact OpenAI module config, copied from a "Voice note helper" scenario Theo saves.
