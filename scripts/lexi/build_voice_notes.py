@@ -11,6 +11,9 @@ import copy, json, sys
 SRC, TRANSCRIBE_JSON, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
 HOOK_URL = sys.argv[4]  # Lexi's own webhook address (kept out of the repo)
 M = "{{1.entry[].changes[].value.messages[]."
+PROMPT = ("Chales Hair Boutique, a hair salon in Cape Town. Services: Wash and Blowdry, Trim, Precision Cut, "
+          "Root Touch Up, Full Color, Hair Colour and Highlights, Brazilian and Keratin, Nanoplastia, "
+          "Botox and Glowtox, Basin Treatment. Clients book, cancel or reschedule appointments.")
 
 t = open(SRC).read()
 d = json.loads(t[t.index("{"):])
@@ -75,9 +78,19 @@ tr = copy.deepcopy(tr)
 tr["id"] = 305
 tr["metadata"] = pos(1050, Y)
 tr.pop("filter", None)
+tr["mapper"].update({"fileName": "voice.ogg", "fileData": "{{304.data}}", "temperature": "0", "prompt": PROMPT})
 tr["onerror"] = on_error(1050, Y)
 
-JS = r"""const t = (input.transcript || '').trim();
+JS = r"""function pick(a, b) {
+  for (const v of [a, b]) {
+    if (!v) continue;
+    let s = String(v).trim();
+    if (s.startsWith('{')) { try { const o = JSON.parse(s); s = String(o.text || '').trim(); } catch (e) { s = ''; } }
+    if (s && !s.startsWith('[object')) return s;
+  }
+  return '';
+}
+const t = pick(input.transcript, input.transcriptRaw);
 if (!t) return { ok: 'no', payload: '', transcript: '' };
 const payload = {
   object: 'whatsapp_business_account',
@@ -92,7 +105,8 @@ return { ok: 'yes', payload: JSON.stringify(payload), transcript: t };"""
 V = "{{1.entry[].changes[].value."
 code = {"id": 306, "module": "code:ExecuteCode", "version": 1, "parameters": {}, "metadata": pos(1300, Y),
         "mapper": {"input": [
-            {"name": "transcript", "value": tr.get("_text_ref", "{{305.text}}")},
+            {"name": "transcript", "value": "{{305.text.text}}"},
+            {"name": "transcriptRaw", "value": "{{305.text}}"},
             {"name": "entryId", "value": "{{1.entry[].id}}"},
             {"name": "displayPhone", "value": V + "metadata.display_phone_number}}"},
             {"name": "phoneId", "value": V + "metadata.phone_number_id}}"},
@@ -103,7 +117,6 @@ code = {"id": 306, "module": "code:ExecuteCode", "version": 1, "parameters": {},
             {"name": "ts", "value": M + "timestamp}}"}],
             "language": "javascript", "inputFormat": "editor", "dependencies": [],
             "codeEditorJavascript": JS}}
-tr.pop("_text_ref", None)
 
 repost = http(308, HOOK_URL, "post", "{{306.result.payload}}", headers_auth=False, stop=False,
               x=1800, y=Y - 150, name="Voice note - hand to Lexi as text")

@@ -1,6 +1,6 @@
 # Lexi voice notes: plan
 
-Status: **ready to build.** Step 0 done 25 Sept: OpenAI connected in Make as "OpenAI Lexi." (connection 11285759), $5 prepaid, auto-reload off.
+Status: **built, waiting for Theo to import (fix12) and test.** Step 0 done 25 Sept: OpenAI connected in Make as "OpenAI Lexi." (connection 11285759), $5 prepaid, auto-reload off.
 
 ## The problem today
 
@@ -54,5 +54,6 @@ Lexi **replies** with a voice note too, using an SA-sounding voice (ElevenLabs).
 - The WhatsApp key is copied inside the script from module 240 and never printed. The finished import file goes to `private/` (git-ignored).
 - Lexi runs sequentially, so the re-posted message is queued and handled straight after the voice-note run finishes. No deadlock.
 - Tested: dry run with no duplicate IDs; the rebuild code tested with normal, empty and Afrikaans-with-quotes transcripts.
-- Waiting on: exact OpenAI module config, copied from a "Voice note helper" scenario Theo saves.
+- OpenAI step copied from Theo's "Voice note helper" scenario (module openai-gpt-3:CreateTranscription v1, gpt-4o-mini-transcribe, temperature 0, service-name prompt). Helper deleted after. The transcript is read from {{305.text.text}} with {{305.text}} as a fallback, tested on 5 cases.
+- Import file (fix12): private/lexi/chales-voice-notes-fix12.blueprint.json, not on GitHub because it holds the WhatsApp key.
 - Transcription prompt (helps spell service names right): "Chales Hair Boutique, a hair salon in Cape Town. Services: Wash and Blowdry, Trim, Precision Cut, Root Touch Up, Full Color, Hair Colour and Highlights, Brazilian and Keratin, Nanoplastia, Botox and Glowtox, Basin Treatment. Clients book, cancel or reschedule appointments." Model: gpt-4o-mini-transcribe.
