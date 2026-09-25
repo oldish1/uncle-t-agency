@@ -9,7 +9,8 @@ WhatsApp now lets businesses receive voice calls through the same Cloud API Lexi
 - **Calls a client makes to the business are free.** Meta only charges for calls the business makes.
 - The call can be passed to an AI voice agent over SIP (a standard way of connecting phone systems) or WebRTC (the browser version). Vapi and ElevenLabs are named as partners.
 - It's the same number, the same Meta app and the same brain as Lexi on WhatsApp. A client who'd rather talk than type just taps the call button in the chat they already have open.
-- **Catch:** the number reportedly needs to be on the 1,000-conversations messaging tier, and calling has to be switched on. Need to check which tier Chales' number is on.
+- **Checked 25 Sept on Chales' number (+27 71 429 6057) in WhatsApp Manager, under the number's More tab:** calling is **available**. There's an "Allow voice calls" switch (currently Off), call-hours and holiday settings, callbacks (Off), and a **"Use Session Initiation Protocol (SIP)" Set up button**, which is exactly how an AI voice platform plugs in. "Display call buttons" is On. Meta now sets messaging limits for the whole business account rather than per number, and the tier wasn't shown on the number's page. Since the calling switch is there, the tier isn't blocking us.
+- **Keep "Allow voice calls" OFF until the AI is connected.** Switch it on early and clients get a call button that nobody answers, and the call events land on Lexi's webhook, which can't handle them.
 
 This is the cheapest and best-fitting route, so it goes first.
 
@@ -56,7 +57,7 @@ No platform publishes proof that it handles South African English well. ElevenLa
 
 ## Recommended next steps (once the first paying client signs)
 
-1. Check the Chales WhatsApp number's messaging tier and whether calling can be switched on.
+1. ~~Check tier and calling~~ Done 25 Sept: calling and SIP are available on Chales' number.
 2. Free test: Retell's $10 credit or a Vapi trial, connected to WhatsApp calling on the **demo number** (never Chanté's live number first). Theo calls it in Cape Town accents and times the replies.
 3. If it passes, connect it to Lexi's existing booking steps (calendar check, booking, sheet).
 4. Only then look at Route 2 (a 021 number plus call divert) for salons whose clients phone rather than WhatsApp.
