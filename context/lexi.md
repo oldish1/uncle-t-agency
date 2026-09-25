@@ -26,3 +26,9 @@ Worth building this into the 2.0 architecture from the start rather than bolting
 ## Voice notes (planned)
 
 Voice notes are currently ignored: only text and taps get past the first filter, so a client who sends one gets no reply. Plan to fix that and turn voice notes into bookings: `plans/lexi-voice-notes.md`.
+
+## Chales services (as listed in Lexi's service menu)
+
+Wash and Blowdry · Trim · Precision Cut · Root Touch Up · Full Color · Hair Colour & Highlights · Brazilian & Keratin · Nanoplastia · Botox & Glowtox · Basin Treatment.
+
+**Chanté does not do braids.** Never use braids (or relaxers) as an example for Chales.

@@ -47,7 +47,7 @@ What that means for us:
 
 ## Accents and languages: still open
 
-No platform publishes proof that it handles South African English well. ElevenLabs has Afrikaans voices and some African-accented English voices, but none sold as SA English. Most of these platforms run on US servers, which may add a noticeable delay on calls from Cape Town. The only real answer is a test: call it ourselves in local accents, with local service names (braids, relaxer, wash and blowdry), and time the pauses.
+No platform publishes proof that it handles South African English well. ElevenLabs has Afrikaans voices and some African-accented English voices, but none sold as SA English. Most of these platforms run on US servers, which may add a noticeable delay on calls from Cape Town. The only real answer is a test: call it ourselves in local accents, with local service names (Nanoplastia, Botox & Glowtox, Brazilian & Keratin, wash and blowdry), and time the pauses.
 
 ## Pricing thoughts (not decided)
 

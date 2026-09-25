@@ -20,7 +20,7 @@ An AI phone receptionist that answers the salon's line, books the appointment an
 
 How the demo call flows: Greeting → Offer availability (three slots, not an open question) → Caller + vehicle → Capture service list → Text VIN + parts link mid-call → Wrap up → Confirm + End. Two global steps can fire at any point: AI disclosure (tells the truth if asked "am I talking to a bot?") and Transfer to human.
 
-Salon version: Greeting → Offer three slots → Name + phone → Capture services (cut, colour, braids, etc.) → WhatsApp the booking and price list mid-call → Wrap up → Confirm + End. Globals: AI disclosure, transfer to Chante.
+Salon version: Greeting → Offer three slots → Name + phone → Capture services (cut, colour, keratin, etc.) → WhatsApp the booking and price list mid-call → Wrap up → Confirm + End. Globals: AI disclosure, transfer to Chante.
 
 Why it's a good fit: it reuses what 2.0 is building anyway (the Calendar availability check, the booking write, the tracking sheet, cancel/reschedule). Voice becomes a second front door onto the same brain, not a separate product. It also covers the calls a salon misses while the stylist's hands are busy, which WhatsApp alone can't.
 

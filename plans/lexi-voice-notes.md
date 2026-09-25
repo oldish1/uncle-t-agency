@@ -8,7 +8,7 @@ Lexi's live scenario ("Chales Hair Boutique", 5043763) only lets through text me
 
 ## What we're building
 
-A client sends a voice note ("Hi, can I come in Saturday for braids?"). Lexi:
+A client sends a voice note ("Hi, can I come in Saturday for a wash and blowdry?"). Lexi:
 1. Replies straight away: "Got your voice note, give me a sec 🎧" (this covers the few seconds the transcription takes).
 2. Turns the voice note into text.
 3. Carries on exactly as if they'd typed it: same AI, same calendar check, same booking, cancel and reschedule.
@@ -55,3 +55,4 @@ Lexi **replies** with a voice note too, using an SA-sounding voice (ElevenLabs).
 - Lexi runs sequentially, so the re-posted message is queued and handled straight after the voice-note run finishes. No deadlock.
 - Tested: dry run with no duplicate IDs; the rebuild code tested with normal, empty and Afrikaans-with-quotes transcripts.
 - Waiting on: exact OpenAI module config, copied from a "Voice note helper" scenario Theo saves.
+- Transcription prompt (helps spell service names right): "Chales Hair Boutique, a hair salon in Cape Town. Services: Wash and Blowdry, Trim, Precision Cut, Root Touch Up, Full Color, Hair Colour and Highlights, Brazilian and Keratin, Nanoplastia, Botox and Glowtox, Basin Treatment. Clients book, cancel or reschedule appointments." Model: gpt-4o-mini-transcribe.
