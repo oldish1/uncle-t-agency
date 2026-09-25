@@ -41,3 +41,7 @@ If a client's first message (typed or voice note) names exactly one service, Lex
 
 The booking confirmation becomes one WhatsApp message: salon photo on top, service, day and time in bold, the address, and a "Get Directions" button (Google Maps: https://maps.app.goo.gl/Stvh3qfxGtiYpoLS9). No Meta template approval is needed, because it's sent while the client is chatting (inside the 24-hour window). If the photo fails, Lexi falls back to the old plain-text confirmation, and the sheet steps still run. Builder: `scripts/lexi/build_photo_confirmation.py`. Stacks on fix13.
 Photo: https://raw.githubusercontent.com/oldish1/chales-assets/main/chales-salon.jpg (public repo oldish1/chales-assets, holds only public images).
+
+## Spoken or typed day and time (fix15, 25 Sept)
+
+While Lexi is waiting on the day list or the time list, a voice note or typed reply is matched to a day ("Saturday", "saterdag", "tomorrow", "the 30th") or a time ("10 o'clock", "half past two", "half tien", "2pm", "14:00", "noon") and tapped for the client. Only days on the list and real slots count (weekdays hourly 8am to 4pm, Saturdays every half hour 8am to 4:30pm). Anything else goes to Lexi's AI conversation as before. Builder: `scripts/lexi/build_spoken_taps.py`, tests: `scripts/lexi/test_spoken_taps.js` (23 cases). Stacks on fix14.
