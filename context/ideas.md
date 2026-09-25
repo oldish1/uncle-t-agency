@@ -32,4 +32,6 @@ Questions to answer before building:
 
 Cheaper first step worth testing: let Lexi on WhatsApp understand voice notes. Lots of clients send those instead of typing, and it's a small bolt-on once 2.0 is live.
 
-Trigger to start: Lexi 2.0 live, under 20 seconds, with at least one paying client on it.
+Research done 25 Sept 2026: see `reference/research/2026-09-25-lexi-voice.md`. Biggest finding: WhatsApp now lets clients call the business through the same Cloud API Lexi runs on, free for calls clients make, so voice can start on the same WhatsApp number before any phone number is needed. BizAI already sells a SA voice receptionist at R999/month, so position voice as a Lexi upgrade, not a standalone product.
+
+Trigger to start: Lexi 2.0 is live and fast (done 23 Sept). Still waiting on the first paying client.

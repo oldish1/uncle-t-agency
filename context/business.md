@@ -24,4 +24,4 @@ What makes it different: pricing positioned well below corporate agencies (Telec
 
 ## Competitors
 
-Telecloud, the clearest price contrast (see above). Also on the radar: Nextapt, WAFlowBot, and BizAI, all WhatsApp/AI booking automation players. None of them are positioned for Cape Flats-adjacent community businesses the way Uncle T Agency is, that's the gap being worked.
+Telecloud, the clearest price contrast (see above). Also on the radar: Nextapt, WAFlowBot, and BizAI, all WhatsApp/AI booking automation players. BizAI also sells an AI phone receptionist ("Voice Valet", R999/month ex-VAT, about 200 minutes), see `reference/research/2026-09-25-lexi-voice.md`. None of them are positioned for Cape Flats-adjacent community businesses the way Uncle T Agency is, that's the gap being worked.
