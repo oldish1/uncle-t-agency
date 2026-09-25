@@ -32,3 +32,7 @@ Voice notes are currently ignored: only text and taps get past the first filter,
 Wash and Blowdry · Trim · Precision Cut · Root Touch Up · Full Color · Hair Colour & Highlights · Brazilian & Keratin · Nanoplastia · Botox & Glowtox · Basin Treatment.
 
 **Chanté does not do braids.** Never use braids (or relaxers) as an example for Chales.
+
+## Service shortcut (fix13, 25 Sept)
+
+If a client's first message (typed or voice note) names exactly one service, Lexi skips the service menu. She sends her welcome and the salon rules with "Lovely, a <service>!", then "taps" that service for them, so the normal day list follows. If no service or more than one is named, the usual menu shows. Builder: `scripts/lexi/build_service_shortcut.py`.
