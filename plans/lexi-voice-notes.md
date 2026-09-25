@@ -1,6 +1,6 @@
 # Lexi voice notes: plan
 
-Status: **built, waiting for Theo to import (fix12) and test.** Step 0 done 25 Sept: OpenAI connected in Make as "OpenAI Lexi." (connection 11285759), $5 prepaid, auto-reload off.
+Status: **live (fix12, 25 Sept).** First real test passed; remaining test cases in progress. Step 0 done 25 Sept: OpenAI connected in Make as "OpenAI Lexi." (connection 11285759), $5 prepaid, auto-reload off.
 
 ## The problem today
 
