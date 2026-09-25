@@ -37,6 +37,7 @@ Wash and Blowdry · Trim · Precision Cut · Root Touch Up · Full Color · Hair
 
 If a client's first message (typed or voice note) names exactly one service, Lexi skips the service menu. She sends her welcome and the salon rules with "Lovely, a <service>!", then "taps" that service for them, so the normal day list follows. If no service or more than one is named, the usual menu shows. Builder: `scripts/lexi/build_service_shortcut.py`.
 
-## Photo confirmation (fix14, built 25 Sept, waiting on photo hosting)
+## Photo confirmation (fix14, built 25 Sept)
 
 The booking confirmation becomes one WhatsApp message: salon photo on top, service, day and time in bold, the address, and a "Get Directions" button (Google Maps: https://maps.app.goo.gl/Stvh3qfxGtiYpoLS9). No Meta template approval is needed, because it's sent while the client is chatting (inside the 24-hour window). If the photo fails, Lexi falls back to the old plain-text confirmation, and the sheet steps still run. Builder: `scripts/lexi/build_photo_confirmation.py`. Stacks on fix13.
+Photo: https://raw.githubusercontent.com/oldish1/chales-assets/main/chales-salon.jpg (public repo oldish1/chales-assets, holds only public images).
