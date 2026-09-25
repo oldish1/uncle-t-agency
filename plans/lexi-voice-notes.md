@@ -1,6 +1,6 @@
 # Lexi voice notes: plan
 
-Status: **planned, not built.** Needs a transcription key from Theo (step 0) before building.
+Status: **ready to build.** Step 0 done 25 Sept: OpenAI connected in Make as "OpenAI Lexi." (connection 11285759), $5 prepaid, auto-reload off.
 
 ## The problem today
 
