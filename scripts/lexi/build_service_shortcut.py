@@ -22,7 +22,7 @@ HAIRDRESSER = "\U0001F487‍♀️"
 t = open(SRC).read()
 d = json.loads(t[t.index("{"):])
 sc = d.get("scenario", d)
-bp = sc["blueprint"]
+bp = sc.get("blueprint", sc)
 if isinstance(bp, str):
     bp = json.loads(bp)
 
