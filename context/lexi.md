@@ -21,3 +21,8 @@ Too slow. Around 2.5 minutes per booking, because the scenario accumulated too m
 5. Update Google Calendar and the tracking sheet automatically either way, no manual cleanup after.
 
 Worth building this into the 2.0 architecture from the start rather than bolting it on after, since it's a second conversation branch off the same router.
+
+
+## Voice notes (planned)
+
+Voice notes are currently ignored: only text and taps get past the first filter, so a client who sends one gets no reply. Plan to fix that and turn voice notes into bookings: `plans/lexi-voice-notes.md`.
