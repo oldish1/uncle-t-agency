@@ -51,3 +51,7 @@ While Lexi is waiting on the day list or the time list, a voice note or typed re
 A Make router's fallback route ("else" in the blueprint) is saved as a route **index**, not a route. Fix15 first inserted a new route at position 0 of router 40, which silently made the name-capture route the fallback, so typed and spoken names stopped confirming (the AI replied instead). Fixed in fix15b: new routes are appended at the end, and the builders assert every router's fallback still points at the same route as before. **Rule for any future edit: never insert routes before existing ones; append, then check "else".**
 
 Also since fix15b: names must be typed. A voice note at the name step gets "Please type your full name so I get the spelling right". Voice-to-text heard "Theo" as "Siyou".
+
+## Decision (25 Sept, late): Lexi frozen at fix14
+
+Theo and Claude agreed: Lexi runs fix14 (voice notes understood, service shortcut, photo confirmation) and gets **no more features**. Fix15/15b (spoken day and time) is shelved: taps already do that well and it caused the name-step bug. Voice replies inside WhatsApp are dropped. The next voice work is a separate product, a real-time voice receptionist (Vapi or Retell) built next to Lexi on the demo number, sharing her calendar and sheet. A clean-up pass to shrink the scenario comes after the first paying client.
