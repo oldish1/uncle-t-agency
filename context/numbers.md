@@ -6,7 +6,7 @@
 
 | Metric | Value | As of |
 |---|---|---|
-| Paying agency clients | 0 (blocked on the Lexi speed rebuild) | 2026-08-30 |
+| Paying agency clients | 0 (speed rebuild done 23 Sept, now converting warm leads) | 2026-09-25 |
 | Live proof-of-concept clients | 1 (CHALES Hair Boutique) | 2026-08-30 |
 | Warm leads in pipeline | 5 (Zanzibar, Sistergirl, Reeva, JEM, Jason) | 2026-08-30 |
 | Prospect list (outreach) | 20 Cape Town salons | 2026-08-30 |
