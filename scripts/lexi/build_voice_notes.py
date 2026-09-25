@@ -9,7 +9,7 @@ inside this script and never printed.
 import copy, json, sys
 
 SRC, TRANSCRIBE_JSON, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
-HOOK_URL = "https://hook.eu1.make.com/oyazyu3x8gspj4o5bb1cjtji4fo1vc2t"
+HOOK_URL = sys.argv[4]  # Lexi's own webhook address (kept out of the repo)
 M = "{{1.entry[].changes[].value.messages[]."
 
 t = open(SRC).read()
