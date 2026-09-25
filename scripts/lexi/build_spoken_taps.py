@@ -8,7 +8,8 @@ text message (typed, or a transcribed voice note) is matched to a day or time.
   341 HTTP:  re-post that payload to Lexi's own webhook
 A synthetic tap runs the normal Day Selected / Time Selected branches (calendar checks
 included). A pass-through goes to Lexi's AI conversation exactly as before, because the
-AI route (starting at module 5) now skips only the messages route 340 takes over.
+AI route (starting at module 5) is router 40's fallback, so it only runs when no route matched.
+A voice note at the name step gets 'please type your name' (342); name capture ignores voice.
 
 Usage: build_spoken_taps.py <blueprint json> <out file> <lexi webhook url>
 """
@@ -34,7 +35,7 @@ def walk(fl):
 walk(bp["flow"])
 assert not any(340 <= i < 350 for i in mods), "ids 340-349 already used"
 r40 = mods[40]["routes"]
-assert r40[3]["flow"][0]["id"] == 5 and not r40[3]["flow"][0].get("filter"), "AI route changed shape"
+assert not r40[mods[40]["parameters"]["else"]]["flow"][0].get("filter"), "AI route changed shape"
 
 def c(a, o, b=None):
     x = {"a": a, "o": o}
@@ -162,8 +163,38 @@ repost = {"id": 341, "module": "http:MakeRequest", "version": 4,
                      "parseResponse": True, "allowRedirects": True, "stopOnHttpError": False,
                      "requestCompressedContent": True}}
 
-r40[3]["flow"][0]["filter"] = skip
-r40.insert(0, {"flow": [code, repost]})
+# Router 40 keeps its fallback ("else") as a route INDEX. Its fallback is the AI route
+# (head module 5): it runs only when no other route matches, so it needs no extra filter.
+ai_idx = mods[40]["parameters"]["else"]
+assert r40[ai_idx]["flow"][0]["id"] == 5, "router 40 fallback is not the AI route"
+
+# Names must be typed: a voice note at the name step gets a polite "please type it".
+VOICE = M + "voice_note}}"
+voice_name = {"name": "Voice note at name step", "conditions": [[
+    c(TYPE, "text:equal", "text"), c(VOICE, "exist"), c(S1, "exist"), c(S2, "exist"), c(S3, "exist"),
+    c(INTENT, "text:notequal", "yes"), c(PEND, "number:equal", "0")]]}
+auth = [h for h in mods[79]["mapper"]["headers"] if h["name"] == "Authorization"][0]["value"]
+ask_body = json.dumps({"messaging_product": "whatsapp", "to": M + "from}}", "type": "text",
+                       "text": {"body": "Almost done! Please *type* your full name so I get the spelling right \U0001F60A"}},
+                      ensure_ascii=False, indent=2)
+ask = {"id": 342, "module": "http:MakeRequest", "version": 4, "filter": voice_name,
+       "metadata": {"designer": {"x": 3800, "y": 3650, "name": "Ask to type the name"}},
+       "parameters": {"tlsType": "", "authenticationType": "noAuth"},
+       "mapper": {"url": "https://graph.facebook.com/v25.0/1197696726762690/messages", "method": "post",
+                  "headers": [{"name": "Authorization", "value": auth}, {"name": "Content-Type", "value": "application/json"}],
+                  "contentType": "json", "inputMethod": "jsonString", "jsonStringBodyContent": ask_body,
+                  "shareCookies": False, "parseResponse": True, "allowRedirects": True, "stopOnHttpError": True,
+                  "requestCompressedContent": True}}
+nc = mods[100]["filter"]
+assert nc["name"] == "Booking Name Capture"
+for group in nc["conditions"]:
+    group.append(c(VOICE, "notexist"))
+
+# New routes go AFTER the existing ones so existing indexes (and "else") stay put.
+r40.append({"flow": [code, repost]})
+r40.append({"flow": [ask]})
+assert r40[mods[40]["parameters"]["else"]]["flow"][0]["id"] == 5
+del skip
 
 out = {"name": bp.get("name", sc.get("name")), "flow": bp["flow"], "metadata": bp["metadata"]}
 for k in ("scheduling", "interface"):

@@ -45,3 +45,9 @@ Photo: https://raw.githubusercontent.com/oldish1/chales-assets/main/chales-salon
 ## Spoken or typed day and time (fix15, 25 Sept)
 
 While Lexi is waiting on the day list or the time list, a voice note or typed reply is matched to a day ("Saturday", "saterdag", "tomorrow", "the 30th") or a time ("10 o'clock", "half past two", "half tien", "2pm", "14:00", "noon") and tapped for the client. Only days on the list and real slots count (weekdays hourly 8am to 4pm, Saturdays every half hour 8am to 4:30pm). Anything else goes to Lexi's AI conversation as before. Builder: `scripts/lexi/build_spoken_taps.py`, tests: `scripts/lexi/test_spoken_taps.js` (23 cases). Stacks on fix14.
+
+## Lesson: Make router fallbacks are stored by position (25 Sept)
+
+A Make router's fallback route ("else" in the blueprint) is saved as a route **index**, not a route. Fix15 first inserted a new route at position 0 of router 40, which silently made the name-capture route the fallback, so typed and spoken names stopped confirming (the AI replied instead). Fixed in fix15b: new routes are appended at the end, and the builders assert every router's fallback still points at the same route as before. **Rule for any future edit: never insert routes before existing ones; append, then check "else".**
+
+Also since fix15b: names must be typed. A voice note at the name step gets "Please type your full name so I get the spelling right". Voice-to-text heard "Theo" as "Siyou".
