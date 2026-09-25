@@ -55,7 +55,7 @@ data/        exports and files the business drops in
 apps/        things built here that outgrew a chat
 docs/        documentation for what you build, routed by docs/_index.md
 skills/      capabilities (see .claude/skills/)
-reference/   how to use this workspace, writing rules, where keys come from
+reference/   how to use this workspace, writing rules, where keys come from, research/ findings
 outputs/     everything produced
 plans/       build plans from /create-plan
 ```
