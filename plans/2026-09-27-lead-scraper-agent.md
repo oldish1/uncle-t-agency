@@ -1,7 +1,7 @@
 # Plan: Lead scraper agent, Google Maps to a ranked outreach list
 
 **Created:** 2026-09-27
-**Status:** Built, blocked on environment setup for the first live run
+**Status:** Built and proven live (145 real hair salon results, 27 Sept 2026); Firecrawl booking-check still pending a key
 **Request:** An automated tool that finds Cape Town businesses with no website and no online booking system, the exact gap Uncle T Agency sells into, so Theo stops hand-building the prospect list.
 **Purpose:** Turn hours of manual searching into a script that pulls a ranked, ready-to-contact list, starting with hair salons and reusable for every other vertical `context/business.md` already flags.
 
@@ -246,6 +246,13 @@ Built `scripts/lead_scraper.py` and `scripts/lead_scraper_verticals.json` (hair 
 
 ### Issues Encountered
 
-- `api.apify.com` denied by this environment's network policy (same class of issue Firecrawl hit earlier this session). Theo needs to add it under the environment's network settings.
-- No `APIFY_API_TOKEN` in this fresh container's `.env` (private/machine-local files don't sync between sessions, documented workspace behaviour). Theo needs to add his Apify token via the environment's settings.
-- Both are environment-setup steps outside this script's own code; nothing in the script itself is blocked once those are sorted.
+- `api.apify.com` denied by this environment's network policy (same class of issue Firecrawl hit earlier this session). Theo added it under the environment's network settings.
+- No `APIFY_API_TOKEN` in this fresh container's `.env` (private/machine-local files don't sync between sessions, documented workspace behaviour). Theo added his Apify token via the environment's settings; the first paste had two transcription errors (0/O, O/Q confusion) that a direct curl against Apify's own API surfaced clearly.
+- Both are environment-setup steps outside this script's own code; nothing in the script itself was blocked once those were sorted.
+
+### First live run (27 Sept 2026, later same day)
+
+- Confirmed the actor name in the original build (`apify~google-maps-scraper`) doesn't exist on Apify; found and swapped in `compass~crawler-google-places`, the standard Google Maps actor (40M+ total runs), by searching Apify's store and checking its input schema directly against the API before running.
+- All input and output field names matched on the first real call, no further fixes needed.
+- Ran hair salons across the four core suburbs: 145 unique businesses, 88 with no website, 57 with a website (booking check skipped, no `FIRECRAWL_API_KEY` set in this container yet). Reeva Hair & Beauty Salon, one of the five warm leads, appeared organically with no website.
+- Firecrawl booking-check (the tier B/C split) is still pending: needs `FIRECRAWL_API_KEY` added to this environment before a full three-tier run.

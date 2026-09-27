@@ -34,11 +34,17 @@ Both are environment-level settings, so once set they should carry into future s
 
 Edit `scripts/lead_scraper_verticals.json`, add a key with `terms` (search phrases Maps responds well to) and `suburbs`. No code changes needed. `context/business.md` lists the priority order for what's next: med spas, dog groomers, cleaning businesses, then plumbers, dentists, real estate agents, and a longer list of strong untapped verticals below that.
 
-## Known limitations (as of first build, 27 Sept 2026)
+## Known limitations (updated after first live run, 27 Sept 2026)
 
-- The Apify Google Maps actor's exact field names weren't verified against a live call when this was built (network was blocked in that session). Use `--raw-sample` on the first real run to confirm, and fix up the field names in `lead_scraper.py` if Apify's actor has changed shape since.
-- Booking-signal detection is a heuristic (keyword and known-platform matching in the page's text and links), not a certainty. Spot-check the first run's results before trusting the ranking fully.
+- Booking-signal detection is a heuristic (keyword and known-platform matching in the page's text and links), not a certainty. Spot-check results before trusting the ranking fully.
 - Output is a plain CSV for now, not pushed into Google Sheets automatically. See `plans/2026-09-27-lead-scraper-agent.md`'s Notes for planned Phase 2 work.
+- Firecrawl booking-check still needs `FIRECRAWL_API_KEY` set in this environment for the full three-tier ranking; without it, use `--skip-booking-check` to still get the Google Maps pull and no-website tier, just without the booking-signal split on tier B/C.
+
+## First live run, 27 Sept 2026
+
+Actor name in the original build (`apify~google-maps-scraper`) didn't exist on Apify and was corrected to `compass~crawler-google-places`, the standard, most-used Google Maps actor (40M+ total runs). All input fields (`searchStringsArray`, `maxCrawledPlacesPerSearch`, `language`, `skipClosedPlaces`) and output fields (`title`, `phone`, `address`, `totalScore`, `reviewsCount`, `website`) matched the actor's real schema, no other changes needed.
+
+First real run (hair salons, Bellville/Mitchell's Plain/Parow/Goodwood, booking check skipped since Firecrawl key wasn't set): 145 unique businesses, 88 with no website at all. Reeva Hair & Beauty Salon (one of the five warm leads) appeared organically with no website, a good sign the targeting is on point. Output: `outputs/leads/2026-09-27-hair-salon-all.csv`.
 
 ## Related
 

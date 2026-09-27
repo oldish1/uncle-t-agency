@@ -12,12 +12,12 @@ Run through the workspace environment:
 
 See plans/2026-09-27-lead-scraper-agent.md for the full design.
 
-NOTE on the Apify Google Maps actor's input/output field names: this
-was written without a live test call (this container's network policy
-was blocking api.apify.com at build time). The field names below are
-the documented shape as of writing, but per the plan's own Step 2,
-confirm them against a real first run with --raw-sample and adjust if
-Apify's actor has changed since.
+Verified live 27 Sept 2026: actor is compass~crawler-google-places (the
+"apify~google-maps-scraper" name from the original build didn't exist on
+Apify and was corrected here). Input fields (searchStringsArray,
+maxCrawledPlacesPerSearch, language, skipClosedPlaces) and output fields
+(title, phone, address, totalScore, reviewsCount, website) all matched
+on a real 145-result run across the four core suburbs, no changes needed.
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ import requests
 from utils.config import get_env
 
 APIFY_BASE_URL = "https://api.apify.com/v2"
-GOOGLE_MAPS_ACTOR = "apify~google-maps-scraper"
+GOOGLE_MAPS_ACTOR = "compass~crawler-google-places"
 
 FIRECRAWL_BASE_URL = "https://api.firecrawl.dev/v2"
 
