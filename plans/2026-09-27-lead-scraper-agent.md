@@ -1,7 +1,7 @@
 # Plan: Lead scraper agent, Google Maps to a ranked outreach list
 
 **Created:** 2026-09-27
-**Status:** Draft
+**Status:** Built, blocked on environment setup for the first live run
 **Request:** An automated tool that finds Cape Town businesses with no website and no online booking system, the exact gap Uncle T Agency sells into, so Theo stops hand-building the prospect list.
 **Purpose:** Turn hours of manual searching into a script that pulls a ranked, ready-to-contact list, starting with hair salons and reusable for every other vertical `context/business.md` already flags.
 
@@ -228,3 +228,24 @@ The implementation is complete when:
 - This is explicitly Phase 1 (CSV output, hair salons only, manual review before use). Phase 2 ideas, not part of this plan: auto-pushing results straight into a Google Sheet via the Drive connector, expanding to the next verticals `context/business.md` flags, and possibly a lightweight dedup pass against Theo's existing 20-salon list so re-runs don't resurface businesses already contacted.
 - Keep an eye on Apify and Firecrawl spend, both are pay-as-you-go; this tool should make outreach faster, not quietly expensive. Report real costs after the first run rather than assuming the estimate holds.
 - Worth revisiting whether this becomes a Skill (auto-triggering on "find me leads for X") once the scoring logic has proven itself over a few real runs, consistent with how `new-capability` and other tools in this workspace graduate from script to skill once trusted.
+
+---
+
+## Implementation Notes
+
+**Implemented:** 2026-09-27
+
+### Summary
+
+Built `scripts/lead_scraper.py` and `scripts/lead_scraper_verticals.json` (hair salon, four core suburbs). The script runs the Apify Google Maps actor across suburb/term combinations, de-duplicates by phone or name+address, checks any listed website with Firecrawl for booking-platform signals (a small hardcoded list: "book now," Calendly, Fresha, Booksy, Setmore, and others), scores into three tiers (no website / website no booking / website with booking), and writes a ranked CSV to `outputs/leads/`. CLI help text and argument parsing verified working. The missing-key failure path was verified: it produces a clean, plain-English message and exit code 1, not a stack trace. `.env.example` got a one-line pointer to this script as a consumer of `APIFY_API_TOKEN`.
+
+### Deviations from Plan
+
+- Built a small purpose-specific `FirecrawlBookingChecker` class inside `lead_scraper.py` rather than importing `FirecrawlClient` from `firecrawl_tool.py` directly. Reason: this script only needs one call shape (scrape a URL, check its text for booking signals) and importing the CLI-oriented `FirecrawlClient` would couple this script to that file's error-handling conventions for no real benefit. Both hit the same Firecrawl `/scrape` endpoint.
+- Could not complete Step 2 (confirming the Apify Google Maps actor's exact input/output field names against a live call) or Step 5 (a real run and manual validation), because this container's network policy was blocking `api.apify.com`, and no `APIFY_API_TOKEN` exists in this fresh session. The field names used (`searchStringsArray`, `title`, `website`, `totalScore`, `reviewsCount`, etc.) are the actor's documented shape as of writing, not verified live. A `--raw-sample` flag was added specifically so the first real run can confirm or correct these without needing to re-read the script.
+
+### Issues Encountered
+
+- `api.apify.com` denied by this environment's network policy (same class of issue Firecrawl hit earlier this session). Theo needs to add it under the environment's network settings.
+- No `APIFY_API_TOKEN` in this fresh container's `.env` (private/machine-local files don't sync between sessions, documented workspace behaviour). Theo needs to add his Apify token via the environment's settings.
+- Both are environment-setup steps outside this script's own code; nothing in the script itself is blocked once those are sorted.

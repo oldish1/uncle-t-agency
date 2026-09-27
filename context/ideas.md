@@ -14,13 +14,9 @@ Referred in through Nita. Runs a tour company, restaurants, and rentals. Two sep
 
 Once this context/ledger workspace system is proven on Uncle T Agency itself, package the same setup for other small business owners, starting with Nita's cleaning business as the first real test case beyond Theo's own. A second product line sitting alongside Lexi, not a replacement for it.
 
-## Lead scraper agent (27 Sept 2026)
+## Lead scraper agent, built (27 Sept 2026)
 
-An automated way to find outreach targets: pull local hair salons (and later other verticals) from Google Maps, filter for the ones with no website and no online booking system, exactly the businesses Uncle T Agency is built for. Theo's currently building the prospect list by hand.
-
-This workspace already has the tool for it: **Apify** (`.claude/skills/apify`) runs a Google Maps scraper actor and can pull business name, address, phone, WhatsApp presence, website URL (or its absence), and review count in one pass. No-website and no-booking-link would need a second, light check per result (does the listed site, if any, have a visible booking button), likely a quick Firecrawl pass over whatever URL Maps returns. Cape Town suburbs first (Bellville, Mitchell's Plain, Parow, Goodwood, matching `context/business.md`'s target area).
-
-Scoped, not yet built: `plans/2026-09-27-lead-scraper-agent.md`. A `scripts/lead_scraper.py` tool, Maps search per suburb, Firecrawl booking-link check on any site found, ranked CSV output in `outputs/leads/`, config-driven so the next vertical is a JSON edit, not new code. Run `/implement plans/2026-09-27-lead-scraper-agent.md` when ready to build.
+No longer an idea, it's a real tool now: `scripts/lead_scraper.py`, see `docs/lead-scraper-agent.md`. Needs `APIFY_API_TOKEN` and `api.apify.com` added to the environment's network settings before its first live run.
 
 ## Lexi Voice, moved to active (27 Sept 2026)
 
