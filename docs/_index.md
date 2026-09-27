@@ -24,7 +24,7 @@
 
 | When you're working on... | Doc | What it covers |
 |---|---|---|
-| *(nothing built yet)* | | |
+| Rex, Theo's WhatsApp Commander Agent | `apps/rex/README.md` | System prompt, Make.com blueprint (webhook → Claude API → WhatsApp reply → Sheets log), and what still needs manual setup in Make before it's live |
 
 ## Reference
 
