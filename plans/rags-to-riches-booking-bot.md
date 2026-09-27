@@ -21,6 +21,21 @@
 
 ---
 
+## Build status
+
+| Part | Status |
+|---|---|
+| Google Sheet | Built 27 Sept |
+| Make scenario **"Rags to Riches - Booking Bot"** (ID 7645932), webhook "Rags to Riches - WhatsApp inbound" (hook 3796063) | **Skeleton built and tested 27 Sept, switched OFF.** Has M1, M3, M4, router M5, route A (greeting: service buttons, create/reset session, log) and route G (fallback nudge, log). Routes B to F not built yet (waiting on Nita's answers). |
+| Google connection | Theo's `adamst70@gmail.com` (Make connection 5535950) |
+| New WhatsApp number | Not set up yet. Paste its phone number ID and access token into M3, then add the webhook URL in Meta. |
+
+Skeleton test (4 fake messages from test number 27000000001): "Hi there" created the session row and logged; "what do you charge" went to the fallback and logged; "Hello" reset the same row (no duplicate); a read receipt stopped at the first filter. All 4 runs succeeded. The test row and 3 ChatMemory rows are still in the sheet and can be deleted.
+
+Route A and G are built as a small router each (send / sheet write / log as separate branches), so the "token pasted in" filter can sit on the send without blocking the sheet writes.
+
+**Meta setup to check:** Meta webhooks are set per app, not per number. If the new number goes on the same Meta app as Lexi or the demo number, its messages arrive at that app's one webhook, so they need relaying by `phone_number_id` (the demo number already works this way through "Uncle T Demo - Verification Relay"). The verification handshake also needs a responder, which this scenario can't provide while sequential processing is on.
+
 ## 1. Google Sheets schema
 
 **Built 27 Sept 2026:** Google Sheet "Rags to Riches Booking Bot" in Theo's Drive (adamst70@gmail.com), ID `1v1Detux-M4oUkbdx82Oa1KXDasSfH7S1AG3dkzw28gk`. Private to Theo until shared. Phone, date/slot, unit and code columns are set to plain text so a code like 0927 keeps its leading zero.
@@ -115,8 +130,8 @@ Module numbers here (M1, A1, D3...) are spec labels. Make will assign its own id
 | # | Module | What it does |
 |---|---|---|
 | M1 | Webhooks > Custom webhook | New hook for the bot's own new booking number (not Nita's personal WhatsApp). |
-| M2 | Webhooks > Webhook response | Status 200, immediately, so Meta doesn't retry while the scenario works. |
-| (filter M2 to M3) | `{{1.entry[].changes[].value.messages[]}}` **exists** | Stops delivery/read receipts here. They aren't messages and have no `contacts[]`. |
+| ~~M2~~ | ~~Webhooks > Webhook response~~ | **Dropped:** Make ignores a Webhook response module when sequential processing is on (Lexi shows this warning). Make's webhook queue already answers Meta with 200 on receipt. |
+| (filter on M3) | `{{1.entry[].changes[].value.messages[]}}` **exists** | Stops delivery/read receipts here. They aren't messages and have no `contacts[]`. |
 | M3 | Tools > Set multiple variables ("Inbound") | See the variable table below. |
 | M4 | Google Sheets > Search Rows, `BookingSession`, column A equals `{{M3.wa_id}}`, limit 1 | **The BookingSession lookup.** "No row" is `{{M4.__IMTLENGTH__}}` = 0, the same check Lexi uses. |
 | M5 | Router | Routes A to F plus fallback G. Make runs **every** route whose filter passes, so the filters below are written to never overlap. Set route G as the fallback explicitly, then check it's still the fallback after any edit (Lexi's fix15 bug). |
@@ -131,8 +146,12 @@ Module numbers here (M1, A1, D3...) are spec labels. Make will assign its own id
 | `text` | `{{trim(1.entry[].changes[].value.messages[].text.body)}}` |
 | `tap_id` | `{{ifempty(1.entry[].changes[].value.messages[].interactive.button_reply.id; 1.entry[].changes[].value.messages[].interactive.list_reply.id)}}` |
 | `tap_title` | `{{ifempty(1.entry[].changes[].value.messages[].interactive.button_reply.title; 1.entry[].changes[].value.messages[].interactive.list_reply.title)}}` |
-| `is_reset` | `{{if(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); /^(menu|restart|start over|start again|book again|new booking)\b.*$/; "Y") = "Y"; "yes"; "no")}}` |
-| `is_hello` | `{{if(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); /^(hi+|hey+|hello|hallo|hiya|howzit|heita|molo|sawubona|morning|good (morning|afternoon|evening|day)|goeie(more|middag|naand)|book|booking)\b.*$/; "Y") = "Y"; "yes"; "no")}}` |
+| `is_reset` | `yes` if the first word is `menu`/`restart`, or the first two words are `start over`/`start again`/`book again`/`new booking` (punctuation stripped, lower case) |
+| `is_hello` | `yes` if the first word is hi/hii/hiii/hey/heyy/hello/hallo/hiya/howzit/heita/molo/sawubona/morning/goeiemore/goeiemiddag/goeienaand/book/booking, or the first two words are good morning/afternoon/evening/day |
+
+Built with `split`, `first`, `slice` and `contains`, not a regex: a regex inside `replace()` stopped the scenario from starting at all (27 Sept test).
+
+M3 also holds the config: `wa_phone_id`, `wa_token`, `graph_version` (v25.0, same as Lexi). Every WhatsApp send has a filter "token pasted in", so while the token is still the placeholder the bot runs everything except the sends.
 
 Shorthand used in the route filters: **has session** = `M4.__IMTLENGTH__` ≥ 1. **step** = `M4` column B.
 
