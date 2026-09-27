@@ -722,6 +722,35 @@ Nothing below is final. Items 1 to 6 are the assumptions you flagged. Items 7 on
 
 ---
 
+## 5a. Nita's answers (received 27 Sept 2026)
+
+These replace the assumptions in section 5 wherever they differ. Numbers are Nita's question numbers from the WhatsApp message, not the section 5 numbers.
+
+| Q | Nita said | What the bot does |
+|---|---|---|
+| 1 | Show a rough price. Move Out is R1,500 | Confirmation shows: Basic usually R420 to R520, Deep usually R850 to R1,300, Move Out R1,500. Nita confirms the final price. |
+| 2 | Yes, and **Move Out also needs a 50% deposit** | Deep and Move Out: 50% deposit upfront, rest on completion. Basic: pay on completion. EFT only. |
+| 3a | Deep Clean only confirmed once the deposit is paid | Confirmation wording: "provisional until the 50% deposit is paid" for Deep (and Move Out, to confirm) |
+| 3b | *Not answered* | **Open:** bot sends bank details, or Nita sends them with the price? |
+| 4 | Less than 24 hours, and same day | R150 fee for cancelling less than 24 hours before (covers same day) |
+| 5 | Monday to Saturday. Sundays on request, R50 extra | Day list = Mon to Sat. **Open:** how Sunday shows (see below) |
+| 6 | Next week only | Day list covers the next 7 days. Later dates: "message Nita" |
+| 7 | Times are fine (8am, 12pm, 3pm). Most guests check out 10 or 11, check in at 3pm | Keep 08:00 / 12:00 / 15:00 |
+| 8 | Same-day bookings yes, cut-off time *not given* | **Open:** book today until what time? |
+| 9 | Works public holidays, R60 extra | Holidays stay bookable; confirmation adds "+R60 public holiday" on those dates |
+| 10 | Durations fine | Basic 2 h, Deep 3.5 h, Move Out 4 h |
+| 11 | 2 at a time yes; she'll block short-staffed days herself | Capacity 2 |
+| 12 | Her own bookings go in the same calendar; bot should see them | All timed events count toward capacity. **Open:** which calendar (email address)? |
+| 13 | Unit + code is enough, **and** a list of buildings to tap. Apartments in Mouille Point and Sea Point | Add a building list step. **Open:** the building names |
+| 14 | No lockbox means keys are left at reception in the mailbox. Bot may accept that | No code: save `NONE`, note "keys at reception mailbox" |
+| 15 | Yes, ask apartment / office / house | Add a property type tap |
+| 16 | Only Nita and her staff see codes. Clients already send codes to her on WhatsApp | Share the sheet and calendar with Nita and staff only. Claude reads the code (as planned). |
+| 17 | New booking alert on WhatsApp | Needs a Meta-approved message template, because the bot can only message Nita freely within 24 hours of her messaging it |
+| 18 | Recognise regulars and skip the questions | Build the "Same place as last time?" shortcut. Still need the regulars' details |
+| 19 | Cancel/change goes to Nita directly | As planned |
+| 20 | Linen and maintenance cleans later | As planned (v2) |
+| Theo | Own Meta app per client | New Meta app for Rags to Riches, no relay needed |
+
 ## Technical notes for the build
 
 - **Model:** `claude-sonnet-4-6` as specified. It supports structured outputs and `temperature` 0. For pure field extraction a smaller model (Claude Haiku 4.5) would likely be faster and cheaper; worth testing once, not changing blind.
