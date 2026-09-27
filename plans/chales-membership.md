@@ -1,6 +1,15 @@
 # CHALES membership tracker: spec and review
 
-Status: **waiting on Chanté's answers** (Theo is asking her on 2026-09-24). Nothing built yet.
+Status: **answers in, building now** (2026-09-25). Photo pick still outstanding but doesn't block this build.
+
+## Chanté's answers (2026-09-25)
+
+1. **No-shows do NOT count** — client keeps their wash. (Overrides the spec's default assumption.)
+2. **Cancelling with notice gives the wash back** — yes.
+3. **Alerts to Chanté** — WhatsApp (needs the alert template, see review note 6).
+4. **Expiry** — 3 months from the moment they pay, i.e. the activation date.
+5. **Member books a non-qualifying service** — Lexi mentions it won't use up a wash.
+6. **Photo** — not yet confirmed which version, or if changes are wanted.
 
 ## The package (as confirmed by Chanté, via Theo's spec)
 
