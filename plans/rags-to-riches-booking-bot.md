@@ -23,6 +23,8 @@
 
 ## 1. Google Sheets schema
 
+**Built 27 Sept 2026:** Google Sheet "Rags to Riches Booking Bot" in Theo's Drive (adamst70@gmail.com), ID `1v1Detux-M4oUkbdx82Oa1KXDasSfH7S1AG3dkzw28gk`. Private to Theo until shared. Phone, date/slot, unit and code columns are set to plain text so a code like 0927 keeps its leading zero.
+
 One spreadsheet, three tabs. Row 1 is headers, exactly as written (the scenario maps by column letter, so don't reorder).
 
 ### Tab: `BookingSession`
