@@ -23,6 +23,20 @@ Too slow. Around 2.5 minutes per booking, because the scenario accumulated too m
 Worth building this into the 2.0 architecture from the start rather than bolting it on after, since it's a second conversation branch off the same router.
 
 
+## Membership tracker (built and proven live, 27 Sept)
+
+Chanté's 6 Wash & Blowdry membership (R650, 3-month expiry from payment date) is live on scenario 5043763. Booking a wash deducts one, cancelling refunds one, BALANCE and RENEW are keyword replies, the calendar event is labelled with the visit number, and basin treatment flags automatically on wash 4 (every 2nd visit). A ProcessedMessages sheet-backed guard keys on WhatsApp's message ID so a duplicate delivery can't double-deduct or double-refund. All confirmed correct live, sheet reset to a clean baseline (Used=2, Remaining=4).
+
+**Still open:** the RENEW/final-wash staff alert (modules 337, 346) is hardcoded to `27714296057`, which is Lexi's own WhatsApp number, not one Chanté actually checks. Needs her real number before the alert reaches anyone.
+
+## Appointment reminders (live for all clients, 27 Sept)
+
+Scenario `Chales - Appointment Reminders` (7617803) runs daily at 17:00, finds tomorrow's bookings on Chanté's calendar, and sends the WhatsApp `appointment_reminder` template. Built 23 Sept, shipped in test mode (only Theo's own number), left that way through the membership work, and switched on for real clients 27 Sept.
+
+## Reusable client template (built, not yet used)
+
+A sanitised copy of Chales' live Lexi scenario, credentials and salon-specific IDs replaced with placeholders, documented step by step in `plans/client-template.md`. Ready for whenever a second paying client signs; the reminders scenario doesn't have its own template version yet (small, 5 modules, quick to do when needed).
+
 ## Voice notes (planned)
 
 Voice notes are currently ignored: only text and taps get past the first filter, so a client who sends one gets no reply. Plan to fix that and turn voice notes into bookings: `plans/lexi-voice-notes.md`.
