@@ -2,7 +2,7 @@
 
 ## Priorities right now
 
-1. **Rebuild Lexi for speed. Done 2026-09-23.** Lexi (scenario "Chales Hair Boutique") now replies in 2-5 seconds per step (was 11-20 seconds per tap), with real cancel, reschedule and a "different date instead?" offer before any cancel, all tested live on the real number. The under-20-seconds rule for onboarding paying clients is met. Appointment reminders, the membership tracker (balance/renew/wash deduction), and a reusable client template are all built and live now too, see `context/lexi.md`. Still open: get Chanté's real WhatsApp number so the membership RENEW/final-wash staff alert reaches her instead of Lexi's own number.
+1. **Lexi is done. 2026-09-27.** Lexi (scenario "Chales Hair Boutique") replies in 2-5 seconds per step, with real cancel, reschedule and a "different date instead?" offer before any cancel. Appointment reminders, the membership tracker (balance/renew/wash deduction, staff alerts pointed at Chanté's real number), and a reusable client template are all built and live, see `context/lexi.md`. Nothing outstanding. Next priority: land the first paying client with `outputs/2026-09-27-lexi-walkin-pitch.md`, and Lexi Voice is scoped separately in `plans/2026-09-27-lexi-voice-receptionist.md`.
 2. **Land the first paying client.** Convert one of the five warm leads (Zanzibar, Sistergirl, Reeva, JEM, Jason) once Lexi is fast and stable.
 3. **Finish everything CHALES needs.** Beyond Lexi itself: Google review automation, then an SEO push to get Chante onto page one of Google and bring her more clients. Then move to the same playbook for Nita's business.
 

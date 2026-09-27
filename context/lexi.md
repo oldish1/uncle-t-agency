@@ -27,7 +27,7 @@ Worth building this into the 2.0 architecture from the start rather than bolting
 
 Chanté's 6 Wash & Blowdry membership (R650, 3-month expiry from payment date) is live on scenario 5043763. Booking a wash deducts one, cancelling refunds one, BALANCE and RENEW are keyword replies, the calendar event is labelled with the visit number, and basin treatment flags automatically on wash 4 (every 2nd visit). A ProcessedMessages sheet-backed guard keys on WhatsApp's message ID so a duplicate delivery can't double-deduct or double-refund. All confirmed correct live, sheet reset to a clean baseline (Used=2, Remaining=4).
 
-**Still open:** the RENEW/final-wash staff alert (modules 337, 346) is hardcoded to `27714296057`, which is Lexi's own WhatsApp number, not one Chanté actually checks. Needs her real number before the alert reaches anyone.
+The RENEW/final-wash staff alert (modules 337, 346) now points at Chanté's real number (`27814332756`), fixed 27 Sept. Nothing outstanding on the membership system.
 
 ## Appointment reminders (live for all clients, 27 Sept)
 
