@@ -1,10 +1,10 @@
 === MESSAGE 1 ===
 
-Hi Nita 👋 I'm building your WhatsApp booking bot. Clients will tap buttons to choose a clean, a day and a time, then type their unit number, lockbox code and name. The booking goes straight into your calendar.
+Hi Nita 👋 I'm building your WhatsApp booking bot. It will run on its own new WhatsApp number, just for bookings, so your normal WhatsApp stays exactly as it is. Clients will tap buttons to choose a clean, a day and a time, then type their unit number, lockbox code and name. The booking goes straight into your calendar.
 
-Before I build it I need your answers to 21 quick questions, split over 3 messages. Most just need a letter or yes/no. Easiest is to reply with the number, like:
+Before I build it I need your answers to 20 quick questions, split over 3 messages. Most just need a letter or yes/no. Easiest is to reply with the number, like:
 *1A, 2 yes, 3 no...*
-A voice note is fine too 🙂
+A voice note is fine too 🙂 Send your answers to me (Theo).
 
 *PART 1: PRICES AND PAYMENT*
 
@@ -116,9 +116,6 @@ For now, clients who want to cancel or change a booking will message you directl
 *20. Linen changes and quick maintenance cleans*
 Leave these out of the bot for now and add them later? Yes / No
 
-*21. Which WhatsApp number should the bot use?*
-A) A new number just for bookings
-B) Your current business number
-I'm still checking whether your current number can keep working in your normal WhatsApp app once the bot is on it. I'll let you know before anything changes.
+That's everything! Thank you 🙏
 
-That's everything! Thank you 🙏 As soon as I have your answers I'll build it and test it with you before any client sees it.
+*When you're done, please send all your answers to me, Theo* 📲 As soon as I have them I'll build the bot and test it with you before any client sees it.

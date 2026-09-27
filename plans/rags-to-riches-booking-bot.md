@@ -112,7 +112,7 @@ Module numbers here (M1, A1, D3...) are spec labels. Make will assign its own id
 
 | # | Module | What it does |
 |---|---|---|
-| M1 | Webhooks > Custom webhook | New hook for Nita's WhatsApp number. |
+| M1 | Webhooks > Custom webhook | New hook for the bot's own new booking number (not Nita's personal WhatsApp). |
 | M2 | Webhooks > Webhook response | Status 200, immediately, so Meta doesn't retry while the scenario works. |
 | (filter M2 to M3) | `{{1.entry[].changes[].value.messages[]}}` **exists** | Stops delivery/read receipts here. They aren't messages and have no `contacts[]`. |
 | M3 | Tools > Set multiple variables ("Inbound") | See the variable table below. |
@@ -697,7 +697,7 @@ Nothing below is final. Items 1 to 6 are the assumptions you flagged. Items 7 on
 20. **Cancelling or rescheduling a confirmed booking isn't in v1.** The bot books; changes go to Nita by hand. The event id is saved (column P) so a cancel flow can be added later. Needs: OK for v1?
 21. **Anything off-script gets a "please tap an option" nudge**, no AI conversation (unlike Lexi). Keeps it fast and predictable. Needs: OK?
 22. **Lockbox codes are sensitive.** They'll sit in the ClientDatabase sheet, the calendar description, and pass through Claude for reading. Needs: who has access to the sheet and calendar (only Nita and her two staff?). *Simpler alternative:* ask for unit number and code as two separate plain questions with no Claude at all. That's faster, cheaper, and the code never leaves Google. The trade-off is less forgiving input handling.
-23. **Which WhatsApp number does the bot run on?** If it's Nita's current business number, moving it onto the Cloud API takes it out of her normal WhatsApp app, which is where she handles regulars by hand today. A new number for bookings avoids that. Needs: a decision before any Meta setup.
+23. ~~Which WhatsApp number?~~ **Decided by Theo, 27 Sept:** a fresh new number just for bookings, same as Lexi. Nita's own WhatsApp stays untouched.
 
 ---
 

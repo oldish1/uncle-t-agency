@@ -12,4 +12,4 @@ The longer-term idea: package this same invoicing setup as a sellable agency pro
 
 Also on the list once CHALES is sorted: the same client-growth push Chante gets, more clients for Nita, not just better admin.
 
-**WhatsApp booking bot (spec written 27 Sept 2026):** a tap-button booking bot for Nita's turnover cleans, new Make.com scenario, same stack as Lexi. Full build spec in `plans/rags-to-riches-booking-bot.md`. Not built yet: 23 questions for Nita (section 5) come first, the big ones being the 5-day booking window vs regulars booking a month ahead, weekend working days, slot times vs Airbnb check-in/out, and which WhatsApp number the bot runs on.
+**WhatsApp booking bot (spec written 27 Sept 2026):** a tap-button booking bot for Nita's turnover cleans, new Make.com scenario, same stack as Lexi. Full build spec in `plans/rags-to-riches-booking-bot.md`. Not built yet: 23 questions for Nita (section 5) come first, the big ones being the 5-day booking window vs regulars booking a month ahead, weekend working days, and slot times vs Airbnb check-in/out. Bot runs on a fresh new number (decided), not Nita's own.
