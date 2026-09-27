@@ -26,11 +26,14 @@
 | Part | Status |
 |---|---|
 | Google Sheet | Built 27 Sept |
-| Make scenario **"Rags to Riches - Booking Bot"** (ID 7645932), webhook "Rags to Riches - WhatsApp inbound" (hook 3796063) | **Skeleton built and tested 27 Sept, switched OFF.** Has M1, M3, M4, router M5, route A (greeting: service buttons, create/reset session, log) and route G (fallback nudge, log). Routes B to F not built yet (waiting on Nita's answers). |
+| Make scenario **"Rags to Riches - Booking Bot"** (ID 7645932), webhook "Rags to Riches - WhatsApp inbound" (hook 3796063) | **Full flow built and tested 27 Sept, switched OFF.** 115 steps, source in `apps/rags-to-riches-bot/`. Service, day (Mon to Sat, 7 days, same-day before cut-off, holidays marked), time with capacity check, returning-client shortcut, property type, building/area list, unit + code (Claude), name (Claude), slot re-check, calendar event, confirmation, ClientDatabase, Nita alert (template). |
+| Calendar | "Rags to Riches Bookings", a new calendar in Theo's Google account, created 27 Sept. Share it with Nita and her staff. |
 | Google connection | Theo's `adamst70@gmail.com` (Make connection 5535950) |
 | New WhatsApp number | Not set up yet. Paste its phone number ID and access token into M3, then add the webhook URL in Meta. |
 
-Skeleton test (4 fake messages from test number 27000000001): "Hi there" created the session row and logged; "what do you charge" went to the fallback and logged; "Hello" reset the same row (no duplicate); a read receipt stopped at the first filter. All 4 runs succeeded. The test row and 3 ChatMemory rows are still in the sheet and can be deleted.
+Full-flow test (27 Sept, 23 fake messages from 4 test numbers): new client went service, day, 08:00, apartment, Sea Point, then the unit/code step (Claude key still a placeholder, so it politely re-asked as designed). Two returning clients booked 12:00 Monday via "Same place?", creating two correct calendar events (2 h Basic, 3.5 h Deep, "keys at reception" note) and updating ClientDatabase. A third client tapping 12:00 was refused as full. "Later date" and a voice note gave the right replies. All 23 runs succeeded. Bug found: booking count wrote "01"; fixed in source, goes live with the next upload. Test calendar events deleted; test rows still in the sheet.
+
+Earlier skeleton test (4 fake messages from test number 27000000001): "Hi there" created the session row and logged; "what do you charge" went to the fallback and logged; "Hello" reset the same row (no duplicate); a read receipt stopped at the first filter. All 4 runs succeeded. The test row and 3 ChatMemory rows are still in the sheet and can be deleted.
 
 Route A and G are built as a small router each (send / sheet write / log as separate branches), so the "token pasted in" filter can sit on the send without blocking the sheet writes.
 

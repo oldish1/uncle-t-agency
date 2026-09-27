@@ -1,0 +1,143 @@
+{
+ "flow": [
+  {
+   "id": 1,
+   "module": "gateway:CustomWebHook",
+   "version": 1,
+   "parameters": {
+    "hook": 3796063,
+    "maxResults": 1
+   },
+   "mapper": {},
+   "metadata": {
+    "designer": {
+     "x": 0,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": 3,
+   "module": "util:SetVariables",
+   "version": 1,
+   "parameters": {},
+   "filter": {
+    "name": "Real message (not a delivery receipt)",
+    "conditions": [
+     [
+      {
+       "a": "{{1.entry[].changes[].value.messages[]}}",
+       "o": "exist"
+      }
+     ]
+    ]
+   },
+   "mapper": {
+    "scope": "roundtrip",
+    "variables": [
+     {
+      "name": "wa_id",
+      "value": "{{1.entry[].changes[].value.contacts[].wa_id}}"
+     },
+     {
+      "name": "msg_type",
+      "value": "{{1.entry[].changes[].value.messages[].type}}"
+     },
+     {
+      "name": "msg_id",
+      "value": "{{1.entry[].changes[].value.messages[].id}}"
+     },
+     {
+      "name": "text",
+      "value": "{{trim(1.entry[].changes[].value.messages[].text.body)}}"
+     },
+     {
+      "name": "tap_id",
+      "value": "{{ifempty(1.entry[].changes[].value.messages[].interactive.button_reply.id; 1.entry[].changes[].value.messages[].interactive.list_reply.id)}}"
+     },
+     {
+      "name": "tap_title",
+      "value": "{{ifempty(1.entry[].changes[].value.messages[].interactive.button_reply.title; 1.entry[].changes[].value.messages[].interactive.list_reply.title)}}"
+     },
+     {
+      "name": "is_reset",
+      "value": "{{if(contains(split(\"menu|restart\"; \"|\"); first(split(replace(replace(replace(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); \"!\"; \"\"); \",\"; \"\"); \".\"; \"\"); \"?\"; \"\"); \" \"))); \"yes\"; if(contains(split(\"start over|start again|book again|new booking\"; \"|\"); join(slice(split(replace(replace(replace(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); \"!\"; \"\"); \",\"; \"\"); \".\"; \"\"); \"?\"; \"\"); \" \"); 0; 2); \" \")); \"yes\"; \"no\"))}}"
+     },
+     {
+      "name": "is_hello",
+      "value": "{{if(contains(split(\"hi|hii|hiii|hey|heyy|hello|hallo|hiya|howzit|heita|molo|sawubona|morning|goeiemore|goeiemiddag|goeienaand|book|booking\"; \"|\"); first(split(replace(replace(replace(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); \"!\"; \"\"); \",\"; \"\"); \".\"; \"\"); \"?\"; \"\"); \" \"))); \"yes\"; if(contains(split(\"good morning|good afternoon|good evening|good day\"; \"|\"); join(slice(split(replace(replace(replace(replace(lower(trim(1.entry[].changes[].value.messages[].text.body)); \"!\"; \"\"); \",\"; \"\"); \".\"; \"\"); \"?\"; \"\"); \" \"); 0; 2); \" \")); \"yes\"; \"no\"))}}"
+     },
+     {
+      "name": "wa_phone_id",
+      "value": "PASTE_PHONE_NUMBER_ID"
+     },
+     {
+      "name": "wa_token",
+      "value": "PASTE_ACCESS_TOKEN"
+     },
+     {
+      "name": "graph_version",
+      "value": "v25.0"
+     }
+    ]
+   },
+   "metadata": {
+    "designer": {
+     "x": 300,
+     "y": 0,
+     "name": "Inbound + config"
+    }
+   }
+  },
+  {
+   "id": 4,
+   "module": "google-sheets:filterRows",
+   "version": 2,
+   "parameters": {
+    "__IMTCONN__": 5535950
+   },
+   "mapper": {
+    "from": "share",
+    "spreadsheetId": "1v1Detux-M4oUkbdx82Oa1KXDasSfH7S1AG3dkzw28gk",
+    "sheetId": "BookingSession",
+    "includesHeaders": true,
+    "tableFirstRow": "A1:Z1",
+    "limit": "1",
+    "sortOrder": "asc",
+    "valueRenderOption": "FORMATTED_VALUE",
+    "dateTimeRenderOption": "FORMATTED_STRING",
+    "filter": [
+     [
+      {
+       "a": "A",
+       "b": "{{3.wa_id}}",
+       "o": "text:equal"
+      }
+     ]
+    ]
+   },
+   "metadata": {
+    "designer": {
+     "x": 600,
+     "y": 0,
+     "name": "BookingSession lookup"
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "instant": true,
+  "version": 1,
+  "scenario": {
+   "dlq": false,
+   "dataloss": false,
+   "maxErrors": 3,
+   "autoCommit": true,
+   "roundtrips": 1,
+   "sequential": true,
+   "confidential": false,
+   "freshVariables": false,
+   "autoCommitTriggerLast": true
+  }
+ }
+}

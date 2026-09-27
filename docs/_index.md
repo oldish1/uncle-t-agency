@@ -12,7 +12,7 @@
 
 | When you're working on... | Doc | What it covers |
 |---|---|---|
-| *(nothing built yet)* | | |
+| Rags to Riches WhatsApp booking bot (Make scenario 7645932, its sheet, calendar, Claude prompt) | `plans/rags-to-riches-booking-bot.md` + `apps/rags-to-riches-bot/README.md` | Full build spec, Nita's answers, build status, how to change and re-upload the bot |
 
 ## Integrations
 
