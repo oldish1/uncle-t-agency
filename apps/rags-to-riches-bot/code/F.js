@@ -17,6 +17,8 @@ const note = String(input.access_note || "");
 const dayIso = String(input.start_iso || "").slice(0, 10);
 const holiday = HOLIDAYS.includes(dayIso);
 const noCode = /^none/i.test(code);
+const sunday = new Date(dayIso + "T12:00:00Z").getUTCDay() === 0;
+const extra = (sunday ? " + R50 Sunday rate" : "") + (holiday ? " + R60 public holiday rate" : "");
 
 const where = prop === "Apartment" || building
   ? (building ? building + ", " : "") + "Unit " + unit
@@ -30,7 +32,7 @@ const lines = [
   "🏢 " + where,
   noCode ? "🔑 Keys at reception (mailbox)" : "🔑 Access details saved",
   "",
-  "💰 Price: " + PRICE[service] + (holiday ? " + R60 public holiday rate" : "") + ". Nita will confirm the final price after seeing the place.",
+  "💰 Price: " + PRICE[service] + extra + ". Nita will confirm the final price after seeing the place.",
   "Payment is by EFT."
 ];
 if (DEPOSIT[service]) {
@@ -51,7 +53,7 @@ const description = [
   "Where: " + where,
   "Access code: " + (noCode ? "none, keys at reception (mailbox)" : code),
   note ? "Access note: " + note : "",
-  "Price: " + PRICE[service] + (holiday ? " + R60 public holiday" : "") + " (TBC by Nita)",
+  "Price: " + PRICE[service] + extra + " (TBC by Nita)",
   DEPOSIT[service] ? "Deposit: 50% needed to confirm" : "Payment: on completion",
   "Booked via WhatsApp bot"
 ].filter(Boolean).join("\n");

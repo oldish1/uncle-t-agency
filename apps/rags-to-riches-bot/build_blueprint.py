@@ -148,7 +148,7 @@ A=router([
 dp=code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7"},"Day picker")
 dp["filter"]={"name":"B: Service tapped","conditions":[[HAS,tap_has("svc_")]]}
 B=[dp, router([
-  [wa("Send day list",body_list(J("Which day suits you?\n\n_Sundays are on request (+R50): message Nita directly._"),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
+  [wa("Send day list",body_list(J("Which day suits you?"),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
   [upd(dict(CLEAR,**{"1":"DAY","2":"{{3.tap_id}}"}),"Session: DAY")]])]
 
 C=router([
@@ -172,7 +172,7 @@ D=[sb, router([
      [router([[wa("Send slot full",body_buttons('"Sorry, {{%d.result.time_label}} on *{{%d.result.day_label}}* is fully booked 😕 Please pick another time, or send *menu* to choose a different day."'%(sb["id"],sb["id"]),SLOT))]],
              name="Slot full",conds=[[cond("{{%d.result.slot_full}}"%cc["id"],"text:equal","true")]])],
      [cs, router([
-        [router([[wa("Send same place?",body_buttons('"{{%d.result.when_label}} is available ✅\\n\\nWelcome back, {{first(split(%d.`1`; " "))}}! Same place as last time?\\n🏢 {{%d.`2`}} · {{%d.`4`}}"'%(sb["id"],CS,CS,CS),RET))],
+        [router([[wa("Send same place?",body_buttons('"{{%d.result.when_label}} is available ✅\\n\\nWelcome back, {{first(split(%d.`1`; " "))}}! Same place as last time?\\n🏢 {{%d.`2`}} Unit {{%d.`4`}}"'%(sb["id"],CS,CS,CS),RET))],
                  [upd(dict(slotvals,**{"1":"RETURNING","10":"{{%d.`4`}}"%CS,"11":"{{%d.`2`}}"%CS,"12":"{{%d.`5`}}"%CS,"13":"{{%d.`6`}}"%CS,"14":"{{%d.`1`}}"%CS,"17":"{{%d.`7`}}"%CS}),"Session: RETURNING")]],
                 name="Known client",conds=known)],
         [router([[wa("Send property buttons",body_buttons('"{{%d.result.when_label}} is available ✅\\n\\nWhat kind of place is it?"'%sb["id"],PROP))],

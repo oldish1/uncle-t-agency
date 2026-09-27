@@ -754,6 +754,19 @@ These replace the assumptions in section 5 wherever they differ. Numbers are Nit
 | 20 | Linen and maintenance cleans later | As planned (v2) |
 | Theo | Own Meta app per client | New Meta app for Rags to Riches, no relay needed |
 
+
+**Follow-up answers (27 Sept, evening):**
+
+| Q | Nita said | Status |
+|---|---|---|
+| Bank details | Yes, the bot should send them | **Need the actual details** (bank, account name, number, branch code, reference to use). Then paste into `bank_details` in "Inbound + config". |
+| Same-day cut-off | "Yes", no time given | Still 07:00 placeholder. **Need a time.** |
+| Sundays | Show Sunday as an option | **Live:** Sundays in the day list marked "+R50", confirmation adds "+ R50 Sunday rate" |
+| Calendar | ragstorichest69@gmail.com | Her own bookings live there. **Nita shares that calendar with adamst70@gmail.com ("Make changes to events")**, then the bot switches to it so it sees her manual bookings. Until then it uses "Rags to Riches Bookings". |
+| Regulars (Q18) | Numbers, units, codes for all 8 | **Loaded into ClientDatabase** (Google Sheet only, never this repo). Gaps: Bahar's number ("+9533 8159938") and Teresa's number ("062267697", a digit short) unclear, Teresa's code forgotten, most building names missing. Kobie, Nick and Joy have more than one property: the first is stored as their main one, the others in notes. |
+
+**v2 idea from this:** hosts with several properties (Kobie 2, Nick 2, Joy 3) would benefit from a "Which property?" list instead of "Same place as last time?".
+
 ## Technical notes for the build
 
 - **Model:** `claude-sonnet-4-6` as specified. It supports structured outputs and `temperature` 0. For pure field extraction a smaller model (Claude Haiku 4.5) would likely be faster and cheaper; worth testing once, not changing blind.
