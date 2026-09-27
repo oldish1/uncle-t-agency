@@ -34,10 +34,17 @@ Both are environment-level settings, so once set they should carry into future s
 
 Edit `scripts/lead_scraper_verticals.json`, add a key with `terms` (search phrases Maps responds well to) and `suburbs`. No code changes needed. `context/business.md` lists the priority order for what's next: med spas, dog groomers, cleaning businesses, then plumbers, dentists, real estate agents, and a longer list of strong untapped verticals below that.
 
-## Known limitations (as of first build, 27 Sept 2026)
+## First real run (27 Sept 2026, confirmed working)
 
-- The Apify Google Maps actor's exact field names weren't verified against a live call when this was built (network was blocked in that session). Use `--raw-sample` on the first real run to confirm, and fix up the field names in `lead_scraper.py` if Apify's actor has changed shape since.
-- Booking-signal detection is a heuristic (keyword and known-platform matching in the page's text and links), not a certainty. Spot-check the first run's results before trusting the ranking fully.
+Ran live for the first time: 16 search queries (hair salon terms × Bellville, Mitchell's Plain, Parow, Goodwood), 79 unique businesses after de-dupe, 54 with no website, 20 with a website but no booking system found, 5 already booked-up. Field names matched what the script expected exactly, no code changes needed there. Spot-checked against real Google listings, all correct, including REEVA Hair & Beauty Salon, already a warm lead in the pipeline.
+
+One real bug found and fixed: the Google Maps actor ID was wrong (`apify~google-maps-scraper`, which doesn't exist). Corrected to `compass~crawler-google-places`, Apify's actual "Google Maps Scraper" actor.
+
+**Real cost**: about $0.32 in Apify platform credit for this run (80 raw results, free-tier account), plus 25 Firecrawl scrapes (against a 1,000/month plan, negligible). A run like this roughly 15 times over before the Apify free tier's monthly credit runs out.
+
+## Known limitations
+
+- Booking-signal detection is a heuristic (keyword and known-platform matching in the page's text and links), not a certainty. A "no booking found" row can still be wrong if a site buries its booking link somewhere the scrape didn't reach.
 - Output is a plain CSV for now, not pushed into Google Sheets automatically. See `plans/2026-09-27-lead-scraper-agent.md`'s Notes for planned Phase 2 work.
 
 ## Related
