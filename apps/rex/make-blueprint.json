@@ -1,176 +1,99 @@
 {
-    "name": "Rex – Commander Agent",
+    "name": "Rex - Commander Agent",
     "flow": [
         {
             "id": 1,
             "module": "gateway:CustomWebHook",
             "version": 1,
-            "parameters": {
-                "hook": 0,
-                "maxResults": 1
-            },
             "mapper": {},
-            "metadata": {
-                "designer": {
-                    "x": 0,
-                    "y": 0
-                },
-                "restore": {
-                    "parameters": {
-                        "hook": {
-                            "data": {
-                                "editable": "true"
-                            },
-                            "label": "Rex WhatsApp In (create this hook in Make first)"
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "hook",
-                        "type": "hook:gateway-webhook",
-                        "label": "Webhook",
-                        "required": true
-                    }
-                ],
-                "interface": [
-                    { "name": "from", "type": "text" },
-                    { "name": "text", "type": "text" },
-                    { "name": "wa_id", "type": "text" },
-                    { "name": "timestamp", "type": "text" },
-                    { "name": "message_id", "type": "text" }
-                ]
+            "parameters": {
+                "hook": 3793690,
+                "maxResults": 1
             }
         },
         {
             "id": 2,
-            "module": "http:ActionSendData",
-            "version": 3,
-            "parameters": {
-                "handleErrors": true,
-                "useNewZLibDeCompress": true
-            },
+            "module": "http:MakeRequest",
+            "version": 4,
             "mapper": {
                 "url": "https://api.anthropic.com/v1/messages",
-                "serializeUrl": false,
-                "method": "POST",
+                "method": "post",
                 "headers": [
-                    { "name": "x-api-key", "value": "{{connection.ANTHROPIC_API_KEY}}" },
+                    { "name": "x-api-key", "value": "PASTE_ANTHROPIC_API_KEY_HERE" },
                     { "name": "anthropic-version", "value": "2023-06-01" },
                     { "name": "content-type", "value": "application/json" }
                 ],
-                "qs": [],
-                "bodyType": "raw",
+                "contentType": "json",
+                "inputMethod": "dataStructure",
+                "bodyDataStructure": 358873,
+                "dataStructureBodyContent": {
+                    "model": "claude-sonnet-4-6",
+                    "system": "See apps/rex/system-prompt.md — pasted in verbatim as this field's value in the live scenario.",
+                    "messages": [
+                        { "role": "user", "content": "{{1.text}}" }
+                    ],
+                    "max_tokens": 1024
+                },
+                "shareCookies": false,
                 "parseResponse": true,
-                "contentType": "application/json",
-                "data": "{\n  \"model\": \"claude-sonnet-4-6\",\n  \"max_tokens\": 1024,\n  \"system\": \"__PASTE apps/rex/system-prompt.md CONTENTS HERE, ONE JSON-ESCAPED STRING__\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": {{escapeText(1.text)}}\n    }\n  ]\n}"
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "requestCompressedContent": true
             },
-            "metadata": {
-                "designer": { "x": 300, "y": 0 },
-                "restore": {},
-                "label": "Claude API – ask Rex",
-                "parameters": [
-                    { "name": "handleErrors", "type": "boolean", "label": "Evaluate all states as errors (except for 2xx and 3xx)" },
-                    { "name": "useNewZLibDeCompress", "type": "boolean", "label": "Use new ZLib DeCompress method" }
-                ]
+            "parameters": {
+                "tlsType": "",
+                "authenticationType": "noAuth"
             }
         },
         {
             "id": 3,
-            "module": "json:ParseJSON",
-            "version": 1,
-            "parameters": {
-                "type": 0
-            },
+            "module": "http:MakeRequest",
+            "version": 4,
             "mapper": {
-                "json": "{{2.data}}"
+                "url": "https://graph.facebook.com/v25.0/1197696726762690/messages",
+                "method": "post",
+                "headers": [
+                    { "name": "Authorization", "value": "Bearer PASTE_WHATSAPP_ACCESS_TOKEN_HERE" },
+                    { "name": "Content-Type", "value": "application/json" }
+                ],
+                "contentType": "json",
+                "inputMethod": "jsonString",
+                "jsonStringBodyContent": "{\r\n  \"messaging_product\": \"whatsapp\",\r\n  \"to\": \"{{1.from}}\",\r\n  \"type\": \"text\",\r\n  \"text\": {\r\n    \"body\": \"{{replace(replace(2.data.content[1].text; \"\"\"\"; \"\\\"\"\"\"); \"\n\"; \" \")}}\"\r\n  }\r\n}",
+                "shareCookies": false,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "requestCompressedContent": true
             },
-            "metadata": {
-                "designer": { "x": 600, "y": 0 },
-                "restore": {
-                    "expect": {
-                        "type": { "label": "Empty" }
-                    }
-                },
-                "expect": [
-                    { "name": "json", "type": "text", "label": "JSON string" }
-                ]
+            "parameters": {
+                "tlsType": "",
+                "authenticationType": "noAuth"
             }
         },
         {
             "id": 4,
-            "module": "http:ActionSendData",
-            "version": 3,
-            "parameters": {
-                "handleErrors": true,
-                "useNewZLibDeCompress": true
-            },
-            "mapper": {
-                "url": "https://graph.facebook.com/v19.0/1170555039465381/messages",
-                "serializeUrl": false,
-                "method": "POST",
-                "headers": [
-                    { "name": "Authorization", "value": "Bearer {{connection.WHATSAPP_ACCESS_TOKEN}}" },
-                    { "name": "content-type", "value": "application/json" }
-                ],
-                "qs": [],
-                "bodyType": "raw",
-                "parseResponse": true,
-                "contentType": "application/json",
-                "data": "{\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{1.from}}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{escapeText(3.content[1].text)}}\n  }\n}"
-            },
-            "metadata": {
-                "designer": { "x": 900, "y": 0 },
-                "restore": {},
-                "label": "WhatsApp – reply to Theo"
-            }
-        },
-        {
-            "id": 5,
             "module": "google-sheets:addRow",
-            "version": 3,
-            "parameters": {
-                "__IMTCONN__": "{{connection.GOOGLE_SHEETS}}"
-            },
+            "version": 2,
             "mapper": {
                 "mode": "select",
-                "sheetId": "REPLACE_WITH_SHEET_TAB_NAME",
-                "spreadsheetId": "REPLACE_WITH_GOOGLE_SHEET_ID",
-                "insertDataOption": "INSERT_ROWS",
-                "insertUnformatted": false,
                 "values": {
-                    "A": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
-                    "B": "{{1.from}}",
-                    "C": "{{1.text}}",
-                    "D": "{{3.content[1].text}}",
-                    "E": "{{1.message_id}}"
-                }
+                    "0": "{{formatDate(now; \"YYYY-MM-DD HH:mm\"; \"Africa/Johannesburg\")}}",
+                    "1": "{{1.from}}",
+                    "2": "{{1.text}}",
+                    "3": "{{2.data.content[1].text}}",
+                    "4": "{{1.message_id}}"
+                },
+                "sheetId": "Untitled",
+                "spreadsheetId": "/1dE2NcTBk-Jl2fT9IqCvD3Urgmn63xzy-KxLkNQjnSkc",
+                "insertDataOption": "INSERT_ROWS",
+                "valueInputOption": "USER_ENTERED",
+                "insertUnformatted": false
             },
             "metadata": {
-                "designer": { "x": 1200, "y": 0 },
-                "restore": {
-                    "expect": {
-                        "mode": { "label": "Select from the list" }
-                    }
-                },
-                "label": "Google Sheets – log the conversation",
-                "expect": [
-                    { "name": "mode", "type": "select", "label": "Enter a spreadsheet ID or select a spreadsheet ID from the list" },
-                    { "name": "spreadsheetId", "type": "text", "label": "Spreadsheet ID" },
-                    { "name": "sheetId", "type": "text", "label": "Sheet Name" },
-                    {
-                        "name": "values",
-                        "type": "collection",
-                        "label": "Values",
-                        "spec": [
-                            { "name": "A", "label": "Timestamp" },
-                            { "name": "B", "label": "From (WhatsApp number)" },
-                            { "name": "C", "label": "Message in" },
-                            { "name": "D", "label": "Rex reply" },
-                            { "name": "E", "label": "WhatsApp message ID" }
-                        ]
-                    }
-                ]
+                "expect": []
+            },
+            "parameters": {
+                "__IMTCONN__": 5493796
             }
         }
     ],
@@ -178,24 +101,14 @@
         "instant": true,
         "version": 1,
         "scenario": {
-            "roundtrips": 1,
+            "dlq": false,
+            "dataloss": false,
             "maxErrors": 3,
             "autoCommit": true,
-            "autoCommitTriggerLast": true,
-            "sequential": true,
+            "roundtrips": 1,
+            "sequential": false,
             "confidential": false,
-            "dataloss": false,
-            "dlq": false,
-            "freshVariables": false
-        },
-        "designer": {
-            "orphans": []
-        },
-        "zone": "eu1.make.com",
-        "notes": [
-            "This blueprint is a template, not a drop-in import. Three things need to be created by hand in Make before it runs: (1) the Custom Webhook in module 1, (2) an HTTP-header-auth connection holding ANTHROPIC_API_KEY, (3) an HTTP-header-auth connection holding WHATSAPP_ACCESS_TOKEN, plus a Google Sheets connection for module 5.",
-            "Module 2's system field is a placeholder — paste the full text from apps/rex/system-prompt.md in as one JSON-escaped string before this scenario goes live.",
-            "Module 5's spreadsheetId and sheetId are placeholders until Theo picks or creates the Rex conversation log sheet."
-        ]
+            "autoCommitTriggerLast": true
+        }
     }
 }
