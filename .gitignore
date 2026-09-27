@@ -32,3 +32,6 @@ node_modules/
 
 # Per-machine seat identity
 .seat
+
+# Scratch cache for research tool output, not a deliverable
+.firecrawl/
