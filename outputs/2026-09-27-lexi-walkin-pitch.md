@@ -93,7 +93,7 @@ Don't ask "do you want to sign up." Ask for the next small step:
 
 "Can I get your WhatsApp Business number so I can build it and show you the real thing running on your own account before you pay anything?"
 
-Or, if she's not ready: "No pressure at all, save my number, and try messaging the demo yourself, [demo number]. If it feels right, message me."
+Or, if she's not ready: "No pressure at all, save my number, and try messaging the demo yourself, 076 492 4196. If it feels right, message me."
 
 ---
 
