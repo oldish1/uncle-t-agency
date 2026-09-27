@@ -1,0 +1,124 @@
+=== MESSAGE 1 ===
+
+Hi Nita 👋 I'm building your WhatsApp booking bot. Clients will tap buttons to choose a clean, a day and a time, then type their unit number, lockbox code and name. The booking goes straight into your calendar.
+
+Before I build it I need your answers to 21 quick questions, split over 3 messages. Most just need a letter or yes/no. Easiest is to reply with the number, like:
+*1A, 2 yes, 3 no...*
+A voice note is fine too 🙂
+
+*PART 1: PRICES AND PAYMENT*
+
+*1. Should the bot show prices?*
+A) No prices. You send the price yourself after the booking
+B) Show a rough price, e.g. _"Basic Clean is usually R420 to R520. Nita confirms the final price."_
+If B: what's your usual price for a *Move Out* clean?
+
+*2. Payment. Is this right?*
+• Deep Clean: 50% deposit upfront, the rest when it's done
+• Basic Clean and Move Out: pay when it's done
+• EFT only
+Yes / No (tell me what's different)
+
+*3. Deep Clean deposit*
+a) Is the booking only confirmed once the deposit is paid? Yes / No
+b) Should the bot send your bank details, or do you send them yourself with the price?
+
+*4. Late cancellation fee (R150)*
+How late counts as "late"?
+A) Less than 24 hours before
+B) Less than 48 hours before
+C) Same day
+D) Something else
+
+
+=== MESSAGE 2 ===
+
+*PART 2: DAYS AND TIMES*
+
+*5. Which days do you work?*
+A) Monday to Friday
+B) Monday to Saturday
+C) Every day
+D) Something else
+
+*6. How far ahead can clients book on the bot?*
+Your regulars sometimes book a month ahead. The bot can show about 2 weeks of days at most.
+A) Show the next 2 weeks. For later dates, clients message you
+B) Show the next week only. For later dates, clients message you
+
+*7. Start times*
+The bot gives clients 3 start times to choose from: *8am, 12pm, 3pm*.
+Airbnb guests usually leave around 10 or 11 and new guests arrive around 2 or 3.
+Do these 3 times work? If not, which 3 times should clients choose from?
+
+*8. Same-day bookings*
+A) No, the earliest is tomorrow
+B) Yes, if they book before ___ (what time?)
+
+*9. Public holidays*
+A) I work public holidays
+B) I don't
+
+*10. How long jobs take*
+The bot blocks this much time in your calendar:
+• Basic Clean: 2 hours
+• Deep Clean: 3.5 hours
+• Move Out: 4 hours
+If a job runs long, you just make it longer in the calendar.
+Is that OK, or what times should I use?
+
+*11. Two jobs at the same time*
+The bot will allow up to 2 cleans at the same time (you plus one staff member, or both staff). A third booking at that time gets told it's full.
+a) Is 2 right? Yes / No
+b) On a day when you're short-staffed, are you happy to block out the time in your calendar yourself so the bot doesn't book it? Yes / No
+
+*12. Your calendar*
+a) Which Google calendar (email address) do you use for bookings?
+b) Do you also put the bookings you make yourself (by WhatsApp or phone) in that calendar? The bot needs to see them so it doesn't double book you.
+
+
+=== MESSAGE 3 ===
+
+*PART 3: CLIENTS AND ACCESS*
+
+*13. Address*
+The bot asks for the *unit number* and *lockbox or gate code*, plus the building name if the client mentions it. Is that enough?
+A) Yes, that's enough
+B) No, I also need the full street address
+C) I'll give you a list of my buildings so clients can tap theirs
+
+*14. No lockbox*
+If a client says there's no code (someone is home, or the concierge has the keys), should the bot accept that? Yes / No
+
+*15. Type of place*
+Should the bot ask if it's an apartment, office or house? Yes / No
+
+*16. Lockbox codes*
+The codes will be saved in a Google Sheet and in the calendar booking.
+a) Who should be able to see them? Just you, or you and your 2 staff?
+b) The bot uses AI to pick the unit number and code out of the client's message. Is that OK, or would you rather the bot ask for them as two separate simple questions without AI?
+
+*17. New booking alerts*
+Do you want a message every time someone books?
+A) Yes, on WhatsApp
+B) Yes, by email
+C) No, I'll check my calendar
+
+*18. Your regular clients*
+Please send me (privately, or tell me in person) the WhatsApp number, building, unit number and lockbox code for:
+Kobie Classen, Nick Burn, Bahar, Giorgio, Teresa, Nomanna, Joy, Miss Fiona
+Surnames too if you have them.
+Also: should the bot recognise your regulars and skip the questions, like _"Same place as last time, Unit 1204?"_ Yes / No
+
+*19. Cancelling or moving a booking*
+For now, clients who want to cancel or change a booking will message you directly, not the bot. OK? Yes / No
+
+*20. Linen changes and quick maintenance cleans*
+Leave these out of the bot for now and add them later? Yes / No
+
+*21. Which WhatsApp number should the bot use?*
+A) A new number just for bookings
+B) Your current business number
+I'm still checking whether your current number can keep working in your normal WhatsApp app once the bot is on it. I'll let you know before anything changes.
+
+That's everything! Thank you 🙏 As soon as I have your answers I'll build it and test it with you before any client sees it.
