@@ -36,7 +36,7 @@ import requests
 from utils.config import get_env
 
 APIFY_BASE_URL = "https://api.apify.com/v2"
-GOOGLE_MAPS_ACTOR = "apify~google-maps-scraper"
+GOOGLE_MAPS_ACTOR = "compass~crawler-google-places"
 
 FIRECRAWL_BASE_URL = "https://api.firecrawl.dev/v2"
 
