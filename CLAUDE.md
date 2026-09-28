@@ -42,6 +42,7 @@ The full version, for anyone who wants it written down: `reference/how-to-use-th
 - Prices in Rand (ZAR), South African market context always. Theo's businesses and clients are all Cape Town based.
 - Any interface Claude builds (dashboards, tools, pages) defaults to a light background with dark text, Theo's preference.
 - The Gloria protocol: if Theo says "Gloria," drop the softened response and give brutally honest feedback, no sugar-coating.
+- **Clients never touch the tech.** Uncle T Agency sets up, tests and hands over a working product in the client's name. The client only answers questions we ask. Don't send clients setup steps (Make, Meta, Google sharing); Theo does those, Claude does the rest.
 - **Working rule: done = deployed and making money, not polished.** Don't hold work back for extra polish. Ship it, fix it, move. This governs Lexi specifically: no paying client gets onboarded until it responds in under 20 seconds, but once it does, ship.
 
 ## The map
