@@ -14,17 +14,24 @@ let fb=JSON.parse(run('F.js',{service_id:'svc_basic',service_label:'Basic Clean'
 a.equal(JSON.parse(f.alert_params_json).length,5);
 let fs2=JSON.parse(run('F.js',{service_id:'svc_basic',service_label:'Basic Clean',client_name:'Joy',property_type:'Apartment',unit_number:'117',access_code:'NONE',when_label:'x',start_iso:'2026-10-04T08:00:00+02:00'}).confirm_json); a(fs2.includes('R420 to R520 + R50 Sunday rate'));
 console.log('ALL PASS');
-// Nita's all-day entries
+// Nita's day capacity (28 Sept answers)
 {
-const S='2026-09-29T12:00:00+02:00',E='2026-09-29T15:30:00+02:00';
-const ad=(t,d1,d2)=>({status:'confirmed',summary:t,start:{date:d1},end:{date:d2}});
-const tm=(s,e)=>({status:'confirmed',summary:'bot',start:{dateTime:s},end:{dateTime:e}});
-let r=run('C.js',{events_json:{items:[ad('117','2026-09-29','2026-09-30')]},start_iso:S,end_iso:E}); a.equal(r.slot_full,false); a.equal(r.places_left,1);
-r=run('C.js',{events_json:{items:[ad('117 & 210','2026-09-29','2026-09-30')]},start_iso:S,end_iso:E}); a.equal(r.slot_full,true); a.equal(r.all_day_jobs,2);
-r=run('C.js',{events_json:{items:[ad('Off','2026-09-29','2026-09-30')]},start_iso:S,end_iso:E}); a.equal(r.slot_full,true); a.equal(r.day_off,true);
-r=run('C.js',{events_json:{items:[ad('Nita off','2026-09-29','2026-09-30')]},start_iso:S,end_iso:E}); a.equal(r.day_off,true);
-r=run('C.js',{events_json:{items:[ad('Off','2026-09-29','2026-09-30')]},start_iso:S,end_iso:E,off_blocks_day:'no'}); a.equal(r.slot_full,false);
-r=run('C.js',{events_json:{items:[ad('Cassie 50','2026-09-29','2026-09-30'),tm('2026-09-29T12:00:00+02:00','2026-09-29T14:00:00+02:00')]},start_iso:S,end_iso:E}); a.equal(r.slot_full,true); a.equal(r.peak_busy,2);
-r=run('C.js',{events_json:{items:[ad('615','2026-09-28','2026-09-29')]},start_iso:S,end_iso:E}); a.equal(r.slot_full,false); a.equal(r.all_day_jobs,0); // yesterday's entry doesn't count
-console.log('ALL-DAY TESTS PASS');
+const S='2026-09-29T12:00:00+02:00',E='2026-09-29T14:00:00+02:00';
+const ad=(t)=>({status:'confirmed',summary:t,start:{date:'2026-09-29'},end:{date:'2026-09-30'}});
+const bot=(svc,s)=>({status:'confirmed',summary:'x',start:{dateTime:s},end:{dateTime:s},extendedProperties:{private:{service:svc}}});
+const c=(items,svc,extra={})=>run('C.js',Object.assign({events_json:{items},start_iso:S,end_iso:E,service_id:svc},extra));
+a.equal(c([], 'svc_deep').slot_full,false);
+a.equal(c([ad('117')],'svc_basic').slot_full,false);        // 1 basic + 1 basic = 2
+a.equal(c([ad('117')],'svc_deep').slot_full,true);          // deep needs the whole day
+a.equal(c([ad('117 & 210')],'svc_basic').slot_full,true);   // day already has 2
+a.equal(c([ad('603 deep')],'svc_basic').slot_full,true);    // her deep entry fills the day
+a.equal(c([ad('Off')],'svc_deep').slot_full,false);         // Off = only Nita off
+a.equal(c([ad('Off')],'svc_deep',{off_blocks_day:'yes'}).slot_full,true);
+a.equal(c([ad('Cassie 501')],'svc_basic').slot_full,false);
+a.equal(c([bot('svc_deep','2026-09-29T08:00:00+02:00')],'svc_basic').slot_full,true);
+a.equal(c([bot('svc_basic','2026-09-29T08:00:00+02:00')],'svc_basic').slot_full,false);
+a.equal(c([bot('svc_basic','2026-09-28T22:30:00Z')],'svc_deep').slot_full,true);  // 00:30 SAST on the 29th counts
+a.equal(c([{status:'confirmed',summary:'615',start:{date:'2026-09-28'},end:{date:'2026-09-29'}}],'svc_deep').slot_full,false); // yesterday
+let b2=run('B.js',{day_id:'day_2026-09-29',slot_id:'slot_1200',service_id:'svc_deep',now_iso:'2026-09-27T10:00:00Z'}); a.equal(b2.day_start,'2026-09-29T00:00:00+02:00');
+console.log('DAY CAPACITY TESTS PASS');
 }

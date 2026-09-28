@@ -32,3 +32,4 @@ node_modules/
 
 # Per-machine seat identity
 .seat
+apps/rags-to-riches-bot/blueprint.json

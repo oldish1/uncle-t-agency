@@ -79,8 +79,8 @@ def tap_is(x): return cond("{{3.tap_id}}","text:equal",x)
 
 # ---------- finalize chain (used by returning-yes and name-complete) ----------
 def finalize(name_expr):
-    g=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin",s(7)),("timeMax",s(8)),("singleEvents","true"),("maxResults","50")],name="Re-check slot (calendar)")
-    c=code("C.js",{"events_json":"{{%d.body}}"%g["id"],"start_iso":s(7),"end_iso":s(8)},"Capacity count (re-check)")
+    g=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin","{{replace(4.`4`; \"day_\"; \"\")}}T00:00:00+02:00"),("timeMax","{{replace(4.`4`; \"day_\"; \"\")}}T23:59:59+02:00"),("singleEvents","true"),("maxResults","50")],name="Re-check slot (calendar)")
+    c=code("C.js",{"events_json":"{{%d.body}}"%g["id"],"start_iso":s(7),"end_iso":s(8),"service_id":s(2),"day_capacity":"{{3.day_capacity}}","off_blocks_day":"{{3.off_blocks_day}}"},"Day capacity re-check")
     f=code("F.js",{"service_id":s(2),"service_label":s(3),"client_name":name_expr,"property_type":s(17),"unit_number":s(10),"building_name":s(11),
         "access_code":s(12),"access_note":s(13),"when_label":s(9),"start_iso":s(7),"end_iso":s(8),"wa_id":"{{3.wa_id}}",
         "holidays":"{{3.holidays}}","late_window":"{{3.late_window}}","bank_details":"{{3.bank_details}}"},"Build confirmation + event")
@@ -106,7 +106,7 @@ def finalize(name_expr):
         [upd({"1":"DONE","14":name_expr,"15":"{{%d.body.id}}"%ev["id"]},"Session: DONE")],
         [alert]])]
     free[0]["filter"]={"name":"Still free","conditions":[[cond("{{%d.result.slot_full}}"%c["id"],"text:notequal","true")]]}
-    full=router([[wa("Send slot just taken",time_body("Sorry, that time was just booked by someone else 😕\\n\\n"))],
+    full=router([[wa("Send day just filled",body_static("Sorry, that day was just booked up by someone else 😕 Send *menu* to pick another day."))],
                  [upd({"1":"TIME","6":"{{emptystring}}","7":"{{emptystring}}","8":"{{emptystring}}","9":"{{emptystring}}"},"Session: back to TIME")]],
                 name="Slot taken meanwhile",conds=[[cond("{{%d.result.slot_full}}"%c["id"],"text:equal","true")]])
     return [g,c,router([[full],free])]
@@ -159,9 +159,9 @@ C=router([
 
 sb=code("B.js",{"day_id":s(4),"slot_id":"{{3.tap_id}}","service_id":s(2)},"Date + duration builder")
 sb["filter"]={"name":"D: Time tapped","conditions":[[tap_has("slot_"),step_is("TIME")]]}
-g=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin","{{%d.result.start_iso}}"%sb["id"]),("timeMax","{{%d.result.end_iso}}"%sb["id"]),("singleEvents","true"),("maxResults","50")],name="Calendar: jobs in that window")
+g=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin","{{%d.result.day_start}}"%sb["id"]),("timeMax","{{%d.result.day_end}}"%sb["id"]),("singleEvents","true"),("maxResults","50")],name="Calendar: jobs in that window")
 g["filter"]={"name":"Slot valid","conditions":[[cond("{{%d.result.ok}}"%sb["id"],"text:equal","true")]]}
-cc=code("C.js",{"events_json":"{{%d.body}}"%g["id"],"start_iso":"{{%d.result.start_iso}}"%sb["id"],"end_iso":"{{%d.result.end_iso}}"%sb["id"]},"Capacity count")
+cc=code("C.js",{"events_json":"{{%d.body}}"%g["id"],"start_iso":"{{%d.result.start_iso}}"%sb["id"],"end_iso":"{{%d.result.end_iso}}"%sb["id"],"service_id":s(2),"day_capacity":"{{3.day_capacity}}","off_blocks_day":"{{3.off_blocks_day}}"},"Day capacity check")
 cs=cdb_search(); cs["filter"]={"name":"Slot free","conditions":[[cond("{{%d.result.slot_full}}"%cc["id"],"text:notequal","true")]]}
 CS=cs["id"]
 slotvals={"3":"{{%d.result.service_label}}"%sb["id"],"6":"{{3.tap_id}}","7":"{{%d.result.start_iso}}"%sb["id"],"8":"{{%d.result.end_iso}}"%sb["id"],"9":"{{%d.result.when_label}}"%sb["id"]}
@@ -169,7 +169,7 @@ known=[[cond("{{%d.`__ROW_NUMBER__`}}"%CS,"exist"),cond("{{%d.`4`}}"%CS,"exist")
 D=[sb, router([
   [router([[wa("Send slot error",body_text("{{%d.result.error_text_json}}"%sb["id"]))]],name="Slot invalid",conds=[[cond("{{%d.result.ok}}"%sb["id"],"text:notequal","true")]])],
   [g, cc, router([
-     [router([[wa("Send slot full",body_buttons('"Sorry, {{%d.result.time_label}} on *{{%d.result.day_label}}* is fully booked 😕 Please pick another time, or send *menu* to choose a different day."'%(sb["id"],sb["id"]),SLOT))]],
+     [router([[wa("Send day full",body_text('"Sorry, we can\'t fit a {{%d.result.service_label}} on *{{%d.result.day_label}}*, the team is fully booked that day 😕\\n\\nSend *menu* to pick another day."'%(sb["id"],sb["id"])))]],
              name="Slot full",conds=[[cond("{{%d.result.slot_full}}"%cc["id"],"text:equal","true")]])],
      [cs, router([
         [router([[wa("Send same place?",body_buttons('"{{%d.result.when_label}} is available ✅\\n\\nWelcome back, {{first(split(%d.`1`; " "))}}! Same place as last time?\\n🏢 {{%d.`2`}} Unit {{%d.`4`}}"'%(sb["id"],CS,CS,CS),RET))],
@@ -232,7 +232,7 @@ m3["mapper"]["variables"]=[v for v in m3["mapper"]["variables"] if v["name"] not
   {"name":"wa_phone_id","value":"PASTE_PHONE_NUMBER_ID"},{"name":"wa_token","value":TOK},{"name":"graph_version","value":"v25.0"},
   {"name":"anthropic_key","value":AKEY},{"name":"system_prompt","value":open("system-prompt.txt").read()},
   {"name":"holidays","value":"2026-12-16,2026-12-25,2026-12-26,2027-01-01,2027-03-22,2027-03-26,2027-03-29,2027-04-27,2027-05-01,2027-06-16,2027-08-09,2027-09-24,2027-12-16,2027-12-25,2027-12-27"},
-  {"name":"same_day_cutoff","value":"07:00"},{"name":"late_window","value":"24 hours"},{"name":"bank_details","value":""},
+  {"name":"same_day_cutoff","value":"07:00"},{"name":"late_window","value":"24 hours"},{"name":"bank_details","value":(open("../../private/r2r-bank-details.txt").read() if __import__("os").path.exists("../../private/r2r-bank-details.txt") else "")},{"name":"day_capacity","value":"2"},{"name":"off_blocks_day","value":"no"},
   {"name":"alert_template","value":TPL},{"name":"nita_alert_number","value":"PASTE_NITA_NUMBER"}]
 flow=[old["flow"][0],m3,old["flow"][2],top]
 bp={"name":"Rags to Riches - Booking Bot","flow":flow,"metadata":old["metadata"]}

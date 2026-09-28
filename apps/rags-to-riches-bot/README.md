@@ -7,4 +7,4 @@ The live bot is the Make scenario **"Rags to Riches - Booking Bot"** (ID 7645932
 - `base.json`: the webhook, config and session-lookup steps.
 - `build_blueprint.py`: builds `blueprint.json` (the whole scenario) from the above.
 
-To change the bot: edit here, run `python3 build_blueprint.py && mv full.json blueprint.json`, upload `blueprint.json` with the Make connector (scenarios_update), then download it back and compare. Keys and tokens are never stored here: they're placeholders (`PASTE_...`) filled in directly in Make.
+To change the bot: edit here, run `python3 build_blueprint.py && mv full.json blueprint.json` (blueprint.json is git-ignored because it carries the bank details from `private/`), upload it with the Make connector (scenarios_update), then download it back and compare. Keys and tokens are never stored here: they're placeholders (`PASTE_...`) filled in directly in Make.

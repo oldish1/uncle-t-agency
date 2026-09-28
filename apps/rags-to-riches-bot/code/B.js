@@ -31,5 +31,7 @@ return {
   service_label: SERVICE_LABEL[service], duration_hours: hrs,
   start_iso: startIso, end_iso: endIso,
   day_label: dayLabel, time_label: slot,
-  when_label: dayLabel + ", " + slot + " (about " + hrs + " hrs)"
+  when_label: dayLabel + ", " + slot + " (about " + hrs + " hrs)",
+  day_start: dayIso + "T00:00:00+02:00",
+  day_end: dayIso + "T23:59:59+02:00"
 };

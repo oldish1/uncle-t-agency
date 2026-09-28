@@ -766,6 +766,9 @@ These replace the assumptions in section 5 wherever they differ. Numbers are Nit
 | Calendar | ragstorichest69@gmail.com | Her own bookings live there. **Nita shares that calendar with adamst70@gmail.com ("Make changes to events")**, then the bot switches to it so it sees her manual bookings. Until then it uses "Rags to Riches Bookings". |
 | Regulars (Q18) | Numbers, units, codes for all 8 | **Loaded into ClientDatabase** (Google Sheet only, never this repo). Gaps: Bahar's number ("+9533 8159938") and Teresa's number ("062267697", a digit short) unclear, Teresa's code forgotten, most building names missing. Kobie, Nick and Joy have more than one property: the first is stored as their main one, the others in notes. |
 
+
+**Calendar answers (28 Sept):** "Off" = only Nita is off, staff still clean (day stays bookable). "Cassie 501" = client Cassie's apartment 501 (a job). "Vc" = Victoria Court (Kobie). Capacity is per **day**, not per time slot: 2 Basic cleans a day, or 1 Deep clean (takes the whole day). Bot now scores a day out of 2 points: Basic 1, Deep 2, Move Out 2 (**assumed** heavy like Deep, confirm with Nita); her all-day entries count 1 each, 2 if the entry says "deep". Bank details: in `private/` and the Make config only. Same-day cut-off: 07:00 confirmed. Built and tested locally 28 Sept; goes live with the test-number upload.
+
 **v2 idea from this:** hosts with several properties (Kobie 2, Nick 2, Joy 3) would benefit from a "Which property?" list instead of "Same place as last time?".
 
 ## Technical notes for the build
