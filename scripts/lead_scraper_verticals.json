@@ -2,5 +2,9 @@
   "hair salon": {
     "terms": ["hair salon", "hairdresser", "hair boutique", "hair studio"],
     "suburbs": ["Bellville", "Mitchell's Plain", "Parow", "Goodwood"]
+  },
+  "hair salon out-of-town": {
+    "terms": ["hair salon", "hairdresser", "hair boutique", "hair studio"],
+    "suburbs": ["Langebaan", "Caledon", "Paarl", "Worcester", "Ceres", "Somerset West"]
   }
 }

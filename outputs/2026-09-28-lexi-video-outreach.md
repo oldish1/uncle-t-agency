@@ -16,17 +16,20 @@ Do this once, keep the file, reuse it for every salon on the list. You don't nee
 
 ## The message (send video + this, nothing else)
 
-Keep it short. No "hope this finds you well," no pitch, no price unless she asks.
+Keep it short. No "hope this finds you well," no pitch, no price unless she asks. Updated 29 Sept: tightened all three down to one real question, since a question gets a reply and a statement gets ignored.
+
+**Version C, pure discovery (start here, this is the sharpest one):**
+> Hi, quick one, what's the most annoying part of handling bookings on WhatsApp for you? This 30-second clip is something I built that might help 👇
 
 **Version A, straight to it:**
-> Hi, noticed [salon name] on Google, no booking link on there yet. Quick thing, this is a WhatsApp assistant I built for a Bellville salon, replies in seconds so nothing gets missed after hours or mid-cut. Not selling anything, just thought it might be useful. 👇
+> Hi, noticed [salon name] has no booking link. Built this for a salon in Bellville, replies in seconds so nothing gets missed mid-cut or after hours. Not selling anything, just thought it'd be useful. 👇
 
-**Version B, leads with the pain (research says this lands harder than a feature pitch):**
-> Hi, quick one, how many bookings do you reckon you've lost to a message you only saw hours later? This is what fixed that for a salon like yours in Bellville. 30 seconds, worth a look. 👇
+**Version B, leads with the pain:**
+> Hi, how many bookings do you reckon you've lost to a message you only saw hours later? This fixed that for a salon like yours in Bellville. 👇
 
-Pick whichever fits your mood that day, or split-test both across the batch and see which gets more replies.
+Version C works best because it's a question about her, not a statement about you, she has to answer it or ignore it, and either way you learn something real about her actual frustration for the follow-up conversation. Split-test if you want, but if you only send one version to start, send C.
 
-**If she replies at all, don't launch into the pitch.** Ask what she thought, let her ask the next question. The walk-in script's pushback answers (`outputs/2026-09-27-lexi-walkin-pitch.md`) cover price, setup, and "what if it gets something wrong" the same way here.
+**If she replies at all, don't launch into the pitch.** Whatever she names as her frustration, that's your opening for the follow-up, not a script. Let her ask the next question. The walk-in script's pushback answers (`outputs/2026-09-27-lexi-walkin-pitch.md`) cover price, setup, and "what if it gets something wrong" the same way here.
 
 ## First batch to send (15 real mobile numbers, no website, sorted by reviews)
 
@@ -59,3 +62,11 @@ Of the 54 no-website salons in last night's scrape, only 34 have a real mobile n
 ## Send from your own number, not Lexi's
 
 Send these from your personal WhatsApp, not through the Business Platform number. A cold first message to someone who hasn't messaged you needs to be a real person reaching out, and Meta's rules on business-initiated messages to non-opted-in numbers don't apply to a normal 1-to-1 chat from your own phone.
+
+## Out-of-town expansion (29 Sept, blocked)
+
+Plan: 10 leads each from Langebaan, Caledon, Paarl, Worcester, Ceres, and Somerset West, same video-first approach, since it works the same whether you're standing in front of someone or not. If 3+ bite, sell them the website too, same offer already covers it.
+
+Suggested order: send Version C to the 15-number Cape Town batch above first, since it's cheap and fast to learn what actually gets replies before spending Apify credits on 60 more cold numbers in towns you can't easily follow up in person.
+
+**Blocked for now:** Apify rejected the token again this session (`user-or-token-not-found`), the same error as before, even though it should have been saved correctly in the environment box. Needs Theo to check the saved value or generate a fresh token. Will pull all six towns the moment it's working, config just needs the suburb list extended in `scripts/lead_scraper_verticals.json`.

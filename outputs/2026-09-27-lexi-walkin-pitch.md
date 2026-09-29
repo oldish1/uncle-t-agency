@@ -16,6 +16,12 @@ Look for the signs first: paper diary on the counter, owner answering her own ph
 
 If she's mid-client: "No rush, I'll pop back, when's good?" Leave a card, come back. Never pitch over a client's head.
 
+**Alternative opener, discovery-first (29 Sept addition).** Some owners bristle the second they sense a pitch coming, even a soft one. This version asks before it shows anything:
+
+"Hi, I work with hair salons around here, mostly on their bookings. Mind if I ask, what's the most frustrating part of managing bookings for you day to day?"
+
+Let her actually answer, don't rush to the demo. Whatever she names (slow replies, no-shows, double bookings, clients messaging at all hours) becomes your opening line into the demo instead of a generic one: "That's exactly what this fixes, can I show you?" This costs more of your time per visit but reads as genuinely curious rather than salesy, worth using on an owner who seems guarded, save the faster pain-hook version below for one who's clearly busy and wants it quick.
+
 ---
 
 ## The pain hook
