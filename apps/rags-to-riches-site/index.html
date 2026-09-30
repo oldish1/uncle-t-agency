@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rags to Riches Cleaning | Airbnb Turnover Cleaning, Sea Point & Cape Town CBD</title>
+<meta name="description" content="Airbnb and short-stay turnover cleaning in Sea Point, Mouille Point and Cape Town CBD. Book in four taps on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #c1185a;
+    --brand-dark: #9a1248;
+    --brand-soft: #fdeef4;
+    --ink: #1f1a1c;
+    --muted: #5f5559;
+    --bg: #ffffff;
+    --bg-alt: #fbf7f8;
+    --line: #eadfe3;
+    --wa: #25d366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Poppins", system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* nav */
+  header { position: sticky; top: 0; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); z-index: 10; }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+  .logo span { color: var(--brand); }
+  nav a { text-decoration: none; color: var(--muted); font-size: .95rem; margin-left: 20px; }
+  nav a:hover { color: var(--brand); }
+  @media (max-width: 640px) { nav .hide-sm { display: none; } }
+
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: #fff; text-decoration: none; font-weight: 600; padding: 14px 26px; border-radius: 999px; transition: background .2s; }
+  .btn:hover { background: var(--brand-dark); }
+  .btn svg { width: 20px; height: 20px; fill: currentColor; }
+  .btn-sm { padding: 8px 16px; font-size: .9rem; }
+  .btn-ghost { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+  .btn-ghost:hover { background: var(--brand-soft); }
+
+  /* hero */
+  .hero { background: linear-gradient(180deg, var(--brand-soft), var(--bg)); padding: 72px 0 64px; text-align: center; }
+  .pill { display: inline-block; background: #fff; border: 1px solid var(--line); color: var(--brand); font-size: .85rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); line-height: 1.15; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--brand); }
+  .hero p { color: var(--muted); max-width: 600px; margin: 0 auto 28px; font-size: 1.08rem; }
+  .hero .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .trust { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 36px; color: var(--muted); font-size: .92rem; }
+  .trust b { color: var(--ink); }
+
+  section { padding: 64px 0; }
+  section.alt { background: var(--bg-alt); }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); text-align: center; margin-bottom: 10px; }
+  .sub { text-align: center; color: var(--muted); max-width: 580px; margin: 0 auto 40px; }
+
+  /* services */
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; }
+  .card.featured { border: 2px solid var(--brand); position: relative; }
+  .card.featured::before { content: "Most booked"; position: absolute; top: -12px; left: 24px; background: var(--brand); color: #fff; font-size: .75rem; font-weight: 600; padding: 3px 12px; border-radius: 999px; }
+  .card h3 { font-size: 1.25rem; margin-bottom: 4px; }
+  .price { color: var(--brand); font-weight: 700; font-size: 1.35rem; margin: 8px 0 2px; }
+  .price small { font-size: .85rem; color: var(--muted); font-weight: 500; }
+  .dur { color: var(--muted); font-size: .9rem; margin-bottom: 16px; }
+  .card ul { list-style: none; margin-bottom: 22px; flex: 1; }
+  .card li { padding: 5px 0 5px 26px; position: relative; font-size: .95rem; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 11px; width: 14px; height: 8px; border-left: 2.5px solid var(--brand); border-bottom: 2.5px solid var(--brand); transform: rotate(-45deg); }
+  .card .btn { justify-content: center; }
+  .note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 24px; }
+
+  /* steps */
+  .steps { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); counter-reset: s; }
+  .step { text-align: center; padding: 8px; }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 14px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; font-size: 1.2rem; }
+  .step h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: .93rem; }
+
+  /* areas */
+  .areas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .area { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 10px 22px; font-weight: 500; }
+  .area::before { content: "📍 "; }
+
+  /* good to know */
+  .info { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .info div { background: #fff; border-left: 4px solid var(--brand); border-radius: 8px; padding: 18px 20px; }
+  .info h3 { font-size: 1rem; margin-bottom: 4px; }
+  .info p { color: var(--muted); font-size: .92rem; }
+
+  /* reviews */
+  .quote { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .quote p { font-style: italic; margin-bottom: 12px; }
+  .quote cite { color: var(--muted); font-size: .9rem; font-style: normal; }
+  .stars { color: #f5a623; margin-bottom: 8px; letter-spacing: 2px; }
+
+  /* faq */
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  summary { font-weight: 600; cursor: pointer; }
+  details p { color: var(--muted); margin-top: 10px; font-size: .95rem; }
+
+  .final { background: var(--brand); color: #fff; text-align: center; }
+  .final h2 { color: #fff; }
+  .final p { opacity: .9; margin-bottom: 26px; }
+  .final .btn { background: #fff; color: var(--brand); }
+  .final .btn:hover { background: var(--brand-soft); }
+
+  footer { padding: 28px 0; text-align: center; color: var(--muted); font-size: .85rem; }
+
+  .wa-float { position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0,0,0,.18); z-index: 20; }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 21.8c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.6.9 1-3.5-.2-.4C2.9 15.8 2.4 14 2.4 12.2 2.4 6.9 6.7 2.6 12 2.6c2.6 0 5 1 6.8 2.8 1.8 1.8 2.8 4.2 2.8 6.8 0 5.3-4.3 9.6-9.6 9.6M20.2 4C18 1.8 15.1.6 12 .6 5.6.6.4 5.8.4 12.2c0 2 .5 4 1.5 5.8L.3 24l6.1-1.6c1.7.9 3.6 1.4 5.6 1.4 6.4 0 11.6-5.2 11.6-11.6 0-3.1-1.2-6-3.4-8.2"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo">Rags to <span>Riches</span></a>
+    <nav>
+      <a href="#services" class="hide-sm">Services</a>
+      <a href="#how" class="hide-sm">How it works</a>
+      <a href="#faq" class="hide-sm">FAQ</a>
+      <a href="#" class="btn btn-sm book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="pill">Sea Point · Mouille Point · Cape Town CBD</span>
+      <h1>Guest-ready apartments,<br><em>every single turnover.</em></h1>
+      <p>Cleaning for Airbnb and short-stay hosts. We slot in between checkout and check-in, so your next guest walks into a spotless place and you get a 5-star review.</p>
+      <div class="cta-row">
+        <a href="#" class="btn book"><svg><use href="#wa"/></svg>Book on WhatsApp</a>
+        <a href="#services" class="btn btn-ghost">See prices</a>
+      </div>
+      <div class="trust">
+        <span><b>Mon to Sat</b>, Sundays on request</span>
+        <span>Book in <b>4 taps</b>, day or night</span>
+        <span>Checkout <b>10:00</b> to check-in <b>15:00</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>Services & prices</h2>
+      <p class="sub">Final price depends on the size of the apartment. Nita confirms it with you on WhatsApp once you've booked.</p>
+      <div class="grid">
+        <div class="card featured">
+          <h3>Basic Clean</h3>
+          <div class="price">R420 to R520</div>
+          <div class="dur">About 2 hours</div>
+          <ul>
+            <li>Kitchen wiped down, dishes done</li>
+            <li>Bathroom cleaned and sanitised</li>
+            <li>Floors vacuumed and mopped</li>
+            <li>Beds made, bins emptied</li>
+            <li>Ready for your next guest</li>
+          </ul>
+          <a href="#" class="btn book" data-service="Basic Clean"><svg><use href="#wa"/></svg>Book Basic</a>
+        </div>
+        <div class="card">
+          <h3>Deep Clean</h3>
+          <div class="price">R850 to R1,300</div>
+          <div class="dur">About 3.5 hours · 50% deposit</div>
+          <ul>
+            <li>Everything in the Basic Clean</li>
+            <li>Inside appliances and cupboards</li>
+            <li>Grout, tiles and limescale</li>
+            <li>Skirtings, doors and light switches</li>
+            <li>Ideal between long stays</li>
+          </ul>
+          <a href="#" class="btn book" data-service="Deep Clean"><svg><use href="#wa"/></svg>Book Deep</a>
+        </div>
+        <div class="card">
+          <h3>Move Out / Move In</h3>
+          <div class="price">R1,500</div>
+          <div class="dur">About 4 hours · 50% deposit</div>
+          <ul>
+            <li>Empty apartment, top to bottom</li>
+            <li>Inside every cupboard and drawer</li>
+            <li>Kitchen and bathrooms fully degreased</li>
+            <li>Windows and sills</li>
+            <li>Handover or deposit ready</li>
+          </ul>
+          <a href="#" class="btn book" data-service="Move Out Clean"><svg><use href="#wa"/></svg>Book Move Out</a>
+        </div>
+      </div>
+      <p class="note">Sundays +R50 · Public holidays +R60 · Payment by EFT</p>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <h2>Book in under a minute</h2>
+      <p class="sub">No forms, no phone calls. Our WhatsApp assistant books you in any time of day, and remembers your apartment next time.</p>
+      <div class="steps">
+        <div class="step"><h3>Say hi on WhatsApp</h3><p>Tap any "Book" button on this page.</p></div>
+        <div class="step"><h3>Pick your clean</h3><p>Basic, Deep or Move Out, one tap.</p></div>
+        <div class="step"><h3>Pick a day and time</h3><p>Only open slots are shown, so no back-and-forth.</p></div>
+        <div class="step"><h3>Done</h3><p>Send your unit and access code, get your confirmation straight away.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Where we clean</h2>
+      <p class="sub">Apartments along the Atlantic Seaboard and in the city centre.</p>
+      <div class="areas">
+        <span class="area">Sea Point</span>
+        <span class="area">Mouille Point</span>
+        <span class="area">Cape Town CBD</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Good to know</h2>
+      <p class="sub">The small print, in plain English.</p>
+      <div class="info">
+        <div><h3>Keys and access</h3><p>Leave keys at reception or in your mailbox, or send us your lockbox code. We keep your codes private.</p></div>
+        <div><h3>Same-day cleans</h3><p>Book before 07:00 and we can often come the same day.</p></div>
+        <div><h3>Deposits</h3><p>Deep and Move Out cleans are confirmed with a 50% deposit. Balance on completion.</p></div>
+        <div><h3>Cancellations</h3><p>Free up to 24 hours before. Less than 24 hours carries a R150 fee.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS: hidden until Nita's first real testimonials come in. Swap in real quotes (first name + area only), then remove the hidden attribute. -->
+  <section hidden>
+    <div class="wrap">
+      <h2>What hosts say</h2>
+      <p class="sub">Real reviews from Cape Town hosts.</p>
+      <div class="grid">
+        <div class="quote"><div class="stars">★★★★★</div><p>"REVIEW TEXT"</p><cite>NAME, Sea Point</cite></div>
+        <div class="quote"><div class="stars">★★★★★</div><p>"REVIEW TEXT"</p><cite>NAME, Mouille Point</cite></div>
+        <div class="quote"><div class="stars">★★★★★</div><p>"REVIEW TEXT"</p><cite>NAME, CBD</cite></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <p class="sub">Anything else, just ask on WhatsApp.</p>
+      <details><summary>Do you bring your own cleaning products?</summary><p>Yes, we bring everything we need.</p></details>
+      <details><summary>Can I book a regular clean for every turnover?</summary><p>Yes. Once you've booked once, the WhatsApp assistant remembers your apartment and access details, so rebooking takes a few taps.</p></details>
+      <details><summary>How far ahead can I book?</summary><p>You can pick any open day in the next 7 days. For dates further out, choose "Later date" and Nita will sort it out with you.</p></details>
+      <details><summary>Do you work on Sundays and public holidays?</summary><p>Yes. Sundays are R50 extra and public holidays R60 extra.</p></details>
+      <details><summary>How do I pay?</summary><p>By EFT. Nita sends the final price and banking details on WhatsApp.</p></details>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Next guest checking in soon?</h2>
+      <p>Grab a slot now, it takes less than a minute.</p>
+      <a href="#" class="btn book"><svg><use href="#wa"/></svg>Book on WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Rags to Riches Cleaning · Cape Town</div>
+</footer>
+
+<a href="#" class="wa-float book" aria-label="Book on WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+  // The booking bot's WhatsApp number, international format, no + or spaces.
+  // PLACEHOLDER until the real SIM is live on Meta.
+  const WA_NUMBER = "27000000000";
+  document.querySelectorAll(".book").forEach(a => {
+    const svc = a.dataset.service;
+    const text = svc ? "Hi, I'd like to book a " + svc : "Hi";
+    a.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
