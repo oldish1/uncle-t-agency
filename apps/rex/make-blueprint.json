@@ -1,0 +1,114 @@
+{
+    "name": "Rex - Commander Agent",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "mapper": {},
+            "parameters": {
+                "hook": 3793690,
+                "maxResults": 1
+            }
+        },
+        {
+            "id": 2,
+            "module": "http:MakeRequest",
+            "version": 4,
+            "mapper": {
+                "url": "https://api.anthropic.com/v1/messages",
+                "method": "post",
+                "headers": [
+                    { "name": "x-api-key", "value": "PASTE_ANTHROPIC_API_KEY_HERE" },
+                    { "name": "anthropic-version", "value": "2023-06-01" },
+                    { "name": "content-type", "value": "application/json" }
+                ],
+                "contentType": "json",
+                "inputMethod": "dataStructure",
+                "bodyDataStructure": 358873,
+                "dataStructureBodyContent": {
+                    "model": "claude-sonnet-4-6",
+                    "system": "See apps/rex/system-prompt.md — pasted in verbatim as this field's value in the live scenario.",
+                    "messages": [
+                        { "role": "user", "content": "{{1.text}}" }
+                    ],
+                    "max_tokens": 1024
+                },
+                "shareCookies": false,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "requestCompressedContent": true
+            },
+            "parameters": {
+                "tlsType": "",
+                "authenticationType": "noAuth"
+            }
+        },
+        {
+            "id": 3,
+            "module": "http:MakeRequest",
+            "version": 4,
+            "mapper": {
+                "url": "https://graph.facebook.com/v25.0/1197696726762690/messages",
+                "method": "post",
+                "headers": [
+                    { "name": "Authorization", "value": "Bearer PASTE_WHATSAPP_ACCESS_TOKEN_HERE" },
+                    { "name": "Content-Type", "value": "application/json" }
+                ],
+                "contentType": "json",
+                "inputMethod": "jsonString",
+                "jsonStringBodyContent": "{\r\n  \"messaging_product\": \"whatsapp\",\r\n  \"to\": \"{{1.from}}\",\r\n  \"type\": \"text\",\r\n  \"text\": {\r\n    \"body\": \"{{replace(replace(2.data.content[1].text; \"\"\"\"; \"\\\"\"\"\"); \"\n\"; \" \")}}\"\r\n  }\r\n}",
+                "shareCookies": false,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "requestCompressedContent": true
+            },
+            "parameters": {
+                "tlsType": "",
+                "authenticationType": "noAuth"
+            }
+        },
+        {
+            "id": 4,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "mapper": {
+                "mode": "select",
+                "values": {
+                    "0": "{{formatDate(now; \"YYYY-MM-DD HH:mm\"; \"Africa/Johannesburg\")}}",
+                    "1": "{{1.from}}",
+                    "2": "{{1.text}}",
+                    "3": "{{2.data.content[1].text}}",
+                    "4": "{{1.message_id}}"
+                },
+                "sheetId": "Untitled",
+                "spreadsheetId": "/1dE2NcTBk-Jl2fT9IqCvD3Urgmn63xzy-KxLkNQjnSkc",
+                "insertDataOption": "INSERT_ROWS",
+                "valueInputOption": "USER_ENTERED",
+                "insertUnformatted": false
+            },
+            "metadata": {
+                "expect": []
+            },
+            "parameters": {
+                "__IMTCONN__": 5493796
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "dlq": false,
+            "dataloss": false,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "roundtrips": 1,
+            "sequential": false,
+            "confidential": false,
+            "autoCommitTriggerLast": true
+        }
+    }
+}
