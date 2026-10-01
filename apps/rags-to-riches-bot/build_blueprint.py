@@ -2,7 +2,11 @@ import json, itertools, re
 SID="1v1Detux-M4oUkbdx82Oa1KXDasSfH7S1AG3dkzw28gk"; CONN=5535950
 CAL="742ce44765f86d99b594b724e348e02648375a53eb0d973430e1ec8faaedd738@group.calendar.google.com"
 M="1.entry[].changes[].value.messages[]"
-TOK="PASTE_ACCESS_TOKEN"; AKEY="PASTE_ANTHROPIC_KEY"; TPL="PASTE_TEMPLATE_NAME"
+import os
+_creds_path="../../private/r2r-meta-creds.json"
+_creds=json.load(open(_creds_path)) if os.path.exists(_creds_path) else {}
+TOK=_creds.get("R2R_WA_TOKEN","PASTE_ACCESS_TOKEN"); AKEY=_creds.get("R2R_ANTHROPIC_KEY","PASTE_ANTHROPIC_KEY"); TPL="PASTE_TEMPLATE_NAME"
+PHONE_ID=_creds.get("R2R_PHONE_ID","PASTE_PHONE_NUMBER_ID")
 ids=itertools.count(30)
 Y=[0]
 def pos():
@@ -229,7 +233,7 @@ m3=old["flow"][1]
 for v in m3["mapper"]["variables"]:
     pass
 m3["mapper"]["variables"]=[v for v in m3["mapper"]["variables"] if v["name"] not in ("wa_phone_id","wa_token","graph_version")]+[
-  {"name":"wa_phone_id","value":"PASTE_PHONE_NUMBER_ID"},{"name":"wa_token","value":TOK},{"name":"graph_version","value":"v25.0"},
+  {"name":"wa_phone_id","value":PHONE_ID},{"name":"wa_token","value":TOK},{"name":"graph_version","value":"v25.0"},
   {"name":"anthropic_key","value":AKEY},{"name":"system_prompt","value":open("system-prompt.txt").read()},
   {"name":"holidays","value":"2026-12-16,2026-12-25,2026-12-26,2027-01-01,2027-03-22,2027-03-26,2027-03-29,2027-04-27,2027-05-01,2027-06-16,2027-08-09,2027-09-24,2027-12-16,2027-12-25,2027-12-27"},
   {"name":"same_day_cutoff","value":"07:00"},{"name":"late_window","value":"24 hours"},{"name":"bank_details","value":(open("../../private/r2r-bank-details.txt").read() if __import__("os").path.exists("../../private/r2r-bank-details.txt") else "")},{"name":"day_capacity","value":"2"},{"name":"off_blocks_day","value":"no"},
