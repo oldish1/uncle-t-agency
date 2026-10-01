@@ -13,7 +13,7 @@ Flow: **Test message in → Make.com webhook → Claude API → WhatsApp reply �
 
 ## What's actually built in Make
 
-1. **Custom Webhook** ("Rex WhatsApp In", hook 3793690) — `https://hook.eu1.make.com/uumfpgalfefvmi29orokmffsocq3x5ww`. Expects a flat JSON body: `{"from": "...", "text": "...", "message_id": "..."}`.
+1. **Custom Webhook** ("Rex WhatsApp In", hook 3793690) — (URL on Make's Webhooks page, not stored in this repo). Expects a flat JSON body: `{"from": "...", "text": "...", "message_id": "..."}`.
 2. **HTTP — Claude API call** — `POST https://api.anthropic.com/v1/messages`, model `claude-sonnet-4-6`, `max_tokens: 1024`. Uses Make's "Data structure" body input (reusing the same structure Lexi's own Claude calls use), which auto-escapes whatever Theo types — no manual escaping needed. No conversation history is threaded through yet; each message is a fresh call.
 3. **HTTP — WhatsApp reply** — sends Claude's reply back to whoever texted in, as a plain WhatsApp text message.
 4. **Google Sheets — log row** — one row per exchange in a new sheet, "Rex Conversation Log": timestamp, from-number, message in, Rex's reply, WhatsApp message ID.
@@ -42,7 +42,7 @@ Once both are pasted in, hit **Run once** to test with a manual webhook call (se
 POST a test payload straight to the webhook, e.g. from a terminal:
 
 ```
-curl -X POST https://hook.eu1.make.com/uumfpgalfefvmi29orokmffsocq3x5ww \
+curl -X POST <Rex webhook URL from Make> \
   -H "Content-Type: application/json" \
   -d '{"from": "<your own WhatsApp number, no +>", "text": "Hey Rex, what does Lexi cost?", "message_id": "test-1"}'
 ```
