@@ -234,7 +234,22 @@ m3["mapper"]["variables"]=[v for v in m3["mapper"]["variables"] if v["name"] not
   {"name":"holidays","value":"2026-12-16,2026-12-25,2026-12-26,2027-01-01,2027-03-22,2027-03-26,2027-03-29,2027-04-27,2027-05-01,2027-06-16,2027-08-09,2027-09-24,2027-12-16,2027-12-25,2027-12-27"},
   {"name":"same_day_cutoff","value":"07:00"},{"name":"late_window","value":"24 hours"},{"name":"bank_details","value":(open("../../private/r2r-bank-details.txt").read() if __import__("os").path.exists("../../private/r2r-bank-details.txt") else "")},{"name":"day_capacity","value":"2"},{"name":"off_blocks_day","value":"no"},
   {"name":"alert_template","value":TPL},{"name":"nita_alert_number","value":"PASTE_NITA_NUMBER"}]
-flow=[old["flow"][0],m3,old["flow"][2],top]
+# VERIFY=1: adds the Meta webhook handshake (answers hub.challenge) and turns sequential off,
+# because Make ignores Webhook response modules while sequential processing is on.
+# Run once while Meta's Configuration screen is verifying, then rebuild without it.
+VERIFY=__import__("os").environ.get("VERIFY")=="1"
+if VERIFY:
+    respond={"id":8,"module":"gateway:WebhookRespond","version":1,"parameters":{},
+      "mapper":{"body":"{{1.hub_challenge}}","status":"200","headers":[]},
+      "filter":{"name":"Meta verification","conditions":[[{"a":"{{1.hub_mode}}","b":"subscribe","o":"text:equal"}]]},
+      "metadata":{"designer":{"x":0,"y":0,"name":"Answer Meta handshake"}}}
+    vr={"id":9,"module":"builtin:BasicRouter","version":1,"parameters":{},"mapper":None,"metadata":{"designer":{"x":0,"y":0}},
+        "routes":[{"flow":[respond]},{"flow":[m3,old["flow"][2],top]}]}
+    flow=[old["flow"][0],vr]
+    old["metadata"]["scenario"]["sequential"]=False
+else:
+    flow=[old["flow"][0],m3,old["flow"][2],top]
+    old["metadata"]["scenario"]["sequential"]=True
 bp={"name":"Rags to Riches - Booking Bot","flow":flow,"metadata":old["metadata"]}
 # layout: spread designer coords
 def lay(fl,x,y):
