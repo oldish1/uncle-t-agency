@@ -25,7 +25,7 @@ def code(src, inputs, name):
       "metadata":{"designer":{"x":0,"y":0,"name":name}}}
 def withfilter(mod, name, conds):
     mod["filter"]={"name":name,"conditions":conds}; return mod
-TOKF=[[{"a":"{{3.wa_token}}","o":"text:notequal","b":TOK}]]
+TOKF=[[{"a":"{{3.wa_token}}","o":"text:notequal","b":"PASTE_ACCESS_TOKEN"}]]
 def wa(name, body, extra=None):
     m={"id":next(ids),"module":"http:MakeRequest","version":4,"parameters":{"tlsType":"","authenticationType":"noAuth"},
      "mapper":{"url":"https://graph.facebook.com/{{3.graph_version}}/{{3.wa_phone_id}}/messages","method":"post",
