@@ -1,5 +1,6 @@
 // Date + duration builder for the tapped time slot.
-const DURATION_HOURS = { svc_basic: 2, svc_deep: 3.5, svc_moveout: 4 };
+const DURATION_HOURS = { svc_basic: 3, svc_deep: 3.5, svc_moveout: 4 };
+const DURATION_LABEL = { svc_basic: "3+ hrs", svc_deep: "about 3.5 hrs", svc_moveout: "about 4 hrs" };
 const SERVICE_LABEL = { svc_basic: "Basic Clean", svc_deep: "Deep Clean", svc_moveout: "Move Out / Move In Clean" };
 const SLOTS = { slot_0800: "08:00", slot_1200: "12:00", slot_1500: "15:00" };
 const MIN_LEAD_MIN = 60;                 // same-day: slot must start at least this far from now
@@ -31,7 +32,7 @@ return {
   service_label: SERVICE_LABEL[service], duration_hours: hrs,
   start_iso: startIso, end_iso: endIso,
   day_label: dayLabel, time_label: slot,
-  when_label: dayLabel + ", " + slot + " (about " + hrs + " hrs)",
+  when_label: dayLabel + ", " + slot + " (" + DURATION_LABEL[service] + ")",
   day_start: dayIso + "T00:00:00+02:00",
   day_end: dayIso + "T23:59:59+02:00"
 };

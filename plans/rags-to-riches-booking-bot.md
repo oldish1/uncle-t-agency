@@ -742,7 +742,7 @@ These replace the assumptions in section 5 wherever they differ. Numbers are Nit
 | 7 | Times are fine (8am, 12pm, 3pm). Most guests check out 10 or 11, check in at 3pm | Keep 08:00 / 12:00 / 15:00 |
 | 8 | Same-day bookings yes, cut-off time *not given* | **Open:** book today until what time? |
 | 9 | Works public holidays, R60 extra | Holidays stay bookable; confirmation adds "+R60 public holiday" on those dates |
-| 10 | Durations fine | Basic 2 h, Deep 3.5 h, Move Out 4 h |
+| 10 | Durations fine (updated 5 Oct: Basic now 3+ h) | Basic 3 h block, shown to clients as "3+ hrs"; Deep 3.5 h, Move Out 4 h |
 | 11 | 2 at a time yes; she'll block short-staffed days herself | Capacity 2 |
 | 12 | Her own bookings go in the same calendar; bot should see them | All timed events count toward capacity. **Open:** which calendar (email address)? |
 | 13 | Unit + code is enough, **and** a list of buildings to tap. Apartments in Mouille Point and Sea Point | Add a building list step. **Open:** the building names |
