@@ -1,9 +1,11 @@
 # Plan: Personal assistant agent on its own WhatsApp number
 
 **Created:** 2026-10-14
-**Status:** Draft
+**Status:** Draft, partly superseded by Rex (see note below)
 **Request:** A personal assistant agent Theo can WhatsApp from anywhere, on a dedicated Vodacom number, fully separate from Lexi.
 **Purpose:** Let Theo run research, price checks, status checks and build requests from his phone between day-job shifts and client visits, without opening a laptop.
+
+> **Update 2026-10-14:** Rex already exists from earlier sessions. Branch `claude/rex-commander-agent-d2ak3z` holds `apps/rex/` (system prompt, Make blueprint) and a Make scenario "Rex - Commander Agent" (7638753, OFF). The handoff is `outputs/handoffs/2026-10-01-rex-meta-setup.md`. Decisions made there override this plan where they differ: Rex is the only agent with a WhatsApp number, he runs on **Make** (not a new Node service), the other agents are separate Make scenarios he calls, and the Meta app is one general "Uncle T Agents" app under the existing Business Portfolio. This plan's safety rules (whitelist to Theo, read/draft/act tiers, YES codes, spend caps) still apply to Rex. The SIM Theo bought replaces Meta's free test number. The Node build in Steps 3 to 8 is only a fallback if Make proves too limited.
 
 ---
 
