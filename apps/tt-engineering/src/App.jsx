@@ -1,18 +1,19 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Lenis from 'lenis';
 import {
   AnimatePresence, animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion,
   useScroll, useSpring, useTransform, useInView
 } from 'framer-motion';
-import Scene from './Scene.jsx';
-import { clamp, ease } from './scenes.js';
-import { Art } from './Art.jsx';
+import MediaFrame from './MediaFrame.jsx';
+import { MEDIA, loadManifest } from './media.js';
 
 const EASE = [0.2, 0.7, 0.2, 1];
 const PHONE = '021 697 2525';
 const EMAIL = 'info@ttengineering.co.za';
 const WA = '27824926634';
+let lenis = null;
 
-/* ---------- small helpers ---------- */
+/* ---------- helpers ---------- */
 function Reveal({ children, delay = 0, y = 28, className, as = 'div', ...rest }) {
   const Tag = motion[as];
   return (
@@ -41,23 +42,40 @@ function Count({ to, reduce }) {
   const [v, setV] = useState(reduce ? to : 0);
   useEffect(() => {
     if (reduce) { setV(to); return; }
-    const c = animate(0, to, { duration: 1.2, ease: [0.16, 1, 0.3, 1], onUpdate: x => setV(Math.round(x)) });
+    const c = animate(0, to, { duration: 1.3, ease: [0.16, 1, 0.3, 1], onUpdate: x => setV(Math.round(x)) });
     return () => c.stop();
   }, [to, reduce]);
   return <>{v}</>;
+}
+
+function MagneticButton({ href, children, className = 'btn' }) {
+  const x = useMotionValue(0), y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 220, damping: 16 }), sy = useSpring(y, { stiffness: 220, damping: 16 });
+  const onMove = e => {
+    const r = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - (r.left + r.width / 2)) * 0.22); y.set((e.clientY - (r.top + r.height / 2)) * 0.3);
+  };
+  const off = () => { x.set(0); y.set(0); };
+  return (
+    <motion.a className={className} href={href} style={{ x: sx, y: sy }} onPointerMove={onMove} onPointerLeave={off} whileTap={{ scale: 0.96 }}>
+      {children}
+    </motion.a>
+  );
 }
 
 /* ---------- header ---------- */
 function Header() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
+  const [solid, setSolid] = useState(false);
   const last = useRef(0);
   useMotionValueEvent(scrollY, 'change', v => {
-    setHidden(v > last.current && v > 240);
+    setHidden(v > last.current && v > 260);
+    setSolid(v > 80);
     last.current = v;
   });
   return (
-    <motion.header className="top" animate={{ y: hidden ? '-100%' : 0 }} transition={{ duration: 0.35, ease: EASE }}>
+    <motion.header className={'top' + (solid ? ' is-solid' : '')} animate={{ y: hidden ? '-100%' : 0 }} transition={{ duration: 0.35, ease: EASE }}>
       <a className="wordmark" href="#top">T &amp; T Engineering</a>
       <nav aria-label="Main">
         <a href="#machines">Machines</a>
@@ -70,66 +88,47 @@ function Header() {
 }
 
 /* ---------- hero ---------- */
-const heroStart = typeof performance !== 'undefined' ? performance.now() : 0;
-const CYCLE = { cut: 5.4, hold: 0.7, bend: 2.6, rest: 1.2 };
-function heroDrive() {
-  const total = CYCLE.cut + CYCLE.hold + CYCLE.bend + CYCLE.rest;
-  const t = (((performance.now() - heroStart) / 1000) - 0.4 + total) % total;
-  if (t < CYCLE.cut + CYCLE.hold) return { mode: 'laser', p: ease(clamp(t / CYCLE.cut)) * 0.985 + (t >= CYCLE.cut ? 0.015 : 0), live: true };
-  const b = t - CYCLE.cut - CYCLE.hold;
-  return { mode: 'brake', p: b < CYCLE.bend ? ease(clamp(b / (CYCLE.bend * 0.7))) : 1 - ease(clamp((b - CYCLE.bend) / CYCLE.rest)) };
-}
-
 function Letters({ text, delay }) {
   return (
     <span className="w mask" aria-hidden="true">
       {[...text].map((ch, i) => (
-        <motion.span className="mw" key={i} initial={{ y: '112%' }} animate={{ y: 0 }} transition={{ duration: 0.95, ease: EASE, delay: delay + i * 0.07 }}>{ch}</motion.span>
+        <motion.span className="mw" key={i} initial={{ y: '112%' }} animate={{ y: 0 }} transition={{ duration: 1, ease: EASE, delay: delay + i * 0.08 }}>{ch}</motion.span>
       ))}
     </span>
   );
 }
 
-function MagneticButton({ href, children }) {
-  const x = useMotionValue(0), y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 220, damping: 16 }), sy = useSpring(y, { stiffness: 220, damping: 16 });
-  const onMove = e => {
-    const r = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - (r.left + r.width / 2)) * 0.22); y.set((e.clientY - (r.top + r.height / 2)) * 0.3);
-  };
-  const off = () => { x.set(0); y.set(0); };
-  return (
-    <motion.a className="btn" href={href} style={{ x: sx, y: sy }} onPointerMove={onMove} onPointerLeave={off} whileTap={{ scale: 0.96 }}>
-      {children}
-    </motion.a>
-  );
-}
-
 function Hero() {
   const ref = useRef(null);
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const yA = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const yB = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const drive = useCallback(() => (reduce ? { mode: 'laser', p: 0.72, live: false } : heroDrive()), [reduce]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   return (
     <section className="hero" ref={ref}>
-      <h1 className="sentence" aria-label="Cut and bend. Laser cutting and press brake bending.">
-        <motion.span className="wrap" style={{ y: yA }}><Letters text="Cut" delay={0.15} /></motion.span>
-        <motion.span className="slot" aria-hidden="true"
-          initial={{ clipPath: 'inset(0 100% 0 0)' }} animate={{ clipPath: 'inset(0 0% 0 0)' }} transition={{ duration: 1.15, ease: [0.7, 0, 0.2, 1], delay: 0.35 }}>
-          <motion.div className="slot-in" initial={{ scale: 1.14 }} animate={{ scale: 1 }} transition={{ duration: 1.6, ease: EASE, delay: 0.35 }}>
-            <Scene id="hero" drive={drive} label="" />
-          </motion.div>
-        </motion.span>
-        <motion.span className="wrap" style={{ y: yB }}><Letters text="bend." delay={0.5} /></motion.span>
-      </h1>
-      <motion.div className="hero-action" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 1.3 }}>
-        <MagneticButton href="#quote">Get a quote</MagneticButton>
+      <motion.div className="hero-media" style={{ scale }} initial={{ clipPath: 'inset(0 0 100% 0)' }} animate={{ clipPath: 'inset(0 0 0% 0)' }} transition={{ duration: 1.3, ease: [0.7, 0, 0.2, 1] }}>
+        <MediaFrame media={MEDIA.hero} cut />
       </motion.div>
-      <motion.p className="hero-sub" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 1.45 }}>
-        A 6 kW laser and a 150 ton press brake, with CNC punching and full fabrication around them. Lansdowne, Cape Town. Since 2001.
-      </motion.p>
+      <div className="hero-scrim" />
+      <motion.div className="hero-inner" style={{ y: textY, opacity: fade }}>
+        <h1 className="sentence" aria-label="Cut and bend. Laser cutting and press brake bending.">
+          <span className="line"><Letters text="Cut" delay={0.5} /></span>
+          <span className="line"><Letters text="bend." delay={0.75} /></span>
+        </h1>
+        <div className="hero-row">
+          <motion.p className="hero-sub" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 1.5 }}>
+            Laser cutting and press brake bending, with CNC punching and full fabrication. Lansdowne, Cape Town. Since 2001.
+          </motion.p>
+          <motion.div className="hero-specs" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 1.65 }}>
+            <p><b>6 kW</b><span>JFY laser</span></p>
+            <p><b>150 ton</b><span>JFY press brake</span></p>
+            <p><b>3 m</b><span>Bending length</span></p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 1.8 }}>
+            <MagneticButton href="#quote">Get a quote</MagneticButton>
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 }
@@ -139,7 +138,7 @@ const JOBS = ['Laser cutting', 'Press brake bending', 'CNC punching', 'Welding',
 function Marquee() {
   const set = JOBS.map(j => (<span className="mq-item" key={j}>{j}<i aria-hidden="true" /></span>));
   return (
-    <div className="marquee" aria-label={JOBS.join(', ')}>
+    <div className="marquee" aria-hidden="true">
       <motion.div className="mq-track" aria-hidden="true" animate={{ x: ['0%', '-50%'] }} transition={{ duration: 40, ease: 'linear', repeat: Infinity }}>
         <div className="mq-set">{set}</div><div className="mq-set">{set}</div>
       </motion.div>
@@ -147,7 +146,24 @@ function Marquee() {
   );
 }
 
-/* ---------- machines: scroll runs the laser, then the press brake ---------- */
+/* ---------- statement ---------- */
+function Statement() {
+  return (
+    <section className="statement-section" id="about" aria-labelledby="about-h">
+      <h2 className="sr" id="about-h">About T &amp; T Engineering</h2>
+      <Reveal as="p" className="statement">
+        <b>Errol Jeftha</b> started this workshop in <b>2001</b>, on <b>30&nbsp;years</b> of trade. A <b>6&nbsp;kW</b> laser and a <b>150&nbsp;ton</b> press brake now turn a drawing into a finished part.
+      </Reveal>
+      <Reveal className="facts" delay={0.1}>
+        <p>6 Windsor Road, Lansdowne,<br />Cape Town 7780</p>
+        <p>Bring a drawing, a sample or a broken part. We tell you what it will cost and how long it will take.</p>
+        <p><a href="tel:+27216972525">{PHONE}</a></p>
+      </Reveal>
+    </section>
+  );
+}
+
+/* ---------- machines: full-bleed footage, scroll swaps laser to press brake ---------- */
 const CHAPTERS = {
   laser: {
     h: 'Cut from the drawing.',
@@ -156,7 +172,7 @@ const CHAPTERS = {
   },
   brake: {
     h: 'Folded to the angle.',
-    p: 'Our 150 ton JFY press brake pushes the flat part into the die and folds it to the angle on your drawing, up to 3 metres long in one stroke.',
+    p: 'Our 150 ton JFY press brake folds the flat part to the angle on your drawing, up to 3 metres long in one stroke.',
     specs: [{ n: 150, u: ' ton', l: 'Press force' }, { n: 3, u: ' m', l: 'Bending length' }]
   }
 };
@@ -168,32 +184,28 @@ function Machines() {
   const sp = useSpring(scrollYProgress, { stiffness: 140, damping: 32, mass: 0.3 });
   const [chap, setChap] = useState('laser');
   useMotionValueEvent(sp, 'change', v => { if (!reduce) setChap(v < 0.5 ? 'laser' : 'brake'); });
-  const drive = useCallback(() => {
-    const v = reduce ? (chap === 'laser' ? 0.46 : 1) : sp.get();
-    return v < 0.5 ? { mode: 'laser', p: clamp(v / 0.44), live: !reduce } : { mode: 'brake', p: ease(clamp((v - 0.56) / 0.38)) };
-  }, [reduce, chap, sp]);
+  const brakeOpacity = useTransform(sp, [0.42, 0.58], [0, 1]);
+  const laserScale = useTransform(sp, [0, 0.5], [1.02, 1.14]);
+  const brakeScale = useTransform(sp, [0.5, 1], [1.14, 1.02]);
   const go = key => {
     if (reduce) { setChap(key); return; }
     const el = ref.current, span = el.offsetHeight - window.innerHeight, top = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: top + span * (key === 'brake' ? 0.98 : 0.02), behavior: 'smooth' });
+    const y = top + span * (key === 'brake' ? 0.98 : 0.02);
+    if (lenis) lenis.scrollTo(y, { duration: 1.4 }); else window.scrollTo({ top: y, behavior: 'smooth' });
   };
   const c = CHAPTERS[chap];
   return (
     <section className="machines" id="machines" ref={ref} aria-labelledby="mach-h">
       <div className="stage">
+        <motion.div className="layer" style={{ scale: reduce ? 1 : laserScale }}><MediaFrame media={MEDIA.laser} cut /></motion.div>
+        <motion.div className="layer" style={{ opacity: reduce ? (chap === 'brake' ? 1 : 0) : brakeOpacity, scale: reduce ? 1 : brakeScale }}><MediaFrame media={MEDIA.brake} /></motion.div>
+        <div className="stage-scrim" />
         <div className="stage-text">
           <AnimatePresence mode="wait">
-            <motion.h2 id="mach-h" key={chap} initial={{ y: 36, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -36, opacity: 0 }} transition={{ duration: 0.38, ease: EASE }}>
+            <motion.h2 id="mach-h" key={chap} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -40, opacity: 0 }} transition={{ duration: 0.4, ease: EASE }}>
               {c.h}
             </motion.h2>
           </AnimatePresence>
-          <div className="chapters" role="group" aria-label="Choose a machine">
-            {Object.keys(CHAPTERS).map(k => (
-              <motion.button type="button" key={k} className={'chap' + (chap === k ? ' is-on' : '')} onClick={() => go(k)} whileTap={{ scale: 0.95 }} whileHover={{ y: -2 }}>
-                {k === 'laser' ? 'Laser cutting' : 'Press brake'}
-              </motion.button>
-            ))}
-          </div>
           <AnimatePresence mode="wait">
             <motion.div key={chap + 'b'} className="stage-body" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.4, ease: EASE, delay: 0.08 }}>
               <p className="cap">{c.p}</p>
@@ -204,64 +216,32 @@ function Machines() {
               </dl>
             </motion.div>
           </AnimatePresence>
-          <p className="note">Scroll to run the machines. Illustration of the process.</p>
-        </div>
-        <div className="frame">
-          <Scene id="stage" drive={drive} label="Animation of a 6 kW laser cutting a flat part, then a 150 ton press brake folding it" />
+          <div className="chapters" role="group" aria-label="Choose a machine">
+            {Object.keys(CHAPTERS).map(k => (
+              <motion.button type="button" key={k} className={'chap' + (chap === k ? ' is-on' : '')} onClick={() => go(k)} whileTap={{ scale: 0.95 }} whileHover={{ y: -2 }}>
+                {k === 'laser' ? 'Laser cutting' : 'Press brake'}
+              </motion.button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-/* ---------- stats: figures sit inside the sentence ---------- */
-function Stats() {
-  return (
-    <section className="stats" aria-labelledby="stats-h">
-      <h2 className="sr" id="stats-h">In numbers</h2>
-      <Reveal as="p" className="statement">
-        Built since <b>2001</b> on <b>30&nbsp;years</b> of trade. A <b>6&nbsp;kW</b> laser and a <b>150&nbsp;ton</b> press brake now turn a drawing into a finished part.
-      </Reveal>
-    </section>
-  );
-}
-
-/* ---------- about ---------- */
-function About() {
-  return (
-    <section className="about" id="about">
-      <Reveal className="about-facts">
-        <p>Lansdowne,<br />Cape Town</p>
-        <p>Since 2001</p>
-        <p><a href="tel:+27216972525">{PHONE}</a></p>
-      </Reveal>
-      <div className="about-body">
-        <Reveal as="p" className="lead" delay={0.08}>
-          <span className="dropcap"><Art name="still" /></span>
-          <strong>Errol Jeftha</strong> started T &amp; T Engineering in 2001. We build copper pot stills, repair condensers and columns, and make the Supra meat machines.
-        </Reveal>
-        <Reveal as="p" className="body" delay={0.16}>
-          Bring a drawing, a sample or a broken part. We tell you what it will cost and how long it will take.
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 
 /* ---------- process: a horizontal strip driven by vertical scroll ---------- */
 const STEPS = [
   { t: 'Send it.', d: 'Email or WhatsApp a drawing, a sample or photos of the broken part.', tone: 'p-accent' },
   { t: 'Quote it.', d: 'We tell you the price and how long it will take before any metal is cut.', tone: 'p-light' },
-  { t: 'Cut it.', d: 'The 6 kW laser cuts your flat parts from the drawing file.', tone: 'p-dark', art: 'laser' },
-  { t: 'Bend it.', d: 'The 150 ton press brake folds them to the angle, up to 3 metres long.', tone: 'p-light', art: 'brake' },
+  { t: 'Cut it.', d: 'The 6 kW laser cuts your flat parts from the drawing file.', tone: 'p-dark' },
+  { t: 'Bend it.', d: 'The 150 ton press brake folds them to the angle, up to 3 metres long.', tone: 'p-light' },
   { t: 'Collect it.', d: 'Finished parts, checked against your drawing, ready at 6 Windsor Road.', tone: 'p-accent' }
 ];
 function Process() {
   const ref = useRef(null);
+  const track = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
   const sp = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
-  const track = useRef(null);
   const [shift, setShift] = useState(1);
   useEffect(() => {
     const m = () => setShift(Math.max(1, track.current.scrollWidth - window.innerWidth));
@@ -274,11 +254,7 @@ function Process() {
         <h2 className="sr" id="proc-h">How a job moves through the shop</h2>
         <motion.ol className="proc-track" ref={track} style={{ x }}>
           {STEPS.map(s => (
-            <li className={'proc-panel ' + s.tone} key={s.t}>
-              <h3>{s.t}</h3>
-              <p>{s.d}</p>
-              {s.art && <div className="proc-art"><Art name={s.art} bg={s.tone === 'p-dark' ? '#232b32' : '#e9eaeb'} /></div>}
-            </li>
+            <li className={'proc-panel ' + s.tone} key={s.t}><h3>{s.t}</h3><p>{s.d}</p></li>
           ))}
         </motion.ol>
       </div>
@@ -286,31 +262,48 @@ function Process() {
   );
 }
 
-/* ---------- work ---------- */
+/* ---------- work: typographic rows with a sweep on hover ---------- */
 const ROWS = [
-  { t: 'Laser cutting', d: 'Flat parts cut from your drawing file or a sample on our 6 kW JFY laser. Brackets, plates, covers, panels and one-off shapes.', a: 'laser', c: 'a' },
-  { t: 'Press brake bending', d: 'Sheet folded to the angle on your drawing on a 150 ton JFY press brake. Bends up to 3 metres long. Trays, channels, brackets and enclosures.', a: 'brake', c: 'b' },
-  { t: 'CNC punching', d: 'Hole patterns and shapes punched quickly and repeated exactly. A good fit when you need many of the same part.', a: 'punch', c: 'c' },
-  { t: 'Copper pot stills', d: 'New stills built for distilleries, and repairs when a condenser, column or pot needs work.', a: 'still', c: 'd' },
-  { t: 'Supra meat machines', d: 'Bandsaws, mincers, mixers and sausage fillers. Spares for the full Supra range, plus repairs on other makes.', a: 'mincer', c: 'e' }
+  { t: 'Laser cutting', d: 'Flat parts cut from your drawing file or a sample on our 6 kW JFY laser. Brackets, plates, covers, panels and one-off shapes.', tag: '6 kW JFY laser' },
+  { t: 'Press brake bending', d: 'Sheet folded to the angle on your drawing. Trays, channels, brackets and enclosures, up to 3 metres long.', tag: '150 ton JFY press brake' },
+  { t: 'CNC punching', d: 'Hole patterns and shapes punched quickly and repeated exactly. A good fit when you need many of the same part.', tag: 'CNC punch' },
+  { t: 'Copper pot stills', d: 'New stills built for distilleries, and repairs when a condenser, column or pot needs work.', tag: 'Distilleries' },
+  { t: 'Supra meat machines', d: 'Bandsaws, mincers, mixers and sausage fillers. Spares for the full Supra range, plus repairs on other makes.', tag: 'Meat industry' },
+  { t: 'Fabrication', d: 'Rolling, welding, turning, milling and general fabrication to finish the job under one roof.', tag: 'One workshop' }
 ];
 
 function Work() {
   return (
     <section className="work" id="work" aria-labelledby="work-h">
       <Words as="h2" id="work-h" className="work-head" text="One workshop, many jobs." />
-      {ROWS.map(r => (
-        <motion.article className="row" key={r.t} initial="rest" whileHover="hover" whileInView="in" viewport={{ once: true, margin: '0px 0px -12% 0px' }}>
-          <motion.div className="row-text" variants={{ rest: { opacity: 0, y: 30 }, in: { opacity: 1, y: 0 } }} transition={{ duration: 0.8, ease: EASE }}>
-            <h3>{r.t}</h3>
-            <p>{r.d}</p>
-          </motion.div>
-          <motion.div className={'art art-' + r.c} variants={{ rest: { opacity: 0, y: 50 }, in: { opacity: 1, y: 0 } }} transition={{ duration: 0.9, ease: EASE, delay: 0.12 }}>
-            <motion.div whileHover={{ y: -8, scale: 1.015 }} transition={{ duration: 0.3, ease: EASE }}><Art name={r.a} bg="#e9eaeb" /></motion.div>
-          </motion.div>
-        </motion.article>
-      ))}
-      <Reveal as="p" className="work-more">Also rolling, welding, turning, milling and general fabrication.</Reveal>
+      <ul className="rows">
+        {ROWS.map(r => (
+          <motion.li className="row" key={r.t} initial="rest" whileHover="hover" whileFocus="hover" animate="rest" tabIndex={0}>
+            <motion.span className="sweep" variants={{ rest: { scaleY: 0 }, hover: { scaleY: 1 } }} transition={{ duration: 0.45, ease: EASE }} />
+            <Reveal as="h3" className="row-title">{r.t}</Reveal>
+            <Reveal as="p" className="row-desc" delay={0.08}>{r.d}</Reveal>
+          </motion.li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/* ---------- shop floor gallery: shows only when real photos exist ---------- */
+function Gallery() {
+  const [ok, setOk] = useState({});
+  const [have, setHave] = useState(new Set());
+  useEffect(() => { loadManifest().then(setHave); }, []);
+  const any = Object.values(ok).some(Boolean);
+  return (
+    <section className="gallery" aria-label="Inside the workshop" hidden={!any}>
+      <div className="gal-grid">
+        {MEDIA.shop.filter(s => have.has(s)).map((src, i) => (
+          <Reveal className={'gal-item g' + (i + 1)} key={src} delay={i * 0.08} y={40} hidden={!ok[src]}>
+            <img src={src} alt="Inside the T & T Engineering workshop" loading="eager" onLoad={() => setOk(o => ({ ...o, [src]: true }))} onError={() => setOk(o => ({ ...o, [src]: false }))} />
+          </Reveal>
+        ))}
+      </div>
     </section>
   );
 }
@@ -321,7 +314,7 @@ function Quote() {
   const [f, setF] = useState({ name: '', phone: '', need: NEEDS[2], material: '', qty: '', notes: '' });
   const set = k => e => setF({ ...f, [k]: e.target.value });
   const body = [
-    `Hi T & T Engineering, I would like a quote.`, '',
+    'Hi T & T Engineering, I would like a quote.', '',
     `Name: ${f.name}`, `Phone: ${f.phone}`, `Job: ${f.need}`,
     `Material and thickness: ${f.material}`, `Quantity: ${f.qty}`, `Notes: ${f.notes}`, '',
     'I will send my drawing or sample photos.'
@@ -384,17 +377,26 @@ function Footer() {
 }
 
 export default function App() {
+  const reduce = useReducedMotion();
+  useEffect(() => {
+    if (reduce) return;
+    lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    let raf = 0;
+    const tick = t => { lenis.raf(t); raf = requestAnimationFrame(tick); };
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); lenis.destroy(); lenis = null; };
+  }, [reduce]);
   return (
     <>
       <Header />
       <main id="top">
         <Hero />
         <Marquee />
+        <Statement />
         <Machines />
-        <Stats />
-        <About />
         <Process />
         <Work />
+        <Gallery />
         <Quote />
       </main>
       <Footer />
