@@ -1,6 +1,6 @@
 import json, itertools, re
 SID="1v1Detux-M4oUkbdx82Oa1KXDasSfH7S1AG3dkzw28gk"; CONN=5535950
-CAL="742ce44765f86d99b594b724e348e02648375a53eb0d973430e1ec8faaedd738@group.calendar.google.com"
+CAL="ragstorichest69@gmail.com"  # Nita's own calendar (was stand-in 742ce447…@group on Theo's account)
 M="1.entry[].changes[].value.messages[]"
 import os
 _creds_path="../../private/r2r-meta-creds.json"
