@@ -25,6 +25,7 @@ items.filter(e => e && e.status !== "cancelled" && e.start && e.end).forEach(e =
     title.split(/&|,|\band\b/i).map(s => s.trim()).filter(Boolean).forEach(j => { jobs++; used += heavy(j) ? 2 : 1; });
   } else if (e.start.dateTime) {
     if (sastDay(e.start.dateTime) !== day) return;
+    if (/^(nita\s+)?off\b/i.test(title)) { dayOff = true; return; }
     const svc = e.extendedProperties && e.extendedProperties.private && e.extendedProperties.private.service;
     jobs++; used += svc ? (POINTS[svc] || 1) : (heavy(title) ? 2 : 1);
   }

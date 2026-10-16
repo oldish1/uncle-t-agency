@@ -125,3 +125,4 @@
 - 2026-10-16 19:45 · theo · rags-to-riches/decision · Booking alerts to Nita parked until she pays; calendar move into her Google account is now the priority so she sees bookings
 - 2026-10-16 19:45 · theo · rags-to-riches/note · Deleted Theo's test booking (Sat 17 Oct 08:00) from stand-in calendar so it doesn't block a real slot; no real client bookings yet
 - 2026-10-16 20:38 · theo · rags-to-riches/build · Luna pointed at Nita's own calendar (ragstorichest69@gmail.com); blueprint rebuilt, held until Theo shares the calendar with adamst70. Leon booking (Sat 17 Oct 08:00, Unit 722) sitting in stand-in calendar, to copy across
+- 2026-10-16 21:10 · theo · rags-to-riches/build · Nita's calendar (ragstorichest69@gmail.com, tz fixed to SAST) shared to adamst70 with edit rights; Luna blueprint points at it; timed "Off" entries now treated as day-off not a job (C.js + tests); Leon's Sat 17 Oct 08:00 booking copied into her calendar

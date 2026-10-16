@@ -32,6 +32,9 @@ a.equal(c([bot('svc_deep','2026-09-29T08:00:00+02:00')],'svc_basic').slot_full,t
 a.equal(c([bot('svc_basic','2026-09-29T08:00:00+02:00')],'svc_basic').slot_full,false);
 a.equal(c([bot('svc_basic','2026-09-28T22:30:00Z')],'svc_deep').slot_full,true);  // 00:30 SAST on the 29th counts
 a.equal(c([{status:'confirmed',summary:'615',start:{date:'2026-09-28'},end:{date:'2026-09-29'}}],'svc_deep').slot_full,false); // yesterday
+const tm=(t)=>({status:'confirmed',summary:t,start:{dateTime:'2026-09-29T08:30:00+02:00'},end:{dateTime:'2026-09-29T09:30:00+02:00'}});
+a.equal(c([tm('Off'),ad('117')],'svc_basic').slot_full,false); // her timed "Off" isn't a job
+a.equal(c([tm('2910'),ad('409')],'svc_basic').slot_full,true);  // timed job still counts
 let b2=run('B.js',{day_id:'day_2026-09-29',slot_id:'slot_1200',service_id:'svc_deep',now_iso:'2026-09-27T10:00:00Z'}); a.equal(b2.day_start,'2026-09-29T00:00:00+02:00');
 console.log('DAY CAPACITY TESTS PASS');
 }
