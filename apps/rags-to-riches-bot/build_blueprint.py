@@ -67,7 +67,7 @@ RET=[("ret_yes","Yes, same place"),("ret_no","No, different place")]
 BUILD_ROWS=[("bld_mouille","Mouille Point",""),("bld_seapoint","Sea Point",""),("bld_cbd","Cape Town CBD",""),("bld_other","Other","Somewhere else")]
 def body_list(text_json, button, sections_expr):
     return '{"messaging_product":"whatsapp","to":"{{3.wa_id}}","type":"interactive","interactive":{"type":"list","body":{"text":'+text_json+'},"action":{"button":'+J(button)+',"sections":'+sections_expr+'}}}'
-svc_body=body_buttons(J("Hi! 👋 Welcome to *Rags to Riches Cleaning*.\nWhat kind of clean do you need?"),SVC)
+svc_body=body_buttons(J("Hi! 👋 I'm *Luna*, the booking assistant for *Rags to Riches Cleaning*.\nWhat kind of clean do you need?"),SVC)
 def time_body(prefix):
     return body_buttons('"'+prefix+'What time should the team arrive on *{{4.`5`}}*?"',SLOT)
 CLEAR={str(k):"{{emptystring}}" for k in list(range(2,16))+[17]}
