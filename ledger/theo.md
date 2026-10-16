@@ -122,3 +122,5 @@
 - 2026-10-16 00:09 · theo · rags-to-riches/ship · LIVE on the real number: 'hi' to +27 77 382 8532 returned the service buttons (16 Oct 00:08). Left: WhatsApp profile photo (still shows the Uncle Ts 'U'), Nita's booking-alert template + payment card on her WhatsApp account, move calendar + sheet into ragstorichest69, clear test bookings, then website.
 - 2026-10-16 18:56 · theo · rags-to-riches/build · Bot named Luna: greeting now 'I'm Luna, the booking assistant for Rags to Riches Cleaning'; blueprint rebuilt, tests pass
 - 2026-10-16 19:30 · theo · rags-to-riches/ship · Luna greeting live on +27 77 382 8532 (Theo re-imported blueprint, 'hi' confirmed)
+- 2026-10-16 19:45 · theo · rags-to-riches/decision · Booking alerts to Nita parked until she pays; calendar move into her Google account is now the priority so she sees bookings
+- 2026-10-16 19:45 · theo · rags-to-riches/note · Deleted Theo's test booking (Sat 17 Oct 08:00) from stand-in calendar so it doesn't block a real slot; no real client bookings yet
