@@ -19,3 +19,4 @@ Static site (no build step). Open `index.html`, or drag this whole folder onto N
 - Do not claim the clip's details (TruDisk, 16 mm mild steel) for TNT's machine. The site only states what Theo confirmed: 6 kW JFY laser, 150 ton 3 m JFY press brake.
 - Hero plays the laser clip. The pinned machines section scrubs the laser then the press brake with scroll. Reduced-motion users get posters.
 - Type: Inter 500, small and tight. Check at 390 and 1440 px before shipping.
+- 17 Oct update: clips contain no people. Laser = cutting with sparks (9.5 to 19.5 s of the source). Brake = dark machine close-ups crossfading into a finished folded part (the source has no hands-free bend shot; the real bend only appears with hands). The folded sample part carries a small JFY etch.
