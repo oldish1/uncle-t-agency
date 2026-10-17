@@ -65,7 +65,7 @@ If she asks "so it's a chatbot?": "Sort of, but she talks like a real person, no
 
 ## Price, only once she's asked or you've shown the demo
 
-"R1,499 once-off to set it up, R499 a month after that, hosting and everything included. No contract, cancel anytime. We're live in about four days."
+"R1,499 once-off to set it up, then R699 a month (R999 if you want the website too, hosting included). No contract, cancel anytime. We're live in about four days."
 
 Anchor it if she flinches: "A missed booking probably costs you more than that in a week. This pays for itself the first weekend it catches one."
 
