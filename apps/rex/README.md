@@ -60,3 +60,13 @@ Scenario 7638753 now runs on a fresh webhook ("Rex Meta In"). The old webhook, w
 Flow: webhook, router. Route 1 answers Meta's one-time handshake (returns `hub.challenge` when the verify token matches). Route 2 handles real messages: only from Theo's number, Claude API reply, WhatsApp send, Sheets log. Meta's field paths are `entry[1].changes[1].value.messages[1]`.
 
 Still to paste in Make (Theo only): Anthropic API key (module 2), Rex's Phone Number ID and permanent access token (module 3), and Theo's WhatsApp number in the module 2 filter.
+
+## Update 17 Oct 2026: Rex is live on Meta's test number
+
+Rex answers Theo on WhatsApp from Meta's free test number (+1 555 139 8942, Phone Number ID 1019478207918336) in the Uncle T Agents app and its own isolated test WhatsApp account. Key points learned:
+
+- The system user (Rexbot, Employee) needs BOTH the WhatsApp account and the Messaging account assigned, or sends fail with `(#10) Viewer cannot access the provided Paid Message Account`.
+- Make's editor saves max_tokens as text, which Anthropic rejects. Edit the scenario through the API, not the editor.
+- The Rags To Riches app was subscribed to the test account (Luna answered); removed via Graph API DELETE subscribed_apps.
+- Rex only answers Theo's number. Keys live only in Make.
+- Not built yet: delegation to other agents, the Sheets log, the real SIM number (blocked on Meta business verification).
