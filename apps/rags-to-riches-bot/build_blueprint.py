@@ -155,10 +155,13 @@ B=[dp, router([
   [wa("Send day list",body_list(J("Which day suits you?"),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
   [upd(dict(CLEAR,**{"1":"DAY","2":"{{3.tap_id}}"}),"Session: DAY")]])]
 
+wl=withfilter(code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7","mode":"weeks"},"Week picker"),"Later date",[[tap_is("day_later")]])
+wd=withfilter(code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7","week_id":"{{3.tap_id}}"},"Days in week"),"Week tapped",[[tap_has("day_wk_")]])
 C=router([
   [router([[wa("Send time buttons",body_buttons('"What time should the team arrive on *{{3.tap_title}}*?\\n\\n_Guests usually check out at 10 or 11 and new guests arrive at 15:00._"',SLOT))],
-           [upd({"1":"TIME","4":"{{3.tap_id}}","5":"{{3.tap_title}}"},"Session: TIME")]],name="Normal day",conds=[[cond("{{3.tap_id}}","text:notequal","day_later")]])],
-  [router([[wa("Send later-date note",body_static("For dates more than a week away, please message Nita directly and she'll book you in 🙂"))]],name="Later date",conds=[[tap_is("day_later")]])]],
+           [upd({"1":"TIME","4":"{{3.tap_id}}","5":"{{3.tap_title}}"},"Session: TIME")]],name="Normal day",conds=[[cond("{{3.tap_id}}","text:notequal","day_later"),cond("{{3.tap_id}}","text:notcontain","day_wk_")]])],
+  [wl, wa("Send week list",body_list(J("Which week suits you?"),"Choose a week","{{%d.result.sections_json}}"%wl["id"])), upd({"1":"DAY"},"Session: DAY (weeks)")],
+  [wd, wa("Send days in week",body_list('"Which day in *{{3.tap_title}}*?"',"Choose a day","{{%d.result.sections_json}}"%wd["id"])), upd({"1":"DAY"},"Session: DAY (week days)")]],
   name="C: Day tapped",conds=[[tap_has("day_"),step_is("DAY")],[tap_has("day_"),step_is("TIME")]])
 
 sb=code("B.js",{"day_id":s(4),"slot_id":"{{3.tap_id}}","service_id":s(2)},"Date + duration builder")

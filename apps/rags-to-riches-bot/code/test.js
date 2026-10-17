@@ -13,6 +13,15 @@ let m=JSON.parse(f.confirm_json); console.log(m); a(m.includes('R1,500 + R60'));
 let fb=JSON.parse(run('F.js',{service_id:'svc_basic',service_label:'Basic Clean',client_name:'Joy',property_type:'House',unit_number:'3 Main Rd',access_code:'55',when_label:'x',start_iso:'2026-10-01T08:00:00+02:00',bank_details:'FNB 123'}).confirm_json); a(fb.includes('3 Main Rd')); a(!fb.includes('Unit')); a(!fb.includes('FNB'));
 a.equal(JSON.parse(f.alert_params_json).length,5);
 let fs2=JSON.parse(run('F.js',{service_id:'svc_basic',service_label:'Basic Clean',client_name:'Joy',property_type:'Apartment',unit_number:'117',access_code:'NONE',when_label:'x',start_iso:'2026-10-04T08:00:00+02:00'}).confirm_json); a(fs2.includes('R420 to R520 + R50 Sunday rate'));
+{ // Later date -> weeks -> days (Kobie books weeks ahead)
+const now='2026-10-17T08:00:00Z'; // Sat 10:00 SAST
+let w=JSON.parse(run('A.js',{now_iso:now,mode:'weeks'}).sections_json)[0].rows;
+a.equal(w.length,8); a.equal(w[0].id,'day_wk_2026-10-25'); a.equal(w[0].title,'25 Oct – 31 Oct'); a(w.every(r=>r.title.length<=24));
+let d=JSON.parse(run('A.js',{now_iso:now,week_id:'day_wk_2026-10-25'}).sections_json)[0].rows;
+a.equal(d[0].id,'day_2026-10-25'); a(d.some(r=>r.id=='day_2026-10-30')); a.equal(d[d.length-1].id,'day_later'); a(d.length<=10);
+let m=JSON.parse(run('A.js',{now_iso:now}).sections_json)[0].rows; a.equal(m[m.length-1].id,'day_later'); a.equal(m[m.length-2].id,'day_2026-10-24');
+let b=run('B.js',{day_id:'day_2026-10-30',slot_id:'slot_0800',service_id:'svc_basic',now_iso:now}); a.equal(b.ok,true);
+}
 console.log('ALL PASS');
 // Nita's day capacity (28 Sept answers)
 {
