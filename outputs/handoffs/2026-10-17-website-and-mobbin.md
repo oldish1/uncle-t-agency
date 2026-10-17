@@ -63,3 +63,13 @@ Takeaway: don't ask Claude to invent a design. Feed it proven references first.
 - Meta business "Uncle Ts Automation" is capped at 2 phone numbers until verified, so Rex's SIM cannot be added yet.
 - The Rex webhook URL and verify token live only in Make. Never write them in the repo (it is public).
 - Theo is moving house and works from his phone and an old laptop. Keep steps short and one at a time.
+
+## Update (later 17 Oct): second job and new facts
+
+- **Theo has already moved house.** The old address warning no longer applies, but ask which address he is comfortable showing publicly. Default: show only "Cape Town" plus WhatsApp on the site, and give the full address only in Meta's form. Not sure whether Meta insists on a street address on the site; test.
+- **Second build, same session if time allows: a mock-up demo website for Theo's day-job engineering company** (boilermaker/sheet metal, laser and bending machines). Theo has 2 short clips (laser cutter, bending machine). Build it with the web-builder skill.
+  - Rules: mock-up only. Mark every invented line as placeholder in the files. No invented ISO or other certifications, client names, safety records or years in business. Write real descriptions of the services (laser cutting, bending, fabrication).
+  - Video: ask Theo to attach the clips in chat. Compress with ffmpeg to 8 to 15 second loops, MP4 H.264, no audio, 720p to 1080p, under 8 MB each, plus a poster image. Lazy-load and keep Lighthouse mobile 90+.
+  - Permission: the footage and company name belong to his employer. Get the boss's OK before anything is public or sent around. If the boss likes it, he is a paying prospect (R1,499 once-off + R499/month).
+- **Order:** agency site (uncletsautomation.co.za, needed for Meta verification) first, works demo second.
+- Mobbin is NOT used (paid, Theo declined). Use the free Firecrawl screenshot method in the web-builder skill.
