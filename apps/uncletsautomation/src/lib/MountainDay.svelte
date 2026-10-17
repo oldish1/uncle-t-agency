@@ -1,6 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import { gsap, reduced } from '$lib/motion.js';
+  import { dayPhotos } from '$lib/content.js';
+  const hasPhotos = dayPhotos.length > 0;
 
   const ridge = [[0, 0.8], [0.06, 0.78], [0.12, 0.79], [0.18, 0.74], [0.23, 0.66], [0.27, 0.62], [0.31, 0.66], [0.35, 0.7], [0.4, 0.69], [0.45, 0.64], [0.5, 0.56], [0.545, 0.5], [0.57, 0.485], [0.8, 0.485], [0.83, 0.5], [0.86, 0.55], [0.9, 0.62], [0.95, 0.68], [1, 0.7]];
   const W = 1440, H = 800;
@@ -29,9 +31,10 @@
     [0.7, '9:05 pm', 'Thursday 11:30 is yours. Confirmed, with a reminder on Wednesday.']
   ];
 
-  let sec, topStop, botStop, sun, moon, starsEl, lightsEl, layerFar, layerNear, clock, farEl, midEl, nearEl;
+  let sec, grade, topStop, botStop, sun, moon, starsEl, lightsEl, layerFar, layerNear, clock, farEl, midEl, nearEl;
   const els = [];
   let msgEls = [];
+  let photoEls = [];
 
   function render(v) {
     const L = (a) => gsap.utils.interpolate(a, v);
@@ -54,11 +57,22 @@
     layerNear.style.transform = `translate3d(${(v * 50).toFixed(1)}px,0,0)`;
     const mins = Math.round(6 * 60 + 10 + v * (22 * 60 - 6 * 60 - 10));
     clock.textContent = String(Math.floor(mins / 60)).padStart(2, '0') + ':' + String(mins % 60).padStart(2, '0');
+    if (hasPhotos) {
+      const n = dayPhotos.length;
+      photoEls.forEach((el, i) => {
+        const o = n === 1 ? 1 : Math.max(0, 1 - Math.abs(v * (n - 1) - i));
+        el.style.opacity = o;
+        el.style.transform = `scale(${(1.08 - v * 0.08).toFixed(3)}) translate3d(${(-v * 18).toFixed(1)}px,0,0)`;
+      });
+      grade.style.background = L(['rgba(255,150,90,0.22)', 'rgba(0,0,0,0)', 'rgba(255,110,60,0.30)', 'rgba(6,12,40,0.62)']);
+      starsEl.style.opacity = n === 1 ? night : 0;
+    }
     msgEls.forEach((el, i) => { const at = msgs[i][0]; el.classList.toggle('on', v >= at && v < at + 0.26); });
   }
 
   onMount(() => {
     msgEls = [...sec.querySelectorAll('.msg')];
+    photoEls = [...sec.querySelectorAll('.photo')];
     if (reduced()) { render(0.74); msgEls.forEach((m) => m.classList.add('on')); return; }
     render(0);
     const proxy = { v: 0 };
@@ -73,23 +87,32 @@
 </script>
 
 <section class="day" bind:this={sec} aria-label="Lexi over a day in Cape Town">
-  <svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  {#if hasPhotos}
+    <div class="photos">
+      {#each dayPhotos as p, i}
+        <img class="photo" src={p.src} alt={i === 0 ? p.alt : ''} style="opacity:{i === 0 ? 1 : 0}" loading={i === 0 ? 'eager' : 'lazy'} />
+      {/each}
+      <div class="grade" bind:this={grade}></div>
+      <div class="scrim"></div>
+    </div>
+  {/if}
+  <svg class:off={hasPhotos} viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" bind:this={topStop} stop-color="#2b2f63" />
         <stop offset="1" bind:this={botStop} stop-color="#e9a27a" />
       </linearGradient>
     </defs>
-    <rect width={W} height={H} fill="url(#sky)" />
+    <rect class="sky" width={W} height={H} fill="url(#sky)" />
     <g bind:this={starsEl} style="opacity:0">
       {#each stars as [x, y, r]}<circle cx={x} cy={y} {r} fill="#f2f4f1" opacity="0.85" />{/each}
     </g>
-    <circle bind:this={sun} r="46" cx="150" cy="560" fill="#f8dcae" />
-    <g bind:this={moon} style="opacity:0"><circle r="34" fill="#eef0e8" /><circle r="30" cx="12" cy="-6" fill="#0a1226" opacity="0.28" /></g>
-    <g bind:this={layerFar}><path bind:this={farEl} d={far} fill="#0f4a3d" /></g>
-    <path bind:this={midEl} d={mtn} fill="#0a3b30" />
-    <g bind:this={layerNear}><path bind:this={nearEl} d={near} fill="#052a21" /></g>
-    <g bind:this={lightsEl} style="opacity:0">
+    <circle class="scn" bind:this={sun} r="46" cx="150" cy="560" fill="#f8dcae" />
+    <g class="scn" bind:this={moon} style="opacity:0"><circle r="34" fill="#eef0e8" /><circle r="30" cx="12" cy="-6" fill="#0a1226" opacity="0.28" /></g>
+    <g class="scn" bind:this={layerFar}><path bind:this={farEl} d={far} fill="#0f4a3d" /></g>
+    <path class="scn" bind:this={midEl} d={mtn} fill="#0a3b30" />
+    <g class="scn" bind:this={layerNear}><path bind:this={nearEl} d={near} fill="#052a21" /></g>
+    <g class="scn" bind:this={lightsEl} style="opacity:0">
       {#each lights as [x, y]}<circle cx={x} cy={y} r="2" fill="#ffd98a" />{/each}
     </g>
   </svg>
@@ -113,6 +136,12 @@
 <style>
   .day { position: relative; height: 100svh; overflow: hidden; color: #f5f7f4; background: #0a1226; }
   svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  svg.off { pointer-events: none; }
+  svg.off :global(.sky), svg.off :global(.scn) { display: none; }
+  .photos { position: absolute; inset: 0; overflow: hidden; background: #0a1226; }
+  .photo { position: absolute; inset: -2%; width: 104%; height: 104%; object-fit: cover; will-change: transform, opacity; }
+  .grade { position: absolute; inset: 0; }
+  .scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 8, 12, 0.55), rgba(4, 8, 12, 0.05) 60%), linear-gradient(0deg, rgba(4, 8, 12, 0.5), transparent 35%); }
   .over { position: absolute; inset: 0; padding: 110px var(--margin) 48px; display: flex; flex-direction: column; justify-content: space-between; max-width: 1360px; margin-inline: auto; }
   .top { display: flex; justify-content: space-between; gap: 32px; align-items: flex-start; }
   .top .h1 { max-width: 15ch; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35); }

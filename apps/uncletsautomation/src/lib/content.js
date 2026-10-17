@@ -87,3 +87,8 @@ export const stats = [
   ['4 days', 'From saying yes to being live.'],
   ['2 to 5 sec', 'Per reply in the live build.']
 ];
+
+/* Real Table Mountain photos for the Start view, ordered dawn to night.
+   One photo works (it gets tinted by the scroll), two to four look best.
+   Example: { src: '/day/dawn.webp', alt: 'Table Mountain at dawn from Parow' } */
+export const dayPhotos = [];
