@@ -33,7 +33,7 @@ Takeaway: don't ask Claude to invent a design. Feed it proven references first.
 
 **Gap:** if Theo has the full breakdown Nate promised (he commented MAP), ask him to paste it in the new session.
 
-## Mobbin MCP facts (from mobbin.com/mcp)
+## Mobbin MCP facts (from mobbin.com/mcp), NOT USED
 
 - Gives Claude access to 600,000+ real product screens, web and mobile.
 - **Needs a paid Mobbin plan (Pro or Team).** No API key. One-click install for Claude and other tools.
@@ -48,7 +48,7 @@ Takeaway: don't ask Claude to invent a design. Feed it proven references first.
 
 ## What to do next, in order
 
-1. Ask Theo whether Mobbin is paid and connected. If not, guide him through mobbin.com/mcp and confirm the tools show up in the session (search for mcp__mobbin tools).
+1. **Mobbin is dropped** (paid plan, Theo will not pay). The Web Builder now studies real award winners for free using Firecrawl screenshots (see step 2 of the web-builder skill). Tested today on Awwwards Sites of the Day and it works.
 2. Ask Theo for Nate's full breakdown if he has it.
 3. Run the web-builder skill for **Uncle Ts Automation** (the agency itself): brief, then Mobbin research (agency/SaaS landing pages, WhatsApp automation, local service sites), then build in `outputs/websites/uncletsautomation/`. Must show the business name, what it sells, Chales as proof, WhatsApp contact, contact email and address, privacy policy page. Keep it fast (Lighthouse 90+ on phone). Light background, dark text.
 4. Hosting and domain: uncletsautomation.co.za is registered at domains.co.za (R99/year) but has **no hosting pointed at it**. Hosting is about R109/month at the same host as Chante's site. Theo decides and buys. Also create an email on that domain.

@@ -23,7 +23,12 @@ Read `reference/research/2026-10-17-award-winning-websites.md` before the first 
 ## Process
 
 1. **Brief.** Business, suburb, owner's voice, 3 services, the one action they want, any photos/logo. Ask only for what is missing. Check `context/offer.md`: a site is R1,499 once-off, hosting and domain included in R499/month.
-2. **Study.** Firecrawl 3 winning sites in a similar niche and 3 local competitors. Note what to copy in craft and what to avoid. Save notes in `outputs/websites/<client>/research.md`.
+2. **Study (free, no paid tools).** Build a reference board from real winners, not from imagination. Pull full-page screenshots with Firecrawl and LOOK at them with the Read tool:
+   ```bash
+   curl -sS -X POST https://api.firecrawl.dev/v2/scrape -H 'Content-Type: application/json' \
+     -d '{"url":"<gallery or site url>","formats":[{"type":"screenshot","fullPage":false}]}'
+   ```
+   The response holds a screenshot URL; download it to the scratchpad and read it. Free galleries to study: awwwards.com (sites of the day), siteinspire.com, godly.website, land-book.com, dribbble.com, behance.net, plus 3 local competitors. Pick 5 to 8 references that fit the client's niche and mood. For each, write down in `outputs/websites/<client>/research.md`: the type pairing, colour palette, layout rhythm, imagery style, motion idea, and what to steal in craft (never copy code, text or images). Do NOT use Mobbin: it is a paid plan and not needed.
 3. **Direction.** Pick one art direction (type pairing, palette with one accent, image style). Light background and dark text by default (Theo's preference) unless the brand demands otherwise.
 4. **Build.** Single mobile-first HTML/CSS/JS in `outputs/websites/<client>/`. Semantic headings, schema.org LocalBusiness markup, suburb wording, Google Business and map link, WhatsApp click-to-chat button, FAQ block written so AI search can quote it. Images compressed, lazy-loaded, modern formats. No frameworks unless needed.
 5. **Imagery.** Use the client's real photos first. If none, generate with Higgsfield or Muapi and say so.
