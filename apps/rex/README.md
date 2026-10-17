@@ -52,3 +52,11 @@ If it's wired right, that WhatsApp number gets a reply from Rex within a few sec
 ## Where the numbers live
 
 Rex's business knowledge (pricing, clients, leads, stack) is baked into `system-prompt.md`, pulled from `context/business.md`, `context/lexi.md`, `context/offer.md`, and `context/numbers.md`. If any of those change — new client signs, pricing shifts, a lead converts — update `system-prompt.md` here and paste the refreshed system prompt into module 2 of the live scenario, or Rex starts giving stale answers.
+
+## Update 17 Oct 2026: Meta-ready scenario
+
+Scenario 7638753 now runs on a fresh webhook ("Rex Meta In"). The old webhook, whose URL had leaked into git history, was deleted. The new URL and the verify token live only in Make (Webhooks page and the router filter), never in this repo.
+
+Flow: webhook, router. Route 1 answers Meta's one-time handshake (returns `hub.challenge` when the verify token matches). Route 2 handles real messages: only from Theo's number, Claude API reply, WhatsApp send, Sheets log. Meta's field paths are `entry[1].changes[1].value.messages[1]`.
+
+Still to paste in Make (Theo only): Anthropic API key (module 2), Rex's Phone Number ID and permanent access token (module 3), and Theo's WhatsApp number in the module 2 filter.
