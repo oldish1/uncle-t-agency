@@ -4,7 +4,7 @@
   import { gsap, reduced } from '$lib/motion.js';
   import HomeView from '$lib/views/HomeView.svelte';
   import StudioView from '$lib/views/StudioView.svelte';
-  import ProofView from '$lib/views/ProofView.svelte';
+  import StartView from '$lib/views/StartView.svelte';
 
   let view = $state('home');
   let delay = $state(0);
@@ -71,7 +71,7 @@
     {:else if view === 'studio'}
       <StudioView {delay} />
     {:else}
-      <ProofView {delay} />
+      <StartView {delay} />
     {/if}
   </main>
 

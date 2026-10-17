@@ -14,7 +14,7 @@
 
 ## Images
 
-- The hair photos and the website screenshot in `static/assets/` belong to Chales Hair Boutique (Uncle T Agency's client) and are used with the client's permission, to be confirmed. They show clients from behind, no faces.
+- No photographs. The Table Mountain scenes and the sample chat screens are drawn in code for this site.
 
 ## Design reference
 

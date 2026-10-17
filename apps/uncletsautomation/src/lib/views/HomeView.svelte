@@ -18,7 +18,7 @@
         <p class="lead" data-reveal>Lexi answers your customers day and night, puts them in your calendar and reminds them the day before. Built in Cape Town for salons, groomers, tradespeople and small shops.</p>
         <div class="actions" data-reveal>
           <a class="btn fill" href={wa("Hi Theo, I'd like to see Lexi")}>Try Lexi on WhatsApp</a>
-          <button class="ulink plain" type="button" onclick={() => go('proof')}>See it at a real salon</button>
+          <button class="ulink plain" type="button" onclick={() => go('studio')}>See how it works</button>
         </div>
         <p class="where" data-reveal>Bellville, Parow, Goodwood, Mitchell's Plain and the rest of Cape Town.</p>
       </div>

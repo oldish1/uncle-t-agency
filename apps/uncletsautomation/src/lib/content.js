@@ -4,7 +4,7 @@ export const wa = (text) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
 export const views = [
   { id: 'home', label: 'Home', theme: 'dark', bg: '#0a0f0c' },
   { id: 'studio', label: 'Studio', theme: 'light', bg: '#f1eee7' },
-  { id: 'proof', label: 'Proof', theme: 'dark', bg: '#0a0f0c' }
+  { id: 'start', label: 'Start', theme: 'dark', bg: '#0a0f0c' }
 ];
 
 export const verticals = [
@@ -106,17 +106,17 @@ export const faq = [
   ["What happens to my customers' details?", "They're used to make bookings and nothing else. The privacy policy has the detail."]
 ];
 
-export const photos = [
-  { src: '/assets/hair-0108.webp', alt: 'Long straight dark hair finished at Chales Hair Boutique' },
-  { src: '/assets/hair-0083.webp', alt: 'Sleek dark bob finished at Chales Hair Boutique' },
-  { src: '/assets/hair-0113.webp', alt: 'Chestnut layered cut at Chales Hair Boutique' },
-  { src: '/assets/hair-0111.webp', alt: 'Long smooth hair with a silver fade at Chales Hair Boutique' },
-  { src: '/assets/hair-0082.webp', alt: 'Glossy dark bob at Chales Hair Boutique' },
-  { src: '/assets/hair-0115.webp', alt: 'Brown angled bob at Chales Hair Boutique' }
+export const skies = [
+  { label: 'dawn', time: '6:10 am', text: 'Booked: blow-dry, Saturday 09:00. I will remind you on Friday.', alt: 'Table Mountain at dawn',
+    sky: '#c97b5f', glow: '#e9b48a', sun: [200, 262, 34], sunColor: '#f6dba8', far: '#0b3f33', near: '#06251d' },
+  { label: 'midday', time: '12:40 pm', text: 'Blocked drain quote: Thursday 14:00 is free. Shall I book it?', alt: 'Table Mountain at midday',
+    sky: '#5aa6cf', glow: '#a9d4e8', sun: [88, 90, 30], sunColor: '#fff6d6', far: '#0b4a3b', near: '#06301f' },
+  { label: 'dusk', time: '9:05 pm', text: 'Thursday 11:30 is yours. Confirmed, with a reminder on Wednesday.', alt: 'Table Mountain at dusk', stars: true,
+    sky: '#16213f', glow: '#7a4a5e', sun: [310, 120, 22], sunColor: '#e9e4d4', far: '#071a15', near: '#030d0a' }
 ];
 
 export const stats = [
-  ['24/7', 'She answers, even when the salon is closed.'],
+  ['24/7', 'She answers, even when you are closed.'],
   ['4 days', 'From saying yes to being live.'],
-  ['2 to 5 sec', 'Per reply in the Chales build.']
+  ['2 to 5 sec', 'Per reply in the live build.']
 ];
