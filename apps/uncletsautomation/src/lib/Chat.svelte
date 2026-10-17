@@ -103,12 +103,12 @@
 </div>
 
 <style>
-  .wrap { width: min(400px, 100%); margin-inline: auto; }
+  .wrap { width: min(380px, 100%); margin-inline: auto; }
   .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-  .tabs button { background: none; border: 1px solid var(--line); color: var(--ink); padding: 0 16px; min-height: 40px; font: 500 0.875rem var(--font-sans); border-radius: 999px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .tabs button { background: none; border: 1px solid var(--line); color: var(--ink); padding: 0 14px; min-height: 38px; font: 500 0.8125rem var(--font-sans); border-radius: 999px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
   .tabs button:hover { border-color: var(--ink); }
   .tabs button[aria-pressed='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-  .phone { height: min(620px, 78svh); min-height: 460px; background: #e6ebe7; color: #111; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column; border: 6px solid #1b2620; font-size: 0.95rem; line-height: 1.4; }
+  .phone { height: min(540px, 72svh); min-height: 430px; background: #e6ebe7; color: #111; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column; border: 6px solid #1b2620; font-size: 0.95rem; line-height: 1.4; }
   .head { background: #075e54; color: #fff; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
   .av { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #04120a; display: grid; place-items: center; font: 600 1.2rem var(--font-display); flex: none; }
   .who { flex: 1; min-width: 0; }
@@ -129,7 +129,7 @@
   .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 12px 14px; background: #f3f2ee; min-height: 68px; }
   .chips button { min-height: 44px; padding: 0 16px; border: 0; background: #fff; color: #075e54; font: 600 0.9rem var(--font-sans); border-radius: 22px; cursor: pointer; transition: transform 0.15s, background 0.15s; }
   .chips button:hover { background: #dff5e3; transform: translateY(-2px); }
-  .note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
+  .note { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
   @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
   @keyframes blink { 50% { opacity: 0.25; } }
 </style>

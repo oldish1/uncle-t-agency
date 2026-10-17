@@ -64,7 +64,7 @@
   .copy .lead { margin: 24px 0 36px; max-width: 44ch; }
   .stats { margin: 0; }
   .stats div { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 20px; padding: 18px 0; align-items: baseline; }
-  .stats dt { font: 500 clamp(1.8rem, 1.2rem + 1.8vw, 2.8rem) / 1 var(--font-display); color: var(--accent); }
+  .stats dt { font: 500 clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem) / 1 var(--font-sans); letter-spacing: -0.04em; color: var(--accent); }
   .stats dd { margin: 0; color: var(--muted); }
   .sky { max-width: 520px; width: 100%; justify-self: end; }
   .narrowish { max-width: 820px; }
@@ -72,7 +72,7 @@
   .narrow { max-width: 680px; text-align: center; }
   .narrow .lead { margin: 18px auto 0; }
   .ask { position: relative; margin-top: 40px; }
-  .ask input { width: 100%; height: 66px; padding: 0 84px 0 24px; border: 1px solid var(--line); border-radius: 0; background: var(--panel); color: var(--ink); font: 400 1.05rem var(--font-sans); }
+  .ask input { width: 100%; height: 66px; padding: 0 84px 0 24px; border: 1px solid var(--line); border-radius: 0; background: var(--panel); color: var(--ink); font: 400 1rem var(--font-sans); }
   .ask input::placeholder { color: var(--muted); }
   .ask input:focus { outline: none; border-color: var(--accent); }
   .ask button { position: absolute; right: 8px; top: 8px; width: 50px; height: 50px; border: 0; background: var(--accent); color: var(--on-accent); font-size: 1.5rem; cursor: pointer; transition: transform 0.25s var(--ease); }

@@ -13,14 +13,20 @@ export function setupReveals(root, { delay = 0 } = {}) {
   const ctx = gsap.context(() => {
     gsap.utils.toArray('[data-words]', root).forEach((el) => {
       const text = el.textContent.trim();
+      const tokens = [];
+      el.childNodes.forEach((n) => {
+        if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach((w) => tokens.push([w, '']));
+        else n.textContent.split(/\s+/).filter(Boolean).forEach((w) => tokens.push([w, n.className || '']));
+      });
       el.setAttribute('aria-label', text);
       el.textContent = '';
-      const inner = text.split(' ').map((w) => {
+      const inner = tokens.map(([w, cls]) => {
         const outer = document.createElement('span');
         outer.className = 'word';
         outer.setAttribute('aria-hidden', 'true');
         const s = document.createElement('span');
         s.textContent = w;
+        if (cls) s.className = cls;
         outer.appendChild(s);
         el.appendChild(outer);
         el.appendChild(document.createTextNode(' '));
@@ -53,4 +59,4 @@ export function setupReveals(root, { delay = 0 } = {}) {
   return () => ctx.revert();
 }
 
-export { gsap };
+export { gsap, ScrollTrigger };

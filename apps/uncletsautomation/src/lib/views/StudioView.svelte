@@ -58,19 +58,19 @@
 
 <style>
   .intro { padding-top: clamp(130px, 15vw, 190px); }
-  .intro .h1 { max-width: 14ch; }
-  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 80px); margin-top: clamp(32px, 5vw, 64px); font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem); line-height: 1.55; }
+  .intro .h1 { max-width: 16ch; }
+  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 80px); margin-top: clamp(32px, 5vw, 64px); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem); line-height: 1.6; }
   .cols p { max-width: 36em; }
   .steps { margin-top: clamp(32px, 5vw, 64px); }
   .row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px; padding: clamp(24px, 3.4vw, 44px) 0; }
-  .row h3 { font-size: clamp(1.35rem, 1.05rem + 1vw, 2rem); }
+  .row h3 { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem); }
   .row p { color: var(--muted); max-width: 52ch; }
-  .list { margin-top: 32px; font: italic 500 clamp(1.6rem, 1rem + 3.4vw, 4rem) / 1.2 var(--font-display); overflow-wrap: anywhere; }
+  .list { margin-top: 32px; font: italic 500 clamp(1.4rem, 1rem + 2.2vw, 2.8rem) / 1.25 var(--font-display); overflow-wrap: anywhere; }
   .list em { color: var(--accent); font-style: normal; padding: 0 0.3em; }
   .fgrid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 5vw, 80px); align-items: start; }
   .fgrid .h2 { position: sticky; top: 120px; }
   details { padding: 0; }
-  summary { list-style: none; cursor: pointer; padding: 22px 0; font: 500 clamp(1.15rem, 1rem + 0.5vw, 1.5rem) / 1.25 var(--font-display); display: flex; justify-content: space-between; gap: 20px; align-items: center; min-height: 64px; }
+  summary { list-style: none; cursor: pointer; padding: 22px 0; font: 500 clamp(1rem, 0.95rem + 0.3vw, 1.125rem) / 1.3 var(--font-sans); letter-spacing: -0.01em; display: flex; justify-content: space-between; gap: 20px; align-items: center; min-height: 64px; }
   summary::-webkit-details-marker { display: none; }
   summary::after { content: '+'; font: 300 1.8rem var(--font-sans); color: var(--accent); transition: transform 0.3s var(--ease); flex: none; }
   details[open] summary::after { transform: rotate(45deg); }

@@ -11,30 +11,6 @@ export const verticals = [
   'Hair salons', 'Dog groomers', 'Plumbers', 'Nail techs', 'Driving schools', 'Cake bakers', 'Spas', 'Mobile detailers'
 ];
 
-/* rotating sample screens on Home */
-export const screens = [
-  { name: 'Sample Hair Salon', note: 'Hair salon', lines: [
-    ['them', 'Hi, can I get a wash and blowdry on Saturday?'],
-    ['us', 'Yes. Saturday has 09:00 and 11:30 free. Which suits you?'],
-    ['them', '11:30 please.'],
-    ['us', 'Booked for Saturday 11:30. I will remind you on Friday.'] ] },
-  { name: 'Sample Dog Groomer', note: 'Dog groomer', lines: [
-    ['them', 'Do you have a slot for a full groom this week?'],
-    ['us', 'Thursday 10:00 or Friday 14:00. Which one?'],
-    ['them', 'Friday please.'],
-    ['us', 'Booked: full groom, Friday 14:00. Reminder coming Thursday.'] ] },
-  { name: 'Sample Plumber', note: 'Plumber', lines: [
-    ['them', 'Can you fix a leaking geyser on Thursday?'],
-    ['us', 'Yes. Thursday has 09:00 and 14:00 free. Which suits you?'],
-    ['them', '14:00 please.'],
-    ['us', 'Booked for Thursday 14:00. I will remind you on Wednesday.'] ] },
-  { name: 'Sample Nail Studio', note: 'Nail studio', lines: [
-    ['them', 'Gel nails on Friday afternoon?'],
-    ['us', 'Friday has 13:00 and 15:30 open. Which would you like?'],
-    ['them', '15:30.'],
-    ['us', 'Done. Gel nails, Friday 15:30. I will message you Thursday.'] ] }
-];
-
 /* interactive chat */
 export const BIZ = {
   salon: { label: 'Salon', name: { en: 'Sample Hair Salon', af: 'Voorbeeld Haarsalon' }, svc: { en: ['Wash & blowdry', 'Braids', 'Nanoplastia'], af: ['Was en blaas', 'Vlegwerk', 'Nanoplastia'] } },
