@@ -155,11 +155,17 @@ B=[dp, router([
   [wa("Send day list",body_list(J("Which day suits you?"),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
   [upd(dict(CLEAR,**{"1":"DAY","2":"{{3.tap_id}}"}),"Session: DAY")]])]
 
+MULTI_TEXT=("No problem! Send me all your dates in *one message*, one per line, with the place for each 🗓️\n\n"
+  "For example:\n_26 Oct 2910 Bree_\n_30 Oct 409_\n_4 Nov 603 Sea Point deep_\n\n"
+  "No place on a line? I'll use your usual one. Add *deep* or *move out* on a line if that date needs a different clean. "
+  "Up to 10 dates, up to 2 months ahead.\n\nFirst time booking with Luna? Put your name on the first line.")
+MULTI_ASK=router([[wa("Send several-dates instructions",body_static(MULTI_TEXT))],[upd({"1":"MULTI"},"Session: MULTI")]],name="Several dates",conds=[[tap_is("day_multi")]])
 wl=withfilter(code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7","mode":"weeks"},"Week picker"),"Later date",[[tap_is("day_later")]])
 wd=withfilter(code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7","week_id":"{{3.tap_id}}"},"Days in week"),"Week tapped",[[tap_has("day_wk_")]])
 C=router([
   [router([[wa("Send time buttons",body_buttons('"What time should the team arrive on *{{3.tap_title}}*?\\n\\n_Guests usually check out at 10 or 11 and new guests arrive at 15:00._"',SLOT))],
-           [upd({"1":"TIME","4":"{{3.tap_id}}","5":"{{3.tap_title}}"},"Session: TIME")]],name="Normal day",conds=[[cond("{{3.tap_id}}","text:notequal","day_later"),cond("{{3.tap_id}}","text:notcontain","day_wk_")]])],
+           [upd({"1":"TIME","4":"{{3.tap_id}}","5":"{{3.tap_title}}"},"Session: TIME")]],name="Normal day",conds=[[cond("{{3.tap_id}}","text:notequal","day_later"),cond("{{3.tap_id}}","text:notcontain","day_wk_"),cond("{{3.tap_id}}","text:notequal","day_multi")]])],
+  [MULTI_ASK],
   [wl, wa("Send week list",body_list(J("Which week suits you?"),"Choose a week","{{%d.result.sections_json}}"%wl["id"])), upd({"1":"DAY"},"Session: DAY (weeks)")],
   [wd, wa("Send days in week",body_list('"Which day in *{{3.tap_title}}*?"',"Choose a day","{{%d.result.sections_json}}"%wd["id"])), upd({"1":"DAY"},"Session: DAY (week days)")]],
   name="C: Day tapped",conds=[[tap_has("day_"),step_is("DAY")],[tap_has("day_"),step_is("TIME")]])
@@ -220,10 +226,63 @@ nr["routes"][0]["flow"][0]["routes"]=[{"flow":b} for b in [finalize("{{%d.result
 nd["filter"]={"name":"I: Name typed","conditions":[[cond("{{3.msg_type}}","text:equal","text"),step_is("NAME"),cond("{{3.is_reset}}","text:equal","no")]]}
 I=[nd,nh,ne,nr]
 
+# ---------- several dates ----------
+SVCLABEL='{{if(4.`2` = "svc_deep"; "Deep Clean"; if(4.`2` = "svc_moveout"; "Move Out / Move In Clean"; "Basic Clean"))}}'
+mcs=cdb_search()
+m1=code("M1.js",{"client_text":"{{3.text}}","default_service_label":SVCLABEL},"Several dates: build Claude request")
+mh={"id":next(ids),"module":"http:MakeRequest","version":4,"parameters":{"tlsType":"","authenticationType":"noAuth"},
+   "mapper":{"url":"https://api.anthropic.com/v1/messages","method":"post",
+    "headers":[{"name":"x-api-key","value":"{{3.anthropic_key}}"},{"name":"anthropic-version","value":"2023-06-01"},{"name":"content-type","value":"application/json"}],
+    "contentType":"json","inputMethod":"jsonString","jsonStringBodyContent":"{{%d.result.body_json}}"%m1["id"],"shareCookies":False,"parseResponse":True,
+    "allowRedirects":True,"stopOnHttpError":False,"requestCompressedContent":True,"timeout":"40"},"metadata":{"designer":{"x":0,"y":0,"name":"Claude API (dates)"}}}
+m2=code("M2.js",{"claude_body":"{{%d.data}}"%mh["id"],"default_service":s(2),"saved_name":"{{%d.`1`}}"%mcs["id"],"saved_building":"{{%d.`2`}}"%mcs["id"],
+   "saved_unit":"{{%d.`4`}}"%mcs["id"],"saved_code":"{{%d.`5`}}"%mcs["id"],"same_day_cutoff":"{{3.same_day_cutoff}}"},"Several dates: read list")
+M2=m2["id"]
+mg=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin","{{%d.result.min_day}}"%M2),("timeMax","{{%d.result.max_day}}"%M2),("singleEvents","true"),("maxResults","250")],name="Calendar: those dates")
+m3=code("M3.js",{"events_json":"{{%d.body}}"%mg["id"],"lines_json":"{{%d.result.lines_json}}"%M2,"problems_text":"{{%d.result.problems_text}}"%M2,
+   "day_capacity":"{{3.day_capacity}}","off_blocks_day":"{{3.off_blocks_day}}"},"Several dates: check calendar")
+M3=m3["id"]
+m_ok=router([[wa("Send dates + time buttons",body_buttons("{{%d.result.text_json}}"%M3,SLOT))],
+   [upd({"1":"MULTI_TIME","18":"{{%d.result.ok_lines_json}}"%M3,"14":"{{%d.result.client_name}}"%M2,"7":"{{%d.result.min_day}}"%M2,"8":"{{%d.result.max_day}}"%M2},"Session: MULTI_TIME")]],
+   name="Some dates free",conds=[[cond("{{%d.result.ok_count}}"%M3,"number:greater","0")]])
+m_none=router([[wa("Send none free",body_text("{{%d.result.text_json}}"%M3))]],name="No dates free",conds=[[cond("{{%d.result.ok_count}}"%M3,"number:equal","0")]])
+mi=lambda x: cond("{{%d.result.intent}}"%M2,"text:equal",x)
+MR=[mcs,m1,mh,m2,router([
+  [router([[mg,m3,router([[m_ok],[m_none]])]],name="Dates read",conds=[[cond("{{%d.result.has_lines}}"%M2,"text:equal","true")]])],
+  [router([[wa("Send dates reprompt",body_text("{{%d.result.reprompt_json}}"%M2))]],name="Need dates again",
+     conds=[[cond("{{%d.result.has_lines}}"%M2,"text:notequal","true"),cond("{{%d.result.intent}}"%M2,"text:notequal","restart"),cond("{{%d.result.intent}}"%M2,"text:notequal","cancel")]])],
+  [router([[wa("Send service buttons (restart, dates)",svc_body)],[upd(dict(CLEAR,**{"1":"SERVICE","18":"{{emptystring}}"}),"Session: restart (dates)")]],name="Restart",conds=[[mi("restart")]])],
+  [router([[wa("Send cancelled (dates)",body_static("No problem, I've stopped this booking. Send *hi* any time to book."))],[upd(dict(CLEAR,**{"1":"CANCELLED","18":"{{emptystring}}"}),"Session: cancelled (dates)")]],name="Cancel",conds=[[mi("cancel")]])]])]
+MR[0]["filter"]={"name":"J: Dates typed","conditions":[[cond("{{3.msg_type}}","text:equal","text"),step_is("MULTI"),cond("{{3.is_reset}}","text:equal","no")]]}
+
+tg=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin",s(7)),("timeMax",s(8)),("singleEvents","true"),("maxResults","250")],name="Calendar: re-check dates")
+tg["filter"]={"name":"K: Time tapped (several dates)","conditions":[[tap_has("slot_"),step_is("MULTI_TIME")]]}
+m4=code("M4.js",{"events_json":"{{%d.body}}"%tg["id"],"lines_json":s(18),"slot_id":"{{3.tap_id}}","client_name":s(14),"wa_id":"{{3.wa_id}}",
+   "holidays":"{{3.holidays}}","late_window":"{{3.late_window}}","bank_details":"{{3.bank_details}}","day_capacity":"{{3.day_capacity}}"},"Several dates: build bookings")
+M4=m4["id"]
+evroutes=[[withfilter(gcal("/v3/calendars/"+CAL+"/events","POST",body="{{%d.result.event_json_%d}}"%(M4,i),name="Create event %d"%i),"Booking %d"%i,
+           [[cond("{{%d.result.count}}"%M4,"number:greaterorequal",str(i))]])] for i in range(1,11)]
+tcs=cdb_search()
+t_upd={"id":next(ids),"module":"google-sheets:updateRow","version":2,"parameters":{"__IMTCONN__":CONN},
+  "filter":{"name":"Known client","conditions":[[cond("{{%d.`__ROW_NUMBER__`}}"%tcs["id"],"exist")]]},
+  "mapper":{"select":"map","spreadsheetId":SID,"sheetId":"ClientDatabase","rowNumber":"{{%d.`__ROW_NUMBER__`}}"%tcs["id"],"valueInputOption":"RAW",
+   "values":{"1":s(14),"10":"{{%d.result.last_day}}"%M4,"11":"{{parseNumber(ifempty(%d.`11`; \"0\")) + %d.result.count}}"%(tcs["id"],M4),"12":"{{%d.result.last_service}}"%M4}},
+  "metadata":{"designer":{"x":0,"y":0,"name":"Update client (dates)"}}}
+t_add={"id":next(ids),"module":"google-sheets:addRow","version":2,"parameters":{"__IMTCONN__":CONN},
+  "filter":{"name":"New client","conditions":[[cond("{{%d.`__IMTLENGTH__`}}"%tcs["id"],"number:equal","0")]]},
+  "mapper":{"mode":"map","spreadsheetId":SID,"sheetId":"ClientDatabase","tableFirstRow":"A1:Z1","insertDataOption":"INSERT_ROWS","valueInputOption":"RAW","insertUnformatted":False,
+   "values":{"0":"{{3.wa_id}}","1":s(14),"2":"{{%d.result.first_building}}"%M4,"4":"{{%d.result.first_unit}}"%M4,"5":"{{%d.result.first_code}}"%M4,"7":"Apartment","8":"New",
+             "9":"{{formatDate(now; \"YYYY-MM-DD\")}}","10":"{{%d.result.last_day}}"%M4,"11":"{{%d.result.count}}"%M4,"12":"{{%d.result.last_service}}"%M4,"13":"Bot"}},
+  "metadata":{"designer":{"x":0,"y":0,"name":"Add client (dates)"}}}
+MT=[tg,m4,router(evroutes+[
+  [wa("Send confirmation (dates)",body_text("{{%d.result.confirm_json}}"%M4))],
+  [upd({"1":"DONE","18":"{{emptystring}}"},"Session: DONE (dates)")],
+  [withfilter(tcs,"Something booked",[[cond("{{%d.result.count}}"%M4,"number:greater","0")]]), router([[t_upd],[t_add]])]])]
+
 Z=router([[wa("Send nudge",body_static("Sorry, I can only read typed messages and button taps 🙂 Please tap an option above, type your reply, or send *hi* to start a booking."))]])
 
-main={"id":5,"module":"builtin:BasicRouter","version":1,"parameters":{"else":9},"mapper":None,"metadata":{"designer":{"x":900,"y":0}},
-  "routes":[{"flow":[A]},{"flow":B},{"flow":[C]},{"flow":D},{"flow":[E]},{"flow":[F]},{"flow":[G]},{"flow":H},{"flow":I},{"flow":[Z]}]}
+main={"id":5,"module":"builtin:BasicRouter","version":1,"parameters":{"else":11},"mapper":None,"metadata":{"designer":{"x":900,"y":0}},
+  "routes":[{"flow":[A]},{"flow":B},{"flow":[C]},{"flow":D},{"flow":[E]},{"flow":[F]},{"flow":[G]},{"flow":H},{"flow":I},{"flow":MR},{"flow":MT},{"flow":[Z]}]}
 log={"id":6,"module":"google-sheets:addRow","version":2,"parameters":{"__IMTCONN__":CONN},
   "mapper":{"mode":"map","spreadsheetId":SID,"sheetId":"ChatMemory","tableFirstRow":"A1:Z1","insertDataOption":"INSERT_ROWS","valueInputOption":"RAW","insertUnformatted":False,
    "values":{"0":"{{now}}","1":"{{3.wa_id}}","2":"{{3.msg_id}}","3":"{{3.msg_type}}","4":"{{ifempty(4.`1`; \"NEW\")}}",

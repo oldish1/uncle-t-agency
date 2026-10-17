@@ -53,4 +53,5 @@ if (/^\d{4}-\d{2}-\d{2}$/.test(wk)) {
 const rows = [];
 for (let off = firstOffset; off <= WINDOW_DAYS && rows.length < 9; off++) { const r = dayRow(off); if (r) rows.push(r); }
 rows.push(later);
+rows.push({ id: "day_multi", title: "Several dates", description: "Send a list of dates (and places) in one go" });
 return out("Available days", rows);

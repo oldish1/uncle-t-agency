@@ -2,7 +2,7 @@ const fs=require('fs');const run=(f,i)=>new Function('input',fs.readFileSync(f,'
 const H="2026-12-16,2026-12-25";
 let r=run('A.js',{now_iso:'2026-09-28T04:00:00Z',holidays:H}); // Mon 06:00 SAST, before 07:00
 let rows=JSON.parse(r.sections_json)[0].rows; console.log(rows.map(x=>x.id+' '+x.title+' | '+x.description).join('\n'));
-a.equal(rows[0].id,'day_2026-09-28'); a(rows.find(x=>x.title.startsWith('Sun')).description.includes('+R50')); a.equal(rows[rows.length-1].id,'day_later');
+a.equal(rows[0].id,'day_2026-09-28'); a(rows.find(x=>x.title.startsWith('Sun')).description.includes('+R50')); a.equal(rows[rows.length-1].id,'day_multi'); a.equal(rows[rows.length-2].id,'day_later'); a(rows.length<=10);
 r=run('A.js',{now_iso:'2026-09-28T06:00:00Z'}); a.equal(JSON.parse(r.sections_json)[0].rows[0].id,'day_2026-09-29');
 r=run('A.js',{now_iso:'2026-12-14T08:00:00Z',holidays:H}); a(JSON.parse(r.sections_json)[0].rows.find(x=>x.id=='day_2026-12-16').description.includes('R60'));
 let b=run('B.js',{day_id:'day_2026-09-28',slot_id:'slot_0800',service_id:'svc_basic',now_iso:'2026-09-28T05:30:00Z'}); a.equal(b.ok,false); a.equal(b.error,'too_soon');
@@ -19,7 +19,7 @@ let w=JSON.parse(run('A.js',{now_iso:now,mode:'weeks'}).sections_json)[0].rows;
 a.equal(w.length,8); a.equal(w[0].id,'day_wk_2026-10-25'); a.equal(w[0].title,'25 Oct – 31 Oct'); a(w.every(r=>r.title.length<=24));
 let d=JSON.parse(run('A.js',{now_iso:now,week_id:'day_wk_2026-10-25'}).sections_json)[0].rows;
 a.equal(d[0].id,'day_2026-10-25'); a(d.some(r=>r.id=='day_2026-10-30')); a.equal(d[d.length-1].id,'day_later'); a(d.length<=10);
-let m=JSON.parse(run('A.js',{now_iso:now}).sections_json)[0].rows; a.equal(m[m.length-1].id,'day_later'); a.equal(m[m.length-2].id,'day_2026-10-24');
+let m=JSON.parse(run('A.js',{now_iso:now}).sections_json)[0].rows; a.equal(m[m.length-1].id,'day_multi'); a.equal(m[m.length-2].id,'day_later'); a.equal(m[m.length-3].id,'day_2026-10-24'); a(m.length<=10);
 let b=run('B.js',{day_id:'day_2026-10-30',slot_id:'slot_0800',service_id:'svc_basic',now_iso:now}); a.equal(b.ok,true);
 }
 console.log('ALL PASS');
