@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Uncle Ts Automation | WhatsApp booking for Cape Town businesses</title>
 <meta name="description" content="Uncle Ts Automation builds a WhatsApp receptionist and a fast website for small Cape Town businesses. Websites from R799 setup and R499 a month, Lexi from R1,499 setup and R799 a month. Running now at Chales Hair Boutique.">
-<meta name="theme-color" content="#080c0a">
+<meta name="theme-color" content="#0b5d4a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,9 +18,10 @@
 <body>
 
 <header class="top" id="top">
-  <a class="wordmark" href="#top">Uncle Ts <b>Automation</b></a>
+  <a class="wordmark" href="#top"><svg class="mk" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.1 2 11.2c0 2.6 1.2 5 3.1 6.6L4 22l4.6-2.2c1 .3 2.2.4 3.4.4 5.5 0 10-4.1 10-9.2S17.500 2 12 2z"/></svg>Uncle Ts <b>Automation</b></a>
   <nav class="links" aria-label="Main">
     <a href="#lexi">Meet Lexi</a>
+    <a href="#theo">About</a>
     <a href="#proof">Proof</a>
     <a href="#pricing">Pricing</a>
     <a href="#questions">Questions</a>
@@ -29,22 +30,30 @@
 </header>
 
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg"><source src="img/hero.mp4" type="video/mp4"></video>
-  <div class="hero-shade"></div>
+  <svg class="mtn" viewBox="0 0 1440 340" preserveAspectRatio="none" aria-hidden="true">
+    <path class="far" d="M0 340V236C80 228 150 236 230 222C290 186 340 164 400 188C440 204 470 214 520 194L610 138L650 128H1010L1060 136L1120 170C1180 196 1260 206 1340 216L1440 226V340Z"/>
+    <path class="near" d="M0 340V282C200 268 380 292 560 274C760 254 900 286 1100 274C1250 266 1350 276 1440 268V340Z"/>
+  </svg>
   <div class="hero-in">
     <div class="hero-copy">
       <h1 data-split>Your WhatsApp books for you.</h1>
-      <p class="lead rv" style="--i:6">Lexi answers your customers day and night, puts them in your calendar and reminds them the day before.</p>
+      <p class="lead rv" style="--i:6">Lexi answers your customers day and night, puts them in your calendar and reminds them the day before. Built in Cape Town for salons, groomers, tradespeople and small shops.</p>
       <div class="hero-actions rv" style="--i:7">
         <a class="btn" href="https://wa.me/27764924196?text=Hi%20Theo%2C%20I%27d%20like%20to%20see%20Lexi">Try Lexi on WhatsApp</a>
         <a class="ghost" href="#pricing">See pricing</a>
       </div>
     </div>
     <div class="phone-wrap rv" style="--i:4">
+      <div class="biz" role="group" aria-label="Pick a business type">
+        <button type="button" data-b="salon" aria-pressed="true">Salon</button>
+        <button type="button" data-b="groomer" aria-pressed="false">Dog groomer</button>
+        <button type="button" data-b="plumber" aria-pressed="false">Plumber</button>
+        <button type="button" data-b="nails" aria-pressed="false">Nail studio</button>
+      </div>
       <div class="phone" data-ui data-par="-0.06">
         <div class="ph-head">
-          <img src="img/lexi.jpg" alt="" width="44" height="44">
-          <div><b>Lexi</b><span id="phsub">Booking assistant (sample)</span></div>
+          <span class="av">L</span>
+          <div><b id="phname">Sample Hair Salon</b><span id="phsub">Booking assistant (sample)</span></div>
           <div class="lang" role="group" aria-label="Language">
             <button type="button" data-l="en" aria-pressed="true">EN</button>
             <button type="button" data-l="af" aria-pressed="false">AF</button>
@@ -53,24 +62,23 @@
         <div class="msgs" id="msgs" aria-live="polite"></div>
         <div class="chips" id="chips"></div>
       </div>
-      <p class="phone-note">Tap through it like a customer would. This is a sample, nothing is booked.</p>
+      <p class="phone-note">Pick a business and tap through it like a customer would. This is a sample, nothing is booked.</p>
     </div>
   </div>
   <a class="scroll-cue" href="#band" aria-label="Scroll down"><span></span></a>
 </section>
 
 <div class="band" id="band" aria-hidden="true">
-  <div class="band-track">
-    <span>Books</span><span>Reminds</span><span>Reschedules</span><span>Never double-books</span><span>Works at 9pm</span>
-    <span>Books</span><span>Reminds</span><span>Reschedules</span><span>Never double-books</span><span>Works at 9pm</span>
-  </div>
+  <div class="band-track"><span>Hair salons</span><span>Dog groomers</span><span>Plumbers</span><span>Nail techs</span><span>Driving schools</span><span>Cake bakers</span><span>Spas</span><span>Mobile detailers</span><span>Hair salons</span><span>Dog groomers</span><span>Plumbers</span><span>Nail techs</span><span>Driving schools</span><span>Cake bakers</span><span>Spas</span><span>Mobile detailers</span></div>
 </div>
 
 <section class="lexi" id="lexi">
-  <div class="lexi-pic" data-par="0.05">
-    <img src="img/lexi.jpg" width="900" height="900" loading="lazy" alt="Lexi, the booking assistant, in the Chales Hair Boutique reception">
-    <p class="bubble b1">Booked: Braids, Tuesday at 11:30.</p>
-    <p class="bubble b2">I'll remind you the day before.</p>
+  <div class="lexi-card" data-par="0.04">
+    <p class="bub them rv">Hi, can you fix a leaking geyser on Thursday?</p>
+    <p class="bub us rv" style="--i:2">Yes. Thursday has 09:00 and 14:00 free. Which suits you?</p>
+    <p class="bub them rv" style="--i:4">14:00 please.</p>
+    <p class="bub us rv" style="--i:6">Booked for Thursday 14:00. I'll remind you on Wednesday.</p>
+    <p class="card-cap">A sample plumber's chat. Lexi answers in seconds, any hour.</p>
   </div>
   <div class="lexi-copy">
     <h2 data-split>Meet Lexi, your receptionist.</h2>
@@ -84,7 +92,7 @@
 <section class="hs" id="proof" aria-labelledby="proofh">
   <div class="hs-stick">
     <div class="hs-head">
-      <h2 id="proofh" data-split>Live at a Bellville salon.</h2>
+      <h2 id="proofh" data-split>First client: a Bellville salon.</h2>
       <p class="rv">Lexi runs the bookings at Chales Hair Boutique today: cancellations, reschedules, reminders and a prepaid wash-and-blowdry membership that counts visits down by itself.</p>
     </div>
     <div class="hs-track">
@@ -94,7 +102,7 @@
       <figure class="lift"><img src="img/hair-0111.jpg" width="900" height="1200" loading="lazy" alt="Long smooth hair with a silver fade at Chales Hair Boutique"></figure>
       <figure><img src="img/hair-0082.jpg" width="900" height="1200" loading="lazy" alt="Glossy dark bob at Chales Hair Boutique"></figure>
       <figure class="lift"><img src="img/hair-0115.jpg" width="900" height="1200" loading="lazy" alt="Brown angled bob at Chales Hair Boutique"></figure>
-      <figure class="wide"><img src="img/chales-site.jpg" width="1200" height="675" loading="lazy" alt="The Chales Hair Boutique website with Lexi's Book Now button bottom right"><figcaption>Their website, with Lexi's Book Now button bottom right. <a href="https://chaleshairboutique.co.za" rel="noopener">Open it</a></figcaption></figure>
+      <figure class="wide"><img src="img/chales-site.jpg" width="1200" height="675" loading="lazy" alt="The Chales Hair Boutique website with Lexi's Book Now button bottom right"><figcaption>Chales' website, with Lexi's Book Now button bottom right. <a href="https://chaleshairboutique.co.za" rel="noopener">Open it</a></figcaption></figure>
     </div>
   </div>
 </section>
@@ -113,6 +121,14 @@
     <li class="rv"><h3>We test it with you.</h3><p>You book, cancel and reschedule as a customer until it feels right.</p></li>
     <li class="rv"><h3>You go live.</h3><p>Customers book while you cut, braid or fit pipes. We keep it running.</p></li>
   </ol>
+</section>
+
+<section class="theo" id="theo" aria-labelledby="theoh">
+  <h2 id="theoh" data-split>Built by a local, not a call centre.</h2>
+  <div class="theo-grid">
+    <p class="rv">I'm Theo, Uncle T to most people. I'm from Cape Town, I speak English and Afrikaans, and I'm learning Xhosa. By day I'm a boilermaker and sheet metal worker. At night I build WhatsApp receptionists for small businesses that lose bookings because the owner is busy working.</p>
+    <p class="rv" style="--i:1">I come to you, I set Lexi up on your own number, and when something needs fixing you message me, not a ticket system. The prices are ones a small business can carry.</p>
+  </div>
 </section>
 
 <section class="pricing" id="pricing" aria-labelledby="priceh">
@@ -175,9 +191,9 @@
 <footer class="foot">
   <p class="foot-mark" aria-hidden="true">Uncle Ts Automation</p>
   <div class="foot-row">
-    <a class="wordmark" href="#top">Uncle Ts <b>Automation</b></a>
+    <a class="wordmark" href="#top"><svg class="mk" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.1 2 11.2c0 2.6 1.2 5 3.1 6.6L4 22l4.6-2.2c1 .3 2.2.4 3.4.4 5.5 0 10-4.1 10-9.2S17.500 2 12 2z"/></svg>Uncle Ts <b>Automation</b></a>
     <nav aria-label="Footer"><a href="#lexi">Meet Lexi</a><a href="#proof">Proof</a><a href="#pricing">Pricing</a><a href="#questions">Questions</a><a href="privacy.html">Privacy</a></nav>
-    <p>Uncle Ts Automation, Cape Town, South Africa. Prices in Rand. Photos and footage from Chales Hair Boutique.</p>
+    <p>Uncle Ts Automation, Cape Town, South Africa. Prices in Rand.</p>
   </div>
 </footer>
 <script src="app.js"></script>

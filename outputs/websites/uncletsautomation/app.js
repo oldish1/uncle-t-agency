@@ -44,49 +44,46 @@
     });
   }
 
-  /* sample booking chat */
+  /* sample booking chat, switchable by business type */
+  var BIZ={
+    salon:{name:{en:"Sample Hair Salon",af:"Voorbeeld Haarsalon"},svc:{en:["Wash & blowdry","Braids","Nanoplastia"],af:["Was en blaas","Vlegwerk","Nanoplastia"]}},
+    groomer:{name:{en:"Sample Dog Groomer",af:"Voorbeeld Hondesalon"},svc:{en:["Full groom","Bath & brush","Nail trim"],af:["Volle versorging","Bad en borsel","Naels sny"]}},
+    plumber:{name:{en:"Sample Plumber",af:"Voorbeeld Loodgieter"},svc:{en:["Leaking geyser","Blocked drain","Quote visit"],af:["Lekkende geyser","Verstopte dreinering","Kwotasie-besoek"]}},
+    nails:{name:{en:"Sample Nail Studio",af:"Voorbeeld Naelstudio"},svc:{en:["Gel nails","Pedicure","Fill-in"],af:["Jel-naels","Pedikuur","Aanvulling"]}}
+  };
   var T={
     en:{
-      hi:"Hi! Welcome to Chales Hair Boutique. What can I book for you?",
-      svc:["Wash & blowdry","Braids","Nanoplastia"],
-      day:"Lovely. Which day suits you?",
-      time:"And what time?",
-      done:function(s,d,t){return "Booked: "+s+", "+d+" at "+t+".\nI've put it in Chanté's calendar and I'll send you a reminder the day before."},
-      ask:"Need to change it?",
-      chg:["Different day","Cancel it","Start again"],
+      hi:function(n){return "Hi! Welcome to "+n+". What can I book for you?"},
+      day:"Lovely. Which day suits you?",time:"And what time?",
+      done:function(s,d,t){return "Booked: "+s+", "+d+" at "+t+".\nI've put it in the calendar and I'll send you a reminder the day before."},
+      ask:"Need to change it?",chg:["Different day","Cancel it","Start again"],
       cancel:"Done, it's cancelled. Send me a hi any time you want to book again.",
-      again:"No problem, let's pick a different day.",
-      today:"Tomorrow",hdr:"Booking assistant (sample)",
-      times:["09:00","11:30","14:00"]
+      again:"No problem, let's pick a different day.",today:"Tomorrow",hdr:"Booking assistant (sample)",times:["09:00","11:30","14:00"]
     },
     af:{
-      hi:"Hi! Welkom by Chales Hair Boutique. Waarmee kan ek jou help?",
-      svc:["Was en blaas","Vlegwerk","Nanoplastia"],
-      day:"Lekker. Watter dag pas jou?",
-      time:"En watter tyd?",
-      done:function(s,d,t){return "Geboek: "+s+", "+d+" om "+t+".\nEk het dit in Chanté se kalender gesit en stuur jou die dag voor 'n herinnering."},
-      ask:"Wil jy iets verander?",
-      chg:["Ander dag","Kanselleer","Begin oor"],
+      hi:function(n){return "Hi! Welkom by "+n+". Waarmee kan ek jou help?"},
+      day:"Lekker. Watter dag pas jou?",time:"En watter tyd?",
+      done:function(s,d,t){return "Geboek: "+s+", "+d+" om "+t+".\nEk het dit in die kalender gesit en stuur jou die dag voor 'n herinnering."},
+      ask:"Wil jy iets verander?",chg:["Ander dag","Kanselleer","Begin oor"],
       cancel:"Reg, dit is gekanselleer. Stuur net 'n hi as jy weer wil book.",
-      again:"Geen probleem nie, kom ons kies 'n ander dag.",
-      today:"Môre",hdr:"Besprekingsassistent (voorbeeld)",
-      times:["09:00","11:30","14:00"]
+      again:"Geen probleem nie, kom ons kies 'n ander dag.",today:"Môre",hdr:"Besprekingsassistent (voorbeeld)",times:["09:00","11:30","14:00"]
     }
   };
-  var lang='en',svc='',day='',msgs=document.getElementById('msgs'),chips=document.getElementById('chips'),busy=false,gen=0;
+  var lang='en',biz='salon',svc='',day='',msgs=document.getElementById('msgs'),chips=document.getElementById('chips'),gen=0;
   if(!msgs)return;
-  function now(){var d=new Date();return d.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Johannesburg'})}
+  function now(){return new Date().toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Johannesburg'})}
   function bubble(t,who){var m=document.createElement('div');m.className='m '+who;m.textContent=t;var ti=document.createElement('time');ti.textContent=now();m.appendChild(ti);msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight}
   function typing(ms,cb){var my=gen,t=document.createElement('div');t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;chips.innerHTML='';
     setTimeout(function(){if(my!==gen)return;t.remove();cb()},ms)}
   function setChips(list,fn){chips.innerHTML='';list.forEach(function(l){var b=document.createElement('button');b.type='button';b.textContent=l;b.onclick=function(){fn(l)};chips.appendChild(b)})}
-  function days(){var out=[],names=lang==='en'?'en-ZA':'af-ZA',d=new Date();
+  function days(){var out=[],loc=lang==='en'?'en-ZA':'af-ZA',d=new Date();
     for(var i=1;out.length<3;i++){var x=new Date(d.getTime()+i*86400000);if(x.getDay()===0)continue;
-      out.push(i===1?T[lang].today:x.toLocaleDateString(names,{weekday:'long',day:'numeric',month:'short',timeZone:'Africa/Johannesburg'}))}
+      out.push(i===1?T[lang].today:x.toLocaleDateString(loc,{weekday:'long',day:'numeric',month:'short',timeZone:'Africa/Johannesburg'}))}
     return out}
   function say(text,next){typing(650,function(){bubble(text,'in');next&&next()})}
-  function start(){gen++;msgs.innerHTML='';chips.innerHTML='';svc=day='';
-    say(T[lang].hi,function(){setChips(T[lang].svc,function(s){svc=s;bubble(s,'out');askDay()})})}
+  function head(){document.getElementById('phname').textContent=BIZ[biz].name[lang];document.getElementById('phsub').textContent=T[lang].hdr}
+  function start(){gen++;msgs.innerHTML='';chips.innerHTML='';svc=day='';head();
+    say(T[lang].hi(BIZ[biz].name[lang]),function(){setChips(BIZ[biz].svc[lang],function(s){svc=s;bubble(s,'out');askDay()})})}
   function askDay(){say(T[lang].day,function(){setChips(days(),function(d){day=d;bubble(d,'out');askTime()})})}
   function askTime(){say(T[lang].time,function(){setChips(T[lang].times,function(t){bubble(t,'out');
     say(T[lang].done(svc,day,t),function(){say(T[lang].ask,function(){setChips(T[lang].chg,function(c){bubble(c,'out');
@@ -96,8 +93,9 @@
       else start();
     })})})})})}
   document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){
-    lang=b.dataset.l;document.querySelectorAll('.lang button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-    document.getElementById('phsub').textContent=T[lang].hdr;start()})});
+    lang=b.dataset.l;document.querySelectorAll('.lang button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});start()})});
+  document.querySelectorAll('.biz button').forEach(function(b){b.addEventListener('click',function(){
+    biz=b.dataset.b;document.querySelectorAll('.biz button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});start()})});
   start();
 
   /* contact: opens WhatsApp with a written message */
