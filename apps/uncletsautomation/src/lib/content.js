@@ -82,15 +82,6 @@ export const faq = [
   ["What happens to my customers' details?", "They're used to make bookings and nothing else. The privacy policy has the detail."]
 ];
 
-export const skies = [
-  { label: 'dawn', time: '6:10 am', text: 'Booked: blow-dry, Saturday 09:00. I will remind you on Friday.', alt: 'Table Mountain at dawn',
-    sky: '#c97b5f', glow: '#e9b48a', sun: [200, 262, 34], sunColor: '#f6dba8', far: '#0b3f33', near: '#06251d' },
-  { label: 'midday', time: '12:40 pm', text: 'Blocked drain quote: Thursday 14:00 is free. Shall I book it?', alt: 'Table Mountain at midday',
-    sky: '#5aa6cf', glow: '#a9d4e8', sun: [88, 90, 30], sunColor: '#fff6d6', far: '#0b4a3b', near: '#06301f' },
-  { label: 'dusk', time: '9:05 pm', text: 'Thursday 11:30 is yours. Confirmed, with a reminder on Wednesday.', alt: 'Table Mountain at dusk', stars: true,
-    sky: '#16213f', glow: '#7a4a5e', sun: [310, 120, 22], sunColor: '#e9e4d4', far: '#071a15', near: '#030d0a' }
-];
-
 export const stats = [
   ['24/7', 'She answers, even when you are closed.'],
   ['4 days', 'From saying yes to being live.'],

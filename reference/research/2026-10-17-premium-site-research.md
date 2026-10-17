@@ -27,3 +27,18 @@ Sources read with Firecrawl: Hon Tran (Awwwards juror) "Best award-winning websi
 - Story: a pinned scroll scene, "a day with Lexi", where the clock runs 6am to 9pm, chats appear and the calendar fills.
 - Features as a bento grid of small live visuals, not paragraphs.
 - Smooth scroll, grain, magnetic buttons, a rolling view transition, and a reduced-motion path for all of it.
+
+## Round two: Studio and Start views (research and plan)
+
+Sources: Growform's study of 114 multi-step forms (the 9 ingredients), Figma's about-page examples and tips, Shorthand's scrollytelling examples, Awwwards parallax and GSAP collections.
+
+What the sources say:
+- **About pages** win when they connect the story to the visitor. Local context and a warm serif carry trust for small businesses. Too many are self-absorbed or jargon.
+- **Scrollytelling** should serve the story, not decorate it. Five scenes at most, one idea each.
+- **Scroll-fill text** (words go from muted to full ink as you scroll) and **pinned horizontal panels** are the standard award-site moves for story sections.
+- **Forms:** a first question that is a tap, a reason for each thing asked, their own answers used back at them, a truthful progress bar, the phone number last with a reason, and a named person with a timeframe.
+
+Plan:
+- **Studio (light):** a statement hero with a live Cape Town clock, Theo's story as a scroll-fill paragraph, "Four days" as a pinned horizontal run of drawn panels with a progress bar, suburbs as a big hover list, smooth-opening FAQ.
+- **Start (dark):** a full-bleed pinned Table Mountain that runs dawn, noon, dusk and night with the sun arcing across and Lexi's messages at each hour; a conversational enquiry wizard (business, need, name and suburb) with a live WhatsApp message building beside it; the first client as a short text; details and a closing action.
+- Reduced motion shows static versions of all of it.

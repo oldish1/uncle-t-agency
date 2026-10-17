@@ -15,8 +15,12 @@ export function setupReveals(root, { delay = 0 } = {}) {
       const text = el.textContent.trim();
       const tokens = [];
       el.childNodes.forEach((n) => {
-        if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach((w) => tokens.push([w, '']));
-        else n.textContent.split(/\s+/).filter(Boolean).forEach((w) => tokens.push([w, n.className || '']));
+        const cls = n.nodeType === 3 ? '' : n.className || '';
+        const startsPunct = n.nodeType === 3 && /^[.,!?;:]/.test(n.textContent);
+        n.textContent.split(/\s+/).filter(Boolean).forEach((w, i) => {
+          if (i === 0 && startsPunct && tokens.length) tokens[tokens.length - 1][0] += w;
+          else tokens.push([w, cls]);
+        });
       });
       el.setAttribute('aria-label', text);
       el.textContent = '';
