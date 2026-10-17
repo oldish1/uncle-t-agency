@@ -66,6 +66,7 @@ plans/       build plans from /create-plan
 - Building or redesigning any website or landing page for a client: use the **design-taste-frontend** skill (Taste Skill v2, `.claude/skills/design-taste-frontend`) so the result is designed, not generic. Stack for client sites: Next.js, Tailwind, Framer Motion. Light background, dark text unless the client's brand says otherwise.
 - Researching or scraping the web: use **Firecrawl**, not the default fetch tools. It's set up (key in `.env`), high-quality scraping worth the money vs the basic built-in one: JavaScript-heavy sites, bot-protected pages, PDFs, cleaner content.
 - Scraping social platforms and marketplaces the other tools can't reach (Instagram, TikTok, LinkedIn): ask for **Apify**; the skill sets itself up on first use.
+- Building or redesigning a client website: the **web-builder** skill (`.claude/skills/web-builder/`). It only does websites: researches what's winning, builds, checks in a real browser, scores speed.
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
