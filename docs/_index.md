@@ -25,6 +25,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | Rex, Theo's WhatsApp Commander Agent | `apps/rex/README.md` | System prompt, Make.com blueprint (webhook → Claude API → WhatsApp reply → Sheets log), and what still needs manual setup in Make before it's live |
+| The uncletsautomation.co.za website (Svelte, Bodoni, GSAP views) | `apps/uncletsautomation/README.md` | How to run, build and deploy it, where text, prices and motion live, and what to change before launch |
 
 ## Reference
 

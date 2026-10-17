@@ -1,0 +1,53 @@
+<svelte:head>
+  <title>Privacy policy | Uncle Ts Automation</title>
+  <meta name="description" content="How Uncle Ts Automation handles personal information, in line with South Africa's POPIA." />
+</svelte:head>
+
+<div class="doc" data-theme="light">
+  <nav><a class="mark" href="/">Uncle Ts <i>Automation</i></a><a class="ulink" href="/">Back to the site</a></nav>
+  <h1 class="h1">Privacy policy</h1>
+  <p>Last updated 17 October 2026. This explains what personal information Uncle Ts Automation collects, why, and what you can ask us to do with it, under South Africa's Protection of Personal Information Act (POPIA).</p>
+
+  <h2>Who we are</h2>
+  <p>Uncle Ts Automation is a sole proprietorship run by Theo in Cape Town. We build WhatsApp booking assistants and websites for small local businesses. Theo is the information officer. Contact: <span class="todo">[add email on the domain]</span> or WhatsApp 076 492 4196.</p>
+
+  <h2>Two roles</h2>
+  <p>When a business uses our booking assistant (Lexi), that business decides why customers' details are collected, and we process them for the business to make the bookings work. When someone contacts us about our own services, we are the one deciding, and this policy covers that too.</p>
+
+  <h2>What we collect</h2>
+  <ul>
+    <li>From a business customer chatting with Lexi: their WhatsApp number, the name on their WhatsApp profile, the messages they send, and the booking details (service, day, time, cancellations).</li>
+    <li>From a business that signs up with us: contact details, business name and the information needed to set up their calendar and WhatsApp number.</li>
+    <li>From anyone who messages us or fills in the contact box on this site: the message and their number.</li>
+  </ul>
+
+  <h2>Why we use it</h2>
+  <p>To make, change, cancel and remind people of bookings, to run and support the service, and to reply to enquiries. We don't sell personal information and we don't use it for advertising.</p>
+
+  <h2>Who else handles it</h2>
+  <p>To work, the service passes information through providers who process it on our behalf: Meta (WhatsApp), Google (Calendar and Sheets), Make.com (automation) and Anthropic (the AI that writes Lexi's replies). Some of these are outside South Africa. We choose providers that protect information and we send them only what the booking needs.</p>
+
+  <h2>How long we keep it</h2>
+  <p>For as long as the business needs its booking history to run its diary, then we delete it. A business or a customer can ask us to delete their information sooner.</p>
+
+  <h2>Keeping it safe</h2>
+  <p>Access to the systems is limited to Theo, protected by passwords and access tokens, and tokens are replaced if they're ever exposed. If a breach affects your information, we'll tell you and the Information Regulator as POPIA requires.</p>
+
+  <h2>Your rights</h2>
+  <p>You can ask to see what we hold about you, correct it or delete it, and you can object to us using it. Message us using the details above. If you're not happy with our answer, you can complain to the Information Regulator (inforeg.org.za).</p>
+
+  <h2>Changes</h2>
+  <p>If this changes, we'll update the date at the top.</p>
+</div>
+
+<style>
+  .doc { min-height: 100svh; background: var(--bg); color: var(--ink); padding: 28px var(--margin) 120px; }
+  .doc > * { max-width: 42rem; margin-inline: auto; }
+  nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 72px !important; }
+  .mark { font: 500 1.2rem var(--font-display); text-decoration: none; }
+  .mark i { font-style: italic; }
+  h1 { margin-bottom: 20px; }
+  h2 { font-size: 1.6rem; margin: 44px auto 12px; }
+  p, li { margin-bottom: 14px; color: var(--ink); }
+  ul { padding-left: 1.2em; }
+</style>
