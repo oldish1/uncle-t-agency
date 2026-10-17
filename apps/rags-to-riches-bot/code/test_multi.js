@@ -49,5 +49,12 @@ const fullEv={items:[{status:'confirmed',summary:'117 & 210',start:{date:'2026-1
 const m4b=run('M4.js',{events_json:fullEv,lines_json:m3.ok_lines_json,slot_id:'slot_1200',client_name:'Kobie',wa_id:'27',now_iso:now});
 a.equal(m4b.count,2); a(JSON.parse(m4b.confirm_json).includes('just got booked up'));
 a.equal(run('M4.js',{lines_json:'[]',slot_id:'slot_0800'}).ok,false);
+{ // Nita's real message: building only, lowercase
+const r2=claude({intent:'details',client_name:'',bookings:[
+ {date:'2026-11-07',raw:'7th November Bree',unit_number:'',building_name:'Bree',access_code:'',service:''},
+ {date:'2026-11-10',raw:'10th November vc',unit_number:'',building_name:'vc',access_code:'',service:''}]});
+const x=JSON.parse(run('M2.js',{claude_body:r2,saved_name:'Kobie',saved_unit:'2910',saved_building:'Bree Street',saved_code:'4471',now_iso:now}).lines_json);
+a.equal(x[0].unit,'2910'); a.equal(x[0].code,'4471'); a.equal(x[1].building,'vc'); a.equal(x[1].unit,''); a.equal(x[1].code,'');
+}
 console.log('MULTI-DATE TESTS PASS');
 console.log('---- sample messages ----\n'+txt+'\n----\n'+c);

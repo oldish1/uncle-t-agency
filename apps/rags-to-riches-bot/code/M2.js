@@ -41,6 +41,9 @@ const lines = [], problems = [];
   if (lines.length >= MAX_LINES) { problems.push("❓ " + label(iso) + " (10 dates at a time, please send the rest after)"); return; }
   let unit = clean(b.unit_number), building = clean(b.building_name), code = clean(b.access_code);
   if (!unit && !building) { unit = savedUnit; building = savedBuilding; }
+  // "Bree" on its own = her usual Bree apartment
+  else if (!unit && building && savedUnit && savedBuilding &&
+           (savedBuilding.toLowerCase().includes(building.toLowerCase()) || building.toLowerCase().includes(savedBuilding.toLowerCase()))) { unit = savedUnit; building = savedBuilding; }
   if (!code && unit && unit === savedUnit) code = savedCode;
   lines.push({ day: iso, label: label(iso), service: SVC[b.service] || String(input.default_service || "svc_basic"),
     unit: unit, building: building, code: code, raw: raw });

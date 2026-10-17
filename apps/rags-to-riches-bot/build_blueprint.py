@@ -152,7 +152,7 @@ A=router([
 dp=code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7"},"Day picker")
 dp["filter"]={"name":"B: Service tapped","conditions":[[HAS,tap_has("svc_")]]}
 B=[dp, router([
-  [wa("Send day list",body_list(J("Which day suits you?"),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
+  [wa("Send day list",body_list(J("Which day suits you? Tap *Choose a day*, or just type your dates, one per line with the place (e.g. _7 Nov Bree_)."),"Choose a day","{{%d.result.sections_json}}"%dp["id"]))],
   [upd(dict(CLEAR,**{"1":"DAY","2":"{{3.tap_id}}"}),"Session: DAY")]])]
 
 MULTI_TEXT=("No problem! Send me all your dates in *one message*, one per line, with the place for each 🗓️\n\n"
@@ -253,7 +253,9 @@ MR=[mcs,m1,mh,m2,router([
      conds=[[cond("{{%d.result.has_lines}}"%M2,"text:notequal","true"),cond("{{%d.result.intent}}"%M2,"text:notequal","restart"),cond("{{%d.result.intent}}"%M2,"text:notequal","cancel")]])],
   [router([[wa("Send service buttons (restart, dates)",svc_body)],[upd(dict(CLEAR,**{"1":"SERVICE","18":"{{emptystring}}"}),"Session: restart (dates)")]],name="Restart",conds=[[mi("restart")]])],
   [router([[wa("Send cancelled (dates)",body_static("No problem, I've stopped this booking. Send *hi* any time to book."))],[upd(dict(CLEAR,**{"1":"CANCELLED","18":"{{emptystring}}"}),"Session: cancelled (dates)")]],name="Cancel",conds=[[mi("cancel")]])]])]
-MR[0]["filter"]={"name":"J: Dates typed","conditions":[[cond("{{3.msg_type}}","text:equal","text"),step_is("MULTI"),cond("{{3.is_reset}}","text:equal","no")]]}
+MR[0]["filter"]={"name":"J: Dates typed","conditions":[
+  [cond("{{3.msg_type}}","text:equal","text"),step_is("MULTI"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes")],
+  [cond("{{3.msg_type}}","text:equal","text"),step_is("DAY"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes")]]}
 
 tg=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin",s(7)),("timeMax",s(8)),("singleEvents","true"),("maxResults","250")],name="Calendar: re-check dates")
 tg["filter"]={"name":"K: Time tapped (several dates)","conditions":[[tap_has("slot_"),step_is("MULTI_TIME")]]}
