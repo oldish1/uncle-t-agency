@@ -10,7 +10,8 @@
 | Live proof-of-concept clients | 1 (CHALES Hair Boutique) | 2026-08-30 |
 | Warm leads in pipeline | 5 (Zanzibar, Sistergirl, Reeva, JEM, Jason) | 2026-08-30 |
 | Prospect list (outreach) | 20 Cape Town salons | 2026-08-30 |
-| Lexi System pricing | R1,499 once-off setup + R699/month | 2026-10-17 |
+| Lexi System pricing | R1,499 once-off setup + R799/month | 2026-10-17 |
+| Website only pricing | R799 once-off setup + R499/month (hosting and domain included) | 2026-10-17 |
 | Lexi plus website pricing | R1,499 once-off setup + R999/month (hosting and domain included) | 2026-10-17 |
 | 90-day target | 3 paying recurring clients | 2026-08-30 |
 | Growth milestone | 5 founding clients, then leave day job | 2026-08-30 |

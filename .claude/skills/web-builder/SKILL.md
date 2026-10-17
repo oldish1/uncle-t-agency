@@ -22,7 +22,7 @@ Read `reference/research/2026-10-17-award-winning-websites.md` before the first 
 
 ## Process
 
-1. **Brief.** Business, suburb, owner's voice, 3 services, the one action they want, any photos/logo. Ask only for what is missing. Check `context/offer.md`: setup is R1,499 once-off, then R699/month for Lexi or R999/month for Lexi plus a website (hosting and domain included).
+1. **Brief.** Business, suburb, owner's voice, 3 services, the one action they want, any photos/logo. Ask only for what is missing. Check `context/offer.md`: a website is R799 setup and R499/month (hosting and domain included); Lexi is R1,499 and R799/month; both together R1,499 and R999/month.
 2. **Study (free, no paid tools).** Build a reference board from real winners, not from imagination. Pull full-page screenshots with Firecrawl and LOOK at them with the Read tool:
    ```bash
    curl -sS -X POST https://api.firecrawl.dev/v2/scrape -H 'Content-Type: application/json' \

@@ -20,7 +20,7 @@ Solo operation. Theo owns sales, relationships, and strategy. Claude is the tech
 
 Still a side venture against a full-time trade job (boilermaker and sheet metal work), built in evenings and weekends. Current stage: one live proof-of-concept client (CHALES Hair Boutique, his daughter Chante's salon), five warm leads in the pipeline, and a 20-prospect outreach list running. No paying agency client yet, that's deliberately gated behind fixing Lexi's response speed first.
 
-What makes it different: pricing positioned well below corporate agencies (Telecloud charges R2,000 to R11,000 once-off for comparable work, with hosting extra; Uncle T Agency charges R1,499 once-off setup plus R699/month for Lexi, or R999/month with a website, hosting included), and a trust advantage no outside agency can match, being from the same community as the client.
+What makes it different: pricing positioned well below corporate agencies (Telecloud charges R2,000 to R11,000 once-off for comparable work, with hosting extra; Uncle T Agency charges R1,499 setup plus R799/month for Lexi, R799 setup plus R499/month for a website, or R1,499 plus R999/month for both, hosting included), and a trust advantage no outside agency can match, being from the same community as the client.
 
 ## Competitors
 
