@@ -33,3 +33,4 @@ node_modules/
 # Per-machine seat identity
 .seat
 .firecrawl/
+.taste-skill/
