@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
-  import { theo, places, faq, wa } from '$lib/content.js';
+  import { theo, places, faq, wa, dayPhotos, cbdPhoto } from '$lib/content.js';
   import FourDays from '$lib/FourDays.svelte';
   import SkylineLine from '$lib/SkylineLine.svelte';
 
@@ -39,10 +39,20 @@
 </script>
 
 <div bind:this={root}>
-  <section class="sec intro">
-    <div class="wrap">
+  <section class="hero2">
+    <div class="hmedia" aria-hidden="false">
+      <img class="hbg" data-parallax="5" src={dayPhotos[0].src} alt={dayPhotos[0].alt} width="1920" height="1280" decoding="async" />
+    </div>
+    <div class="hwash" aria-hidden="true"></div>
+    <div class="wrap hin">
       <p class="live" data-reveal><i></i> Cape Town, {clock}</p>
       <h1 class="h1" data-words>Built by a <em>local</em>, not a call centre.</h1>
+    </div>
+    <div class="hfade" aria-hidden="true"></div>
+  </section>
+
+  <section class="sec intro">
+    <div class="wrap">
       <div class="storywrap">
         <div class="mono" data-reveal aria-hidden="true"><span>T</span></div>
         <p class="story" bind:this={story}>{theo[0]} {theo[1]}</p>
@@ -53,13 +63,17 @@
   <FourDays />
 
   <section class="sec places">
-    <div class="bgline" aria-hidden="true"><SkylineLine draw={false} opacity={0.16} /></div>
-    <div class="wrap">
-      <h2 class="h2" data-words>Where we <em>work</em>.</h2>
-      <ul class="list">
-        {#each places as pl}<li data-reveal><span>{pl}</span></li>{/each}
-      </ul>
-      <p class="note" data-reveal>I come to you for the setup, wherever in the city you are.</p>
+    <div class="wrap pgrid">
+      <div class="plist">
+        <h2 class="h2" data-words>Where we <em>work</em>.</h2>
+        <ul class="list">
+          {#each places as pl}<li data-reveal><span>{pl}</span></li>{/each}
+        </ul>
+        <p class="note" data-reveal>I come to you for the setup, wherever in the city you are.</p>
+      </div>
+      <figure class="pphoto" data-reveal>
+        <div class="pframe"><img data-parallax="4" src={cbdPhoto.src} alt={cbdPhoto.alt} width="1920" height="1280" loading="lazy" decoding="async" /></div>
+      </figure>
     </div>
   </section>
 
@@ -89,12 +103,19 @@
 </div>
 
 <style>
-  .intro { padding-top: clamp(130px, 14vw, 180px); }
+  .hero2 { position: relative; min-height: min(100svh, 920px); display: flex; align-items: flex-start; overflow: hidden; isolation: isolate; }
+  .hmedia { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+  .hbg { position: absolute; left: 0; top: -6%; width: 100%; height: 112%; object-fit: cover; object-position: 50% 70%; }
+  .hwash { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(241, 238, 231, 0.55), rgba(241, 238, 231, 0) 62%), linear-gradient(180deg, rgba(241, 238, 231, 0.35), transparent 40%); }
+  .hfade { position: absolute; inset: auto 0 0 0; height: 220px; z-index: -1; background: linear-gradient(0deg, var(--bg), rgba(241, 238, 231, 0)); }
+  .hin { padding: clamp(130px, 14vw, 180px) var(--margin) 0; width: 100%; }
+  .hin .lead { margin-top: 22px; max-width: 34ch; color: #2d3b33; }
+  .intro { padding-top: clamp(24px, 4vw, 56px); }
   .live { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; margin-bottom: 22px; font-variant-numeric: tabular-nums; }
   .live i { width: 7px; height: 7px; border-radius: 50%; background: #0b5d4a; animation: ping 2s infinite; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(11, 93, 74, 0.5); } 100% { box-shadow: 0 0 0 9px rgba(11, 93, 74, 0); } }
-  .intro .h1 { max-width: 15ch; }
-  .storywrap { margin-top: clamp(48px, 8vw, 110px); display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); align-items: start; }
+  .hin .h1 { max-width: 15ch; }
+  .storywrap { margin-top: 0; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); align-items: start; }
   .mono { width: 120px; height: 120px; border-radius: 50%; background: #0b5d4a; color: #f1efe8; display: grid; place-items: center; font: italic 500 4rem var(--font-display); }
   .story { font: 500 clamp(1.3rem, 1rem + 1.6vw, 2.2rem) / 1.3 var(--font-sans); letter-spacing: -0.03em; max-width: 34em; }
   .story :global(.fw) { display: inline-block; }
@@ -118,9 +139,10 @@
   .item.open .panel { grid-template-rows: 1fr; }
   .inner { overflow: hidden; }
   .inner p { padding: 0 0 24px; color: var(--muted); max-width: 56ch; }
-  .places { position: relative; overflow: hidden; }
-  .places .wrap { position: relative; z-index: 1; }
-  .bgline { position: absolute; inset: auto 0 0 0; pointer-events: none; }
+  .pgrid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 5vw, 80px); align-items: center; }
+  .pframe { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 22px; background: var(--panel); position: relative; }
+  .pframe img { position: absolute; left: 0; top: -5%; width: 100%; height: 110%; object-fit: cover; object-position: 38% 40%; }
+  .pphoto { margin: 0; }
   .close { padding-bottom: 0; overflow: hidden; }
   .close .wrap { padding-bottom: clamp(40px, 6vw, 80px); }
   .skyline { margin: 0 calc(var(--margin) * -1); }
@@ -130,6 +152,9 @@
   @media (max-width: 900px) {
     .storywrap, .fgrid { grid-template-columns: minmax(0, 1fr); }
     .mono { width: 72px; height: 72px; font-size: 2.4rem; }
+    .pgrid { grid-template-columns: minmax(0, 1fr); }
+    .pframe { aspect-ratio: 16 / 11; }
+    .hero2 { min-height: 86svh; }
     .fgrid .h2 { position: static; }
   }
   @media (prefers-reduced-motion: reduce) { .live i { animation: none; } }
