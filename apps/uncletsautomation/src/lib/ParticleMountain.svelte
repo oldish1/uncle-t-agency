@@ -3,17 +3,7 @@
   import { reduced } from '$lib/motion.js';
 
   let canvas;
-  /* Table Mountain ridge, x across 0..1, y down 0..1 */
-  const ridge = [[0, 0.8], [0.06, 0.78], [0.12, 0.79], [0.18, 0.74], [0.23, 0.66], [0.27, 0.62], [0.31, 0.66], [0.35, 0.7], [0.4, 0.69], [0.45, 0.64], [0.5, 0.56], [0.545, 0.5], [0.57, 0.485], [0.8, 0.485], [0.83, 0.5], [0.86, 0.55], [0.9, 0.62], [0.95, 0.68], [1, 0.7]];
-  const yAt = (x) => {
-    for (let i = 1; i < ridge.length; i++) {
-      if (x <= ridge[i][0]) {
-        const [x0, y0] = ridge[i - 1], [x1, y1] = ridge[i];
-        return y0 + ((y1 - y0) * (x - x0)) / (x1 - x0);
-      }
-    }
-    return ridge[ridge.length - 1][1];
-  };
+  import { ridgeY, buildings, stadium, cranes, base, lift } from '$lib/skyline.js';
 
   onMount(() => {
     const ctx = canvas.getContext('2d');
@@ -29,32 +19,63 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const step = w < 600 ? 12 : 11;
       dots = [];
+      const baseY = lift(base) * h;
+      const add = (x, y, a, kind, extra = {}) => dots.push({ ox: x, oy: y, x, y, vx: 0, vy: 0, a, ph: Math.random() * 6.28, kind, ...extra });
+      /* mountains: dots from the ridge down to the water */
       for (let x = step / 2; x < w; x += step) {
-        const top = yAt(x / w) * h;
-        for (let y = top, k = 0; y < h; y += step, k++) {
-          const depth = Math.min(1, (y - top) / (h * 0.42));
-          dots.push({ ox: x, oy: y, x, y, vx: 0, vy: 0, a: 0.95 - depth * 0.85, ph: Math.random() * 6.28, edge: k === 0 });
+        const top = lift(ridgeY(x / w)) * h;
+        for (let y = top, k = 0; y < baseY; y += step, k++) {
+          const depth = Math.min(1, (y - top) / (h * 0.3));
+          add(x, y, 0.95 - depth * 0.8, k === 0 ? 'edge' : 'land');
         }
+        /* sea: sparse rows that shimmer */
+        for (let y = baseY + step, r = 0; y < h; y += step * 1.4, r++) {
+          if ((Math.round(x / step) + r) % 3 === 0) add(x, y, 0.5 - Math.min(0.3, r * 0.05), 'sea');
+        }
+      }
+      /* city: warmer, brighter, windows that flicker */
+      for (const [bx, bw, bh] of buildings) {
+        const x0 = bx * w, x1 = (bx + bw) * w, topY = lift(base - bh) * h;
+        for (let x = x0; x < x1; x += step * 0.7) {
+          for (let y = topY; y < baseY; y += step * 0.7) add(x, y, 1, 'city', { lit: Math.random() > 0.55 });
+        }
+      }
+      const sx0 = stadium.x * w, sx1 = (stadium.x + stadium.w) * w, sTop = lift(base - stadium.h) * h;
+      for (let x = sx0; x < sx1; x += step * 0.8) for (let y = sTop; y < baseY; y += step * 0.8) add(x, y, 0.9, 'city', { lit: true });
+      for (const [cx, ch] of cranes) {
+        const x = cx * w;
+        for (let y = lift(base - ch) * h; y < baseY; y += step * 0.8) add(x, y, 0.8, 'city', { lit: false });
       }
       draw();
     }
 
     function draw() {
       ctx.clearRect(0, 0, w, h);
-      const buckets = [[], [], [], []];
-      for (const d of dots) buckets[Math.min(3, Math.floor(d.a * 4))].push(d);
-      buckets.forEach((list, i) => {
+      const groups = { land: [[], [], [], []], city: [[], []], sea: [] };
+      for (const d of dots) {
+        if (d.kind === 'city') groups.city[d.lit ? 1 : 0].push(d);
+        else if (d.kind === 'sea') groups.sea.push(d);
+        else groups.land[Math.min(3, Math.floor(d.a * 4))].push(d);
+      }
+      groups.land.forEach((list, i) => {
         ctx.fillStyle = `rgba(37,211,102,${0.16 + i * 0.26})`;
-        for (const d of list) ctx.fillRect(d.x - 1, d.y - 1, d.edge ? 2.6 : 2, d.edge ? 2.6 : 2);
+        for (const d of list) ctx.fillRect(d.x - 1, d.y - 1, d.kind === 'edge' ? 2.6 : 2, d.kind === 'edge' ? 2.6 : 2);
       });
+      ctx.fillStyle = 'rgba(120,200,255,0.28)';
+      for (const d of groups.sea) ctx.fillRect(d.x - 1, d.y - 1, 2, 2);
+      ctx.fillStyle = 'rgba(190,255,215,0.55)';
+      for (const d of groups.city[0]) ctx.fillRect(d.x - 1, d.y - 1, 2, 2);
+      ctx.fillStyle = `rgba(255,222,150,${0.75 + Math.sin(t * 2) * 0.12})`;
+      for (const d of groups.city[1]) ctx.fillRect(d.x - 1, d.y - 1, 2.2, 2.2);
     }
 
     function tick() {
       t += 0.016;
       const R = 120;
       for (const d of dots) {
-        const wx = d.ox + Math.sin(t * 0.9 + d.ph) * 0.8;
-        const wy = d.oy + Math.cos(t * 0.7 + d.ph) * 0.8;
+        const amp = d.kind === 'sea' ? 2.2 : 0.8;
+        const wx = d.ox + Math.sin(t * 0.9 + d.ph) * amp;
+        const wy = d.oy + Math.cos(t * 0.7 + d.ph) * (d.kind === 'sea' ? 0.6 : 0.8);
         const dx = d.x - mouse.x, dy = d.y - mouse.y, dist = Math.hypot(dx, dy);
         if (dist < R) {
           const f = (1 - dist / R) * 5.5;
