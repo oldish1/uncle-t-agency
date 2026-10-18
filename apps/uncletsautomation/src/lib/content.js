@@ -39,7 +39,7 @@ export const T = {
 };
 
 export const capabilities = [
-  ['She answers when you can\'t.', 'A customer messages Lexi's number at 9pm asking for a Saturday slot. Lexi replies in seconds, lists your services and takes the day and time.'],
+  ['She answers when you can\'t.', 'A customer messages Lexi\'s number at 9pm asking for a Saturday slot. Lexi replies in seconds, lists your services and takes the day and time.'],
   ['Nothing double-books.', 'She checks your Google Calendar live before she confirms, so two people never land on the same slot.'],
   ['Fewer no-shows.', 'Every client gets a WhatsApp reminder the day before. Cancel and reschedule work in the same chat, and Lexi offers a different date before she cancels.'],
   ['A website that matches.', 'One fast page with your services, your suburb, a map and a WhatsApp button. Hosting and your domain are included in the monthly fee.']
