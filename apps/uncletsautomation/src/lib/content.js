@@ -88,7 +88,15 @@ export const stats = [
   ['2 to 5 sec', 'Per reply in the live build.']
 ];
 
-/* Real Table Mountain photos for the Start view, ordered dawn to night.
-   One photo works (it gets tinted by the scroll), two to four look best.
-   Example: { src: '/day/dawn.webp', alt: 'Table Mountain at dawn from Parow' } */
-export const dayPhotos = [];
+/* Real Table Mountain photos for the Start view's day cycle, in order through the day.
+   at = how far through the scroll (0 to 1) the photo is fully showing; pos = where to anchor the crop. */
+export const dayPhotos = [
+  { src: '/day/dawn.webp', at: 0, pos: '50% 62%', alt: 'Table Mountain and Cape Town at dawn from Bloubergstrand, soft pink sky' },
+  { src: '/day/midday.webp', at: 0.38, pos: '50% 22%', alt: 'Table Mountain and the Cape Town city bowl across Table Bay under a clear blue sky' },
+  { src: '/day/sunset.webp', at: 0.62, pos: '50% 70%', alt: 'Table Mountain at sunset from Bloubergstrand, blue sky fading to orange' },
+  { src: '/day/dusk.webp', at: 0.82, pos: '50% 55%', alt: 'Table Mountain lit red at dusk above the Cape Town city lights' },
+  { src: '/day/night.webp', at: 1, pos: '50% 52%', alt: 'Table Mountain at night above the glowing Cape Town city and low cloud' }
+];
+
+/* A wide daytime view of the mountain with the CBD, harbour and stadium, used behind the Home hero */
+export const cbdPhoto = { src: '/day/cbd.webp', alt: 'Aerial view of Table Mountain, the Cape Town CBD, harbour and stadium across Table Bay' };

@@ -3,6 +3,7 @@
   import { gsap, reduced } from '$lib/motion.js';
   import { dayPhotos } from '$lib/content.js';
   const hasPhotos = dayPhotos.length > 0;
+  let failed = $state(false);
 
   import { ridgeY, buildings, stadium, cranes, base, lift } from '$lib/skyline.js';
   const W = 1440, H = 800;
@@ -67,12 +68,17 @@
     clock.textContent = String(Math.floor(mins / 60)).padStart(2, '0') + ':' + String(mins % 60).padStart(2, '0');
     if (hasPhotos) {
       const n = dayPhotos.length;
+      let k = 0;
+      while (k < n - 2 && v > dayPhotos[k + 1].at) k++;
+      const a = dayPhotos[k].at, b = dayPhotos[Math.min(n - 1, k + 1)].at;
+      const raw = n === 1 ? 0 : Math.max(0, Math.min(1, (v - a) / (b - a || 1)));
+      const t = raw * raw * (3 - 2 * raw);
       photoEls.forEach((el, i) => {
-        const o = n === 1 ? 1 : Math.max(0, 1 - Math.abs(v * (n - 1) - i));
-        el.style.opacity = o;
-        el.style.transform = `scale(${(1.08 - v * 0.08).toFixed(3)}) translate3d(${(-v * 18).toFixed(1)}px,0,0)`;
+        const o = n === 1 ? 1 : i === k ? 1 - t : i === k + 1 ? t : 0;
+        el.style.opacity = o.toFixed(3);
+        el.style.transform = `scale(${(1.07 - v * 0.07).toFixed(3)}) translate3d(${(-v * 16).toFixed(1)}px,0,0)`;
       });
-      grade.style.background = L(['rgba(255,150,90,0.22)', 'rgba(0,0,0,0)', 'rgba(255,110,60,0.30)', 'rgba(6,12,40,0.62)']);
+      grade.style.background = n === 1 ? L(['rgba(255,150,90,0.22)', 'rgba(0,0,0,0)', 'rgba(255,110,60,0.30)', 'rgba(6,12,40,0.62)']) : 'transparent';
       starsEl.style.opacity = n === 1 ? night : 0;
     }
     msgEls.forEach((el, i) => { const at = msgs[i][0]; el.classList.toggle('on', v >= at && v < at + 0.26); });
@@ -95,7 +101,7 @@
     const ctx = gsap.context(() => {
       gsap.to(proxy, {
         v: 1, ease: 'none', onUpdate: () => render(proxy.v),
-        scrollTrigger: { trigger: sec, start: 'top top', end: '+=2800', pin: true, scrub: 0.6, anticipatePin: 1 }
+        scrollTrigger: { trigger: sec, start: 'top top', end: '+=3600', pin: true, scrub: 0.6, anticipatePin: 1 }
       });
     }, sec);
     return () => { ctx.revert(); window.removeEventListener('resize', fit); };
@@ -103,16 +109,16 @@
 </script>
 
 <section class="day" bind:this={sec} aria-label="Lexi over a day in Cape Town">
-  {#if hasPhotos}
+  {#if hasPhotos && !failed}
     <div class="photos">
       {#each dayPhotos as p, i}
-        <img class="photo" src={p.src} alt={i === 0 ? p.alt : ''} style="opacity:{i === 0 ? 1 : 0}" loading={i === 0 ? 'eager' : 'lazy'} />
+        <img class="photo" src={p.src} alt={p.alt} style="opacity:{i === 0 ? 1 : 0};object-position:{p.pos || '50% 60%'}" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" onerror={() => (failed = true)} />
       {/each}
       <div class="grade" bind:this={grade}></div>
       <div class="scrim"></div>
     </div>
   {/if}
-  <svg bind:this={svgEl} class:off={hasPhotos} viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <svg bind:this={svgEl} class:off={hasPhotos && !failed} viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" bind:this={topStop} stop-color="#2b2f63" />
@@ -165,7 +171,7 @@
   .photos { position: absolute; inset: 0; overflow: hidden; background: #0a1226; }
   .photo { position: absolute; inset: -2%; width: 104%; height: 104%; object-fit: cover; will-change: transform, opacity; }
   .grade { position: absolute; inset: 0; }
-  .scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 8, 12, 0.55), rgba(4, 8, 12, 0.05) 60%), linear-gradient(0deg, rgba(4, 8, 12, 0.5), transparent 35%); }
+  .scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 8, 12, 0.5), rgba(4, 8, 12, 0.05) 62%), linear-gradient(180deg, rgba(4, 8, 12, 0.35), transparent 38%), linear-gradient(0deg, rgba(4, 8, 12, 0.5), transparent 32%); }
   .over { position: absolute; inset: 0; padding: 110px var(--margin) 48px; display: flex; flex-direction: column; justify-content: space-between; max-width: 1360px; margin-inline: auto; }
   .top { display: flex; justify-content: space-between; gap: 32px; align-items: flex-start; }
   .top .h1 { max-width: 15ch; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35); }

@@ -14,7 +14,8 @@
 
 ## Images
 
-- No photographs. The Table Mountain scenes and the sample chat screens are drawn in code for this site.
+- Six Cape Town photos in `static/day/` (dawn, midday, sunset, dusk, night, and the Table Bay aerial) were chosen and downloaded by Theo from free stock sites. Photographer names and the exact licence for each still need to be recorded here before launch. Watermarked iStock previews were deliberately not used.
+- The drawn Table Mountain skyline (`src/lib/skyline.js`) and the sample chat screens are drawn in code and serve as the fallback if a photo fails to load.
 
 ## Design reference
 

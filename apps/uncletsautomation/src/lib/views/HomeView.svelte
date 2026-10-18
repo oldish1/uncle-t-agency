@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
-  import { verticals, plans, wa } from '$lib/content.js';
+  import { verticals, plans, wa, cbdPhoto } from '$lib/content.js';
   import Chat from '$lib/Chat.svelte';
   import ParticleMountain from '$lib/ParticleMountain.svelte';
   import DayStory from '$lib/DayStory.svelte';
@@ -30,6 +30,7 @@
 
 <div bind:this={root}>
   <section class="hero" bind:this={hero}>
+    <img class="bg" src={cbdPhoto.src} alt={cbdPhoto.alt} width="1920" height="1280" decoding="async" />
     <div class="glow" aria-hidden="true"></div>
     <ParticleMountain />
     <div class="in wrap">
@@ -128,7 +129,8 @@
 
 <style>
   .hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 110px var(--margin) 60px; overflow: hidden; isolation: isolate; }
-  .glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(700px 520px at 78% 42%, rgba(37, 211, 102, 0.16), transparent 70%), radial-gradient(600px 420px at 8% 8%, rgba(11, 93, 74, 0.35), transparent 70%); animation: drift 14s ease-in-out infinite alternate; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; z-index: -2; filter: saturate(0.6) brightness(0.7) contrast(1.05); }
+  .glow { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(6, 9, 8, 0.88) 0%, rgba(6, 9, 8, 0.5) 55%, rgba(6, 9, 8, 0.28) 100%), radial-gradient(700px 520px at 78% 42%, rgba(37, 211, 102, 0.16), transparent 70%), radial-gradient(600px 420px at 8% 8%, rgba(11, 93, 74, 0.3), transparent 70%); animation: drift 14s ease-in-out infinite alternate; }
   @keyframes drift { to { transform: translate3d(-2%, 2%, 0) scale(1.05); } }
   .fade { position: absolute; inset: auto 0 0 0; height: 160px; background: linear-gradient(0deg, var(--bg), transparent); pointer-events: none; }
   .in { width: 100%; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(24px, 5vw, 80px); align-items: center; position: relative; }
