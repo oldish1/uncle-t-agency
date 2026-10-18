@@ -3,7 +3,7 @@
   import { gsap, reduced } from '$lib/motion.js';
 
   const days = [
-    ['Day one', 'We set up Lexi on your number.', 'You tell us your services, prices and hours. We write her greeting in your voice.'],
+    ['Day one', 'We set up Lexi on her own number.', 'She gets a dedicated WhatsApp number, separate from yours. You tell us your services, prices and hours, and we write her greeting in your voice.'],
     ['Day two', 'We connect your calendar.', "Your Google Calendar becomes the single source of truth for what's free."],
     ['Day three', 'We test it with you.', 'You book, cancel and reschedule as a customer until it feels right.'],
     ['Day four', 'You go live.', 'Customers book while you cut, braid or fit pipes. We keep it running.']

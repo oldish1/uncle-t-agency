@@ -36,7 +36,7 @@ Most owners will laugh or wince here, that's the moment. Don't explain the produ
 
 ## The reveal, in one sentence
 
-"I build a receptionist that lives inside your own WhatsApp, she never sleeps, never double-books, and she's already running for a salon just like yours in Bellville. Can I show you?"
+"I build a receptionist with her own WhatsApp number, separate from your personal one, she never sleeps, never double-books, and she's already running for a salon just like yours in Bellville. Can I show you?"
 
 Pull out your phone, message the demo number live in front of her. Let her watch it reply in real time, don't describe it, show it.
 

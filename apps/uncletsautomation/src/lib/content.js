@@ -39,7 +39,7 @@ export const T = {
 };
 
 export const capabilities = [
-  ['She answers when you can\'t.', 'A customer messages your own WhatsApp number at 9pm asking for a Saturday slot. Lexi replies in seconds, lists your services and takes the day and time.'],
+  ['She answers when you can\'t.', 'A customer messages Lexi's number at 9pm asking for a Saturday slot. Lexi replies in seconds, lists your services and takes the day and time.'],
   ['Nothing double-books.', 'She checks your Google Calendar live before she confirms, so two people never land on the same slot.'],
   ['Fewer no-shows.', 'Every client gets a WhatsApp reminder the day before. Cancel and reschedule work in the same chat, and Lexi offers a different date before she cancels.'],
   ['A website that matches.', 'One fast page with your services, your suburb, a map and a WhatsApp button. Hosting and your domain are included in the monthly fee.']
@@ -59,11 +59,11 @@ export const plans = [
 
 export const theo = [
   "I'm Theo, Uncle T to most people. I'm from Cape Town, I speak English and Afrikaans, and I'm learning Xhosa. By day I'm a boilermaker and sheet metal worker. At night I build WhatsApp receptionists for small businesses that lose bookings because the owner is busy working.",
-  'I come to you, I set Lexi up on your own number, and when something needs fixing you message me, not a ticket system. The prices are ones a small business can carry.'
+  'I come to you, I set Lexi up on her own dedicated WhatsApp number, and when something needs fixing you message me, not a ticket system. The prices are ones a small business can carry.'
 ];
 
 export const steps = [
-  ['We set up Lexi on your number.', 'You tell us your services, prices and hours. We write her greeting in your voice.'],
+  ['We set up Lexi on her own number.', 'She gets a dedicated WhatsApp number, separate from yours. You tell us your services, prices and hours, and we write her greeting in your voice.'],
   ['We connect your calendar.', "Your Google Calendar becomes the single source of truth for what's free."],
   ['We test it with you.', 'You book, cancel and reschedule as a customer until it feels right.'],
   ['You go live.', 'Customers book while you cut, braid or fit pipes. We keep it running.']
@@ -72,8 +72,8 @@ export const steps = [
 export const places = ['Bellville', 'Parow', 'Goodwood', "Mitchell's Plain", 'Cape Town'];
 
 export const faq = [
-  ['Is it a chatbot?', "She's a receptionist who talks like a person, not like a phone menu. Customers tap a service, a day and a time, or just type."],
-  ['Does it use my own WhatsApp number?', 'Yes, your WhatsApp Business number, so customers keep messaging the number they already know.'],
+  ['Is it a chatbot?', "She's a receptionist who writes like a person, not like a phone menu. Customers tap a service, a day and a time, or just type. She works by text for now, and voice is coming soon."],
+  ['Does it use my own WhatsApp number?', 'No. Lexi gets her own dedicated WhatsApp number, separate from your personal one. You put it on your website, socials and cards, so customers book with her and your own phone stays yours.'],
   ['What if two people want the same slot?', 'Lexi checks your calendar before she confirms. The second person gets offered another time.'],
   ['Can she speak Afrikaans?', 'Lexi runs on Claude, which reads and writes Afrikaans. We test your own greeting in the language you want before you go live.'],
   ['How long until it works?', 'About four days from the day you say yes.'],

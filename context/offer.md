@@ -2,7 +2,7 @@
 
 ## Products and services
 
-**The Lexi System**, the flagship. A WhatsApp AI booking assistant that lives inside the client's own WhatsApp Business number. Greets the customer, lists services, takes date and time, checks live calendar availability so nothing double-books, confirms, and sends reminders to cut no-shows. Sold as "a receptionist who never sleeps and never double-books," never as "a chatbot" or "AI technology," the pitch leads with the pain (missed messages at night, no-shows, double bookings, the owner personally fielding WhatsApp between clients), not the tech.
+**The Lexi System**, the flagship. A WhatsApp AI booking assistant that runs on her own dedicated WhatsApp number, separate from the owner's personal number. The client puts that number on their website, socials and cards. Greets the customer, lists services, takes date and time, checks live calendar availability so nothing double-books, confirms, and sends reminders to cut no-shows. Sold as "a receptionist who never sleeps and never double-books," never as "a chatbot" or "AI technology," the pitch leads with the pain (missed messages at night, no-shows, double bookings, the owner personally fielding WhatsApp between clients), not the tech.
 
 Price: R1,499 once-off setup, R799/month recurring. Rollout: 4 days, build, connect, test, live.
 
