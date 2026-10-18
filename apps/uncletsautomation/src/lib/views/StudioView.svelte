@@ -3,6 +3,7 @@
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
   import { theo, places, faq, wa } from '$lib/content.js';
   import FourDays from '$lib/FourDays.svelte';
+  import SkylineLine from '$lib/SkylineLine.svelte';
 
   let { delay = 0 } = $props();
   let root, story, clock = $state('');
@@ -52,6 +53,7 @@
   <FourDays />
 
   <section class="sec places">
+    <div class="bgline" aria-hidden="true"><SkylineLine draw={false} opacity={0.16} /></div>
     <div class="wrap">
       <h2 class="h2" data-words>Where we <em>work</em>.</h2>
       <ul class="list">
@@ -82,6 +84,7 @@
       <h2 class="h2" data-words>Got a question I haven't <em>answered</em>?</h2>
       <a class="btn big" data-reveal href={wa("Hi Theo, I have a question about Lexi")}>Ask Theo on WhatsApp</a>
     </div>
+    <div class="skyline"><SkylineLine /></div>
   </section>
 </div>
 
@@ -115,7 +118,12 @@
   .item.open .panel { grid-template-rows: 1fr; }
   .inner { overflow: hidden; }
   .inner p { padding: 0 0 24px; color: var(--muted); max-width: 56ch; }
-  .close { padding-bottom: clamp(72px, 10vw, 140px); }
+  .places { position: relative; overflow: hidden; }
+  .places .wrap { position: relative; z-index: 1; }
+  .bgline { position: absolute; inset: auto 0 0 0; pointer-events: none; }
+  .close { padding-bottom: 0; overflow: hidden; }
+  .close .wrap { padding-bottom: clamp(40px, 6vw, 80px); }
+  .skyline { margin: 0 calc(var(--margin) * -1); }
   .close .h2 { max-width: 16ch; margin-bottom: 28px; }
   .btn.big { min-height: 56px; padding: 0 30px; background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .btn.big:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
