@@ -306,6 +306,11 @@ function Quote() {
           <p><a href={'mailto:' + EMAIL}>{EMAIL}</a></p>
           <p><a href="tel:+27216972497">021 697 2497</a></p>
           <p className="soft">6 Windsor Road, Lansdowne, Cape Town 7780. <a href="https://www.google.com/maps/search/?api=1&query=T+%26+T+Engineering+6+Windsor+Rd+Lansdowne+Cape+Town">Directions</a></p>
+          <dl className="hours">
+            <div><dt>Monday to Thursday</dt><dd>07:30 to 16:30</dd></div>
+            <div><dt>Friday</dt><dd>07:30 to 13:30</dd></div>
+          </dl>
+          <p className="soft">Send your request any time. We pick it up when we open.</p>
         </Reveal>
       </div>
       <Reveal as="form" className="form" delay={0.1} onSubmit={e => e.preventDefault()} aria-label="Quote request">
@@ -335,6 +340,7 @@ function Footer() {
       <div className="foot-top">
         <p>6 Windsor Road, Lansdowne, Cape Town 7780</p>
         <p>Laser cutting, press brake bending, CNC punching and fabrication.</p>
+        <p>Mon to Thu 07:30 to 16:30<br />Fri 07:30 to 13:30</p>
         <p className="to-top"><a href="#top">Back to top</a></p>
       </div>
       <div className="foot-phone-wrap">
