@@ -42,7 +42,7 @@ a.equal(run('M3.js',{events_json:{items:[]},lines_json:three}).ok_count,2);
 const m4=run('M4.js',{events_json:ev,lines_json:m3.ok_lines_json,slot_id:'slot_0800',client_name:'Kobie Smit',wa_id:'27820000000',now_iso:now});
 a.equal(m4.ok,true); a.equal(m4.count,3); a(m4.event_json_3); a.equal(m4.event_json_4,'');
 const e1=JSON.parse(m4.event_json_1); a.equal(e1.start.dateTime,'2026-10-18T08:00:00+02:00'); a.equal(e1.end.dateTime,'2026-10-18T11:00:00+02:00');
-a(e1.summary.includes('Bree, Unit 2910')); a(e1.description.includes('Access code: 4471')); a(e1.description.includes('R50 Sunday'));
+a(e1.summary.includes('Bree, Unit 2910')); a(e1.description.includes('Access code: 4471')); a(e1.description.includes('R50 weekend'));
 const c=JSON.parse(m4.confirm_json); a(c.includes('Bookings received, Kobie')); a(c.includes('Fri 30 Oct, 08:00'));
 // M4: calendar filled meanwhile
 const fullEv={items:[{status:'confirmed',summary:'117 & 210',start:{date:'2026-10-30'},end:{date:'2026-10-31'}}]};
@@ -55,6 +55,11 @@ const r2=claude({intent:'details',client_name:'',bookings:[
  {date:'2026-11-10',raw:'10th November vc',unit_number:'',building_name:'vc',access_code:'',service:''}]});
 const x=JSON.parse(run('M2.js',{claude_body:r2,saved_name:'Kobie',saved_unit:'2910',saved_building:'Bree Street',saved_code:'4471',now_iso:now}).lines_json);
 a.equal(x[0].unit,'2910'); a.equal(x[0].code,'4471'); a.equal(x[1].building,'vc'); a.equal(x[1].unit,''); a.equal(x[1].code,'');
+}
+{ // Nita's wording (19 Oct)
+const sat=run('M4.js',{events_json:{items:[]},lines_json:JSON.stringify([{day:'2026-10-31',label:'Sat 31 Oct',service:'svc_basic',unit:'409',building:'',code:'',raw:'x'}]),slot_id:'slot_0800',client_name:'Kobie',wa_id:'27',now_iso:now});
+const t=JSON.parse(sat.confirm_json); a(JSON.parse(sat.event_json_1).description.includes('R50 weekend'));
+a(t.includes('Basic Clean from R420 to R520')); a(t.includes('Saturdays and Sundays +R50')); a(t.includes('two bedroom')); a(t.includes('upon completion')); a(t.includes('Ms Adams')); a(!t.includes('usually'));
 }
 console.log('MULTI-DATE TESTS PASS');
 console.log('---- sample messages ----\n'+txt+'\n----\n'+c);

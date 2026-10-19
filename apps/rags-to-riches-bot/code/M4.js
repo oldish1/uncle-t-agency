@@ -4,7 +4,7 @@ const SLOTS = { slot_0800: "08:00", slot_1200: "12:00", slot_1500: "15:00" };
 const HOURS = { svc_basic: 3, svc_deep: 3.5, svc_moveout: 4 };
 const DUR = { svc_basic: "3+ hrs", svc_deep: "about 3.5 hrs", svc_moveout: "about 4 hrs" };
 const LABEL = { svc_basic: "Basic Clean", svc_deep: "Deep Clean", svc_moveout: "Move Out / Move In Clean" };
-const PRICE = { svc_basic: "usually R420 to R520", svc_deep: "usually R850 to R1,300", svc_moveout: "R1,500" };
+const PRICE = { svc_basic: "from R420 to R520", svc_deep: "from R850 to R1,300", svc_moveout: "R1,500" };
 const DEPOSIT = { svc_deep: true, svc_moveout: true };
 const POINTS = { svc_basic: 1, svc_deep: 2, svc_moveout: 2 };
 const DAY_CAPACITY = Number(input.day_capacity || 2);
@@ -56,8 +56,8 @@ lines.forEach(l => {
   const endMin = h * 60 + m + Math.round(HOURS[l.service] * 60);
   const endIso = l.day + "T" + pad(Math.floor(endMin / 60)) + ":" + pad(endMin % 60) + ":00+02:00";
   const where = [l.building, l.unit ? "Unit " + l.unit : ""].filter(Boolean).join(", ") || "Usual place";
-  const sunday = new Date(l.day + "T12:00:00Z").getUTCDay() === 0, hol = HOLIDAYS.includes(l.day);
-  const extra = (sunday ? " + R50 Sunday rate" : "") + (hol ? " + R60 public holiday rate" : "");
+  const dow = new Date(l.day + "T12:00:00Z").getUTCDay(), weekend = dow === 0 || dow === 6, hol = HOLIDAYS.includes(l.day);
+  const extra = (weekend ? " + R50 weekend rate" : "") + (hol ? " + R60 public holiday rate" : "");
   const noCode = /^none/i.test(l.code);
   n++;
   out["event_json_" + n] = JSON.stringify({
@@ -83,13 +83,14 @@ const svcs = [...new Set(booked.map(b => b.l.service))];
 const msg = ["✅ *Bookings received, " + firstName + "!*", ""]
   .concat(booked.map(b => "🧹 " + b.l.label + ", " + slot + " · " + LABEL[b.l.service] + " (" + DUR[b.l.service] + ")\n     🏢 " + b.where))
   .concat(missed.length ? ["", "Couldn't book:"].concat(missed.map(x => "❌ " + x)) : [])
-  .concat(["", "💰 Price: " + svcs.map(s => LABEL[s] + " " + PRICE[s]).join("; ") + (booked.some(b => b.extra) ? ". Sundays +R50, public holidays +R60" : "") +
-    ". Nita will confirm the final price after seeing each place.", "Payment is by EFT."]);
+  .concat(["", "💰 Price: " + svcs.map(s => LABEL[s] + " " + PRICE[s]).join("; ") + ".",
+    "Saturdays and Sundays +R50, public holidays +R60.",
+    "Nita will confirm the final price after seeing each place. Rates are based on one and two bedroom apartments; any additional bedrooms will be quoted separately."]);
 if (svcs.some(s => DEPOSIT[s])) {
-  msg.push("Deep and Move Out cleans are confirmed once the *50% deposit* is paid. The rest is due when the clean is done.");
+  msg.push("Deep and Move Out cleans are confirmed once the *50% deposit* is paid. The rest is due via EFT upon completion of the clean.");
   msg.push(BANK ? "\n🏦 Banking details:\n" + BANK : "Nita will send you the banking details.");
-} else msg.push("Payment is due when each clean is done.");
-msg.push("", "Cancelling less than " + LATE + " before (or on the day) carries a *R150* late-cancellation fee.", "To cancel or change, please message Nita directly.");
+} else msg.push("Payment due via EFT upon completion of each clean.");
+msg.push("", "A *R150* cancellation fee will be charged if a clean is cancelled less than " + LATE + " before (or on the day).", "For any changes to your booking, please contact Ms Adams directly.");
 let text = msg.join("\n");
 if (text.length > 4000) text = text.slice(0, 3990) + "…";
 out.ok = true; out.count = n; out.confirm_json = JSON.stringify(text);
