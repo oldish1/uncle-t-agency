@@ -28,3 +28,21 @@ ISO or other certificates; B-BBEE level; laser max thickness and bed size; press
 
 ## Rule
 Mirror the structure and the standard, never copy text, images or logos. The twist for T & T: real machine footage that plays as you scroll, a family workshop since 2001 under Errol Jeftha, and quotes taken at any hour.
+
+## Round two: ten more (screenshots: outputs/2026-10-20-research-world2a.png and world2b.png)
+Q Industrial (Awwwards site of the day), Summit Steel Works (steel fabricator, Awwwards nominee), CML Engineering (Awwwards nominee), Anduril, Vermeer, Nucor, Redwood Materials, GE Aerospace, Formlabs, JLG.
+
+What stood out
+- **Summit Steel Works** is the closest match to T & T: black ground, one orange accent, huge condensed caps, a real photograph of a worker at a machine as the hero, "Fabricating the future", clear sections for what they do and why they are different.
+- **JLG, Vermeer, SSW** put a real person in the hero. **Nucor** shows welding sparks in a real photo. **Redwood and GE Aerospace** open on full-screen film. **Anduril** opens on a dark silhouette. **Q Industrial** opens on one 3D product object.
+- **Vermeer** adds a "browse by industry" block and a "find a dealer" bar, so a buyer finds their own case in two clicks.
+- **Formlabs** shows each product as a card with its key specs.
+- Headlines are short. Heavy industry mostly uses bold condensed capitals with one accent colour (orange or yellow).
+- None of the strongest sites crowd the first screen. One image or film, one sentence, one button.
+
+Lessons for T & T
+1. The hero should be a real person at a real machine, or real machine footage, with one sentence and one button.
+2. Show people. A face earns trust faster than any badge.
+3. Add an industries-we-serve block so a buyer can find themselves.
+4. Show capacity as spec cards (laser, press brake, punch), like product cards.
+5. Keep the first screen simple.
