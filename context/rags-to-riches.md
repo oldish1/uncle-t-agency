@@ -11,3 +11,5 @@ Theo already built her a branded HTML invoicing app (her colors, pink/red, #c118
 The longer-term idea: package this same invoicing setup as a sellable agency product for other small operators drowning in paper admin (cleaners, plumbers, gardeners, creches, handymen), roughly R750 to R1,200 once-off plus R149 to R399/month. Figures are directional, not locked.
 
 Also on the list once CHALES is sorted: the same client-growth push Chante gets, more clients for Nita, not just better admin.
+
+**Host guest assistant (planned 20 Oct 2026):** Nita's Airbnb/Booking.com host clients (Fancy, Kobie, Megan) get overwhelmed by guest messages. Plan: one stand-alone WhatsApp guest assistant per host, extras requests becoming paid jobs for Rags to Riches. Pilot host: Fancy. Plan: `plans/2026-10-20-host-guest-assistant.md`. Questions: `outputs/rags-to-riches/host-assistant-questions.txt`. Research: `reference/research/2026-10-20-booking-com-guest-messaging.md`.

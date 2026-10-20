@@ -1,0 +1,110 @@
+HOST ASSISTANT: QUESTIONS TO SEND
+Written 20 Oct 2026. Send MESSAGE 1 to the pilot host (Fancy, see plans/2026-10-20-host-guest-assistant.md for why). Send MESSAGE 2 to Nita. MESSAGE 3 is for Kobie or Megan if the pilot falls through.
+Reply format is the same as Luna's: a letter or yes/no per question, voice notes fine.
+
+=== MESSAGE 1: TO THE HOST (Fancy) ===
+
+Hi Fancy 👋 Theo here (Nita's brother). Nita says guests keep messaging you for the fan, broom, extra towel, wifi and so on. I want to build you a WhatsApp helper for your guests. It answers their questions any time of day, and when they ask for something extra it sends you one tidy list instead of ten messages.
+
+Guests would find it two ways: a QR code in the apartment, and a link in the message Booking.com sends before check-in. It runs on its own WhatsApp number, separate from yours.
+
+I need your answers to about 16 quick questions, in 2 messages. Reply with the number, like: *1A, 2 yes, 3 Bree...*  A voice note is fine too 🙂
+
+*PART 1: YOUR PLACE AND YOUR GUESTS*
+
+*1. Where do your guests book?*
+A) Booking.com only
+B) Airbnb only
+C) Both
+D) Also direct (friends, repeat guests)
+
+*2. How many apartments do you run, and where?*
+(e.g. "2910 Bree, plus 2 more at VC")
+
+*3. About how many guest messages a day, when it's busy?*
+A) Under 5
+B) 5 to 15
+C) More than 15
+
+*4. What do guests ask most?* Pick up to 4:
+A) Wifi
+B) Check-in / how to get in
+C) Parking
+D) Fan, heater, blanket, towels
+E) Broom, bin, cleaning stuff
+F) How the TV, aircon or stove works
+G) Late check-out
+H) Where to eat / what to do nearby
+I) Something else (tell me)
+
+*5. Which language do your guests mostly write in?*
+A) English
+B) English and Afrikaans
+C) Lots of foreign guests (the helper can answer in their language)
+
+*6. Check-in. How do guests get in right now?*
+A) Lockbox code
+B) Keys at reception
+C) Keys in mailbox
+D) Smart lock / door code
+E) You meet them
+
+*7. Should the helper give out the door or lockbox code?*
+A) No. The code stays in your Booking.com message and the helper only says "check your check-in message"
+B) Yes, but only on the check-in day
+
+(I recommend A to start. It keeps codes out of the system.)
+
+Send these answers, and I'll send Part 2.
+
+=== MESSAGE 1b: PART 2 ===
+
+*PART 2: EXTRAS AND HOW YOU WANT TO BE TOLD*
+
+*8. What extras can guests ask for?* List everything you can supply: fan, blanket, extra towel, broom, iron, baby cot, etc.
+And mark each one: *free* or *paid* (with the price in Rand).
+
+*9. Who delivers the extras?*
+A) You
+B) Nita's cleaning team
+C) Building reception or a caretaker
+D) Depends on the item (tell me)
+
+*10. How should the list reach you?*
+A) A WhatsApp message each time a guest asks
+B) One list a day, at a time you choose (what time?)
+C) Both: the list once a day, and urgent things straight away
+
+*11. What counts as urgent?* (e.g. no water, no power, locked out, anything unsafe)
+Those will go straight to you, and the helper will tell the guest "I've told the host now".
+
+*12. Your WhatsApp number for the alerts*
+Is it the one you normally use? Yes / No (give me the number)
+
+*13. Wifi*
+Network name and password for each apartment. (Send these to me privately, not in a group.)
+
+*14. House rules*
+Quiet hours, no smoking, no parties, check-out time, anything else guests must know. A voice note is fine.
+
+*15. What should the helper NEVER do?*
+(e.g. never promise a refund, never agree a late check-out, never say anything about price. Those go to you.)
+
+*16. Would you try it free for one month?*
+In return I'd ask for honest feedback each week, and a few lines for a testimonial if it helps you. After the month there'd be a small monthly fee per apartment, and you can stop any time. Yes / No / Tell me what worries you
+
+=== MESSAGE 2: TO NITA ===
+
+Hi Nita 👋 About the guest helper for your host clients. I'm going to try it first with Fancy. Four quick ones for you:
+
+*1.* When a guest asks for an extra (towel, blanket, fan, broom), should your team be the ones who deliver, or does the host? Or does it depend on the host?
+
+*2.* Which of those would you charge for, and how much? (e.g. extra towel set R__ , mid-stay clean R__)
+
+*3.* Would you want the daily list of extras sent to you too, or only to the host?
+
+*4.* Which of your hosts use Booking.com and which use Airbnb? And who gets the most guest messages? I'm thinking Fancy first, then Kobie, then Megan. Is that the right order?
+
+=== MESSAGE 3: SHORT VERSION FOR THE NEXT HOST (Kobie or Megan) ===
+
+Hi ___ 👋 Theo here. Nita tells me guests keep messaging you for small things like the fan, towels, wifi and check-in. I'm testing a WhatsApp helper that answers guests any time and sends you one tidy list of extras. Free for a month while I test it. Two questions to see if it fits: where do your guests book (Booking.com, Airbnb, both), and about how many guest messages do you get on a busy day? If it sounds useful I'll send the rest of my questions.
