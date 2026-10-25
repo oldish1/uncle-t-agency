@@ -19,3 +19,12 @@ Direct outreach, WhatsApp and in-person, not paid ads. A 20-prospect Cape Town s
 The strategy is five founding clients at a discounted rate in exchange for a testimonial and one trackable success metric each, banked as sales proof before any upsell gets offered. CHALES Hair Boutique is the live proof-of-concept client, referenceable and demoable right now.
 
 Warm leads in the pipeline: Zanzibar Hair and Beauty (replied), Sistergirl (asked about pricing), Reeva Hair, JEM Hair and Beauty Studio, and Jason, a tattoo artist at No Love Lost, referred in through Theo's sister.
+
+
+## Founding five deal (decided 25 Oct 2026)
+
+For the first five paying salons: first 30 days free, then setup R999 (normal R1,499) and R499 a month. If she cancels in the first month she owes nothing. Estimated real cost to us per salon for the free month: R100 to R150 (see `plans/2026-10-25-game-plan-pricing-chales-google.md`).
+
+**Positioning:** Lexi is the salon's personal assistant, not software. "Get found. Get booked. Get remembered." Competitors (Fresha, Booksy, Setmore) sell a tool the owner has to run; Lexi takes the WhatsApp work off the owner. Proof: Chales, about 100 real bookings since 10 June, about 34 clients.
+
+**After the founders** (draft, not final): Starter R499 (Lexi bookings and reminders), Plus R799 (adds review requests, win-back messages, memberships), Grow R1,299 (adds Google profile care, monthly results report, website).
