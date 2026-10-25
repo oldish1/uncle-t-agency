@@ -48,12 +48,15 @@ export const capabilities = [
 export const plans = [
   { id: 'both', hot: true, name: 'Lexi and a website', who: 'The full set: she books on WhatsApp, the site brings customers to her.',
     incl: 'Everything in Lexi, plus a fast website for phones with your services, suburb and a map. Hosting and your domain are included.',
+    ticks: ['Everything in Lexi', 'A fast website for phones', 'Hosting and your domain included', 'Services, suburb and a map', 'WhatsApp button on every page'],
     price: 'R999', per: 'a month, after R1,499 once-off setup', cta: 'Get both', msg: "Hi Theo, I'd like Lexi and a website for my business" },
   { id: 'lexi', name: 'Lexi', who: 'For salons, spas, groomers and trades who take bookings on WhatsApp.',
     incl: 'Setup, calendar connection, day-before reminders, cancel and reschedule, and ongoing support.',
+    ticks: ['Her own dedicated WhatsApp number', 'Calendar connection', 'Reminders the day before', 'Cancel and reschedule in chat', 'Support from Theo'],
     price: 'R799', per: 'a month, after R1,499 once-off setup', cta: 'Get Lexi', msg: "Hi Theo, I'd like Lexi for my business" },
   { id: 'site', name: 'A website', who: 'One fast page that shows up on Google and sends customers to your WhatsApp.',
     incl: 'Built for phones, with your services, suburb and a map. Hosting and your domain are included in the monthly fee.',
+    ticks: ['One fast page, built for phones', 'Services, suburb and a map', 'Hosting and domain included', 'Shows up on Google', 'WhatsApp button'],
     price: 'R499', per: 'a month, after R799 once-off setup', cta: 'Get a website', msg: "Hi Theo, I'd like a website for my business" }
 ];
 

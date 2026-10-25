@@ -114,9 +114,10 @@
       <div class="plans">
         {#each plans as p}
           <article class="plan" class:hot={p.hot} data-reveal>
+            {#if p.hot}<span class="badge">Most popular</span>{/if}
             <h3>{p.name}</h3>
             <p class="who">{p.who}</p>
-            <p class="incl">{p.incl}</p>
+            <ul class="ticks">{#each p.ticks as t}<li>{t}</li>{/each}</ul>
             <p class="price">{p.price}</p>
             <p class="per">{p.per}</p>
             <a class="btn" class:solid={p.hot} href={wa(p.msg)}>{p.cta}</a>
@@ -207,7 +208,11 @@
   .plan.hot { border-color: transparent; background: linear-gradient(var(--panel), var(--panel)) padding-box, linear-gradient(140deg, #25d366, rgba(37, 211, 102, 0.1) 40%, #0b5d4a) border-box; border: 1px solid transparent; }
   .plan h3 { font-size: 1.25rem; }
   .who { margin-top: 12px; font-weight: 500; }
-  .incl { margin-top: 10px; color: var(--muted); font-size: 0.9rem; }
+  .badge { align-self: flex-start; background: var(--green); color: #04120a; font: 600 0.75rem var(--font-sans); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .ticks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; font-size: 0.9rem; color: var(--muted); }
+  .ticks li { position: relative; padding-left: 26px; }
+  .ticks li::before { content: ''; position: absolute; left: 0; top: 0.3em; width: 14px; height: 14px; border-radius: 50%; background: rgba(37, 211, 102, 0.18); }
+  .ticks li::after { content: ''; position: absolute; left: 4.5px; top: calc(0.3em + 3px); width: 4px; height: 7px; border: solid var(--green); border-width: 0 2px 2px 0; transform: rotate(40deg) scale(0.9); }
   .price { margin-top: auto; padding-top: 32px; font: 500 clamp(2.4rem, 1.4rem + 2.6vw, 3.6rem) / 1 var(--font-sans); letter-spacing: -0.05em; }
   .per { margin: 6px 0 22px; color: var(--muted); font-size: 0.85rem; }
   .plan .btn { align-self: flex-start; }

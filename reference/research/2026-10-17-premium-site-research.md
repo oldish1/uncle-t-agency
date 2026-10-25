@@ -42,3 +42,18 @@ Plan:
 - **Studio (light):** a statement hero with a live Cape Town clock, Theo's story as a scroll-fill paragraph, "Four days" as a pinned horizontal run of drawn panels with a progress bar, suburbs as a big hover list, smooth-opening FAQ.
 - **Start (dark):** a full-bleed pinned Table Mountain that runs dawn, noon, dusk and night with the sun arcing across and Lexi's messages at each hour; a conversational enquiry wizard (business, need, name and suburb) with a live WhatsApp message building beside it; the first client as a short text; details and a closing action.
 - Reduced motion shows static versions of all of it.
+
+## Round three: Mobbin public pages (25 Oct 2026)
+
+Source: mobbin.com public section pages (hero, pricing, social proof, stats, about, showcase), read through Firecrawl screenshots. The full library and its MCP need a paid plan, so only the public grid was studied. Mobbin's image servers are blocked in the cloud container, so screenshots of the pages were used.
+
+What the best examples do:
+- **Hero:** a short headline (4 to 7 words) in one confident face, one product shot or visual that does real work (an actual interface, a photo with a floating UI card), and a trust strip of logos or one proof number directly underneath. Titan and Ease pair a headline block with a stats row. ISO Meet floats a small UI card over a photograph.
+- **Social proof:** one big quote with three large stat tiles (70%, 4x, 64%) under a row of logos. Numbers are huge, labels tiny.
+- **Pricing:** three plans, the recommended one carries a "Most popular" badge and a highlighted border or glow, every plan lists what it includes as ticks, price is the biggest thing in the card, and a billing toggle or one calm "contact us" row sits underneath.
+- **Style tags that win:** minimal, light or dark with one accent, scroll effects, glass, photography. Almost none use heavy decoration.
+
+What we apply to Uncle Ts Automation:
+- Pricing: "Most popular" badge on Lexi plus website, ticks for what is included, glowing border kept.
+- A proof band: three big figures (24/7, 4 days, 2 to 5 sec) already exist on Start; add a row of "built for" business types under the Home hero.
+- No fake logos or invented numbers, ever. Only real facts.

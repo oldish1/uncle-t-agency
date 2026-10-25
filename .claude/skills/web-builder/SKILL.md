@@ -36,6 +36,16 @@ Read `reference/research/2026-10-17-award-winning-websites.md` before the first 
 7. **Check like a person.** Screenshot with Playwright and the pre-installed Chromium at 390px and 1440px, look at both, fix what's off. Run Lighthouse. Click every link and button.
 8. **Hand over.** Show Theo the screenshots and scores in plain English. Deployment is a separate decision for Theo.
 
+## Award-level process (Theo's standard, set 25 Oct 2026)
+
+Every client site follows plan, then research, then build. Never skip a step and never build first.
+1. **Plan.** Write the argument: one claim per section. Decide the one hero visual and the one live thing the visitor can do.
+2. **Research.** Use all of these, in this order: the `design-taste-frontend` skill (direction, house style, inspector), Mobbin's public section pages (hero, pricing, social proof, stats, about) through Firecrawl screenshots (the paid Mobbin MCP only if Theo has connected it: check with SearchMcpRegistry), Awwwards and HorizonX for craft, `reference/research/2026-10-17-premium-site-research.md` for what we already learned. Save findings and the plan in `reference/research/` before building.
+3. **Build.** SvelteKit plus Tailwind plus GSAP ScrollTrigger plus Lenis is the reference stack (`apps/uncletsautomation`). Small refined type (headline at most about 58px, body 15px), real photos or a drawn local scene as the hero, one pinned scroll story, bento for capabilities, reduced-motion and no-script fallbacks for everything.
+4. **Check.** Real browser at 390 and 1440px, click every control, no console errors, then show Theo screenshots.
+5. **Truth check.** Read every claim aloud: is it true today? (Lesson: Lexi has her own number and does not speak yet.)
+6. **Ledger.** Log the research, the plan and the build as separate rows.
+
 ## Rules
 
 - Done = deployed and making money, not polished. Ship, then improve.
