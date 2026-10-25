@@ -189,6 +189,17 @@ def real_detail(item: dict[str, Any]) -> str:
     return "; ".join(parts)
 
 
+def hours_summary(item: dict[str, Any]) -> str:
+    """Opening hours as 'Mon 9-6; Tue 9-6; ...' straight from the Google listing."""
+    out = []
+    for h in item.get("openingHours") or []:
+        day = (h.get("day") or "")[:3]
+        hrs = (h.get("hours") or "").replace("\u202f", " ").replace(" to ", "-").replace(" AM", "am").replace(" PM", "pm")
+        if day and hrs:
+            out.append(f"{day} {hrs}")
+    return "; ".join(out)
+
+
 def dedupe(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     seen: set[str] = set()
     unique: list[dict[str, Any]] = []
@@ -256,6 +267,7 @@ def run(
                 "suburb": item.get("neighborhood") or item.get("city") or "",
                 "wa_number": wa_number(item.get("phone") or item.get("phoneUnformatted")),
                 "real_detail": real_detail(item),
+                "hours": hours_summary(item),
                 "instagram": ((item.get("instagrams") or [""])[0] if isinstance(item.get("instagrams"), list) else item.get("instagrams") or ""),
                 "rating": item.get("totalScore") or item.get("rating") or "",
                 "review_count": item.get("reviewsCount") or item.get("userRatingsTotal") or 0,
@@ -294,7 +306,7 @@ def run(
         out_path = WORKSPACE_ROOT / "outputs" / "leads" / f"{date_str}-{vertical_slug}-{suburb_slug}.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    columns = ["name", "suburb", "phone", "wa_number", "channel", "address", "rating", "review_count", "real_detail", "has_website", "website_url", "instagram", "has_booking_signal", "score_tier"]
+    columns = ["name", "suburb", "phone", "wa_number", "channel", "address", "rating", "review_count", "real_detail", "hours", "has_website", "website_url", "instagram", "has_booking_signal", "score_tier"]
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
         writer.writeheader()

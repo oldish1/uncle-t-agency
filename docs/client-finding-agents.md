@@ -18,6 +18,12 @@ Add `--skip-booking-check` to save Firecrawl credits. Then ask Claude to load th
 2. Send the Lexi demo video with a short personal message that uses that lead's real_detail and an opt-out line.
 3. Mark the lead sent with a next_action_date three days out. Log replies.
 
+## When to send (my judgment, not proven data: test and track reply speed)
+- Use each lead's `hours` column. Most salons here are closed Mondays: a day off means the owner isn't in the chair, so Monday 09:00 to 11:00 is worth testing for those.
+- Open-all-week salons: just before opening or around 13:00, never during Saturday or Friday-afternoon rush.
+- Never later than 19:30 on weekdays, never Sundays or public holidays. I believe SA consumer-protection rules limit marketing hours (about 08:00 to 20:00 weekdays, mornings on Saturdays) but they target consumers, not businesses, so I am not sure they apply. Staying inside them costs nothing.
+- Record sent time and reply time in the Messages tab for two weeks, then keep what works.
+
 ## Rules
 - Theo sends every first message from his own phone. Never from a business API number.
 - Anyone who says no, stop or similar: status opted_out, never contacted again.
