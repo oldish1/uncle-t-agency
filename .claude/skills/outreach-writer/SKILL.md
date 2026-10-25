@@ -12,6 +12,7 @@ description: >
 Sheet: "Uncle T Pipeline" (id in `apps/agents/sheet-schema.md`). Read it with the Google Sheets connector (`get_spreadsheet`, `update_values`, `append_values`). Daily limit: 5 new conversations.
 
 ## Pick the leads
+0. Before drafting for any lead, run the booking check: `uv run python scripts/booking_check.py "<business>" <suburb>`. Google's website field is often empty even when a salon already has a Fresha, Setmore or Booksy page (found 25 Oct: 12 of 24 Parow leads did). If a booking page turns up, set status `has booking page` and skip it for the Lexi pitch. Put the URL in the booking_hint column. Wait 3 to 4 seconds between searches to avoid rate limits.
 1. Leads tab: status `new`, channel `whatsapp`, tier starting `A`, sorted by reviews (highest first). If fewer than the number asked, fall back to tier B, then say so.
 2. Skip anyone with status `opted_out`, `sent`, `lost`.
 

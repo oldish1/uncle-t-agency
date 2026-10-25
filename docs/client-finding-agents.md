@@ -13,6 +13,9 @@ uv run python scripts/lead_scraper.py --vertical "hair salon" --suburbs Parow --
 ```
 Add `--skip-booking-check` to save Firecrawl credits. Then ask Claude to load the CSV into the Leads tab (new ids, status new).
 
+## Second-pass booking check (added 25 Oct)
+Scout's "no website" tier only means Google's website field was empty. `scripts/booking_check.py` searches the web for a booking page (Fresha, Setmore, Booksy, Square, Goldie, Herewebook and more) by business name. On the first 24 Parow salons it found one for 12, including Hugo, Ravaina Rain and Queen Bee. The Leads sheet has a booking_hint column for the URL. Treat a hint as "probably already has a booking page": a human glance before skipping.
+
 ## Daily routine (manual for now)
 1. Pick 5 leads: tier A, channel whatsapp, highest reviews, status new.
 2. Send the Lexi demo video with a short personal message that uses that lead's real_detail and an opt-out line.
