@@ -27,6 +27,9 @@ Scout's "no website" tier only means Google's website field was empty. `scripts/
 - Never later than 19:30 on weekdays, never Sundays or public holidays. I believe SA consumer-protection rules limit marketing hours (about 08:00 to 20:00 weekdays, mornings on Saturdays) but they target consumers, not businesses, so I am not sure they apply. Staying inside them costs nothing.
 - Record sent time and reply time in the Messages tab for two weeks, then keep what works.
 
+## Review QR code and poster
+`python3 scripts/review_qr.py "<salon name>" "<google review link>" outputs/<salon>` makes a QR code and an A5 printable poster. The review link comes from the salon's verified Google Business Profile (Get more reviews, copy link). Never print one made from a placeholder link.
+
 ## Rules
 - Theo sends every first message from his own phone. Never from a business API number.
 - Anyone who says no, stop or similar: status opted_out, never contacted again.
