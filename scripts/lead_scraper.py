@@ -36,7 +36,7 @@ import requests
 from utils.config import get_env
 
 APIFY_BASE_URL = "https://api.apify.com/v2"
-GOOGLE_MAPS_ACTOR = "apify~google-maps-scraper"
+GOOGLE_MAPS_ACTOR = "compass~crawler-google-places"
 
 FIRECRAWL_BASE_URL = "https://api.firecrawl.dev/v2"
 
@@ -67,7 +67,7 @@ class LeadScraperError(RuntimeError):
 
 
 class ApifyClient:
-    def __init__(self, token: str | None = None, timeout: int = 120):
+    def __init__(self, token: str | None = None, timeout: int = 280):
         self.token = token or get_env("APIFY_API_TOKEN")
         self.timeout = timeout
 
@@ -83,7 +83,8 @@ class ApifyClient:
             "searchStringsArray": search_strings,
             "maxCrawledPlacesPerSearch": max_places_per_search,
             "language": language,
-            "skipClosedPlaces": False,
+            "countryCode": "za",
+            "skipClosedPlaces": True,
         }
         try:
             response = requests.post(url, json=payload, timeout=self.timeout)
@@ -154,6 +155,40 @@ def normalise_phone(raw: str | None) -> str:
     return re.sub(r"\D", "", raw)
 
 
+def wa_number(raw: str | None) -> str:
+    """South African mobile number as digits with country code (27...), or '' for landlines.
+
+    SA mobiles start 6, 7 or 8 after the country code; landlines (021 etc.) can't take WhatsApp.
+    """
+    digits = re.sub(r"\D", "", raw or "")
+    if digits.startswith("0") and len(digits) == 10:
+        digits = "27" + digits[1:]
+    if digits.startswith("27") and len(digits) == 11 and digits[2] in "678":
+        return digits
+    return ""
+
+
+def real_detail(item: dict[str, Any]) -> str:
+    """One true, checkable fact about the business, from its public Google listing."""
+    rating = item.get("totalScore")
+    count = item.get("reviewsCount") or 0
+    dist = item.get("reviewsDistribution") or {}
+    five = dist.get("fiveStar") or 0
+    parts = []
+    if rating and count:
+        parts.append(f"{rating} stars from {count} Google reviews")
+        if count >= 20 and five:
+            parts.append(f"{round(100 * five / count)}% are 5-star")
+    category = item.get("categoryName")
+    if category:
+        parts.append(category.lower())
+    hours = item.get("openingHours") or []
+    sat = next((h for h in hours if h.get("day") == "Saturday"), None)
+    if sat and sat.get("hours"):
+        parts.append("open Saturdays " + sat["hours"].replace("\u202f", " "))
+    return "; ".join(parts)
+
+
 def dedupe(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     seen: set[str] = set()
     unique: list[dict[str, Any]] = []
@@ -218,7 +253,10 @@ def run(
                 "name": item.get("title") or item.get("name") or "",
                 "phone": item.get("phone") or item.get("phoneUnformatted") or "",
                 "address": item.get("address") or "",
-                "suburb": "",  # filled in below from which query matched, best-effort
+                "suburb": item.get("neighborhood") or item.get("city") or "",
+                "wa_number": wa_number(item.get("phone") or item.get("phoneUnformatted")),
+                "real_detail": real_detail(item),
+                "instagram": ((item.get("instagrams") or [""])[0] if isinstance(item.get("instagrams"), list) else item.get("instagrams") or ""),
                 "rating": item.get("totalScore") or item.get("rating") or "",
                 "review_count": item.get("reviewsCount") or item.get("userRatingsTotal") or 0,
                 "website_url": item.get("website") or "",
@@ -244,6 +282,7 @@ def run(
             None: "unknown" if has_website else "",
         }[row["has_booking_signal_raw"]]
         row["score_tier"] = score_tier(has_website, row["has_booking_signal_raw"])
+        row["channel"] = "whatsapp" if row["wa_number"] else "walk-in or call"
 
     tier_order = {"A - no website": 0, "B - website, no booking found": 1, "B - website, booking unknown (site unreachable)": 2, "C - already has booking": 3}
     rows.sort(key=lambda r: (tier_order.get(r["score_tier"], 9), -(r["review_count"] or 0)))
@@ -255,7 +294,7 @@ def run(
         out_path = WORKSPACE_ROOT / "outputs" / "leads" / f"{date_str}-{vertical_slug}-{suburb_slug}.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    columns = ["name", "phone", "address", "rating", "review_count", "has_website", "website_url", "has_booking_signal", "score_tier"]
+    columns = ["name", "suburb", "phone", "wa_number", "channel", "address", "rating", "review_count", "real_detail", "has_website", "website_url", "instagram", "has_booking_signal", "score_tier"]
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
         writer.writeheader()

@@ -13,6 +13,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
+| Finding clients, Scout, outreach, pipeline sheet, daily salon list | `docs/client-finding-agents.md` | How Scout and the Uncle T Pipeline sheet work, the daily routine, outreach rules |
 
 ## Integrations
 

@@ -34,6 +34,9 @@ Both are environment-level settings, so once set they should carry into future s
 
 Edit `scripts/lead_scraper_verticals.json`, add a key with `terms` (search phrases Maps responds well to) and `suburbs`. No code changes needed. `context/business.md` lists the priority order for what's next: med spas, dog groomers, cleaning businesses, then plumbers, dentists, real estate agents, and a longer list of strong untapped verticals below that.
 
+## Update 25 Oct 2026
+First live run done. The actor name was wrong in the first build; it is now `compass~crawler-google-places` and field names are confirmed. New columns: suburb, wa_number, channel, real_detail, instagram. New verticals added. See `docs/client-finding-agents.md`.
+
 ## Known limitations (as of first build, 27 Sept 2026)
 
 - The Apify Google Maps actor's exact field names weren't verified against a live call when this was built (network was blocked in that session). Use `--raw-sample` on the first real run to confirm, and fix up the field names in `lead_scraper.py` if Apify's actor has changed shape since.
