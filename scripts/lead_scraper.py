@@ -77,7 +77,6 @@ class ApifyClient:
         """Run the Google Maps actor synchronously and return the raw dataset items."""
         url = (
             f"{APIFY_BASE_URL}/acts/{GOOGLE_MAPS_ACTOR}/run-sync-get-dataset-items"
-            f"?token={self.token}"
         )
         payload = {
             "searchStringsArray": search_strings,
@@ -87,12 +86,19 @@ class ApifyClient:
             "skipClosedPlaces": True,
         }
         try:
-            response = requests.post(url, json=payload, timeout=self.timeout)
+            response = requests.post(
+                url,
+                json=payload,
+                headers={"Authorization": f"Bearer {self.token}"},
+                timeout=self.timeout,
+            )
             response.raise_for_status()
         except requests.RequestException as exc:
             detail = ""
             if getattr(exc, "response", None) is not None:
                 detail = exc.response.text[:500]
+            else:
+                detail = type(exc).__name__
             raise LeadScraperError(
                 f"Apify Google Maps search failed: {detail or exc}"
             ) from exc
