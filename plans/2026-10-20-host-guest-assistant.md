@@ -123,7 +123,7 @@ Door and lockbox codes do **not** go in the sheet. The pilot default is that the
 5. **Never decides money or exceptions.** Late check-out, refunds, price changes, damage, complaints go to the host. The assistant tells the guest the host has been told.
 6. **Urgent goes straight through.** Water, power, lockout, safety: instant message to the host. Everything else waits for the daily list.
 7. **Host alerts need a Meta template.** A message to the host outside their own 24-hour window must be a pre-approved template. Luna's booking alert to Nita is parked on exactly this. Easiest fix: host messages the number once a day (a "hi"), or we get one utility template approved per number. Decide in Step 4.
-8. **Direct bookings come later.** Phase 3 reuses Luna's calendar logic against the host's own calendar. Not in the pilot.
+8. **Direct bookings are their own plan.** A host-owned booking page plus the assistant, see `plans/2026-10-25-host-direct-booking-channel.md`. It builds on this plan and runs after the messaging half works.
 9. **Pilot is free for one month.** In return: weekly feedback and a testimonial if earned. No invoice until it has saved the host real time.
 
 ### Alternatives Considered
@@ -260,9 +260,9 @@ Steps marked **Theo** need him. Everything else Claude does.
 
 ---
 
-### Step 11: Phase 3, direct bookings (separate plan)
+### Step 11: Direct booking channel
 
-Written only after Step 10 shows the pilot works. Repeat guests message the same number to book, calendar check against the host's own Google Calendar, no commission. Needs a payment method decision (EFT as with Nita) and a guard against double-booking with Booking.com's calendar.
+See `plans/2026-10-25-host-direct-booking-channel.md`: a booking page per host, the assistant takes the booking, holds dates, EFT payment, iCal checks against Booking.com and Airbnb to avoid double bookings.
 
 ---
 

@@ -108,3 +108,17 @@ Hi Nita 👋 About the guest helper for your host clients. I'm going to try it f
 === MESSAGE 3: SHORT VERSION FOR THE NEXT HOST (Kobie or Megan) ===
 
 Hi ___ 👋 Theo here. Nita tells me guests keep messaging you for small things like the fan, towels, wifi and check-in. I'm testing a WhatsApp helper that answers guests any time and sends you one tidy list of extras. Free for a month while I test it. Two questions to see if it fits: where do your guests book (Booking.com, Airbnb, both), and about how many guest messages do you get on a busy day? If it sounds useful I'll send the rest of my questions.
+
+=== MESSAGE 1c: DIRECT BOOKING QUESTIONS (add to Fancy's list, 25 Oct) ===
+
+*17. Do you have guests who come back, or friends and family who stay?* A) Many B) A few C) None yet
+
+*18. How would you like direct guests to pay?* A) Full amount up front B) 50% deposit, rest on arrival C) Pay on arrival
+
+*19. Price per night, minimum nights, and cleaning fee for each apartment.*
+
+*20. Cancellation: how many days before arrival can a guest cancel for a refund?*
+
+*21. Can you send 5 to 10 good photos per apartment, plus a short description in your own words?*
+
+*22. Please send the calendar link (iCal) from Booking.com and Airbnb for each apartment.* I'll show you where to find it.
