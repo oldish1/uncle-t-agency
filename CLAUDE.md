@@ -67,6 +67,9 @@ plans/       build plans from /create-plan
 - Researching or scraping the web: use **Firecrawl**, not the default fetch tools. It's set up (key in `.env`), high-quality scraping worth the money vs the basic built-in one: JavaScript-heavy sites, bot-protected pages, PDFs, cleaner content.
 - Scraping social platforms and marketplaces the other tools can't reach (Instagram, TikTok, LinkedIn): ask for **Apify**; the skill sets itself up on first use.
 - Building or redesigning a client website: the **web-builder** skill (`.claude/skills/web-builder/`). It only does websites: researches what's winning, builds, checks in a real browser, scores speed.
+- Writing or editing copy that must not sound like AI (site text, WhatsApp replies, emails): **humanizer** (`.claude/skills/humanizer`), after the writing-style rules.
+- Scroll-driven, cinematic landing pages (layered heroes, scrollytelling): **scroll-craft** (`.claude/skills/scroll-craft`). Use our own photos and footage, since its image generation needs a kie.ai key we don't have. It works alongside design-taste-frontend and web-builder, whose award-level process (plan, research, build) still applies.
+- Wider scraping across about 100 ready-made scrapers (Maps, Instagram, TikTok, LinkedIn, reviews, leads): **apify-ultimate-scraper** (`.claude/skills/apify-ultimate-scraper`), alongside the existing apify skill.
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
