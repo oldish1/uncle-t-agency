@@ -1,0 +1,44 @@
+# Lexi 2.0 — Design Decisions
+
+**Status:** Design locked, Phase 1 build in progress.
+**Source:** `plans/lexi2-architecture-map.md` (current live Chales scenario, 340 modules).
+**Theo's brief:** mirror Chales for testing, keep Google Sheets as the backend, he tests it himself before any cutover, tap-menus everywhere ("more convenient and easy for the clients").
+
+## The five fixes
+
+1. **Structured AI output, not free text.** The AI brain never writes a menu, slot list, or confirmation as prose again. It outputs one JSON action per turn — `{"action":"show_service_menu"}`, `{"action":"show_slots","service":"...","day":"..."}`, `{"action":"confirm_booking","service":"...","datetime":"...","name":"..."}`, `{"action":"chat","text":"..."}` for genuine conversational replies only. A deterministic step turns the action into the right WhatsApp payload. This removes the stray-quote/broken-JSON crash class entirely, because the AI's text never gets hand-parsed into something structural again.
+2. **Tap menus everywhere, no exceptions.** Every action that used to render as typed text (Stage 1/1B greeting menu, the CHECK_AVAILABILITY slot list, the post-cancel re-offer) now routes through one shared interactive-message builder, the same mechanism that already works correctly in module 57 — just reached from every entry point instead of one.
+3. **Per-phone locking, not whole-scenario sequential processing.** A `Locked` flag + timestamp on each BookingSession row, checked/set at the top of the flow. Two different clients messaging at the same moment no longer queue behind each other; the same client's own double-sent messages still can't race. This is the real fix for the "badresponder" warnings — they're a symptom of forcing every client through one global queue, not a sign anything is actually broken.
+4. **Booking write order: Sheets first, then Calendar.** Chales currently writes the calendar event before the Sheets row, so a failed Sheets write (like the Oct 25 storage incident) leaves a real calendar booking with no record of it anywhere. Lexi 2.0 writes the source-of-truth row first.
+5. **One AI gate, not five copies.** Chales reaches the same single AI call from 5 separately-built "no intent, no pending reply" filter branches. Lexi 2.0 collapses this into one shared path.
+
+## What's carried over as-is (already solid)
+
+- Ack-Meta-immediately-then-process pattern (`WebhookRespond` before real work starts).
+- `ProcessedMessages` idempotency guard against webhook retries.
+- Voice-note transcription via Whisper, self-feeding back into the main flow as if it were typed text.
+- The raw conversation-transcript logging sheet (separate spreadsheet) — useful for debugging, kept untouched.
+- Single calendar (`herbertchante3@gmail.com`), `Africa/Johannesburg` timezone, the existing slot-duration logic (60/120 min, minus 1 min buffer).
+
+## Phasing
+
+**Phase 1 (building now):** the core booking path — greeting → tap service menu → tap slot picker → name capture → confirm, with all five fixes above applied, built and deactivated in its own Make scenario, tested by me with sample payloads before Theo ever touches it.
+
+**Phase 2 (after Phase 1 is proven):** port cancel/reschedule, membership wash-credit logic, and voice-note handling into the same hardened architecture.
+
+This is deliberately staged rather than a single 340-module rewrite in one pass — proving the hardened core works beats a bigger scenario nobody's tested yet.
+
+## Testing handoff
+
+Once Phase 1 passes my own sanity checks, it gets handed to Theo as a deactivated scenario he can run manually inside Make (no live WhatsApp number touched) using the test matrix in the architecture map, before any cutover decision.
+
+## Phase 1 build — done 2026-10-26
+
+Built directly as a new, isolated Make scenario (id 8179409, "Lexi 2.0 (test core flow)"), created **inactive** — never touches live Chales traffic. Own webhook (3977281), own test Sheets tabs (Lexi2_BookingSession/Sheet1/Memberships/ProcessedMessages). 30 modules, structured AI JSON output, per-phone locking, tap-menus for service list and slot list, Sheets-first-then-Calendar write order.
+
+**Before testing, Theo needs to:**
+1. Open the scenario in Make and paste his real WhatsApp bearer token into the 7 HTTP modules currently holding `PASTE_YOUR_WHATSAPP_TOKEN_HERE`, and his Anthropic key into the 2 holding `PASTE_YOUR_ANTHROPIC_KEY_HERE`. Left as placeholders deliberately — never handled the real secrets outside Make.
+2. **Calendar decision needed**: the slot-check and booking-write modules point at the real calendar (`herbertchante3@gmail.com`) — same one Chales uses live. Test bookings would create real-looking events on Chanté's actual calendar. Flagging for Theo: either accept that for now and delete test events after, or swap in a second test calendar before running real bookings through it.
+3. Test via Make's "Run once" manual test feature (feed it a sample WhatsApp webhook payload) rather than connecting it to any real WhatsApp number yet — fully isolated from live traffic either way.
+
+**Not yet ported (Phase 2):** cancel/reschedule, membership wash-credit logic, voice-note transcription. Core booking path only for this pass.
