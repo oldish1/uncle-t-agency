@@ -103,3 +103,11 @@ export const dayPhotos = [
 
 /* A wide daytime view of the mountain with the CBD, harbour and stadium, used behind the Home hero */
 export const cbdPhoto = { src: '/day/cbd.webp', alt: 'Aerial view of Table Mountain, the Cape Town CBD, harbour and stadium across Table Bay' };
+
+/* Big proof tiles on Home. Only facts we can stand behind. n is counted up when the tile scrolls in. */
+export const bigStats = [
+  { n: 24, suffix: '/7', label: 'Lexi answers, even when your doors are closed.' },
+  { n: 4, suffix: ' days', label: 'From saying yes to being live on WhatsApp.' },
+  { text: '2 to 5 sec', label: 'Per reply in the live Chales build.' },
+  { n: 1, suffix: '', label: 'Real salon running on her today, in Bellville.' }
+];

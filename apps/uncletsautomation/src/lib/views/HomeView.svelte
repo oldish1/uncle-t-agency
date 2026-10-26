@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
-  import { verticals, plans, wa, cbdPhoto } from '$lib/content.js';
+  import { verticals, plans, wa, cbdPhoto, bigStats } from '$lib/content.js';
   import Chat from '$lib/Chat.svelte';
   import ParticleMountain from '$lib/ParticleMountain.svelte';
   import DayStory from '$lib/DayStory.svelte';
@@ -11,6 +11,13 @@
 
   onMount(() => {
     const off = setupReveals(root, { delay });
+    const counters = [];
+    if (!reduced()) root.querySelectorAll('[data-count]').forEach((el) => {
+      const to = +el.dataset.count, o = { v: 0 };
+      el.textContent = '0';
+      counters.push(gsap.to(o, { v: to, duration: 1.6, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); },
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
+    });
     let move;
     if (!reduced() && matchMedia('(pointer:fine)').matches) {
       const rx = gsap.quickTo(tilt, 'rotationX', { duration: 0.8, ease: 'power3.out' });
@@ -62,6 +69,19 @@
   </div>
 
   <DayStory />
+
+  <section class="sec bigs" aria-label="Lexi in numbers">
+    <div class="wrap">
+      <div class="tiles">
+        {#each bigStats as t}
+          <div class="tile2" data-reveal>
+            <p class="num">{#if t.text}{t.text}{:else}<span data-count={t.n}>{t.n}</span>{t.suffix}{/if}</p>
+            <p class="lab">{t.label}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
 
   <section class="sec bento">
     <div class="wrap">
@@ -157,6 +177,12 @@
   .track span::after { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--green); margin-left: 52px; vertical-align: middle; }
   @keyframes slide { to { transform: translateX(-50%); } }
 
+  .bigs { padding-block: clamp(40px, 6vw, 80px); }
+  .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .tile2 { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 2.4vw, 32px); min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; transition: border-color 0.3s, transform 0.4s var(--ease); }
+  .tile2:hover { border-color: rgba(37, 211, 102, 0.45); transform: translateY(-4px); }
+  .num { white-space: nowrap; font: 500 clamp(2.2rem, 1.2rem + 2.6vw, 3.6rem) / 0.95 var(--font-sans); letter-spacing: -0.05em; color: var(--green); font-variant-numeric: tabular-nums; }
+  .lab { color: var(--muted); font-size: 0.9rem; max-width: 22ch; }
   .bento .h2 { max-width: 20ch; }
   .grid { margin-top: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
   .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px; min-height: 250px; overflow: hidden; position: relative; transition: border-color 0.3s, transform 0.4s var(--ease); }
@@ -222,6 +248,8 @@
     .in { grid-template-columns: minmax(0, 1fr); }
     .stage { max-width: 400px; }
     .chip { display: none; }
+    .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile2 { min-height: 170px; }
     .a, .b, .c, .d, .e, .f { grid-column: span 12; }
     .f { flex-direction: column; align-items: flex-start; }
     .plans { grid-template-columns: minmax(0, 1fr); }
