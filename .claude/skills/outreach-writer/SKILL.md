@@ -21,7 +21,7 @@ Sheet: "Uncle T Pipeline" (id in `apps/agents/sheet-schema.md`). Read it with th
 - Greeting uses the business name. Never invent an owner's name, years in business, clients or results.
 - Use ONE true detail from `real_detail` (stars, review count, share of 5-star, Saturday hours). Rephrase it like a person, don't paste the sheet text.
 - One sentence on what Lexi does: clients book on WhatsApp while the owner is busy with someone in the chair. Say a local salon uses it (CHALES is true). No prices in the first message.
-- End with one easy question about THEM (for example whether Saturday bookings come through WhatsApp), plus a short opt-out: "If not, just say no thanks and I won't message again."
+- End with one easy question about THEM (for example whether Saturday bookings come through WhatsApp), plus a short opt-out: "If it's not for you, no problem at all. Just let me know and I won't message again." (softened 26 Oct, keep the opt-out but never the blunt wording)
 - Banned: "I hope you're doing well", "valuable time", "imagine", "game-changer", "revolutionize", "leverage", "streamline", "solution", exclamation chains.
 - Each message must differ in opening and detail. If two read alike, rewrite one.
 - A walk-in or call lead gets a 2-line spoken opener instead (use `outputs/2026-09-27-lexi-walkin-pitch.md`).
