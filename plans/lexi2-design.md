@@ -56,4 +56,18 @@ Also found two older, unrelated prototypes already sitting in the Make account �
 
 Implemented as two new AI actions (`cancel_booking`, `reschedule_booking`) added to both AI calls' system prompts, with matching logic chains added to both the "has session" and "fresh conversation" branches of scenario 8179409. Also fixed a structural bug from the Phase 1 build along the way: the "fresh conversation" branch had two sequentially-filtered modules instead of a proper router, meaning a plain "chat" reply from a brand-new conversation would never have sent — now wrapped in a real `builtin:BasicRouter` like the rest of the scenario.
 
-**Still not ported:** membership wash-credit logic, voice-note transcription, the double-booking re-check at final confirm (current Lexi 1.0 re-checks the slot is still free in the split-second before booking; 2.0 doesn't yet). "Reminders" specifically turned out not to need porting at all — it already works for any booking on the calendar regardless of which scenario created it, now that the description format matches.
+**Still not ported:** voice-note transcription, the double-booking re-check at final confirm (current Lexi 1.0 re-checks the slot is still free in the split-second before booking; 2.0 doesn't yet). "Reminders" specifically turned out not to need porting at all — it already works for any booking on the calendar regardless of which scenario created it, now that the description format matches.
+
+## Phase 1.6 — membership wash-credit logic — done 2026-10-27
+
+Ported the full membership wash-credit system from Chales's live scenario into Lexi 2.0, using the exact business logic read straight out of the live bot's own code (not guessed):
+
+- **Deduction on booking.** When a client confirms a "Wash and Blowdry" booking and has an active, unexpired membership, Lexi 2.0 looks them up in the Memberships sheet, deducts one wash, and updates their remaining balance — same as live. If that was their last wash, it quietly flags staff via WhatsApp so Chanté can follow up about renewing. The booking confirmation message now also tells the client their remaining balance.
+- **Balance / renewal query.** A client can ask "how many washes do I have left" or "I want to renew" at any point — handled in both ongoing and brand-new conversations — and gets their real balance, next free-treatment visit, and expiry date, or (if not a member) a short pitch for the R650 membership. A renewal request also quietly pings staff.
+- **Refund on cancel.** Cancelling or rescheduling a Wash and Blowdry booking that used a membership wash credits that wash back automatically.
+
+Built as new, self-contained module chains (ids 4000–4003, 4100–4103, 4200–4203, 4300–4302, 4400–4402) inserted into the existing confirm/cancel/reschedule flows in both the "has session" and "fresh conversation" branches — nothing existing was rewired, so Phase 1/1.5 logic is untouched. Every membership lookup has a safe `builtin:Resume` fallback on error, so a Sheets hiccup on the Memberships tab can't crash someone's booking.
+
+Pushed to the live Lexi 2.0 scenario (8179409) via a full blueprint replace — still deactivated, still fully isolated from real WhatsApp traffic.
+
+**Still not ported:** voice-note transcription, the double-booking re-check at final confirm, and an idempotency guard on membership deduction/renewal-alerts specifically (the live bot tags processed messages to stop a webhook retry double-deducting a wash; Lexi 2.0's `Lexi2_ProcessedMessages` sheet exists for this but isn't wired to the membership modules yet — worth doing before any real client's membership money is riding on it).
