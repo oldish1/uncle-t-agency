@@ -13,6 +13,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
+| Rags to Riches WhatsApp booking bot (Make scenario 7645932, its sheet, calendar, Claude prompt) | `plans/rags-to-riches-booking-bot.md` + `apps/rags-to-riches-bot/README.md` | Full build spec, Nita's answers, build status, how to change and re-upload the bot |
 
 ## Integrations
 
