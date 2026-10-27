@@ -31,7 +31,7 @@ def wa(name, body, extra=None):
      "mapper":{"url":"https://graph.facebook.com/{{3.graph_version}}/{{3.wa_phone_id}}/messages","method":"post",
       "headers":[{"name":"Authorization","value":"Bearer {{3.wa_token}}"},{"name":"Content-Type","value":"application/json"}],
       "contentType":"json","inputMethod":"jsonString","jsonStringBodyContent":body,"shareCookies":False,"parseResponse":True,
-      "allowRedirects":True,"stopOnHttpError":True,"requestCompressedContent":True},"metadata":{"designer":{"x":0,"y":0,"name":name}}}
+      "allowRedirects":True,"stopOnHttpError":False,"requestCompressedContent":True},"metadata":{"designer":{"x":0,"y":0,"name":name}}}
     conds=[TOKF[0]+(extra or [])]
     m["filter"]={"name":"Token pasted in","conditions":conds}
     return m
@@ -56,17 +56,17 @@ def cdb_search():
      "metadata":{"designer":{"x":0,"y":0,"name":"ClientDatabase lookup"}}}
 def J(o): return json.dumps(o,ensure_ascii=False)
 def body_text(txt_expr_json):   # txt_expr_json is a JSON string literal or a mapping that yields one
-    return '{"messaging_product":"whatsapp","to":"{{3.wa_id}}","type":"text","text":{"body":'+txt_expr_json+'}}'
+    return '{"messaging_product":"whatsapp","{{if(3.wa_phone; \"to\"; \"recipient\")}}":"{{3.wa_id}}","type":"text","text":{"body":'+txt_expr_json+'}}'
 def body_static(text): return body_text(J(text))
 def body_buttons(text_json, buttons):
-    return '{"messaging_product":"whatsapp","to":"{{3.wa_id}}","type":"interactive","interactive":{"type":"button","body":{"text":'+text_json+'},"action":{"buttons":'+J([{"type":"reply","reply":{"id":i,"title":t}} for i,t in buttons])+'}}}'
+    return '{"messaging_product":"whatsapp","{{if(3.wa_phone; \"to\"; \"recipient\")}}":"{{3.wa_id}}","type":"interactive","interactive":{"type":"button","body":{"text":'+text_json+'},"action":{"buttons":'+J([{"type":"reply","reply":{"id":i,"title":t}} for i,t in buttons])+'}}}'
 SVC=[("svc_basic","Basic Clean"),("svc_deep","Deep Clean"),("svc_moveout","Move Out / In")]
 SLOT=[("slot_0800","08:00"),("slot_1200","12:00"),("slot_1500","15:00")]
 PROP=[("prop_apartment","Apartment"),("prop_office","Office"),("prop_house","House")]
 RET=[("ret_yes","Yes, same place"),("ret_no","No, different place")]
 BUILD_ROWS=[("bld_mouille","Mouille Point",""),("bld_seapoint","Sea Point",""),("bld_cbd","Cape Town CBD",""),("bld_other","Other","Somewhere else")]
 def body_list(text_json, button, sections_expr):
-    return '{"messaging_product":"whatsapp","to":"{{3.wa_id}}","type":"interactive","interactive":{"type":"list","body":{"text":'+text_json+'},"action":{"button":'+J(button)+',"sections":'+sections_expr+'}}}'
+    return '{"messaging_product":"whatsapp","{{if(3.wa_phone; \"to\"; \"recipient\")}}":"{{3.wa_id}}","type":"interactive","interactive":{"type":"list","body":{"text":'+text_json+'},"action":{"button":'+J(button)+',"sections":'+sections_expr+'}}}'
 svc_body=body_buttons(J("Hi! 👋 I'm *Luna*, the booking assistant for *Rags to Riches Cleaning*.\nWhat kind of clean do you need?"),SVC)
 def time_body(prefix):
     return body_buttons('"'+prefix+'What time should the team arrive on *{{4.`5`}}*?"',SLOT)
@@ -296,7 +296,10 @@ old=json.load(open('base.json'))
 m3=old["flow"][1]
 for v in m3["mapper"]["variables"]:
     pass
-m3["mapper"]["variables"]=[v for v in m3["mapper"]["variables"] if v["name"] not in ("wa_phone_id","wa_token","graph_version")]+[
+for v in m3["mapper"]["variables"]:
+    if v["name"]=="wa_id": v["value"]="{{ifempty(1.entry[].changes[].value.contacts[].wa_id; 1.entry[].changes[].value.contacts[].user_id)}}"
+m3["mapper"]["variables"]=[v for v in m3["mapper"]["variables"] if v["name"] not in ("wa_phone_id","wa_token","graph_version","wa_phone")]+[
+  {"name":"wa_phone","value":"{{1.entry[].changes[].value.contacts[].wa_id}}"},
   {"name":"wa_phone_id","value":PHONE_ID},{"name":"wa_token","value":TOK},{"name":"graph_version","value":"v25.0"},
   {"name":"anthropic_key","value":AKEY},{"name":"system_prompt","value":open("system-prompt.txt").read()},
   {"name":"holidays","value":"2026-12-16,2026-12-25,2026-12-26,2027-01-01,2027-03-22,2027-03-26,2027-03-29,2027-04-27,2027-05-01,2027-06-16,2027-08-09,2027-09-24,2027-12-16,2027-12-25,2027-12-27"},

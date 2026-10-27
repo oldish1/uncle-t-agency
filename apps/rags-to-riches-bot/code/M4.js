@@ -62,7 +62,7 @@ lines.forEach(l => {
   n++;
   out["event_json_" + n] = JSON.stringify({
     summary: "🧹 " + LABEL[l.service] + " · " + where + " · " + name,
-    description: ["Client: " + name, "WhatsApp: +" + String(input.wa_id || ""), "Service: " + LABEL[l.service], "Where: " + where,
+    description: ["Client: " + name, "WhatsApp: " + (/^\d+$/.test(String(input.wa_id || "")) ? "+" + input.wa_id : String(input.wa_id || "") + " (WhatsApp username, no number shared: reply in Luna's chat)"), "Service: " + LABEL[l.service], "Where: " + where,
       "Access code: " + (l.code ? (noCode ? "none, keys at reception (mailbox)" : l.code) : "not given, check with client"),
       "Client wrote: " + l.raw, "Price: " + PRICE[l.service] + extra + " (TBC by Nita)",
       DEPOSIT[l.service] ? "Deposit: 50% needed to confirm" : "Payment: on completion",

@@ -48,7 +48,7 @@ lines.push("For any changes to your booking, please contact Ms Adams directly.")
 const summary = "🧹 " + label + " · " + where + " · " + name;
 const description = [
   "Client: " + name,
-  "WhatsApp: +" + String(input.wa_id || ""),
+  "WhatsApp: " + (/^\d+$/.test(String(input.wa_id || "")) ? "+" + input.wa_id : String(input.wa_id || "") + " (WhatsApp username, no number shared: reply in Luna's chat)"),
   "Service: " + label,
   "Property: " + (prop || "?"),
   "Where: " + where,
