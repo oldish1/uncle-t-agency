@@ -42,3 +42,18 @@ Built directly as a new, isolated Make scenario (id 8179409, "Lexi 2.0 (test cor
 3. Test via Make's "Run once" manual test feature (feed it a sample WhatsApp webhook payload) rather than connecting it to any real WhatsApp number yet — fully isolated from live traffic either way.
 
 **Not yet ported (Phase 2):** cancel/reschedule, membership wash-credit logic, voice-note transcription. Core booking path only for this pass.
+
+## Phase 1.5 — reminders compatibility + cancel/reschedule — done 2026-10-27
+
+Found a scenario that was missing from the original architecture map: **"Chales - Appointment Reminders"** (id 7617803), a separate daily cron scenario (17:00 SAST) that scans Chanté's calendar for tomorrow's events and sends a WhatsApp reminder template, parsing the booking's phone/service out of the event description's `Client:X Phone:Y Services:Z` text. Lexi 2.0's calendar event description was fixed to match that exact format (no spaces after colons, "Services:" plural) so this reminder system keeps working for her bookings without any changes to it.
+
+Also found two older, unrelated prototypes already sitting in the Make account — **"Lexi 2.0 TEST"** (id 7288450, built Sept 2026, dormant/unattached webhook, not interfering with anything) and **"Lexi 2.0 TEST (OLD - archived, do not use)"** (id 7226977). Assessed the first one: same free-text/regex plumbing bugs as the live bot (no AI structured output, no tap-menus, fragile date-string parsing), not worth inheriting as code — but its cancel/reschedule **business rules** were sound and were ported cleanly into the new structured-action design:
+
+- A client needs an existing Sheet1 row with Status=Confirmed for their phone to have anything to cancel/reschedule.
+- The matching calendar event is found by day + service name, then deleted.
+- The original Sheet1 row is never deleted — a new audit row is appended with Status=Cancelled, so there's always a record.
+- Reschedule = cancel the old booking, then let the normal booking flow (tap menu) pick a new slot — no separate "move" step.
+
+Implemented as two new AI actions (`cancel_booking`, `reschedule_booking`) added to both AI calls' system prompts, with matching logic chains added to both the "has session" and "fresh conversation" branches of scenario 8179409. Also fixed a structural bug from the Phase 1 build along the way: the "fresh conversation" branch had two sequentially-filtered modules instead of a proper router, meaning a plain "chat" reply from a brand-new conversation would never have sent — now wrapped in a real `builtin:BasicRouter` like the rest of the scenario.
+
+**Still not ported:** membership wash-credit logic, voice-note transcription, the double-booking re-check at final confirm (current Lexi 1.0 re-checks the slot is still free in the split-second before booking; 2.0 doesn't yet). "Reminders" specifically turned out not to need porting at all — it already works for any booking on the calendar regardless of which scenario created it, now that the description format matches.
