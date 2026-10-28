@@ -26,3 +26,7 @@ Drop bare hashtag-only posts with no offer and no call to action, they're a coin
 
 - Confirm the bio/caption fix actually landed, then run a TikTok-tagged push on the membership offer to see if it converts now that the number's right.
 - Local visibility (Google Business Profile, SEO) is next once the TikTok funnel itself isn't leaking, already on the roadmap in `context/strategy.md`.
+
+## Google Business Profile (scanned 28 Oct 2026)
+
+Chales doesn't appear on Google Maps by name, and Lexi's directions pin has no business listing behind it. Oakdale rivals have 2 to 29 reviews, so page one locally is reachable. Full plan, review request and old-client win-back messages: `outputs/2026-10-28-chales-google-profile-and-win-back.md`. Status: waiting on Chanté to check/claim the profile at business.google.com.
