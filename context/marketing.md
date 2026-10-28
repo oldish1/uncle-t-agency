@@ -10,7 +10,7 @@
 
 ## The number mismatch (found 12 Oct 2026, fix written same day)
 
-Chanté's TikTok bio and most of her offer captions list **081 433 2756**, her own personal WhatsApp number, not Lexi's. Lexi's real number is **071 429 6057** (+27 71 429 6057, verified business name "Chales Hair Boutique" via the Meta Graph API). Two of her three best-ever videos carry the wrong number right in the caption, so her highest-converting content has been sending leads to a manual, non-automated chat instead of Lexi's booking flow.
+Chanté's TikTok bio and most of her offer captions list **081 433 2756**, her business number (Theo confirmed 28 Oct, earlier notes called it personal), not Lexi's booking line. Lexi's real number is **071 429 6057** (+27 71 429 6057, verified business name "Chales Hair Boutique" via the Meta Graph API). Two of her three best-ever videos carry the wrong number right in the caption, so her highest-converting content has been sending leads to a manual, non-automated chat instead of Lexi's booking flow.
 
 Fix and full data behind it: `outputs/2026-10-12-chales-tiktok-fix-and-growth-plan.md`. Status: written up, fix not yet confirmed applied (needs Theo or Chanté to edit the bio and link in the TikTok app directly, no tool here can do that).
 
@@ -30,3 +30,5 @@ Drop bare hashtag-only posts with no offer and no call to action, they're a coin
 ## Google Business Profile (scanned 28 Oct 2026)
 
 Chales doesn't appear on Google Maps by name, and Lexi's directions pin has no business listing behind it. Oakdale rivals have 2 to 29 reviews, so page one locally is reachable. Full plan, review request and old-client win-back messages: `outputs/2026-10-28-chales-google-profile-and-win-back.md`. Status: waiting on Chanté to check/claim the profile at business.google.com.
+
+Site audit 28 Oct: no analytics, fake map embed ID, no sitemap, WhatsApp-sized photos. See `outputs/2026-10-28-chales-site-seo-audit.md`. Number decision: 081 is the phone on the profile and site, Lexi (071) is the booking link.

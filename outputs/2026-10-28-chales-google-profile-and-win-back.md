@@ -35,7 +35,7 @@ Proximity is about half of it and nobody can change that. The rest Chanté contr
 2. Name: **CHALES Hair Boutique**. Exactly that, no keywords stuffed in.
 3. Address: 46 Alexandra Street, Oakdale, Bellville, 7530. Tick that customers visit her at this address.
 4. Primary category: **Hair salon**. Secondary categories: Hairdresser, Beauty salon, Hair treatment service (add whichever Google offers; pick up to 4).
-5. Phone: her number must match the website and TikTok exactly. The website lists 081 433 2756. Lexi's number is 071 429 6057. Pick **one** for the profile and use it everywhere. Recommendation: put Lexi's number on the profile (it's the one that books), keep Chanté's as the secondary number if Google allows one.
+5. Phone: **081 433 2756** (Chanté's business number) goes on the profile as the main phone. Lexi (071 429 6057) is the booking assistant and goes in the "Appointment link" field as https://wa.me/27714296057. The profile, the website and the schema then all show 081 as the phone, which is what Google checks for consistency. Customers call or WhatsApp Chanté for questions, and tap Book to talk to Lexi. TikTok bio can say "Book: tap link" with the Lexi link and list 081 as the number to call.
 6. Website: https://chaleshairboutique.co.za
 7. Hours: Tuesday to Saturday, 08:00 to 17:00 (matches the site). Fix if the real hours differ, and make the site match.
 8. Verification: Google will offer video, phone, or postcard. Video is fastest: she films the street outside, the salon sign, the inside, her chair and tools, then the shop key or something showing she works there. Takes under a day when it's accepted. Don't use a postcard unless video fails, it takes a week and gets lost.
@@ -53,6 +53,19 @@ Proximity is about half of it and nobody can change that. The rest Chanté contr
 ## Step 3: Fix the map pin (Theo, 10 minutes)
 
 Once the profile is verified, open it, tap Share, and copy the short link. Replace the old pin link in Lexi's booking confirmation (see `context/lexi.md`, "Get Directions" button) so every booking confirmation points at the real listing. Also use this link as the review link below.
+
+## Review shield: what to do and what not to
+
+If you mean a tool that sends happy clients to Google and unhappy ones to a private form, don't build that. Google calls it review gating, it breaks their policy, and they can delete the reviews or suspend the profile. That would hurt Chanté more than a bad review does.
+
+The safe version gets most of the benefit:
+- Send the same review request to every client, same link, no filtering.
+- Add a line under it for everyone: "If anything wasn't right, tell me straight on WhatsApp so I can fix it." That's open to everyone and doesn't steer anyone away from Google.
+- Reply to every review within a day or two. For a bad one: thank them, apologise once, offer to fix it offline, no arguing.
+- Report fake or abusive reviews to Google from the profile for removal.
+- Later, Lexi can send the request automatically after each appointment. Same message for everyone, so it stays within the rules.
+
+If you meant a different product, tell me what it's called and I'll look at it.
 
 ## Step 4: Get the review link and start collecting
 
@@ -94,7 +107,7 @@ After they've been back and had a good visit, they get the review request like e
 ## Step 6: Website tidy-up so Google trusts it (Theo, 30 minutes)
 
 The site's schema already has name, address, hours and phone, which is good. Fix these:
-- Make the phone number match the profile (081 433 2756 on the site vs 071 429 6057 on Lexi and TikTok).
+- The site's phone is already 081 433 2756. Keep it, and keep the booking buttons pointing at Lexi. Match this on the profile and every listing.
 - Add `geo` coordinates and `aggregateRating` once she has 10 or more reviews.
 - Add a Google Maps embed of the real listing to the contact section.
 - Title tag and H1 already say Bellville. Add "Oakdale" to the H1, since Oakdale is where she's competing hardest.
