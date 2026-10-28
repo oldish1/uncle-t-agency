@@ -93,3 +93,13 @@ Also closed a related gap while in there: the existing "Normal Conversation" fre
 Validated: valid JSON, 142 total modules (was 137), 0 duplicate IDs, no literal double-quote characters in the new hand-written intro text, every router explicitly versioned.
 
 **Not yet live.** Same push-size ceiling as fix22 — saved to `private/lexi-fix23-tap-menu-consistency-blueprint.json` for Theo to import manually (Make → three-dot menu → Import Blueprint → upload → Save, "Save anyway" past the sequential-processing warning). Once imported: message Lexi "Hi" from a couple of different numbers/chats and confirm every single one gets the real tappable service list, never typed-out text.
+
+## Live fix24 — empty-reply guard on module 41 — built 2026-10-28
+
+Both fix22 and fix23 got imported (confirmed via a fresh blueprint fetch — 165 modules, all the new router branches present, `lastEdit` moved to 2026-10-28T16:35+). A real test right after the second import tripped a genuine WhatsApp API error: "the parameter text.body is required" — Lexi tried to send a completely blank message and Meta rejected it.
+
+**Root cause:** module 41 ("Normal Conversation") is the catch-all that forwards whatever the AI brain wrote when none of the four tags (`[SHOW_SERVICES|`, `[SHOW_DAYS|`, `[CHECK_AVAILABILITY|`, `[BOOKING_READY]`) matched — fix23 added those four exclusions, but all four are `text:notcontain` checks, which pass trivially true on an empty string. If the AI ever returns genuinely empty text (no content block at all, not even whitespace), none of the guards catch it and an empty `text.body` goes straight to WhatsApp, which bounces the whole run as an error.
+
+**The fix:** added a fifth condition to module 41's filter — `{{3.data.content[].text}}` must `exist` — so the catch-all only fires when the AI actually wrote something. Also set that module's `stopOnHttpError` to `false` as a safety net, so even an edge case nobody's thought of yet sends nothing and moves on instead of erroring out the whole scenario run.
+
+Validated: valid JSON, 165 modules, 0 duplicate IDs, re-parses clean. Saved to `private/lexi-fix24-empty-reply-guard-blueprint.json` for Theo to import manually — same size-ceiling workaround as every fix this week. Once imported: no specific test needed beyond normal use: this only ever fires on the rare empty-AI-response edge case, so a clean day of real bookings with zero "text.body is required" errors in the warning-sweep inbox is the confirmation.
