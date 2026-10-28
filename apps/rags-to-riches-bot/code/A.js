@@ -50,6 +50,14 @@ if (/^\d{4}-\d{2}-\d{2}$/.test(wk)) {
   return out("Available days", rows);
 }
 
+// Changing an existing booking: next days + "type another date".
+if (String(input.mode || "") === "resched") {
+  const rr = [];
+  for (let off = firstOffset; off <= WINDOW_DAYS && rr.length < 9; off++) { const r = dayRow(off); if (r) { r.id = r.id.replace(/^day_/, "rs_day_"); rr.push(r); } }
+  rr.push({ id: "rs_other", title: "Another date", description: "Further ahead? Type the date" });
+  return out("New day", rr);
+}
+
 const rows = [];
 for (let off = firstOffset; off <= WINDOW_DAYS && rows.length < 9; off++) { const r = dayRow(off); if (r) rows.push(r); }
 rows.push(later);

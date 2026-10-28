@@ -226,6 +226,7 @@ nr["routes"][0]["flow"][0]["routes"]=[{"flow":b} for b in [finalize("{{%d.result
 nd["filter"]={"name":"I: Name typed","conditions":[[cond("{{3.msg_type}}","text:equal","text"),step_is("NAME"),cond("{{3.is_reset}}","text:equal","no")]]}
 I=[nd,nh,ne,nr]
 
+KID=next(ids)
 # ---------- several dates ----------
 SVCLABEL='{{if(4.`2` = "svc_deep"; "Deep Clean"; if(4.`2` = "svc_moveout"; "Move Out / Move In Clean"; "Basic Clean"))}}'
 mcs=cdb_search()
@@ -255,7 +256,7 @@ MR=[mcs,m1,mh,m2,router([
   [router([[wa("Send cancelled (dates)",body_static("No problem, I've stopped this booking. Send *hi* any time to book."))],[upd(dict(CLEAR,**{"1":"CANCELLED","18":"{{emptystring}}"}),"Session: cancelled (dates)")]],name="Cancel",conds=[[mi("cancel")]])]])]
 MR[0]["filter"]={"name":"J: Dates typed","conditions":[
   [cond("{{3.msg_type}}","text:equal","text"),step_is("MULTI"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes")],
-  [cond("{{3.msg_type}}","text:equal","text"),step_is("DAY"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes")]]}
+  [cond("{{3.msg_type}}","text:equal","text"),step_is("DAY"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes"),cond("{{%d.result.is_manage}}"%KID,"text:equal","no")]]}
 
 tg=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin",s(7)),("timeMax",s(8)),("singleEvents","true"),("maxResults","250")],name="Calendar: re-check dates")
 tg["filter"]={"name":"K: Time tapped (several dates)","conditions":[[tap_has("slot_"),step_is("MULTI_TIME")]]}
@@ -281,10 +282,69 @@ MT=[tg,m4,router(evroutes+[
   [upd({"1":"DONE","18":"{{emptystring}}"},"Session: DONE (dates)")],
   [withfilter(tcs,"Something booked",[[cond("{{%d.result.count}}"%M4,"number:greater","0")]]), router([[t_upd],[t_add]])]])]
 
+# ---------- change / cancel an existing booking ----------
+kmod=code("K.js",{"text":"{{3.text}}"},"Change/cancel check"); kmod["id"]=KID
+K="{{%d.result.is_manage}}"%kmod["id"]
+FEE_IN={"late_fee":"R150","late_hours":"24"}
+def onerr(m):
+    m["onerror"]=[{"id":next(ids),"module":"builtin:Ignore","version":1,"metadata":{"designer":{"x":0,"y":0}}}]; return m
+NOT_MID=[cond(s(1),"text:notequal",x) for x in ("UNIT_ACCESS","NAME","MULTI")]
+
+g0=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("privateExtendedProperty","wa_id={{3.wa_id}}"),("timeMin","{{now}}"),("singleEvents","true"),("orderBy","startTime"),("maxResults","20")],name="Calendar: client's bookings")
+g0["filter"]={"name":"L: Change/cancel asked","conditions":[[cond("{{3.msg_type}}","text:equal","text"),cond(K,"text:equal","yes"),HAS,cond("{{3.is_reset}}","text:equal","no")]+NOT_MID]}
+onerr(g0)
+x1=code("X1.js",{"events_json":"{{%d.body}}"%g0["id"]},"List client's bookings")
+MG0=[g0,x1,router([
+  [router([[wa("Send bookings list",body_list(J("Which booking would you like to change or cancel?"),"Choose booking","{{%d.result.sections_json}}"%x1["id"]))],
+           [upd({"1":"MANAGE"},"Session: MANAGE")]],name="Has bookings",conds=[[cond("{{%d.result.count}}"%x1["id"],"number:greater","0")]])],
+  [router([[wa("Send no bookings",body_text("{{%d.result.none_json}}"%x1["id"]))]],name="No bookings",conds=[[cond("{{%d.result.count}}"%x1["id"],"number:equal","0")]])]])]
+
+g1=gcal("/v3/calendars/"+CAL+"/events/{{replace(3.tap_id; \"bk_\"; \"\")}}","GET",name="Calendar: that booking")
+g1["filter"]={"name":"M: Booking tapped","conditions":[[tap_has("bk_"),step_is("MANAGE")]]}
+onerr(g1)
+x2=code("X2.js",dict(FEE_IN,**{"event_json":"{{%d.body}}"%g1["id"]}),"Booking details + late check")
+MANAGE_BTN=[("mg_change","Change date"),("mg_cancel","Cancel booking"),("mg_keep","Keep it")]
+MG1=[g1,x2,router([
+  [router([[wa("Send change/cancel buttons",body_buttons("{{%d.result.text_json}}"%x2["id"],MANAGE_BTN))],[upd({"1":"MANAGE_ACT","18":"{{%d.result.booking_json}}"%x2["id"]},"Session: MANAGE_ACT")]],
+          name="Found",conds=[[cond("{{%d.result.ok}}"%x2["id"],"text:equal","true")]])],
+  [router([[wa("Send booking gone",body_text("{{%d.result.text_json}}"%x2["id"]))]],name="Gone",conds=[[cond("{{%d.result.ok}}"%x2["id"],"text:notequal","true")]])]])]
+
+x3=code("X3.js",dict(FEE_IN,**{"booking_json":s(18)}),"Cancel: build calendar update")
+x3["filter"]={"name":"N: Cancel tapped","conditions":[[tap_is("mg_cancel"),step_is("MANAGE_ACT")]]}
+p3=onerr(withfilter(gcal("/v3/calendars/"+CAL+"/events/{{%d.result.event_id}}"%x3["id"],"PATCH",body="{{%d.result.patch_json}}"%x3["id"],name="Calendar: mark cancelled"),"Booking found",[[cond("{{%d.result.ok}}"%x3["id"],"text:equal","true")]]))
+MG2=[x3,router([[p3],[wa("Send cancelled booking",body_text("{{%d.result.text_json}}"%x3["id"]))],[upd({"1":"CANCELLED","18":"{{emptystring}}"},"Session: booking cancelled")]])]
+
+MG3=router([[wa("Send keep it",body_static("No problem, your booking stays as it is 🙂"))],[upd({"1":"DONE","18":"{{emptystring}}"},"Session: kept")]],
+           name="O: Keep it tapped",conds=[[tap_is("mg_keep"),step_is("MANAGE_ACT")]])
+
+rd=code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cutoff}}","window_days":"7","mode":"resched"},"Change: day list")
+rd["filter"]={"name":"P: Change tapped","conditions":[[tap_is("mg_change"),step_is("MANAGE_ACT")],[tap_is("rs_back"),step_is("RESCHED_TIME")]]}
+MG4=[rd,router([[wa("Send change day list",body_list(J("Which day would you like instead?"),"Choose a day","{{%d.result.sections_json}}"%rd["id"]))],[upd({"1":"RESCHED_DAY"},"Session: RESCHED_DAY")]])]
+
+RSLOT=[("rsl_0800","08:00"),("rsl_1200","12:00"),("rsl_1500","15:00")]
+MG5=router([[wa("Send change time buttons",body_buttons('"What time should the team arrive on *{{3.tap_title}}*?"',RSLOT))],[upd({"1":"RESCHED_TIME","4":"{{3.tap_id}}"},"Session: RESCHED_TIME")]],
+           name="Q: New day tapped",conds=[[tap_has("rs_day_"),step_is("RESCHED_DAY")]])
+MG6=router([[wa("Send type a date",body_static("Please type the new date, e.g. _14 Nov_"))],[upd({"1":"RESCHED_TYPE"},"Session: RESCHED_TYPE")]],
+           name="R: Another date tapped",conds=[[tap_is("rs_other"),step_is("RESCHED_DAY")]])
+
+x5=code("X5.js",{"text":"{{3.text}}"},"Change: read typed date")
+x5["filter"]={"name":"S: New date typed","conditions":[[cond("{{3.msg_type}}","text:equal","text"),cond(K,"text:equal","no"),cond("{{3.is_reset}}","text:equal","no"),cond("{{3.is_hello}}","text:notequal","yes"),step_is(st)] for st in ("RESCHED_TYPE","RESCHED_DAY")]}
+MG7=[x5,router([
+  [router([[wa("Send change time buttons (typed)",body_buttons('"What time should the team arrive on *{{%d.result.day_label}}*?"'%x5["id"],RSLOT))],[upd({"1":"RESCHED_TIME","4":"{{%d.result.day_id}}"%x5["id"]},"Session: RESCHED_TIME (typed)")]],
+          name="Date read",conds=[[cond("{{%d.result.ok}}"%x5["id"],"text:equal","true")]])],
+  [router([[wa("Send date not read",body_static("Sorry, I couldn't read that date 😕 Please type it like _14 Nov_."))]],name="Date not read",conds=[[cond("{{%d.result.ok}}"%x5["id"],"text:notequal","true")]])]])]
+
+g8=gcal("/v3/calendars/"+CAL+"/events","GET",qs=[("timeMin","{{replace(4.`4`; \"rs_day_\"; \"\")}}T00:00:00+02:00"),("timeMax","{{replace(4.`4`; \"rs_day_\"; \"\")}}T23:59:59+02:00"),("singleEvents","true"),("maxResults","50")],name="Calendar: new day")
+g8["filter"]={"name":"T: New time tapped","conditions":[[tap_has("rsl_"),step_is("RESCHED_TIME")]]}
+onerr(g8)
+x4=code("X4.js",dict(FEE_IN,**{"booking_json":s(18),"day_id":s(4),"slot_id":"{{3.tap_id}}","events_json":"{{%d.body}}"%g8["id"],"day_capacity":"{{3.day_capacity}}"}),"Change: check day + build update")
+p4=onerr(withfilter(gcal("/v3/calendars/"+CAL+"/events/{{%d.result.event_id}}"%x4["id"],"PATCH",body="{{%d.result.patch_json}}"%x4["id"],name="Calendar: move booking"),"Day free",[[cond("{{%d.result.ok}}"%x4["id"],"text:equal","true")]]))
+MG8=[g8,x4,router([[p4],[wa("Send moved / full",body_text("{{%d.result.text_json}}"%x4["id"]))],[upd({"1":"DONE","18":"{{emptystring}}"},"Session: change done")]])]
+
 Z=router([[wa("Send nudge",body_static("Sorry, I can only read typed messages and button taps 🙂 Please tap an option above, type your reply, or send *hi* to start a booking."))]])
 
-main={"id":5,"module":"builtin:BasicRouter","version":1,"parameters":{"else":11},"mapper":None,"metadata":{"designer":{"x":900,"y":0}},
-  "routes":[{"flow":[A]},{"flow":B},{"flow":[C]},{"flow":D},{"flow":[E]},{"flow":[F]},{"flow":[G]},{"flow":H},{"flow":I},{"flow":MR},{"flow":MT},{"flow":[Z]}]}
+main={"id":5,"module":"builtin:BasicRouter","version":1,"parameters":{"else":20},"mapper":None,"metadata":{"designer":{"x":900,"y":0}},
+  "routes":[{"flow":[A]},{"flow":B},{"flow":[C]},{"flow":D},{"flow":[E]},{"flow":[F]},{"flow":[G]},{"flow":H},{"flow":I},{"flow":MR},{"flow":MT},{"flow":MG0},{"flow":MG1},{"flow":MG2},{"flow":[MG3]},{"flow":MG4},{"flow":[MG5]},{"flow":[MG6]},{"flow":MG7},{"flow":MG8},{"flow":[Z]}]}
 log={"id":6,"module":"google-sheets:addRow","version":2,"parameters":{"__IMTCONN__":CONN},
   "mapper":{"mode":"map","spreadsheetId":SID,"sheetId":"ChatMemory","tableFirstRow":"A1:Z1","insertDataOption":"INSERT_ROWS","valueInputOption":"RAW","insertUnformatted":False,
    "values":{"0":"{{now}}","1":"{{3.wa_id}}","2":"{{3.msg_id}}","3":"{{3.msg_type}}","4":"{{ifempty(4.`1`; \"NEW\")}}",
@@ -315,11 +375,11 @@ if VERIFY:
       "filter":{"name":"Meta verification","conditions":[[{"a":"{{1.hub_mode}}","b":"subscribe","o":"text:equal"}]]},
       "metadata":{"designer":{"x":0,"y":0,"name":"Answer Meta handshake"}}}
     vr={"id":9,"module":"builtin:BasicRouter","version":1,"parameters":{},"mapper":None,"metadata":{"designer":{"x":0,"y":0}},
-        "routes":[{"flow":[respond]},{"flow":[m3,old["flow"][2],top]}]}
+        "routes":[{"flow":[respond]},{"flow":[m3,old["flow"][2],kmod,top]}]}
     flow=[old["flow"][0],vr]
     old["metadata"]["scenario"]["sequential"]=False
 else:
-    flow=[old["flow"][0],m3,old["flow"][2],top]
+    flow=[old["flow"][0],m3,old["flow"][2],kmod,top]
     old["metadata"]["scenario"]["sequential"]=True
 bp={"name":"Rags to Riches - Booking Bot","flow":flow,"metadata":old["metadata"]}
 # layout: spread designer coords

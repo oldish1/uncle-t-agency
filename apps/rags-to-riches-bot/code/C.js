@@ -17,7 +17,7 @@ const newPoints = POINTS[String(input.service_id || "")] || 1;
 const sastDay = iso => new Date(Date.parse(iso) + 2 * 3600000).toISOString().slice(0, 10);
 
 let used = 0, jobs = 0, dayOff = false;
-items.filter(e => e && e.status !== "cancelled" && e.start && e.end).forEach(e => {
+items.filter(e => e && e.status !== "cancelled" && e.start && e.end && !/^❌/.test(String(e.summary || ""))).forEach(e => {
   const title = String(e.summary || "").trim();
   if (e.start.date) {
     if (!(e.start.date <= day && e.end.date > day)) return;

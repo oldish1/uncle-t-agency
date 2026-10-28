@@ -43,7 +43,7 @@ if (DEPOSIT[service]) {
   lines.push("Payment due via EFT upon completion of the clean.");
 }
 lines.push("", "A *R150* cancellation fee will be charged if a clean is cancelled less than " + LATE + " before (or on the day).");
-lines.push("For any changes to your booking, please contact Ms Adams directly.");
+lines.push("Need to change or cancel? Just send *change* or *cancel* here. For anything else, please contact Ms Adams directly.");
 
 const summary = "🧹 " + label + " · " + where + " · " + name;
 const description = [

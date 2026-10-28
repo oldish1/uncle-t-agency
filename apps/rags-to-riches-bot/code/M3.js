@@ -17,7 +17,7 @@ try { lines = JSON.parse(String(input.lines_json || "[]")); } catch (e) { lines 
 // points already used on each day, and days Nita marked Off
 const used = {}, off = {};
 const add = (day, p) => { used[day] = (used[day] || 0) + p; };
-items.filter(e => e && e.status !== "cancelled" && e.start && e.end).forEach(e => {
+items.filter(e => e && e.status !== "cancelled" && e.start && e.end && !/^❌/.test(String(e.summary || ""))).forEach(e => {
   const title = String(e.summary || "").trim();
   if (e.start.date) {
     const s = String(e.start.date).slice(0, 10), en = String(e.end.date).slice(0, 10);

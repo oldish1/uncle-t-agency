@@ -16,3 +16,14 @@ For clients who book a month ahead across different apartments (Kobie). In the d
 2-points-a-day rule as C.js, the client picks one arrival time for all, and M4.js re-checks and builds up to
 10 calendar events plus one confirmation. The list waits in BookingSession column S (`multi_json`) between
 messages. Tests: `node code/test_multi.js`.
+
+## Change / cancel (added 28 Oct 2026)
+A client messages "change" or "cancel" (K.js spots it). Luna lists their upcoming bookings from Nita's calendar
+(events carry `extendedProperties.private.wa_id`), they tap one, then Change date / Cancel booking / Keep it.
+- Cancel: the event stays in Nita's calendar, renamed "❌ CANCELLED ..." (grey, transparent); capacity checks
+  (C.js, M3.js, M4.js, X4.js) ignore anything starting with ❌.
+- Change: pick a day (or type one, X5.js), pick a time, X4.js re-checks that day without counting the booking
+  itself, then PATCHes the same event.
+- Less than 24 hours before: R150 fee warned up front and flagged in the calendar title ("R150 LATE FEE" /
+  "R150 LATE CHANGE"). Fee and hours are `FEE_IN` in build_blueprint.py.
+Calendar write steps have an Ignore error handler so one Google hiccup can't switch Luna off. Tests: `node code/test_manage.js`.

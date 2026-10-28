@@ -29,7 +29,7 @@ if (typeof raw === "string") { try { raw = JSON.parse(raw || "{}"); } catch (e) 
 const items = Array.isArray(raw) ? raw : ((raw && (raw.items || (raw.body && raw.body.items))) || []);
 const used = {};
 const add = (d, p) => { used[d] = (used[d] || 0) + p; };
-items.filter(e => e && e.status !== "cancelled" && e.start && e.end).forEach(e => {
+items.filter(e => e && e.status !== "cancelled" && e.start && e.end && !/^❌/.test(String(e.summary || ""))).forEach(e => {
   const title = String(e.summary || "").trim();
   if (isOff(title)) return;
   if (e.start.date) {
@@ -90,7 +90,7 @@ if (svcs.some(s => DEPOSIT[s])) {
   msg.push("Deep and Move Out cleans are confirmed once the *50% deposit* is paid. The rest is due via EFT upon completion of the clean.");
   msg.push(BANK ? "\n🏦 Banking details:\n" + BANK : "Nita will send you the banking details.");
 } else msg.push("Payment due via EFT upon completion of each clean.");
-msg.push("", "A *R150* cancellation fee will be charged if a clean is cancelled less than " + LATE + " before (or on the day).", "For any changes to your booking, please contact Ms Adams directly.");
+msg.push("", "A *R150* cancellation fee will be charged if a clean is cancelled less than " + LATE + " before (or on the day).", "Need to change or cancel? Just send *change* or *cancel* here. For anything else, please contact Ms Adams directly.");
 let text = msg.join("\n");
 if (text.length > 4000) text = text.slice(0, 3990) + "…";
 out.ok = true; out.count = n; out.confirm_json = JSON.stringify(text);
