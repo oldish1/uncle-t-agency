@@ -30,7 +30,7 @@ const lines = [
   "🧹 *" + label + "*",
   "🗓️ " + input.when_label,
   "🏢 " + where,
-  noCode ? "🔑 Keys at reception (mailbox)" : "🔑 Access details saved",
+  noCode ? "🔑 Keys at reception (mailbox)" : /^not given/i.test(code) ? "🔑 Nita will confirm the lockbox/access code with you" : "🔑 Access details saved",
   "",
   "💰 Price: " + label + " " + PRICE[service] + ".",
   "Saturdays and Sundays +R50, public holidays +R60.",

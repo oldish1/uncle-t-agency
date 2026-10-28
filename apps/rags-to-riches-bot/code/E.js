@@ -36,7 +36,10 @@ const code = clean(out.access_code) || savedCode;
 const name = clean(out.client_name);
 
 let missing = [];
-if (step === "UNIT_ACCESS") { if (!unit) missing.push("unit_number"); if (!code) missing.push("access_code"); }
+// Ask for the code once. If the unit was already saved from an earlier message and there's still
+// no code, book anyway and let Nita check it, so a client can never get stuck in a loop.
+const askedBefore = !!savedUnit;
+if (step === "UNIT_ACCESS") { if (!unit) missing.push("unit_number"); if (!code && !askedBefore) missing.push("access_code"); }
 if (step === "NAME") { if (!name) missing.push("client_name"); }
 const isComplete = missing.length === 0 && (intent === "details" || intent === "unclear" || intent === "question");
 
@@ -57,7 +60,7 @@ return {
   is_complete: isComplete,
   unit_number: unit,
   building_name: clean(out.building_name),
-  access_code: code,
+  access_code: code || (step === "UNIT_ACCESS" ? "not given, check with client" : ""),
   access_note: clean(out.access_note),
   client_name: name,
   missing: missing.join(","),

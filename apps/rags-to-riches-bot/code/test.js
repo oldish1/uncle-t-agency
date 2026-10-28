@@ -22,6 +22,13 @@ a.equal(d[0].id,'day_2026-10-25'); a(d.some(r=>r.id=='day_2026-10-30')); a.equal
 let m=JSON.parse(run('A.js',{now_iso:now}).sections_json)[0].rows; a.equal(m[m.length-1].id,'day_multi'); a.equal(m[m.length-2].id,'day_later'); a.equal(m[m.length-3].id,'day_2026-10-24'); a(m.length<=10);
 let b=run('B.js',{day_id:'day_2026-10-30',slot_id:'slot_0800',service_id:'svc_basic',now_iso:now}); a.equal(b.ok,true);
 }
+{ // never loop on a missing code (Fancy, 28 Oct)
+const cl=t=>JSON.stringify({type:'message',stop_reason:'end_turn',content:[{type:'text',text:JSON.stringify(Object.assign({intent:'details',unit_number:'',building_name:'',access_code:'',access_note:'',client_name:''},t))}]});
+let e1=run('E.js',{step:'UNIT_ACCESS',claude_body:cl({unit_number:'110'}),saved_unit:'',saved_code:''}); a.equal(e1.is_complete,false); a(e1.missing.includes('access_code'));
+let e2=run('E.js',{step:'UNIT_ACCESS',claude_body:cl({}),saved_unit:'110',saved_code:''}); a.equal(e2.is_complete,true); a.equal(e2.unit_number,'110'); a.equal(e2.access_code,'not given, check with client');
+let e3=run('E.js',{step:'UNIT_ACCESS',claude_body:cl({access_code:'0317'}),saved_unit:'110',saved_code:''}); a.equal(e3.access_code,'0317');
+let e4=run('E.js',{step:'NAME',claude_body:cl({client_name:'Fancy'}),saved_unit:'110',saved_code:''}); a.equal(e4.client_name,'Fancy');
+}
 console.log('ALL PASS');
 // Nita's day capacity (28 Sept answers)
 {
