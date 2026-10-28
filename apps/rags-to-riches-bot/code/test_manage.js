@@ -40,4 +40,7 @@ a.equal(run('X5.js',{text:'whenever',now_iso:now}).ok,false);
 a.equal(run('X5.js',{text:'31 Nov',now_iso:now}).ok,false);
 // A.js resched list
 let rs=JSON.parse(run('A.js',{now_iso:now,mode:'resched'}).sections_json)[0].rows; a(rs[0].id.startsWith('rs_day_')); a.equal(rs[rs.length-1].id,'rs_other'); a(rs.length<=10);
+{ const r=run('X4.js',{booking_json:JSON.stringify({id:'z',service:'svc_moveout',when:'x',description:''}),day_id:'rs_day_2026-11-06',slot_id:'rsl_1100',events_json:{items:[]},now_iso:now});
+a.equal(JSON.parse(r.patch_json).start.dateTime,'2026-11-06T11:00:00+02:00'); a.equal(JSON.parse(r.patch_json).end.dateTime,'2026-11-06T15:00:00+02:00'); }
+{ const r=run('B.js',{day_id:'day_2026-11-06',slot_id:'slot_1000',service_id:'svc_deep',now_iso:now}); a.equal(r.start_iso,'2026-11-06T10:00:00+02:00'); a.equal(r.end_iso,'2026-11-06T13:30:00+02:00'); }
 console.log('CHANGE/CANCEL TESTS PASS');

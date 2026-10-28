@@ -2,7 +2,7 @@
 const DURATION_HOURS = { svc_basic: 3, svc_deep: 3.5, svc_moveout: 4 };
 const DURATION_LABEL = { svc_basic: "3+ hrs", svc_deep: "about 3.5 hrs", svc_moveout: "about 4 hrs" };
 const SERVICE_LABEL = { svc_basic: "Basic Clean", svc_deep: "Deep Clean", svc_moveout: "Move Out / Move In Clean" };
-const SLOTS = { slot_0800: "08:00", slot_1200: "12:00", slot_1500: "15:00" };
+const SLOTS = { slot_0800: "08:00", slot_1000: "10:00", slot_1100: "11:00", slot_1200: "12:00", slot_1500: "15:00" };  // Nita: 08, 10, 11 (old ids kept for old buttons)
 const MIN_LEAD_MIN = 60;                 // same-day: slot must start at least this far from now
 const DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

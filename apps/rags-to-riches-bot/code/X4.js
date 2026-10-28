@@ -1,5 +1,5 @@
 // Change / cancel, step 3b: new day + time chosen. Re-check that day (not counting this booking) and move it.
-const SLOTS = { rsl_0800: "08:00", rsl_1200: "12:00", rsl_1500: "15:00" };
+const SLOTS = { rsl_0800: "08:00", rsl_1000: "10:00", rsl_1100: "11:00", rsl_1200: "12:00", rsl_1500: "15:00" };
 const HOURS = { svc_basic: 3, svc_deep: 3.5, svc_moveout: 4 };
 const DUR = { svc_basic: "3+ hrs", svc_deep: "about 3.5 hrs", svc_moveout: "about 4 hrs" };
 const POINTS = { svc_basic: 1, svc_deep: 2, svc_moveout: 2 };

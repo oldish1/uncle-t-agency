@@ -61,7 +61,7 @@ def body_static(text): return body_text(J(text))
 def body_buttons(text_json, buttons):
     return '{"messaging_product":"whatsapp","{{if(3.wa_phone; \"to\"; \"recipient\")}}":"{{3.wa_id}}","type":"interactive","interactive":{"type":"button","body":{"text":'+text_json+'},"action":{"buttons":'+J([{"type":"reply","reply":{"id":i,"title":t}} for i,t in buttons])+'}}}'
 SVC=[("svc_basic","Basic Clean"),("svc_deep","Deep Clean"),("svc_moveout","Move Out / In")]
-SLOT=[("slot_0800","08:00"),("slot_1200","12:00"),("slot_1500","15:00")]
+SLOT=[("slot_0800","08:00"),("slot_1000","10:00"),("slot_1100","11:00")]  # Nita, 28 Oct
 PROP=[("prop_apartment","Apartment"),("prop_office","Office"),("prop_house","House")]
 RET=[("ret_yes","Yes, same place"),("ret_no","No, different place")]
 BUILD_ROWS=[("bld_mouille","Mouille Point",""),("bld_seapoint","Sea Point",""),("bld_cbd","Cape Town CBD",""),("bld_other","Other","Somewhere else")]
@@ -321,7 +321,7 @@ rd=code("A.js",{"holidays":"{{3.holidays}}","same_day_cutoff":"{{3.same_day_cuto
 rd["filter"]={"name":"P: Change tapped","conditions":[[tap_is("mg_change"),step_is("MANAGE_ACT")],[tap_is("rs_back"),step_is("RESCHED_TIME")]]}
 MG4=[rd,router([[wa("Send change day list",body_list(J("Which day would you like instead?"),"Choose a day","{{%d.result.sections_json}}"%rd["id"]))],[upd({"1":"RESCHED_DAY"},"Session: RESCHED_DAY")]])]
 
-RSLOT=[("rsl_0800","08:00"),("rsl_1200","12:00"),("rsl_1500","15:00")]
+RSLOT=[("rsl_0800","08:00"),("rsl_1000","10:00"),("rsl_1100","11:00")]
 MG5=router([[wa("Send change time buttons",body_buttons('"What time should the team arrive on *{{3.tap_title}}*?"',RSLOT))],[upd({"1":"RESCHED_TIME","4":"{{3.tap_id}}"},"Session: RESCHED_TIME")]],
            name="Q: New day tapped",conds=[[tap_has("rs_day_"),step_is("RESCHED_DAY")]])
 MG6=router([[wa("Send type a date",body_static("Please type the new date, e.g. _14 Nov_"))],[upd({"1":"RESCHED_TYPE"},"Session: RESCHED_TYPE")]],
