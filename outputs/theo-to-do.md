@@ -29,7 +29,7 @@ Last updated 26 Oct 2026. The daily brief at 07:00 reads this file and ticks thi
 
 An unverified Meta business is limited to 2 WhatsApp numbers, and our verification was rejected. Until that passes, a new client or the demo number can't be added.
 
-- [ ] Finish the agency website, uncletsautomation.co.za. Open a new session and say "build the agency website". Meta checks it.
+- [ ] Agency website: already BUILT (Table Mountain design), live as a hidden preview at https://uncletsautomation-preview.netlify.app (code on branch claude/focused-volta-tjw5nl, apps/uncletsautomation). To launch: (1) make a business email on the domain, (2) choose the street address to show, (3) remove the hide-from-Google file, (4) point uncletsautomation.co.za at it. Meta checks it.
 - [ ] Set up a business email on that domain (for example theo@uncletsautomation.co.za).
 - [ ] Decide the business address to show (your home address or another).
 - [ ] Decide on CIPC registration. Meta may ask for registration documents.
