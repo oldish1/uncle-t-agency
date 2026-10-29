@@ -34,3 +34,17 @@ South African competitors found: **Booklink** (R0 free tier with 30 bookings, R7
 **What they all share:** WhatsApp means "share your booking link" or "we send reminders". Zolmi's own FAQ says sharing a link "does not mean Zolmi manages a two-way WhatsApp inbox". A GetMeBooked testimonial: "My clients who prefer WhatsApp still book the same way, I just add them manually now." Nobody found answers the WhatsApp conversation itself.
 
 **So the corrected needle for South Africa:** the cheap price and "no commission" are not unique (Booklink is R79 flat). What nobody does is answer the booking conversation inside the owner's own WhatsApp. Compete on that, not on price. Risk: our R499 sits against R79 to R199 tools, so the price has to be justified by bookings captured.
+
+## What Cape Town clients say publicly about salons (Google reviews, 29 Oct 2026)
+
+Pulled with Apify: 1,554 reviews across 42 salons and barbers (Bellville, Parow, Goodwood, Mitchells Plain, Durbanville, Claremont, Cape Town barbers). 1,077 had text; 74 of those were 1 to 3 stars.
+
+Low-star complaints: kept waiting or late 17, price or being charged more 17, unanswered messages 2, WhatsApp mentioned 4 or 5 times, double bookings almost none. One review (Opalé Beauty Studio, 2 stars) says the price quoted over WhatsApp was not the price charged.
+
+**Reading this honestly:** Google reviews do not show the pain we sell against. A client whose WhatsApp was never answered never visits and never reviews. The loss is silent. So public reviews cannot prove the problem; they only show clients care about waiting time and price clarity, which Lexi helps with (set slots, reminders, one consistent price list).
+
+## How to get the real proof
+
+1. Ask each salon owner who replies: "How many WhatsApp messages do you miss on a busy day? Have you ever used a booking app, and what annoyed you?" Record their words.
+2. Measure Chales: how many bookings Lexi took outside salon hours, and how many on busy days. Aggregate counts only, no client names.
+3. Optional and small: a few honest enquiry messages to salons at busy times to see reply speed. Keep it to a handful, never book or waste their time, and do not use their names in outreach.
