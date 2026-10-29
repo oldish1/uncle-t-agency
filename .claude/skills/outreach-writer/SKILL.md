@@ -36,3 +36,7 @@ Sheet: "Uncle T Pipeline" (id in `apps/agents/sheet-schema.md`). Read it with th
 - Theo sends every message himself, from his own phone. Never automate first contact.
 - Any reply that says no, stop, not interested: set status `opted_out` and never draft for that lead again.
 - Not legal advice: remind Theo to have the POPIA direct-marketing rules checked before raising volume above 5 a day.
+
+## Name the proof client (29 Oct 2026)
+
+The attached demo video shows Lexi working for CHALES Hair Boutique in Bellville. Say so in the message: "I built a WhatsApp assistant for CHALES Hair Boutique in Bellville that handles bookings while the owner is with a client. Video attached." Do not say "a local salon". Chante must be happy to be named. Stop naming her if she says otherwise.
