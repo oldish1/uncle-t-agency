@@ -24,3 +24,13 @@ Trust and predictability: **no commission, no surprise fees, the client stays yo
 - "A real person answers" is a promise Theo has to keep. It limits how many clients one person can serve well, so the five founding clients are the right size.
 - "No limits" is not safe until the real cost per booking is measured (Make credits plus Claude cost).
 - Salonz and Zolmi have too few reviews to judge. Treat them as early, not as proven weak.
+
+## South Africa check (29 Oct 2026)
+
+Fresha is used here: its Cape Town page lists 92 hair salons, and it prices in rand (about R134.95 a month solo and R89.95 per team member, per Booklink's comparison page checked in September; verify on fresha.com/pricing before quoting). Fresha reviews from South African salon owners are hard to find; the Capterra ZA and GetApp ZA pages carry the same global reviews.
+
+South African competitors found: **Booklink** (R0 free tier with 30 bookings, R79 a month flat, no commission, Yoco, Paystack, PayFast and iKhokha payments, WhatsApp reminders), **Salonz** (R0, R199, R499, R999), **GetMeBooked** (PayFast deposits, R5 + 1.5% fee per deposit), **Zolmi** (commission and stock tools, no booking commissions), **Stylera**.
+
+**What they all share:** WhatsApp means "share your booking link" or "we send reminders". Zolmi's own FAQ says sharing a link "does not mean Zolmi manages a two-way WhatsApp inbox". A GetMeBooked testimonial: "My clients who prefer WhatsApp still book the same way, I just add them manually now." Nobody found answers the WhatsApp conversation itself.
+
+**So the corrected needle for South Africa:** the cheap price and "no commission" are not unique (Booklink is R79 flat). What nobody does is answer the booking conversation inside the owner's own WhatsApp. Compete on that, not on price. Risk: our R499 sits against R79 to R199 tools, so the price has to be justified by bookings captured.

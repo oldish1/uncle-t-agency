@@ -32,3 +32,5 @@ For the first five paying salons: first 30 days free, then setup R999 (normal R1
 ## The needle (29 Oct 2026)
 
 Competitor reviews show the loudest complaints are surprise fees, commission on new clients, and support that disappears (`reference/research/2026-10-29-competitor-complaints.md`). Our line: flat price, no commission, your clients stay yours in your own WhatsApp, and a real person answers. Use it on the website, in follow-ups and in demos. State it as fact, never attack a competitor by name. Don't promise "unlimited" bookings until cost per booking is measured.
+
+**Correction (29 Oct, South Africa check):** flat price and no commission are not unique here (Booklink is R79 flat, Salonz R199). The needle that holds in South Africa is: every other tool sells a booking link; Lexi answers the WhatsApp conversation itself, in the owner's own number, voice notes included. Lead with that. Price risk: R499 against R79 to R199, so justify it with bookings captured. Details: `reference/research/2026-10-29-competitor-complaints.md`.
