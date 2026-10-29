@@ -27,3 +27,7 @@ A client messages "change" or "cancel" (K.js spots it). Luna lists their upcomin
 - Less than 24 hours before: R150 fee warned up front and flagged in the calendar title ("R150 LATE FEE" /
   "R150 LATE CHANGE"). Fee and hours are `FEE_IN` in build_blueprint.py.
 Calendar write steps have an Ignore error handler so one Google hiccup can't switch Luna off. Tests: `node code/test_manage.js`.
+
+**Importing from the Make phone app resets scheduling to "every 15 minutes".** After any import, scheduling must be
+"Immediately" (Make: clock icon at bottom left). On 29 Oct a phone import left Luna batching replies every 15 min;
+fixed by setting scheduling back to immediately via the Make API.

@@ -189,3 +189,4 @@
 - 2026-10-28 19:47 · theo · rags-to-riches/ship · Change/cancel + access-code fix live in Make (verified via API, active); drafted update message for Nita
 - 2026-10-28 22:06 · theo · rags-to-riches/build · Arrival times changed to 08:00 / 10:00 / 11:00 (Nita) for new bookings, several dates and changes; old 12:00/15:00 ids still accepted. Nita's test booking (Mon 2 Nov 08:00, Unit 113, 'Cindy', from 27783309218) confirmed in her calendar
 - 2026-10-29 06:50 · theo · rags-to-riches/ship · 08/10/11 arrival times live (Theo imported from phone 06:49); verified via Make API, active
+- 2026-10-29 06:58 · theo · rags-to-riches/fix · Phone import had switched Luna to run every 15 min (Nita's 'Hi Luna' waited); set scheduling back to Immediately via Make API, her message answered 06:58; README notes the phone-import trap
