@@ -15,3 +15,11 @@ Sources: each company's pricing page and third-party comparison sites found by F
 - Competitors are software the owner sets up and clients must open through a link or app. Lexi is a receptionist that lives where South African clients already are, WhatsApp.
 - Lexi gaps: one calendar, no card payments or deposits, no marketplace, no inventory or multi-stylist handling (not documented as built).
 - 12 of 24 Parow salons already have a booking page. Hypothesis to test: many still take most bookings on WhatsApp. The outreach messages ask exactly that.
+
+## Salonz (salonz.co.za), seen 29 Oct 2026 from Theo's screenshots
+
+South African booking software. Pricing as shown: Free (1 staff, 5 bookings a month), Starter R199 a month (2 staff, 50 bookings, email reminders, booking page), Growth R499 a month (5 staff, 200 bookings, WhatsApp and email reminders, analytics, inventory, online deposits), Professional R999 a month (15 staff, unlimited bookings, commission tracking, 3 branches).
+
+What the pages show: a self-serve booking link where the client picks a service, stylist and time; an owner dashboard (revenue, top services, client profiles, loyalty points, birthday messages with offer codes, post-visit review requests, stock tracking). Their demo video says "coming soon", so they look early. Not seen: a conversational WhatsApp assistant, voice notes, or owner-by-WhatsApp reporting. Not verified: what happens when a plan's booking cap is reached. Their "98% open rate" line is their own claim.
+
+Lexi vs Salonz: they sell software the owner has to learn and log into. Lexi is in the WhatsApp the owner and clients already use.
