@@ -40,3 +40,10 @@ Sheet: "Uncle T Pipeline" (id in `apps/agents/sheet-schema.md`). Read it with th
 ## Name the proof client (29 Oct 2026)
 
 The attached demo video shows Lexi working for CHALES Hair Boutique in Bellville. Say so in the message: "I built a WhatsApp assistant for CHALES Hair Boutique in Bellville that handles bookings while the owner is with a client. Video attached." Do not say "a local salon". Chante must be happy to be named. Stop naming her if she says otherwise.
+
+## Follow-ups (from reference/research/2026-10-29-what-gets-replies.md)
+
+- No reply: one follow-up on day 3 and one on about day 10, then stop. Each under 50 words, with one new fact. Never "just checking in".
+- Day 3 example: "Hi [name], Theo again. In case the video got buried: Lexi answers your WhatsApp bookings while you're with a client. Flat R499 a month, no commission on any client, first month free. Worth a quick look? If not, no problem at all."
+- Say the needle as fact: flat price, no commission, clients stay in their own WhatsApp. Never name or attack a competitor.
+- Bulk sending Tuesday to Thursday, 9 to 11 am.

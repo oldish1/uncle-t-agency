@@ -28,3 +28,7 @@ For the first five paying salons: first 30 days free, then setup R999 (normal R1
 **Positioning:** Lexi is the salon's personal assistant, not software. "Get found. Get booked. Get remembered." Competitors (Fresha, Booksy, Setmore) sell a tool the owner has to run; Lexi takes the WhatsApp work off the owner. Proof: Chales, about 100 real bookings since 10 June, about 34 clients.
 
 **After the founders** (draft, not final): Starter R499 (Lexi bookings and reminders), Plus R799 (adds review requests, win-back messages, memberships), Grow R1,299 (adds Google profile care, monthly results report, website).
+
+## The needle (29 Oct 2026)
+
+Competitor reviews show the loudest complaints are surprise fees, commission on new clients, and support that disappears (`reference/research/2026-10-29-competitor-complaints.md`). Our line: flat price, no commission, your clients stay yours in your own WhatsApp, and a real person answers. Use it on the website, in follow-ups and in demos. State it as fact, never attack a competitor by name. Don't promise "unlimited" bookings until cost per booking is measured.
