@@ -1,3 +1,7 @@
+<script>
+  import { analytics } from '$lib/content.js';
+</script>
+
 <svelte:head>
   <title>Privacy policy | Uncle Ts Automation</title>
   <meta name="description" content="How Uncle Ts Automation handles personal information, in line with South Africa's POPIA." />
@@ -26,6 +30,11 @@
 
   <h2>Who else handles it</h2>
   <p>To work, the service passes information through providers who process it on our behalf: Meta (WhatsApp), Google (Calendar and Sheets), Make.com (automation) and Anthropic (the AI that writes Lexi's replies). Some of these are outside South Africa. We choose providers that protect information and we send them only what the booking needs.</p>
+
+  {#if analytics.gaId}
+  <h2>Visitor statistics</h2>
+  <p>This site uses Google Analytics to count visits and see which pages are read. It uses cookies and a shortened IP address, and it does not tell us who you are. You can block it with your browser's settings or a tracking blocker.</p>
+  {/if}
 
   <h2>How long we keep it</h2>
   <p>For as long as the business needs its booking history to run its diary, then we delete it. A business or a customer can ask us to delete their information sooner.</p>

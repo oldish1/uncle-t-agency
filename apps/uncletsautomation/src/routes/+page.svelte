@@ -1,6 +1,6 @@
 <script>
   import { onMount, tick } from 'svelte';
-  import { views, WHATSAPP, wa } from '$lib/content.js';
+  import { views, WHATSAPP, wa, analytics, SITE_URL } from '$lib/content.js';
   import Lenis from 'lenis';
   import { gsap, ScrollTrigger, reduced } from '$lib/motion.js';
   import HomeView from '$lib/views/HomeView.svelte';
@@ -12,6 +12,10 @@
   let roll;
   let rollLabel = $state('');
   let busy = false;
+  $effect(() => {
+    const v = view;
+    if (typeof window !== 'undefined' && window.gtag && analytics.gaId) window.gtag('event', 'page_view', { page_title: 'Uncle Ts Automation: ' + v, page_location: location.origin + location.pathname + '#' + v });
+  });
   let lenis;
   const toTop = () => (lenis ? lenis.scrollTo(0, { immediate: true, force: true }) : window.scrollTo(0, 0));
 
@@ -42,6 +46,16 @@
 
   onMount(() => {
     view = fromHash();
+    if (analytics.gaId) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', analytics.gaId, { anonymize_ip: true, send_page_view: false });
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + analytics.gaId;
+      document.head.appendChild(s);
+    }
     if (!reduced()) {
       lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.95 });
       lenis.on('scroll', ScrollTrigger.update);
@@ -56,6 +70,15 @@
 
 <svelte:head>
   <title>Uncle Ts Automation | WhatsApp booking for Cape Town businesses</title>
+  {#if analytics.gscVerification}<meta name="google-site-verification" content={analytics.gscVerification} />{/if}
+  <link rel="canonical" href={SITE_URL + '/'} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Uncle Ts Automation" />
+  <meta property="og:title" content="Uncle Ts Automation | WhatsApp booking for Cape Town businesses" />
+  <meta property="og:description" content="Every missed message is a missed booking. Lexi answers your customers on WhatsApp, books them into your calendar and reminds them the day before." />
+  <meta property="og:url" content={SITE_URL + '/'} />
+  <meta property="og:image" content={SITE_URL + '/day/cbd.webp'} />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="description" content="Uncle Ts Automation builds a WhatsApp receptionist and a fast website for small Cape Town businesses. Websites from R799 setup and R499 a month, Lexi from R1,499 setup and R799 a month." />
   {@html `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Uncle Ts Automation',

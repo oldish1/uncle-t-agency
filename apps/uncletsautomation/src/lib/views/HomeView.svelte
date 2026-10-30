@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
-  import { verticals, plans, wa, cbdPhoto, bigStats } from '$lib/content.js';
+  import { verticals, plans, wa, cbdPhoto, bigStats, frustrations, morning } from '$lib/content.js';
   import Chat from '$lib/Chat.svelte';
   import ParticleMountain from '$lib/ParticleMountain.svelte';
   import DayStory from '$lib/DayStory.svelte';
@@ -43,8 +43,8 @@
     <div class="in wrap">
       <div class="copy">
         <p class="pill" data-reveal><i></i> Live at a Bellville salon</p>
-        <h1 class="h1" data-words>Your WhatsApp <em>books</em> for you.</h1>
-        <p class="lead" data-reveal>Lexi answers your customers day and night, puts them in your calendar and reminds them the day before. Built in Cape Town for salons, groomers, tradespeople and small shops.</p>
+        <h1 class="h1" data-words>Every missed message is a <em>missed booking</em>.</h1>
+        <p class="lead" data-reveal>You're with a client and the phone rings. That customer books with whoever answers first. Lexi answers for you, day and night, and puts them in your calendar.</p>
         <div class="actions" data-reveal>
           <a class="btn solid" href={wa("Hi Theo, I'd like to see Lexi")}>Try Lexi on WhatsApp</a>
           <button class="btn" type="button" onclick={() => go('studio')}>How it works</button>
@@ -55,7 +55,7 @@
           <Chat />
           <p class="chip c1" aria-hidden="true">Booked: Sat 09:00</p>
           <p class="chip c2" aria-hidden="true">Reminder sent</p>
-          <p class="chip c3" aria-hidden="true">0 double-bookings</p>
+          <p class="chip c3" aria-hidden="true">Calendar checked</p>
         </div>
       </div>
     </div>
@@ -68,7 +68,38 @@
     </div>
   </div>
 
+  <section class="sec quiet">
+    <div class="wrap">
+      <h2 class="h2" data-words>Your chair is full. Your phone is <em>ringing</em>.</h2>
+      <p class="lead" data-reveal>Small business owners don't lose customers because the work is bad. They lose them in the gaps between jobs.</p>
+      <div class="frus">
+        {#each frustrations as [t, d], i}
+          <article class="fr" data-reveal>
+            <h3>{t}</h3>
+            <p>{d}</p>
+          </article>
+        {/each}
+      </div>
+    </div>
+  </section>
+
   <DayStory />
+
+  <section class="sec mon">
+    <div class="wrap mgrid">
+      <div>
+        <h2 class="h2" data-words>Monday, 8 AM. Your diary already <em>knows</em>.</h2>
+        <p class="lead" data-reveal>While you slept, Lexi booked, moved and reminded. You start the week with a full diary and a clear head, not a phone full of unanswered messages.</p>
+      </div>
+      <div class="diary" data-reveal aria-label="Sample overnight activity">
+        <p class="dh">Sample: while the doors were closed</p>
+        <ul>
+          {#each morning as [time, what]}<li><b>{time}</b><span>{what}</span></li>{/each}
+        </ul>
+        <p class="dsum">Every slot checked against your calendar. Nobody left waiting.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="sec bigs" aria-label="Lexi in numbers">
     <div class="wrap">
@@ -177,6 +208,19 @@
   .track span::after { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--green); margin-left: 52px; vertical-align: middle; }
   @keyframes slide { to { transform: translateX(-50%); } }
 
+  .frus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: clamp(28px, 4vw, 48px); }
+  .fr { border-top: 1px solid var(--line); padding-top: 22px; }
+  .fr h3 { font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem); margin-bottom: 10px; }
+  .fr p { color: var(--muted); max-width: 32ch; }
+  .quiet .lead { margin-top: 16px; }
+  .mgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(28px, 6vw, 96px); align-items: center; }
+  .mon .lead { margin-top: 18px; }
+  .diary { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 3vw, 36px); }
+  .dh { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
+  .diary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .diary li { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; background: var(--panel2); border-radius: 14px; padding: 12px 14px; font-size: 0.9rem; align-items: baseline; }
+  .diary li b { color: var(--green); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .dsum { margin-top: 16px; font-weight: 500; }
   .bigs { padding-block: clamp(40px, 6vw, 80px); }
   .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
   .tile2 { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 2.4vw, 32px); min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; transition: border-color 0.3s, transform 0.4s var(--ease); }
@@ -248,6 +292,8 @@
     .in { grid-template-columns: minmax(0, 1fr); }
     .stage { max-width: 400px; }
     .chip { display: none; }
+    .frus, .mgrid { grid-template-columns: minmax(0, 1fr); }
+    .frus { gap: 28px; }
     .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .tile2 { min-height: 170px; }
     .a, .b, .c, .d, .e, .f { grid-column: span 12; }

@@ -111,3 +111,23 @@ export const bigStats = [
   { text: '2 to 5 sec', label: 'Per reply in the live Chales build.' },
   { n: 1, suffix: '', label: 'Real salon running on her today, in Bellville.' }
 ];
+
+/* Visitor counting and Google. Leave empty to switch off.
+   gaId: Google Analytics 4 Measurement ID, like G-ABC123XYZ.
+   gscVerification: the content value of Google Search Console's "HTML tag" verification meta. */
+export const analytics = { gaId: '', gscVerification: '' };
+export const SITE_URL = 'https://uncletsautomation.co.za';
+
+export const frustrations = [
+  ['The call you can\'t take', 'With colour on your hands and a client in the chair, the phone rings out. That caller books somewhere else.'],
+  ['The 9pm message', 'Customers message when it suits them. By morning, they\'ve booked with whoever replied first.'],
+  ['The diary in your head', 'Paper, memory and WhatsApp scroll-back. Double bookings, forgotten reminders and no-shows follow.']
+];
+
+/* A sample of what the owner sees in the morning */
+export const morning = [
+  ['9:05 pm', 'Booked: blow-dry, Saturday 09:00'],
+  ['11:30 pm', 'Moved Thursday to Friday 14:00, as asked'],
+  ['5:00 pm', 'Reminders sent for tomorrow\'s appointments'],
+  ['6:10 am', 'Cancelled slot freed, offered to the next customer']
+];
