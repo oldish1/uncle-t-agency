@@ -37,7 +37,7 @@
       <dl class="details" data-reveal>
         <div><dt>WhatsApp</dt><dd><a class="ulink" href="https://wa.me/27764924196">076 492 4196</a></dd></div>
         <div><dt>Email</dt><dd><a class="ulink" href="mailto:theo@uncletsautomation.co.za">theo@uncletsautomation.co.za</a></dd></div>
-        <div><dt>Address</dt><dd><span class="todo">[add street address, suburb, Cape Town]</span></dd></div>
+        <div><dt>Address</dt><dd>Parow, Cape Town, Western Cape</dd></div>
       </dl>
     </div>
   </section>
