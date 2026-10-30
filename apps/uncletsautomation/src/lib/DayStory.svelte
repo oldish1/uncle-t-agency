@@ -71,7 +71,7 @@
           </div>
         {/each}
       </div>
-      <p class="tally"><b bind:this={replies}>0</b> replies sent. <b>0</b> double-bookings.</p>
+      <p class="tally"><b bind:this={replies}>0</b> replies sent. Every slot checked against the calendar.</p>
     </div>
     <div class="right">
       <div class="phone" data-ui>
