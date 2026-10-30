@@ -46,6 +46,18 @@ Every client site follows plan, then research, then build. Never skip a step and
 5. **Truth check.** Read every claim aloud: is it true today? (Lesson: Lexi has her own number and does not speak yet.)
 6. **Ledger.** Log the research, the plan and the build as separate rows.
 
+### Tools to use at each step (installed in `.claude/skills/`)
+- Art direction and inspector: `design-taste-frontend`. Scroll-driven, cinematic pages: `scroll-craft`.
+- Studying a reference site: `extract-design` (designlang) pulls its colours, type, spacing and motion into a spec. Study, never copy.
+- Animation: `gsap-core`, `gsap-timeline`, `gsap-scrolltrigger`, `gsap-react`, `gsap-frameworks`, `gsap-utils`, `gsap-performance`, `gsap-plugins` (official GreenSock skills). Read `gsap-scrolltrigger` and `gsap-performance` before any pinned or scroll-scrubbed section.
+- Transitions between views and states: `transitions-dev`, `transitions-polish`, `transitions-ui-generation`.
+- Final slop check before showing Theo anything: `impeccable`.
+- Copy: `writing-style`, then `humanizer`.
+
+### The "make it better" pass (run on any finished site, and every time we revisit one)
+"Look at the site first. Then innovate: think about the user experience and think outside the box. Make one bold change that improves conversions or the look and feel, not a small tweak. Use any tool you have. You must ship a change every time."
+Rules for the pass: view the live site in a real browser first; pick ONE bold change and say why it should lift bookings or the feel; build it, check at 390 and 1440px, deploy, log it. One real change per pass beats ten tweaks.
+
 ## Rules
 
 - Done = deployed and making money, not polished. Ship, then improve.
