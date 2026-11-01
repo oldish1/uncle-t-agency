@@ -62,7 +62,7 @@ Every week, written in the ledger on Sunday:
 2. **Saturday route:** 4 hours walking Bellville, Parow, Goodwood, Mitchell's Plain salons with `outputs/2026-09-27-lexi-walkin-pitch.md` and the demo number on your phone. 10 salons a Saturday.
 3. **Confirm the TikTok number fix landed** (`context/marketing.md`). That's free leads for Chante already waiting.
 4. **Run the lead scraper once** (`scripts/lead_scraper.py`). It exists, it just needs a first real run. Use the output as the Saturday route list.
-5. **T&T Engineering:** find out where it stands. If they want the site, it's paid upfront (50% before work) or it waits. It's a one-off and has no monthly fee. It doesn't count toward the 3 clients.
+5. **T&T Engineering:** closed. No chasing, no more free work. Stay civil, they're the day job. Their silence says nothing about what you can do. Paying salons will.
 6. **Start the diary:** 1 short video a day on TikTok or Facebook, in your own voice, English/Afrikaans mix: a booking Lexi caught at night, a salon visit, a no-show saved. 60 seconds, phone, no editing. This is the Nate lesson that costs nothing.
 
 ## Month 2 to 3 (Dec, Jan): prove and repeat
