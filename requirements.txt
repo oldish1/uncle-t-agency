@@ -13,3 +13,7 @@ google-api-python-client>=2.118.0
 
 # Markdown rendering (for PDF generation if needed)
 markdown>=3.5.0
+
+# Review QR poster
+segno>=1.6
+pillow>=10.0

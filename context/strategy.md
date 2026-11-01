@@ -15,3 +15,11 @@ Three paying recurring clients within 90 days. Five founding clients (discounted
 - Exact final pricing on upsells (follow-up automation, review requests, reactivation) isn't locked yet, deferred until after the founding five.
 - Business registration status (sole proprietor vs. registered company, VAT) hasn't come up. Worth settling once real invoicing starts.
 - Whether the Android SMS gateway, the AI bookkeeping product, and the Tuintjie garden app concept stay parked indefinitely or get revisited once there's real client volume, Theo's own language suggests "later," not "never."
+
+
+## Update 25 Oct 2026
+
+- Founding five deal agreed (see `context/offer.md`).
+- Chales is the proof client: finish her Google Business Profile, reviews, photos, testimonials and website fixes, aiming for top results for local searches in Bellville by early 2027. Kit: `outputs/chales/google-business-profile-kit.md`.
+- Outreach runs through the Pipeline sheet, 5 messages a day, Theo sends. See `docs/client-finding-agents.md`.
+- The agency website (uncletsautomation.co.za) is needed for Meta verification and as our own showpiece.
