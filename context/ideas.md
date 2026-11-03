@@ -25,3 +25,7 @@ No longer parked. Theo wants to build this now rather than wait for the first pa
 Shape of it: a separate Make scenario (not added to the main 146-module Lexi scenario), Retell as the voice platform, connected over the WhatsApp Business Calling API on Chales' existing number (free for calls the client makes, SIP already available). Reuses Lexi's proven calendar-check and booking-write logic. Tested on the demo number first, Chanté's live number never touched until proven.
 
 Research from 25 Sept 2026 still holds: `reference/research/2026-09-25-lexi-voice.md`. BizAI already sells a SA voice receptionist at R999/month, so this positions as a Lexi upgrade, not a standalone product.
+
+## Lexi Voice, edge and launch plan (3 Nov 2026)
+
+See `plans/2026-11-03-voice-edge-and-launch-plan.md` and `reference/research/2026-11-03-voice-market-and-costs.md`. Voice alone is not a gap (8+ SA providers from R849/m); it works as part of one assistant across chat, voice notes and calls, priced under the market (Lexi + Voice about R1,298/m), aimed first at trades and clinics, and led by a free demo. Lexi Trade (voice note to quote PDF) is an unvalidated idea.
