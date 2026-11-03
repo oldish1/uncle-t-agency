@@ -29,3 +29,5 @@ Research from 25 Sept 2026 still holds: `reference/research/2026-09-25-lexi-voic
 ## Lexi Voice, edge and launch plan (3 Nov 2026)
 
 See `plans/2026-11-03-voice-edge-and-launch-plan.md` and `reference/research/2026-11-03-voice-market-and-costs.md`. Voice alone is not a gap (8+ SA providers from R849/m); it works as part of one assistant across chat, voice notes and calls, priced under the market (Lexi + Voice about R1,298/m), aimed first at trades and clinics, and led by a free demo. Lexi Trade (voice note to quote PDF) is an unvalidated idea.
+
+Update 3 Nov 2026: first voice product is now Lexi Talk (two-way voice notes on WhatsApp, tap or talk), see `plans/2026-11-03-lexi-talk-voice-note-conversations.md`. Live calls come after.

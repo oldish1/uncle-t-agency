@@ -2,6 +2,8 @@
 
 Date: 3 Nov 2026. Status: draft for Theo. Builds on `plans/2026-09-27-lexi-voice-receptionist.md` (the build steps) and `reference/research/2026-11-03-voice-market-and-costs.md` (the numbers).
 
+> Update, same day: Theo's idea of two-way voice note conversations on WhatsApp (Lexi Talk) is cheaper and faster than live calls and looks like a real gap. It becomes the first voice product, with live calls as the later rung. Details in `plans/2026-11-03-lexi-talk-voice-note-conversations.md`.
+
 ## The verdict in one paragraph
 Voice alone will not make us stand out, because eight or more local providers sell it from R849 to R2,000 a month and some give away a demo line. Voice combined with three other things can. One: one assistant that handles WhatsApp typing, WhatsApp voice notes and live calls on the client's own number. Two: a price that sits under the others (Lexi plus Voice at R1,298 a month against about R2,000). Three: a demo anyone can try in 30 seconds. Four: pointed at the businesses where a missed call costs the most, which is trades and clinics more than hair salons. Voice becomes our edge if we build the demo first, prove the cost and accent quality in a short test, and aim it at the right buyer.
 
@@ -28,7 +30,8 @@ Demo script for the owner: "Send a voice note asking for a Saturday booking. Or 
 | Tier | What it does | Price (draft) |
 |---|---|---|
 | Lexi | WhatsApp booking, reminders, cancel and reschedule, voice notes in English and Afrikaans | R1,499 once-off + R499/m |
-| Lexi Voice | Everything in Lexi plus Lexi answers calls. 100 minutes included, then R6 a minute | + R799/m, setup R1,500 |
+| Lexi Talk | Lexi replies by voice note, two-way voice conversation on WhatsApp, tap or talk. See `2026-11-03-lexi-talk-voice-note-conversations.md` | + about R299/m (draft) |
+| Lexi Call | Everything in Lexi plus Lexi answers live calls. 100 minutes included, then R6 a minute | + R799/m, setup R1,500 |
 | Lexi Trade (coming, to validate) | Voice note from the job site becomes a quote PDF. Missed calls answered and the job logged to WhatsApp | to be priced after interviews |
 
 Rules for the page, per the workspace's website skill: Next.js, Tailwind, Framer Motion, light background and dark text. Lead with the problem, not "AI". Put the demo button above the fold. Show the cost of a missed call in rand with a small calculator (jobs missed per week times job value). Keep a clear risk-reversal line (Step 5).
