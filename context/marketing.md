@@ -25,4 +25,4 @@ Drop bare hashtag-only posts with no offer and no call to action, they're a coin
 ## Open next steps
 
 - Confirm the bio/caption fix actually landed, then run a TikTok-tagged push on the membership offer to see if it converts now that the number's right.
-- Local visibility (Google Business Profile, SEO) is next once the TikTok funnel itself isn't leaking, already on the roadmap in `context/strategy.md`.
+- Local visibility is now planned in full: `plans/2026-11-04-chales-google-page-one.md` (5 months, checkpoint end Jan 2027). Audit on 4 Nov 2026 found: Google Business Profile exists but has zero reviews and no photos, hours don't match the website, no link to Lexi, Lexi's directions button points at the bare address instead of the listing, and the one-page website isn't in the top 10 for any salon or treatment search (number 7 for her own name). One TikTok video ranks number 5 for "hair salon Oakdale Bellville". The plan also adds the review request, rebooking and win-back machine to Lexi, proven on CHALES before it's sold to anyone.
