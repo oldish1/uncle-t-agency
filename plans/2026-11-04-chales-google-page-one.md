@@ -38,11 +38,28 @@
 
 ---
 
+## Step 0: One set of opening hours everywhere (do this first)
+
+Four places tell customers when CHALES is open, and they don't agree (checked 4 Nov 2026):
+
+| Where | Tue–Fri | Saturday | Sunday | Monday |
+|---|---|---|---|---|
+| Website | 08:00–17:00 | 08:00–17:00 | By appointment | Closed |
+| Google listing | 08:00–16:30 | 09:00–15:00 | Closed | Closed |
+| Lexi (what she lets people book) | Slots 08:00 to 16:00 | Slots 08:00 to 16:30 | Closed | Closed |
+| TikTok bio | Couldn't read it from here (TikTok blocks the tool). Theo to check in the app. | | | |
+
+The worst clash is Saturday: Lexi books clients at 15:30 and 16:30, but Google tells people she closes at 15:00. And the website offers Sunday appointments that Lexi will never book.
+
+**Fix:** Chanté says what her real hours are. Then all four get changed on the same day: website, Google, Lexi's slot list and AI instructions, and the TikTok bio (if it lists hours). After that, any change to her hours means changing all four together.
+
+**Also add "inside the Vodacom building"** to the address everywhere (Google listing's address line or description, website, Lexi's confirmation). The salon isn't a street-front shop, so that's the detail that actually gets people to her door.
+
 ## Phase 1: Fix the foundations (weeks 1–2, by 18 Nov)
 
 ### Google Business Profile
 1. Confirm Chanté can sign into her profile (business.google.com). Add Theo as a manager so he can update it without needing her phone.
-2. Fix the hours to whatever's true, then make the website match exactly.
+2. Put in the agreed hours from Step 0.
 3. Add the Lexi WhatsApp booking link (wa.me/27714296057) as the booking link, and turn on WhatsApp chat on the profile if her account offers it. Keep 081 as the call number if that's where calls get answered.
 4. Add every service with its price (copy from the website price list). Add secondary categories that fit, like beauty salon.
 5. Write the business description: what she does, the treatments by name, "Oakdale, Bellville", and that you book through WhatsApp.
@@ -59,7 +76,7 @@
 ### Everywhere else
 13. Same name, address, phone and hours on Google, website, Facebook, TikTok and Instagram. Word for word.
 14. Fix the TikTok bio and captions to Lexi's number (outstanding since 12 Oct).
-15. Point Lexi's "Get Directions" button at her business listing instead of the bare address. *(Claude does this in Make.)*
+15. Point Lexi's "Get Directions" button at her business listing (https://maps.google.com/?cid=13659620552899745009, same pin as the address, but it opens the CHALES listing) and add "inside the Vodacom building" to the confirmation. *(Two small edits in Make, see `context/lexi.md`.)*
 
 ---
 
@@ -144,8 +161,8 @@ This is the part from the reel: the machine behind the website that gets custome
 ## First moves this week
 
 - [ ] Theo: ask Chanté whether she can sign into her Google profile, and get added as a manager
-- [ ] Chanté: confirm her real opening hours
+- [ ] Chanté: confirm her real opening hours, then change website, Google, Lexi and TikTok on the same day (Step 0)
 - [ ] Chanté: send the review link to her last 30 to 50 clients
 - [ ] Chanté or Theo: fix the TikTok bio number
-- [ ] Claude: point Lexi's "Get Directions" button at the business listing
+- [ ] Theo: make the two Lexi edits in Make (directions link and "inside the Vodacom building")
 - [ ] Claude: start the website service pages (needs the current site files, which live on Netlify, not in this workspace)
