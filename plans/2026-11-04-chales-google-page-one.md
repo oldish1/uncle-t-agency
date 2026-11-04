@@ -165,4 +165,4 @@ This is the part from the reel: the machine behind the website that gets custome
 - [ ] Chanté: send the review link to her last 30 to 50 clients
 - [ ] Chanté or Theo: fix the TikTok bio number
 - [ ] Theo: make the two Lexi edits in Make (directions link and "inside the Vodacom building")
-- [ ] Claude: start the website service pages (needs the current site files, which live on Netlify, not in this workspace)
+- [x] Claude: treatment pages built 4 Nov in `apps/chales-site` (Nanoplastia, Keratin & Brazilian, Botox & Glowtox, Colour & Highlights, Prices) plus sitemap, schema and home page links. Waiting on Theo's go-ahead and Chanté's check of the answers before going live.
