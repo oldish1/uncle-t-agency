@@ -51,7 +51,7 @@ Every client site follows plan, then research, then build. Never skip a step and
 - Studying a reference site: `extract-design` (designlang) pulls its colours, type, spacing and motion into a spec. Study, never copy.
 - Animation: `gsap-core`, `gsap-timeline`, `gsap-scrolltrigger`, `gsap-react`, `gsap-frameworks`, `gsap-utils`, `gsap-performance`, `gsap-plugins` (official GreenSock skills). Read `gsap-scrolltrigger` and `gsap-performance` before any pinned or scroll-scrubbed section.
 - Transitions between views and states: `transitions-dev`, `transitions-polish`, `transitions-ui-generation`.
-- Final slop check before showing Theo anything: `impeccable`.
+- Final slop check before showing Theo anything: `impeccable`, plus `hallmark`'s checker (`node .claude/skills/hallmark/scripts/sloplint.mjs <built html or folder>`; add `--render` only if a browser is available). Fix real failures, and note where its rules conflict with a look Theo approved.
 - Copy: `writing-style`, then `humanizer`.
 
 ### The "make it better" pass (run on any finished site, and every time we revisit one)
