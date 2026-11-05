@@ -66,6 +66,11 @@ Theo is right: other sessions already watch Lexi. These are scheduled tasks on h
 4. **Test 20 real conversations** (10 English, 10 Afrikaans or mixed, noisy places, real service names). Log in `reference/research/2026-11-03-lexi-talk-test-log.md`. Go if 16 of 20 bookings are correct, each turn under 20 seconds, Afrikaans voice acceptable to at least 3 listeners, cost under R5 per booking.
 5. **Demo.** Record a clip: voice note in, voice note out, booking lands, photo confirmation arrives. Update `context/lexi.md`, `context/numbers.md` with real cost, and the ledger as each step finishes.
 
+## Progress, build session 1 (5 Nov, evening)
+- **Speech works through Make.** New on-demand scenario "Lexi Talk - Ear Test (voice samples)" (8402321): inputs text, voice, model, instructions; module `openai-gpt-3:generateAnAudio` on connection 11285759 with `response_format: opus`, then a "Return output" step (`scenario-service:ReturnData`, version 2). Four runs succeeded, about 1.5 seconds each, about 34 KB of Opus for one short sentence (well under Meta's 512 KB voice-note limit). Model `gpt-4o-mini-tts`, voice `nova`.
+- **Blocked on getting the audio to a person.** Make's tools here do not return scenario outputs or per-module data, and this session cannot reach api.openai.com or Make webhooks. Pushing clips through a public file-sharing site was ruled out. The working routes are (a) send the clips as WhatsApp voice notes straight to Theo's phone from Make, which also does the delivery test, or (b) Theo adds a Google Drive connection in Make and the clips land in a Drive folder he can share with listeners.
+- Route (a) needs a WhatsApp sender inside Make. No WhatsApp connection exists in Make, only access tokens typed into HTTP modules (Chales 5043763 and watchdog 7917016). Needs Theo's call: which number sends (demo number status unknown), and whether to put its token into a proper Make connection first.
+
 ## Gotchas
 - **Make router rule (learned 25 Sept):** a router's fallback is stored by position. Never insert a route before existing ones, append and then check the "else" route still points at the same route. Fix15 broke name capture this way.
 - **Make pushes:** a full blueprint of the live scenario is about 230K characters, too large to send in one call. Prefer small separate scenarios or Theo imports a file.
