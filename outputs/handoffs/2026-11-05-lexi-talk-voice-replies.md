@@ -32,7 +32,7 @@ Not started: the ear test, the delivery test, the build, the test log.
 - Cost estimate per voice booking, about R2 to R4 (transcribe R0.05 a minute, AI R0.30 to R0.60 a turn, speech under R0.10 a reply). These are estimates.
 
 ## What to do next, in order
-1. **Ear test.** Generate the same three Lexi lines in Azure Afrikaans, Azure South African English and OpenAI (plus isiZulu if easy). Real lines, for example "Lovely, a wash and blowdry! Which day suits you?". Theo plays them to Chanté and two salon owners and asks if it would be fine from a salon's assistant. Needs a key: Azure Speech free tier, or OpenAI's key via Theo. Keys live in `.env` and Make connections, never in the repo, and `.env` does not carry between sessions.
+1. **Ear test.** Generate the same three Lexi lines with OpenAI text to speech first (several voices, in English and Afrikaans). Only add Azure Afrikaans and South African English voices if OpenAI sounds wrong. Real lines, for example "Lovely, a wash and blowdry! Which day suits you?". Theo plays them to Chanté and two salon owners and asks if it would be fine from a salon's assistant. Needs a key: Azure Speech free tier, or OpenAI's key via Theo. Keys live in `.env` and Make connections, never in the repo, and `.env` does not carry between sessions.
 2. **Delivery test.** Send one Opus voice note via the Meta API from the demo number to Theo's phone. Pass only if it shows as a voice note with a play button. Check mono and size under 512 KB first.
 3. **Build on a copy.** Clone the client template. Add: tap-or-talk welcome line, mode memory per phone number, text to speech after Lexi's reply is written, upload audio to Meta, send as voice note, text fallback. Keep it a separate or small addition, since the main scenario is about 146 modules and hits size limits when pushed whole.
 4. **Test 20 real conversations** (10 English, 10 Afrikaans or mixed, noisy places, real service names). Log in `reference/research/2026-11-03-lexi-talk-test-log.md`. Go if 16 of 20 bookings are correct, each turn under 20 seconds, Afrikaans voice acceptable to at least 3 listeners, cost under R5 per booking.
@@ -50,7 +50,7 @@ Not started: the ear test, the delivery test, the build, the test log.
 - **Privacy:** store transcripts, not audio. Tell clients Lexi is an AI. POPIA applies.
 
 ## Open questions for Theo
-1. Which key for speech: OpenAI (already in Make) or Azure's free tier?
+1. ~~Which key for speech?~~ Decided 5 Nov: start with OpenAI, using the existing Make connection "OpenAI Lexi." (id 11285759, confirmed present in Make on 5 Nov). Azure's free speech tier is the fallback only if the Afrikaans voice sounds too English in the ear test. Do not open an Azure account (needs a card) unless that happens. Estimated cost to reach a go/no-go: under about R50, and about R1 extra per voice booking per client.
 2. Can he run the ear test with Chanté and two salon owners this week?
 3. Is the demo number's verification finished?
 
