@@ -151,3 +151,18 @@ The AI-agency teachers (Nate Herk, Jason Wardrop and others) agree on this:
 - Before every visit, write down three pain questions you'll ask.
 - After every visit, note what she said in her own words. Those phrases become your next marketing message.
 - Role-play with NotebookLM or Claude: ask it to play a sceptical salon owner in Bellville and push back hard.
+
+## Lesson 7: Dan Martell's 4-step process (Theo's favourite)
+
+Source: "If you only watch one sales video, make it this one" (youtube.com/watch?v=nsFKkeQg-V0). Dan was a coder who built great tech, had two companies fail, and nobody paid him until he learned to sell.
+
+- Selling is serving: you help someone make a decision. People love to buy, they hate being sold to.
+- Ask yourself "Can I actually help this person?" If yes, it's your job to help them decide.
+- Pros follow a process. "If you don't have a process for selling, your prospect will show you their process for not buying."
+
+1. **Connect.** Doctor frame. Ask "Why me?" and "Why now?"
+2. **Diagnose.** Stretch the gap: the dream a year from now, where she is today, and "What have you tried before?" Write down every roadblock.
+3. **Prescribe.** Repeat her roadblocks back, ask "Where do you want to go from here?", pitch only what fixes those roadblocks. Clear the 3 obstacles (who decides, budget, time) before the price. Say the price, add one more benefit, then ask.
+4. **Commit.** A yes isn't a sale until there's a deposit. Never "I'll send a proposal."
+
+After every visit, review: did I connect, find real pain, keep it simple, ask for the money with confidence?
