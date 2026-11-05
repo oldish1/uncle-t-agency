@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Missed Bookings Calculator</title>
+<meta name="description" content="See what missed WhatsApp messages and no-shows cost your salon every month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ee; --card:#ffffff; --ink:#1c1a17; --muted:#6b645b; --line:#e6dfd5;
+  --accent:#c2410c; --good:#15803d; --good-soft:#e8f5ec;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding:28px 16px 48px}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:Fraunces,Georgia,serif;font-size:34px;line-height:1.1;margin:8px 0 10px;font-weight:700}
+.lede{color:var(--muted);font-size:16px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.q{font-weight:600;font-size:16px;margin-bottom:4px}
+.hint{color:var(--muted);font-size:13.5px;margin-bottom:12px}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:52px;height:52px;flex:none;border-radius:14px;border:1px solid var(--line);background:var(--bg);font-size:26px;font-weight:500;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.stepper button:active{transform:scale(.95)}
+.stepper .val{flex:1;text-align:center;font-family:Fraunces,Georgia,serif;font-size:34px;font-weight:600}
+.stepper .val small{font-family:Inter,sans-serif;font-size:15px;color:var(--muted);font-weight:500;margin-left:6px}
+.result{background:var(--ink);color:#fff;border:none;padding:22px 20px;margin-top:20px}
+.result .label{font-size:14px;color:#d6cfc5}
+.result .big{font-family:Fraunces,Georgia,serif;font-size:52px;line-height:1;margin:6px 0 6px;color:#fdba74}
+.result .year{font-size:15px;color:#e9e3da}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.split div{background:rgba(255,255,255,.08);border-radius:12px;padding:10px 12px}
+.split b{display:block;font-size:19px;margin-top:2px}
+.split span{font-size:12.5px;color:#d6cfc5}
+.vs{background:var(--good-soft);border-color:#cfe9d7}
+.vs h2{font-family:Fraunces,Georgia,serif;font-size:22px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed #cfe0d4;font-size:15.5px}
+.row b{font-size:17px;white-space:nowrap}
+.keep{margin-top:12px;background:#fff;border-radius:12px;padding:14px;font-size:15.5px}
+.keep b{color:var(--good);font-size:22px;font-family:Fraunces,Georgia,serif}
+.note{color:var(--muted);font-size:12.5px;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:26px}
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">Uncle T Agency</div>
+  <h1>What are missed messages costing your salon?</h1>
+  <p class="lede">Four quick questions. Use your best guess, it doesn't have to be exact.</p>
+
+  <section class="card">
+    <div class="q">WhatsApps you miss or answer too late</div>
+    <div class="hint">Per week. While you're with a client, after hours, on your day off.</div>
+    <div class="stepper" data-key="missed" data-step="1" data-min="0" data-max="200">
+      <button aria-label="less">−</button><div class="val"></div><button aria-label="more">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">How many of those would have booked?</div>
+    <div class="hint">Out of every 10 people who message about a booking.</div>
+    <div class="stepper" data-key="rate" data-step="1" data-min="0" data-max="10" data-suffix="out of 10">
+      <button aria-label="less">−</button><div class="val"></div><button aria-label="more">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">Your average booking</div>
+    <div class="hint">What a typical client spends per visit.</div>
+    <div class="stepper" data-key="value" data-step="50" data-min="50" data-max="5000" data-prefix="R">
+      <button aria-label="less">−</button><div class="val"></div><button aria-label="more">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">No-shows</div>
+    <div class="hint">Per week. People who booked and never arrived.</div>
+    <div class="stepper" data-key="noshow" data-step="1" data-min="0" data-max="50">
+      <button aria-label="less">−</button><div class="val"></div><button aria-label="more">+</button>
+    </div>
+  </section>
+
+  <section class="card result">
+    <div class="label">You could be losing about</div>
+    <div class="big" id="month">R0</div>
+    <div class="year">every month. That's <b id="year">R0</b> a year.</div>
+    <div class="split">
+      <div><span>Missed messages</span><b id="lostMsg">R0</b></div>
+      <div><span>No-shows</span><b id="lostNs">R0</b></div>
+    </div>
+  </section>
+
+  <section class="card vs">
+    <h2>Now compare that to Lexi</h2>
+    <div class="row"><span>Lexi, your WhatsApp receptionist</span><b>R499/month</b></div>
+    <div class="row"><span>Pays for itself after</span><b id="breakeven">2 bookings</b></div>
+    <div class="row" style="border-bottom:none"><span>Once-off setup</span><b>R1,499</b></div>
+    <div class="keep">If Lexi saves only <b>half</b> of what you're losing, you keep about <b id="keep">R0</b> extra every month.</div>
+    <p class="note">Estimates use your own numbers. Lexi answers every WhatsApp in seconds, day or night, books straight into your calendar and reminds clients the day before.</p>
+  </section>
+
+  <footer>Uncle T Agency · Cape Town</footer>
+</main>
+<script>
+const WEEKS = 4.33;
+const state = { missed: 5, rate: 5, value: 400, noshow: 2 };
+const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+const rand = n => "R" + fmt(n);
+function render(){
+  document.querySelectorAll(".stepper").forEach(s => {
+    const v = state[s.dataset.key];
+    s.querySelector(".val").innerHTML = (s.dataset.prefix || "") + fmt(v) + (s.dataset.suffix ? "<small>" + s.dataset.suffix + "</small>" : "");
+  });
+  const msg = state.missed * (state.rate / 10) * state.value * WEEKS;
+  const ns = state.noshow * state.value * WEEKS;
+  const total = msg + ns;
+  document.getElementById("month").textContent = rand(total);
+  document.getElementById("year").textContent = rand(total * 12);
+  document.getElementById("lostMsg").textContent = rand(msg);
+  document.getElementById("lostNs").textContent = rand(ns);
+  const be = Math.max(1, Math.ceil(499 / state.value));
+  document.getElementById("breakeven").textContent = be + (be === 1 ? " booking" : " bookings") + " a month";
+  document.getElementById("keep").textContent = rand(Math.max(0, total / 2 - 499));
+}
+document.querySelectorAll(".stepper").forEach(s => {
+  const k = s.dataset.key, step = +s.dataset.step, min = +s.dataset.min, max = +s.dataset.max;
+  const btns = s.querySelectorAll("button");
+  btns[0].addEventListener("click", () => { state[k] = Math.max(min, state[k] - step); render(); });
+  btns[1].addEventListener("click", () => { state[k] = Math.min(max, state[k] + step); render(); });
+});
+render();
+</script>
+</body>
+</html>

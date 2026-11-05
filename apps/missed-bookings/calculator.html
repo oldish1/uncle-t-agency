@@ -1,0 +1,142 @@
+<title>Missed Bookings Calculator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow phone column, four question steppers, then the loss total and the Lexi comparison. */
+:root{
+  --bg:#f4f7f6; --card:#ffffff; --ink:#14201d; --muted:#5b6b66; --line:#dbe4e1;
+  --wa:#128c5e; --wa-soft:#e3f3ec; --loss:#d9482b; --panel:#14201d; --panel-ink:#f2f6f5; --panel-muted:#a9bab5; --panel-tile:#22312d;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1715; --card:#18221f; --ink:#e9f0ee; --muted:#9db0aa; --line:#2a3834;
+  --wa:#3fcf8e; --wa-soft:#15302a; --loss:#ff7a5c; --panel:#05100d; --panel-ink:#f2f6f5; --panel-muted:#9db0aa; --panel-tile:#16241f; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1715; --card:#18221f; --ink:#e9f0ee; --muted:#9db0aa; --line:#2a3834;
+  --wa:#3fcf8e; --wa-soft:#15302a; --loss:#ff7a5c; --panel:#05100d; --panel-ink:#f2f6f5; --panel-muted:#9db0aa; --panel-tile:#16241f; color-scheme:dark }
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding-block:24px 48px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:grid;gap:14px}
+.kicker{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--wa)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,38px);line-height:1.05;letter-spacing:-.01em;margin:6px 0 8px;text-wrap:balance}
+.lede{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.q{font-weight:600}
+.hint{color:var(--muted);font-size:14px;margin:2px 0 12px}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:54px;height:54px;flex:none;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 26px/1 var(--body);cursor:pointer;touch-action:manipulation}
+.stepper button:active{transform:scale(.95)}
+.stepper button:focus-visible{outline:3px solid var(--wa);outline-offset:2px}
+.val{flex:1;min-width:0;text-align:center;font-family:var(--display);font-weight:800;font-size:36px;font-variant-numeric:tabular-nums}
+.val small{font-family:var(--body);font-weight:500;font-size:15px;color:var(--muted);margin-left:6px}
+.result{background:var(--panel);color:var(--panel-ink);border-radius:18px;padding:20px;margin-top:6px}
+.result .label{color:var(--panel-muted);font-size:14px}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(46px,14vw,60px);line-height:1;margin:6px 0;color:var(--loss);font-variant-numeric:tabular-nums}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.split div{background:var(--panel-tile);border-radius:12px;padding:10px 12px;min-width:0}
+.split span{font-size:12.5px;color:var(--panel-muted)}
+.split b{display:block;font-size:19px;font-variant-numeric:tabular-nums}
+.vs{background:var(--wa-soft);border-color:transparent}
+.vs h2{font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:6px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.row:last-of-type{border-bottom:none}
+.row span{min-width:0}
+.row b{white-space:nowrap;font-variant-numeric:tabular-nums}
+.keep{margin-top:10px;background:var(--card);border-radius:12px;padding:14px}
+.keep b{color:var(--wa);font-family:var(--display);font-weight:800;font-size:22px}
+.note{color:var(--muted);font-size:12.5px;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+@media (prefers-reduced-motion: reduce){.stepper button:active{transform:none}}
+</style>
+
+<main>
+  <header>
+    <div class="kicker">Uncle T Agency</div>
+    <h1>What are missed messages costing your salon?</h1>
+    <p class="lede">Four quick questions. Use your best guess, it doesn't have to be exact.</p>
+  </header>
+
+  <section class="card">
+    <div class="q">WhatsApps you miss or answer too late</div>
+    <div class="hint">Per week. While you're with a client, after hours, on your day off.</div>
+    <div class="stepper" data-key="missed" data-step="1" data-min="0" data-max="200">
+      <button id="missed-down" aria-label="Fewer missed messages">−</button><div class="val" aria-live="polite"></div><button id="missed-up" aria-label="More missed messages">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">How many of those would have booked?</div>
+    <div class="hint">Out of every 10 people who message about a booking.</div>
+    <div class="stepper" data-key="rate" data-step="1" data-min="0" data-max="10" data-suffix="out of 10">
+      <button id="rate-down" aria-label="Fewer would book">−</button><div class="val" aria-live="polite"></div><button id="rate-up" aria-label="More would book">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">Your average booking</div>
+    <div class="hint">What a typical client spends per visit.</div>
+    <div class="stepper" data-key="value" data-step="50" data-min="50" data-max="5000" data-prefix="R">
+      <button id="value-down" aria-label="Lower booking value">−</button><div class="val" aria-live="polite"></div><button id="value-up" aria-label="Higher booking value">+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="q">No-shows</div>
+    <div class="hint">Per week. People who booked and never arrived.</div>
+    <div class="stepper" data-key="noshow" data-step="1" data-min="0" data-max="50">
+      <button id="noshow-down" aria-label="Fewer no-shows">−</button><div class="val" aria-live="polite"></div><button id="noshow-up" aria-label="More no-shows">+</button>
+    </div>
+  </section>
+
+  <section class="result">
+    <div class="label">You could be losing about</div>
+    <div class="big" id="month">R0</div>
+    <div>every month. That's <b id="year">R0</b> a year.</div>
+    <div class="split">
+      <div><span>Missed messages</span><b id="lostMsg">R0</b></div>
+      <div><span>No-shows</span><b id="lostNs">R0</b></div>
+    </div>
+  </section>
+
+  <section class="card vs">
+    <h2>Now compare that to Lexi</h2>
+    <div class="row"><span>Lexi, your WhatsApp receptionist</span><b>R499/month</b></div>
+    <div class="row"><span>Pays for itself after</span><b id="breakeven">2 bookings a month</b></div>
+    <div class="row"><span>Once-off setup</span><b>R1,499</b></div>
+    <div class="keep">If Lexi saves only <b>half</b> of what you're losing, you keep about <b id="keep">R0</b> extra every month.</div>
+    <p class="note">Estimates use your own numbers. Lexi answers every WhatsApp in seconds, day or night, books straight into your calendar and reminds clients the day before.</p>
+  </section>
+
+  <footer>Uncle T Agency · Cape Town</footer>
+</main>
+
+<script>
+const WEEKS = 4.33;
+const state = { missed: 5, rate: 5, value: 400, noshow: 2 };
+const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+const rand = n => "R" + fmt(n);
+function render(){
+  document.querySelectorAll(".stepper").forEach(s => {
+    const v = state[s.dataset.key];
+    s.querySelector(".val").innerHTML = (s.dataset.prefix || "") + fmt(v) + (s.dataset.suffix ? "<small>" + s.dataset.suffix + "</small>" : "");
+  });
+  const msg = state.missed * (state.rate / 10) * state.value * WEEKS;
+  const ns = state.noshow * state.value * WEEKS;
+  const total = msg + ns;
+  document.getElementById("month").textContent = rand(total);
+  document.getElementById("year").textContent = rand(total * 12);
+  document.getElementById("lostMsg").textContent = rand(msg);
+  document.getElementById("lostNs").textContent = rand(ns);
+  const be = Math.max(1, Math.ceil(499 / state.value));
+  document.getElementById("breakeven").textContent = be + (be === 1 ? " booking" : " bookings") + " a month";
+  document.getElementById("keep").textContent = rand(Math.max(0, total / 2 - 499));
+}
+document.querySelectorAll(".stepper").forEach(s => {
+  const k = s.dataset.key, step = +s.dataset.step, min = +s.dataset.min, max = +s.dataset.max;
+  const btns = s.querySelectorAll("button");
+  btns[0].addEventListener("click", () => { state[k] = Math.max(min, state[k] - step); render(); });
+  btns[1].addEventListener("click", () => { state[k] = Math.min(max, state[k] + step); render(); });
+});
+render();
+</script>
