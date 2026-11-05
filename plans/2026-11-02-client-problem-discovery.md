@@ -80,3 +80,13 @@ By 30 Nov: one paying founding client on a quantified quick win.
 - Which of the five warm leads can we get in front of this week?
 - Can Chanté give us read access to her chat history and sheet for Step 1?
 - Do we pause the walk-in pitch and cold outreach until the interviews are done? Recommended yes, for two weeks.
+
+## Added 5 Nov: the selling rule (from an Instagram reel Theo shared)
+Stop selling the thing, sell the problem it fixes. The reel's three steps, applied to us:
+1. **One business type, one daily problem.** Hair salons first. Candidate problems from the research: no-shows, lost after-hours messages, clients who stop coming back, getting new clients. The interviews decide which one is first.
+2. **A simple system that solves it.** Lexi already covers reminders, after-hours replies and no-show recovery. Client reactivation (messaging people who have not been in for 60 days or more) is on the held-back list in `context/offer.md`. Lexi is stable now, so it can come off that list.
+3. **Show the rand.** Every pitch and every page states the number: what one lost slot costs, how many a month, what the system gets back.
+
+What this changes:
+- The website next week leads with the problem and the rand figure, not with "AI" or "websites". The tiers (Tap, Talk, Call) sit underneath.
+- The proof for the first pitch can come from CHALES: how many clients have not been back in 60 days, what they spend per visit, and what a reactivation message brings back. That needs read access to Chanté's client sheet and her yes, because it is her customers' data. Messages to lapsed clients need an approved WhatsApp template and the clients' consent.
