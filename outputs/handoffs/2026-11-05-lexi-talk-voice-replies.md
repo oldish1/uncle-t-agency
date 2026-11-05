@@ -24,6 +24,8 @@ Not started: the ear test, the delivery test, the build, the test log.
 6. Do not touch the live Chales scenario (5043763). It stays frozen at fix14 until Talk passes its test. Build on a copy of the client template (`plans/client-template.md`).
 7. Draft pricing: Lexi Tap R499/m (as now), Lexi Talk about +R299/m with about 60 voice conversations, Lexi Call about +R799/m later. Lock after real cost numbers.
 
+8. **Where it lives (decided 5 Nov).** Start the session on branch `claude/client-problem-discovery-3umz6b`. Voice is built as a small separate Make scenario, "Lexi Talk, Voice Sender" (text in, OpenAI speech, upload to Meta, send as voice note, text fallback), called from a copy of the client template when the client is in voice mode. It is not added inside the live Chales scenario (5043763) or the abandoned "Lexi 2.0 TEST" (7288450). Reasons: the main scenario is about 146 modules and hits size limits, the speech provider can be swapped in one place, and Chales can adopt it later with a single added step. Measure the extra second of delay against the 20 second rule.
+
 ## The facts the build depends on (verified from docs on 3 Nov, not yet by us)
 - Meta WhatsApp Cloud API sends a voice message as an OGG file, Opus codec only, mono only, with `"voice": true`. If the file is over 512 KB, the play button is replaced by a download arrow. Wrong codec means it fails.
 - Lexi already receives and transcribes voice notes (fix12, gpt-4o-mini-transcribe, OpenAI connection in Make "OpenAI Lexi." id 11285759, working live on 25 Sept, about 14 seconds from the note to Lexi's reply).
