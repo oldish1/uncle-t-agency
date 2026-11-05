@@ -69,3 +69,7 @@ Also since fix15b: names must be typed. A voice note at the name step gets "Plea
 ## Decision (25 Sept, late): Lexi frozen at fix14
 
 Theo and Claude agreed: Lexi runs fix14 (voice notes understood, service shortcut, photo confirmation) and gets **no more features**. Fix15/15b (spoken day and time) is shelved: taps already do that well and it caused the name-step bug. Voice replies inside WhatsApp are dropped. The next voice work is a separate product, a real-time voice receptionist (Vapi or Retell) built next to Lexi on the demo number, sharing her calendar and sheet. A clean-up pass to shrink the scenario comes after the first paying client.
+
+## Update 3 Nov 2026: voice replies are back on, as Lexi Talk
+
+Theo reversed the 25 Sept "voice replies dropped" decision. After the voice market research, two-way voice note conversations on WhatsApp (client sends a voice note, Lexi replies with a voice note, or the client taps) became the first voice product, ahead of live phone calls. Spec and test plan: `plans/2026-11-03-lexi-talk-voice-note-conversations.md`. Research: `reference/research/2026-11-03-voice-market-and-costs.md`. Not built yet. The build starts on a copy of the client template, not on the live Chales scenario (5043763), which stays at fix14 until Talk passes its test. Handoff for the build session: `outputs/handoffs/2026-11-05-lexi-talk-voice-replies.md`.
