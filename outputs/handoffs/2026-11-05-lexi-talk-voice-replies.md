@@ -1,4 +1,4 @@
-# Handoff: build Lexi Talk (WhatsApp voice note replies)
+# Handoff: build Lexi 2.0, tap and talk (Lexi Talk voice replies)
 
 Written 5 Nov 2026 for a fresh session that works only on this. Branch the earlier work is on: `claude/client-problem-discovery-3umz6b`.
 
@@ -36,6 +36,12 @@ Theo's screenshot of the error email (18:49 on 5 Nov) shows two lines:
 What Make's history shows for scenario 5043763 (10 failed runs found): 6 "Bad Request" runs from the HTTP module on 28 Oct (4), 30 Oct (3) and 5 Nov 18:46 (1), each about 15 operations; 3 earlier "Enter valid JSON in the request body" from the HTTP module on 7 to 9 Oct; 3 Google Sheets addRow "403 permission denied" on 25 Oct. The execution-detail call returned no per-module data, and the blueprint is about 230K characters, so the failing module was not identified. Ask Theo to open the failed run in Make (History, the 18:46 run, execution 1b3e8d8853d54ba38eec8df1f51c56ee) and read which module is red. Likely cause: a text send fires when the AI reply or another variable is empty (for example after a non-text message type, or an AI path returning nothing).
 
 Fix pattern for 2.0 and, if Theo wants, a small manual edit on Chales: (a) add a filter so no text send fires when the text is empty; (b) add a fallback "Sorry, I did not catch that. Say it again, or tap an option"; (c) add an error handler so one bad message cannot stop the run silently. It is unknown whether any real client got no reply in those runs, check the phone numbers on the failed runs. Treat this as bug fixing, allowed under the Chales freeze, but push it through Make's editor (small edit), not a full blueprint.
+
+## Watchdog status (checked 5 Nov): there is no automatic watchdog yet
+- Make has a scenario "Lexi Watchdog - Alert Theo" (7917016, active). It is **on-demand only**: no trigger, no schedule. It sends one fixed WhatsApp message to Theo's number saying Lexi hit a real error (3 in 5 min, missing message text). It ran only twice, on 12 Oct (test) and 30 Oct 06:45 (started by hand through Claude), and has not run since. The 18:46 failure on 5 Nov did not trigger it. Theo only knew because Make emailed him.
+- So nothing watches Lexi automatically. Options, cheapest first: (a) fix the empty text bug so the alerts mostly stop; (b) a scheduled Claude check twice a day that lists failed runs on 5043763 and 7617803 (status 3) since the last check and runs the watchdog scenario to message Theo if there are new ones (costs Theo's Claude usage, minimum interval about hourly); (c) a Make scenario on a schedule that reads Make's own logs and messages Theo (costs Make operations, plan limit unknown). Not set up yet. Ask Theo which, then keep it until Lexi 2.0 is live, then retire it.
+- **Secret exposure:** the watchdog scenario stores a WhatsApp access token in plain text inside its HTTP header. It was displayed in this chat's tool output on 5 Nov. Do not copy it anywhere. Ask Theo whether it is a temporary or a long-lived token, and move it to a Make connection or variable and rotate it if it is long-lived.
+- **Also seen in Make:** an inactive scenario "Lexi 2.0 (test core flow)" (8179409) that is not in any notes. Ask Theo what it is, and inspect it before starting a clone. It may already be the start of 2.0.
 
 ## The facts the build depends on (verified from docs on 3 Nov, not yet by us)
 - Meta WhatsApp Cloud API sends a voice message as an OGG file, Opus codec only, mono only, with `"voice": true`. If the file is over 512 KB, the play button is replaced by a download arrow. Wrong codec means it fails.
