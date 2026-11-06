@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals } from '$lib/motion.js';
-  import { stats } from '$lib/content.js';
+  import { stats, CONTACT } from '$lib/content.js';
   import MountainDay from '$lib/MountainDay.svelte';
   import ContactWizard from '$lib/ContactWizard.svelte';
 
@@ -36,8 +36,8 @@
       <div class="w" data-reveal><ContactWizard /></div>
       <dl class="details" data-reveal>
         <div><dt>WhatsApp</dt><dd><a class="ulink" href="https://wa.me/27764924196">076 492 4196</a></dd></div>
-        <div><dt>Email</dt><dd><span class="todo">[add email on the domain]</span></dd></div>
-        <div><dt>Address</dt><dd><span class="todo">[add street address, suburb, Cape Town]</span></dd></div>
+        <div><dt>Email</dt><dd><a class="ulink" href={'mailto:' + CONTACT.email}>{CONTACT.email}</a></dd></div>
+        <div><dt>Address</dt><dd>{CONTACT.address}</dd></div>
       </dl>
     </div>
   </section>

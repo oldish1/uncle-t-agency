@@ -8,4 +8,4 @@ Svelte site for uncletsautomation.co.za. Three views (Home dark, Studio light, S
 - Text, prices and chat scripts: `src/lib/content.js`
 - Motion helpers (reveals, parallax, reduced motion): `src/lib/motion.js`
 - Views: `src/lib/views/`, page shell and transition: `src/routes/+page.svelte`
-- Before launch: delete `static/_headers` (it hides the preview from Google), fill the yellow email and address placeholders in `StartView.svelte` and `routes/privacy/+page.svelte`.
+- Before launch: delete `static/_headers` (it hides the preview from Google), email and address are set in `src/lib/content.js` (CONTACT).
