@@ -35,7 +35,7 @@
       <p class="lead" data-reveal>Answer four quick questions and your message to Theo writes itself.</p>
       <div class="w" data-reveal><ContactWizard /></div>
       <dl class="details" data-reveal>
-        <div><dt>WhatsApp</dt><dd><a class="ulink" href="https://wa.me/27714304346">071 430 4346</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a class="ulink" href="https://wa.me/27780997932">078 099 7932</a></dd></div>
         <div><dt>Email</dt><dd><a class="ulink" href={'mailto:' + CONTACT.email}>{CONTACT.email}</a></dd></div>
         <div><dt>Address</dt><dd>{CONTACT.address}</dd></div>
       </dl>
