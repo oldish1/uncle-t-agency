@@ -15,14 +15,27 @@ CHALES shows 3 different sets of opening hours, and Google trusts a business les
 
 Worst clash: Lexi books Saturday 15:30 and 16:30, Google says she closes at 15:00.
 
-## What Theo gets from Chanté first
+## Confirmed hours (Chanté, via Theo, 6 Nov 2026)
 
-Fill this in before starting:
+| Day | Hours |
+|---|---|
+| Tuesday to Friday | 08:00 to 16:30 |
+| Saturday | 09:00 to 15:00 |
+| Sunday | Closed |
+| Monday | Closed (assumed, as everywhere before; Theo to confirm if not) |
 
-- [ ] Tuesday to Friday: opens ___ , closes ___
-- [ ] Saturday: opens ___ , closes ___
-- [ ] Sunday: closed, or by appointment? If by appointment, should Lexi book Sundays or send people to Chanté?
-- [ ] Monday: closed?
+**Already done (6 Nov):**
+- Google listing already showed exactly these hours. Nothing to change there.
+- Website: home page (both hours blocks and Google's hidden business details) and all 5 new treatment pages updated in `apps/chales-site`. Goes live with the next deploy.
+
+**Still to do: Lexi.** Her slot lists don't match:
+- Saturday: Lexi offers 08:00 to 16:30 every half hour. Must become **09:00 to about 14:30** (the last start time depends on the answer below). This is the urgent one: right now a client can book Saturday 16:00 when the salon closes at 15:00.
+- Tuesday to Friday: Lexi offers hourly 08:00 to 16:00. Opening time is right. Is 16:00 a sensible last start when she closes at 16:30? Only for short services.
+- Step 3's slot instruction lists the same times "for every open day". It needs separate weekday and Saturday lists.
+
+## Still to get from Chanté
+
+
 - [ ] Latest time a client can **start** an appointment (often earlier than closing, e.g. a 3-hour Nanoplastia can't start at 16:00)
 - [ ] Weekdays: hourly slots like now, or half-hourly like Saturday?
 - [ ] Any lunch break?

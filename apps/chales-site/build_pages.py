@@ -215,6 +215,7 @@ details p{padding:0 24px 24px;max-width:40em}
 .visit{background:var(--gold);color:var(--on-gold);padding:var(--gap) var(--edge);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
 .visit h2{color:var(--on-gold)}
 .visit .addr{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,2.25rem);line-height:1.2;margin-top:24px}
+.visit .hours{font-size:17px;margin-top:18px;line-height:1.6}
 .visit .inside{font-size:17px;font-weight:600;margin-top:10px}
 .visit .acts{display:flex;flex-wrap:wrap;gap:12px;justify-self:end}
 .visit .acts a.plain{padding:16px 6px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
@@ -314,6 +315,9 @@ SALON = {
     "image": SITE + "/IMG-20260221-WA0079.jpg",
     "address": {"@type": "PostalAddress", "streetAddress": "46 Alexandra Street (inside the Vodacom building)", "addressLocality": "Bellville", "addressRegion": "Western Cape", "postalCode": "7530", "addressCountry": "ZA"},
     "geo": {"@type": "GeoCoordinates", "latitude": -33.8940119, "longitude": 18.6294225},
+    "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "16:30"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00"}],
     "hasMap": MAPS, "areaServed": ["Bellville", "Oakdale", "Parow", "Goodwood", "Durbanville", "Cape Town"],
     "sameAs": ["https://www.tiktok.com/@chales418", "https://www.instagram.com/chaleshairboutique", "https://www.facebook.com/chaleshairboutique"],
 }
@@ -325,8 +329,9 @@ def visit_block():
     <h2 class="rise">Find CHALES</h2>
     <p class="addr rise" data-d="1">{ADDRESS},<br>Cape Town 7530</p>
     <p class="inside rise" data-d="2">{INSIDE}. Look for the Vodacom sign, CHALES is inside.</p>
+    <p class="hours rise" data-d="3">Tuesday to Friday 08:00 to 16:30<br>Saturday 09:00 to 15:00<br>Sunday and Monday closed</p>
   </div>
-  <div class="acts rise" data-d="3">
+  <div class="acts rise" data-d="4">
     <a class="btn dark" href="{lexi_link("Hi Lexi! I'd like to book an appointment at CHALES Hair Boutique.")}">Book with Lexi</a>
     <a class="plain" href="{MAPS}">Get directions</a>
     <a class="plain" href="tel:{CHANTE_TEL}">Call Chanté</a>

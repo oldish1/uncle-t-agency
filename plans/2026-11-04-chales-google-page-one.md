@@ -51,6 +51,8 @@ Four places tell customers when CHALES is open, and they don't agree (checked 4 
 
 The worst clash is Saturday: Lexi books clients at 15:30 and 16:30, but Google tells people she closes at 15:00. And the website offers Sunday appointments that Lexi will never book.
 
+**Confirmed 6 Nov 2026:** Tuesday to Friday 08:00 to 16:30, Saturday 09:00 to 15:00, Sunday and Monday closed. Google was already right. Website updated (live on next deploy). Lexi still to change, see `outputs/2026-11-04-chales-hours-fix-brief.md`.
+
 **Fix:** Chanté says what her real hours are. Then all four get changed on the same day: website, Google, Lexi's slot list and AI instructions, and the TikTok bio (if it lists hours). After that, any change to her hours means changing all four together.
 
 **Also add "inside the Vodacom building"** to the address everywhere (Google listing's address line or description, website, Lexi's confirmation). The salon isn't a street-front shop, so that's the detail that actually gets people to her door.
