@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { setupReveals, gsap, reduced } from '$lib/motion.js';
-  import { verticals, plans, wa, cbdPhoto, bigStats, frustrations, morning } from '$lib/content.js';
+  import { verticals, plans, wa, demo, cbdPhoto, bigStats, frustrations, morning } from '$lib/content.js';
   import Chat from '$lib/Chat.svelte';
   import ParticleMountain from '$lib/ParticleMountain.svelte';
   import DayStory from '$lib/DayStory.svelte';
@@ -46,7 +46,7 @@
         <h1 class="h1" data-words>Every missed message is a <em>missed booking</em>.</h1>
         <p class="lead" data-reveal>You're with a client and the phone rings. That customer books with whoever answers first. Lexi answers for you, day and night, and puts them in your calendar.</p>
         <div class="actions" data-reveal>
-          <a class="btn solid" href={wa("Hi Theo, I'd like to see Lexi")}>Try Lexi on WhatsApp</a>
+          <a class="btn solid" href={demo("Hi")}>Try Lexi on WhatsApp</a>
           <button class="btn" type="button" onclick={() => go('studio')}>How it works</button>
         </div>
       </div>

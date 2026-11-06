@@ -1,4 +1,6 @@
-export const WHATSAPP = 'https://wa.me/27764924196';
+export const WHATSAPP = 'https://wa.me/27714304346';
+export const DEMO_WHATSAPP = 'https://wa.me/27764924196';
+export const demo = (text) => `${DEMO_WHATSAPP}?text=${encodeURIComponent(text)}`;
 export const wa = (text) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
 export const views = [
@@ -132,4 +134,4 @@ export const morning = [
   ['6:10 am', 'Cancelled slot freed, offered to the next customer']
 ];
 
-export const CONTACT = { email: 'adamst70@gmail.com', address: 'Ravensmead, Cape Town', phone: '076 492 4196' };
+export const CONTACT = { email: 'adamst70@gmail.com', address: 'Ravensmead, Cape Town', phone: '071 430 4346' };

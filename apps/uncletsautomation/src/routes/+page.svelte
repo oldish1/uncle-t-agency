@@ -82,7 +82,7 @@
   <meta name="description" content="Uncle Ts Automation builds a WhatsApp receptionist and a fast website for small Cape Town businesses. Websites from R799 setup and R499 a month, Lexi from R1,499 setup and R799 a month." />
   {@html `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Uncle Ts Automation',
-    url: 'https://uncletsautomation.co.za', telephone: '+27764924196', areaServed: 'Cape Town, South Africa',
+    url: 'https://uncletsautomation.co.za', telephone: '+27714304346', areaServed: 'Cape Town, South Africa',
     description: 'WhatsApp booking assistant and websites for small local businesses in Cape Town.'
   })}</script>`}
 </svelte:head>
