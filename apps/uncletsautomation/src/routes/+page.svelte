@@ -79,7 +79,7 @@
   <meta property="og:url" content={SITE_URL + '/'} />
   <meta property="og:image" content={SITE_URL + '/day/cbd.webp'} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="description" content="Uncle Ts Automation builds a WhatsApp receptionist and a fast website for small Cape Town businesses. Websites from R799 setup and R499 a month, Lexi from R1,499 setup and R799 a month." />
+  <meta name="description" content="Uncle Ts Automation builds a WhatsApp receptionist and a fast website for small Cape Town businesses. Websites from R799 setup and R499 a month, Lexi from R1,499 setup and R499 a month." />
   {@html `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Uncle Ts Automation',
     url: 'https://uncletsautomation.co.za', telephone: '+27780997932', areaServed: 'Cape Town, South Africa',

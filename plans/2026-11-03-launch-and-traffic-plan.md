@@ -69,7 +69,7 @@ Keep voice honest on the site until it exists ("coming soon" is already there).
 
 ## PRICING and STRUCTURE decisions (T decides, C writes it up)
 
-P1. [ ] Confirm current prices: Website R799 setup and R499 a month; Lexi R1,499 and R799 a month; both R1,499 and R999 a month.
+P1. [ ] Confirm current prices: Website R799 setup and R499 a month; Lexi R1,499 and R499 a month; both R1,499 and R799 a month.
 P2. [ ] Founding offer terms for the first five clients (what is discounted, what you get in return).
 P3. [ ] WhatsApp message costs: included up to a fair monthly limit, then passed on at cost. Write one line in the contract-free terms.
 P4. [ ] Voice add-on price after the test.

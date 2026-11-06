@@ -4,9 +4,9 @@
 
 **The Lexi System**, the flagship. A WhatsApp AI booking assistant that runs on her own dedicated WhatsApp number, separate from the owner's personal number. The client puts that number on their website, socials and cards. Greets the customer, lists services, takes date and time, checks live calendar availability so nothing double-books, confirms, and sends reminders to cut no-shows. Sold as "a receptionist who never sleeps and never double-books," never as "a chatbot" or "AI technology," the pitch leads with the pain (missed messages at night, no-shows, double bookings, the owner personally fielding WhatsApp between clients), not the tech.
 
-Price: R1,499 once-off setup, R799/month recurring. Rollout: 4 days, build, connect, test, live.
+Price: R1,499 once-off setup, R499/month recurring. Rollout: 4 days, build, connect, test, live.
 
-**Websites.** A single mobile-first HTML site, built and hosted, R799 once-off setup, then R499/month with hosting and domain included. Lexi plus a website together is R1,499 setup and R999/month. Positioned directly against Telecloud, who charge R2,000 to R11,000 once-off for the same tier of work and bill hosting separately.
+**Websites.** A single mobile-first HTML site, built and hosted, R799 once-off setup, then R499/month with hosting and domain included. Lexi plus a website together is R1,499 setup and R799/month. Positioned directly against Telecloud, who charge R2,000 to R11,000 once-off for the same tier of work and bill hosting separately.
 
 **Not yet built, in the queue once Lexi is stable and there's real paying volume:** follow-up automation, Google review request automation, client reactivation campaigns. These are deliberately held back so no client is sold something unproven.
 

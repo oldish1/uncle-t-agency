@@ -3,7 +3,7 @@
 Written 6 Nov 2026 from the websites session. This new session owns **content, traffic and winning clients**. The websites session keeps building and fixing the sites. Don't redo website work here: ask Theo to take site changes (copy, colours, pages, deploys) to the websites session.
 
 ## Who and what
-Theo (Uncle T), Cape Town, Ravensmead. Uncle Ts Automation sells Lexi (a WhatsApp booking assistant on her own dedicated number) and websites to small Cape Town businesses, salons first. Voice is NOT built yet, so never claim it, "coming soon" only. Prices: website R799 setup + R499/month; Lexi R1,499 setup + R799/month; both R1,499 setup + R999/month. Demo number 076 492 4196. First live client: Chales Hair Boutique (Chante, Bellville). Theo's sister Nita runs Rags To Riches Cleaning (separate site coming, own booking bot Luna).
+Theo (Uncle T), Cape Town, Ravensmead. Uncle Ts Automation sells Lexi (a WhatsApp booking assistant on her own dedicated number) and websites to small Cape Town businesses, salons first. Voice is NOT built yet, so never claim it, "coming soon" only. Prices: website R799 setup + R499/month; Lexi R1,499 setup + R499/month; both R1,499 setup + R799/month. Demo number 076 492 4196. First live client: Chales Hair Boutique (Chante, Bellville). Theo's sister Nita runs Rags To Riches Cleaning (separate site coming, own booking bot Luna).
 Theo works from his phone, keeps steps short and one at a time, wants things he can tick off. Writing rules: `reference/writing-style.md` (no em dashes, plain, contractions), then `humanizer` for client-facing copy. Every claim must be true: no invented numbers, testimonials or results.
 
 ## The plan this session executes

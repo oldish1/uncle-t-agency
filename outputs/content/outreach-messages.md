@@ -16,7 +16,7 @@ Hi [Name], just checking you saw my message about Lexi. Did you get a chance to 
 Hi [Name], last note from me. If missed bookings aren't a problem right now, no worries at all. If they ever are, my number is here. All the best with the busy season.
 
 ## When they say "how much?"
-R1,499 once-off setup, then R799 a month for Lexi. If you want the website as well, it's R999 a month for both. No contract. We're live in about four days.
+R1,499 once-off setup, then R499 a month for Lexi. If you want the website as well, it's R799 a month for both. No contract. We're live in about four days.
 
 ## When they say "I don't need it"
 Fair enough. Quick question though, when you're with a client and someone messages, what happens to that booking?
