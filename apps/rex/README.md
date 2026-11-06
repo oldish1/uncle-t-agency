@@ -4,7 +4,7 @@ Rex is Theo's WhatsApp ops assistant. He's not customer-facing (that's Lexi's jo
 
 Flow: **Test message in → Make.com webhook → Claude API → WhatsApp reply → logged to Google Sheets.**
 
-**Status: built and live in Make, scenario ID 7638753, currently OFF.** Two secrets are still placeholders — see "The two things only Theo can do" below. Everything else is wired and ready.
+**Status (6 Nov 2026): live in Make on the Meta TEST number only (scenario 7638753). Not reachable from a normal phone. See `GO-LIVE.md` for the path to his own number, and `system-prompt.md` for the new brain.** Older notes below describe the first build. Two secrets are still placeholders — see "The two things only Theo can do" below. Everything else is wired and ready.
 
 ## Files here
 

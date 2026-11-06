@@ -1,114 +1,165 @@
 {
-    "name": "Rex - Commander Agent",
-    "flow": [
+  "name": "Rex - Commander Agent v2",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": 0,
+        "maxResults": 1
+      },
+      "mapper": {}
+    },
+    {
+      "id": 5,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "mapper": null,
+      "metadata": {
+        "expect": []
+      },
+      "routes": [
         {
-            "id": 1,
-            "module": "gateway:CustomWebHook",
-            "version": 1,
-            "mapper": {},
-            "parameters": {
-                "hook": 3793690,
-                "maxResults": 1
+          "flow": [
+            {
+              "id": 6,
+              "module": "gateway:WebhookRespond",
+              "version": 1,
+              "filter": {
+                "name": "Meta handshake",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`hub.verify_token`}}",
+                      "b": "PASTE_VERIFY_TOKEN_HERE",
+                      "o": "text:equal"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
+                "body": "{{1.`hub.challenge`}}",
+                "status": "200",
+                "headers": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  }
+                ]
+              }
             }
+          ]
         },
         {
-            "id": 2,
-            "module": "http:MakeRequest",
-            "version": 4,
-            "mapper": {
+          "flow": [
+            {
+              "id": 2,
+              "module": "http:MakeRequest",
+              "version": 4,
+              "parameters": {
+                "tlsType": "",
+                "authenticationType": "noAuth"
+              },
+              "filter": {
+                "name": "Only Theo's messages",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.entry[1].changes[1].value.messages[1].from}}",
+                      "b": "27714304346",
+                      "o": "text:equal"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
                 "url": "https://api.anthropic.com/v1/messages",
                 "method": "post",
                 "headers": [
-                    { "name": "x-api-key", "value": "PASTE_ANTHROPIC_API_KEY_HERE" },
-                    { "name": "anthropic-version", "value": "2023-06-01" },
-                    { "name": "content-type", "value": "application/json" }
+                  {
+                    "name": "x-api-key",
+                    "value": "PASTE_ANTHROPIC_API_KEY_HERE"
+                  },
+                  {
+                    "name": "anthropic-version",
+                    "value": "2023-06-01"
+                  },
+                  {
+                    "name": "content-type",
+                    "value": "application/json"
+                  }
                 ],
+                "timeout": 40,
                 "contentType": "json",
                 "inputMethod": "dataStructure",
-                "bodyDataStructure": 358873,
-                "dataStructureBodyContent": {
-                    "model": "claude-sonnet-4-6",
-                    "system": "See apps/rex/system-prompt.md — pasted in verbatim as this field's value in the live scenario.",
-                    "messages": [
-                        { "role": "user", "content": "{{1.text}}" }
-                    ],
-                    "max_tokens": 1024
-                },
                 "shareCookies": false,
                 "parseResponse": true,
                 "allowRedirects": true,
                 "stopOnHttpError": true,
+                "bodyDataStructure": 358873,
+                "dataStructureBodyContent": {
+                  "model": "claude-sonnet-5-5",
+                  "system": "You are Rex, the Commander Agent (chief of staff) for Uncle T Agency. You run on WhatsApp and talk directly to Theo (Uncle T), the founder. You are not customer-facing. You are his ops right hand.\n\nWHO YOU ARE\nSharp, direct, warm, Cape Town energy. No corporate polish, no waffling. Short replies, a few lines, plain English. If a plan is slow or off, say so. If he says Gloria, drop the softening and give the brutally honest read.\n\nTHE BUSINESS\nUncle T Agency sells WhatsApp booking automation and websites to small Cape Town businesses, starting with hair salons. All prices in Rand. Theo also works a day job, so his time is the scarce thing.\n- Lexi is the product: a WhatsApp booking assistant that answers the booking conversation itself, inside the salon's own WhatsApp number, voice notes included, books into Google Calendar and sends reminders. R1,499 once-off setup and R499 a month. Runs on Make.com and the Claude API.\n- Founding five deal (first five paying salons): first 30 days free, then setup R999 and R499 a month. Cancel in the first month and they owe nothing. Target: five founding clients.\n- Live proof client: CHALES Hair Boutique in Bellville (chaleshairboutique.co.za), Chante's salon. Lexi works there with real bookings.\n- Websites are also sold. Website pricing is being confirmed, so do not quote it. Tell Theo to check the offer file.\n\nTHE EDGE\nEvery other South African tool sells a booking link and tells the owner to share it on WhatsApp. Lexi answers the WhatsApp conversation itself. Competitors in South Africa: Fresha, Booklink (R79 flat), Salonz (R199 to R499), Zolmi, GetMeBooked. Never attack a competitor by name in outreach. State facts only.\n\nTHE TEAM YOU COMMAND\n- Daily outreach brief: a scheduled agent that reads the Pipeline Sheet at about 06:50 and drafts the day's messages.\n- Outreach desk: a separate Claude session where Theo sends first messages and handles replies.\n- Scout finds salons. Outreach writer drafts one tailored message each. Lexi Watchdog checks Lexi every hour. Reply Helper and a website agent are planned.\nYou pass work to them by telling Theo exactly which session or agent should do it and what to say to it. You cannot start them yourself yet.\n\nHARD RULES\n- Theo sends every first message to a salon himself from his own number. You never message a prospect.\n- Nothing is sent, paid or published without Theo's yes.\n- A no thanks is permanent. Never suggest messaging that salon again.\n- Never invent reviews, prices, results or client claims.\n- Real keys, tokens and passwords never go in chat.\n\nWHAT YOU CANNOT DO YET (say so plainly)\nYou have no live access to the Pipeline Sheet, the ledger or the calendar from this chat, and no memory of earlier chats. If he asks for current numbers, say so in one line and tell him where to look: the Pipeline Sheet for outreach status, the daily brief for today's list, the ledger for what happened this week. Never guess a number.\n\nHOW YOU REPLY\nShort WhatsApp style. Lead with the answer. Offer one next step. Never use double quote marks or backslashes. Use single quotes instead.",
+                  "messages": [
+                    {
+                      "role": "user",
+                      "content": "{{1.entry[1].changes[1].value.messages[1].text.body}}"
+                    }
+                  ],
+                  "max_tokens": 1024
+                },
                 "requestCompressedContent": true
+              }
             },
-            "parameters": {
+            {
+              "id": 3,
+              "module": "http:MakeRequest",
+              "version": 4,
+              "parameters": {
                 "tlsType": "",
                 "authenticationType": "noAuth"
-            }
-        },
-        {
-            "id": 3,
-            "module": "http:MakeRequest",
-            "version": 4,
-            "mapper": {
-                "url": "https://graph.facebook.com/v25.0/1197696726762690/messages",
+              },
+              "mapper": {
+                "url": "https://graph.facebook.com/v25.0/PASTE_REX_PHONE_NUMBER_ID_HERE/messages",
                 "method": "post",
                 "headers": [
-                    { "name": "Authorization", "value": "Bearer PASTE_WHATSAPP_ACCESS_TOKEN_HERE" },
-                    { "name": "Content-Type", "value": "application/json" }
+                  {
+                    "name": "Authorization",
+                    "value": "Bearer PASTE_WHATSAPP_ACCESS_TOKEN_HERE"
+                  },
+                  {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
                 "contentType": "json",
                 "inputMethod": "jsonString",
-                "jsonStringBodyContent": "{\r\n  \"messaging_product\": \"whatsapp\",\r\n  \"to\": \"{{1.from}}\",\r\n  \"type\": \"text\",\r\n  \"text\": {\r\n    \"body\": \"{{replace(replace(2.data.content[1].text; \"\"\"\"; \"\\\"\"\"\"); \"\n\"; \" \")}}\"\r\n  }\r\n}",
                 "shareCookies": false,
                 "parseResponse": true,
                 "allowRedirects": true,
                 "stopOnHttpError": true,
+                "jsonStringBodyContent": "{\"messaging_product\": \"whatsapp\", \"to\": \"{{1.entry[1].changes[1].value.messages[1].from}}\", \"type\": \"text\", \"text\": {\"body\": \"{{replace(replace(2.data.content[1].text; \"\\n\"; \" \"); \"\\\"\"; \"'\")}}\"}}",
                 "requestCompressedContent": true
-            },
-            "parameters": {
-                "tlsType": "",
-                "authenticationType": "noAuth"
+              }
             }
-        },
-        {
-            "id": 4,
-            "module": "google-sheets:addRow",
-            "version": 2,
-            "mapper": {
-                "mode": "select",
-                "values": {
-                    "0": "{{formatDate(now; \"YYYY-MM-DD HH:mm\"; \"Africa/Johannesburg\")}}",
-                    "1": "{{1.from}}",
-                    "2": "{{1.text}}",
-                    "3": "{{2.data.content[1].text}}",
-                    "4": "{{1.message_id}}"
-                },
-                "sheetId": "Untitled",
-                "spreadsheetId": "/1dE2NcTBk-Jl2fT9IqCvD3Urgmn63xzy-KxLkNQjnSkc",
-                "insertDataOption": "INSERT_ROWS",
-                "valueInputOption": "USER_ENTERED",
-                "insertUnformatted": false
-            },
-            "metadata": {
-                "expect": []
-            },
-            "parameters": {
-                "__IMTCONN__": 5493796
-            }
+          ]
         }
-    ],
-    "metadata": {
-        "instant": true,
-        "version": 1,
-        "scenario": {
-            "dlq": false,
-            "dataloss": false,
-            "maxErrors": 3,
-            "autoCommit": true,
-            "roundtrips": 1,
-            "sequential": false,
-            "confidential": false,
-            "autoCommitTriggerLast": true
-        }
+      ]
     }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "dlq": false,
+      "dataloss": false,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "roundtrips": 1,
+      "sequential": false,
+      "confidential": false,
+      "autoCommitTriggerLast": true
+    }
+  }
 }
