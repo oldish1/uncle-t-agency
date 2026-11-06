@@ -13,7 +13,7 @@
   <p>Last updated 17 October 2026. This explains what personal information Uncle Ts Automation collects, why, and what you can ask us to do with it, under South Africa's Protection of Personal Information Act (POPIA).</p>
 
   <h2>Who we are</h2>
-  <p>Uncle Ts Automation is a sole proprietorship run by Theo in Cape Town. We build WhatsApp booking assistants and websites for small local businesses. Theo is the information officer. Contact: <a href={'mailto:' + CONTACT.email}>{CONTACT.email}</a> or WhatsApp 076 492 4196, or by post at {CONTACT.address}.</p>
+  <p>Uncle Ts Automation is a sole proprietorship run by Theo in Cape Town. We build WhatsApp booking assistants and websites for small local businesses. Theo is the information officer. Contact: <a href={'mailto:' + CONTACT.email}>{CONTACT.email}</a> or WhatsApp 076 492 4196, or write to us in {CONTACT.address}.</p>
 
   <h2>Two roles</h2>
   <p>When a business uses our booking assistant (Lexi), that business decides why customers' details are collected, and we process them for the business to make the bookings work. When someone contacts us about our own services, we are the one deciding, and this policy covers that too.</p>

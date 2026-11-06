@@ -132,4 +132,4 @@ export const morning = [
   ['6:10 am', 'Cancelled slot freed, offered to the next customer']
 ];
 
-export const CONTACT = { email: 'adamst70@gmail.com', address: '14 Charles Grodes Crescent, Ravensmead, Cape Town', phone: '076 492 4196' };
+export const CONTACT = { email: 'adamst70@gmail.com', address: 'Ravensmead, Cape Town', phone: '076 492 4196' };
