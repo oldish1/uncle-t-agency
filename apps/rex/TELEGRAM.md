@@ -44,3 +44,10 @@ Field names learned the hard way (the Make API here cannot validate modules, so 
 - telegram:WatchUpdates takes the hook as parameters.__IMTHOOK__.
 
 Not built yet: reminders as Google Calendar events, the weekly Arsenal fixtures, memory, Sheet reading, the Tasks list for delegation.
+
+## Update 7 Nov 2026: reminders and Arsenal
+
+- Reminders: message starts with "remind" (e.g. "remind me tomorrow at 5pm to call Chante"). Route 3 of scenario 8428548: Claude turns it into "YYYY-MM-DD HH:mm|title", Google Calendar event created on adamst70@gmail.com (15 min, connection 5535950), Telegram confirms. The phone alerts through Google Calendar, so no polling and no extra Make credits for scheduling.
+- Web and chat routes exclude messages starting with "remind".
+- Arsenal: scenario 8428725, Mondays 07:00 SAST. Web search lists fixtures, Telegram gets the list, each match becomes a calendar event. Fixture times come from a web search, so glance at them.
+- Rex replies in plain text (no markdown asterisks).
