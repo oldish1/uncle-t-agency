@@ -29,3 +29,18 @@ Cannot yet: see the Pipeline Sheet, remember earlier chats, start the other agen
 ## Safety
 
 The bot answers only Theo's chat id. Rex never messages a prospect and never sends, pays or publishes without Theo's yes.
+
+
+## Status, 7 Nov 2026: LIVE
+
+Scenario "Rex - Telegram" (Make id 8428548), Telegram listener hook 4057483, connection "Rex Telegram" (12797086). Bot @UncleTRex2bot. Locked to Theo's Telegram id only (filter on message.from.id), so nobody else gets an answer.
+
+Built so far: chat with the Rex brain (Claude Sonnet 5 via Make's Simple Text Prompt) and web search (Make AI Web Search) for messages that contain words like search, price of, how much is, news, weather, score, fixture, arsenal.
+
+Field names learned the hard way (the Make API here cannot validate modules, so we found them by testing):
+- anthropic-claude:simpleTextPrompt takes model, max_tokens, textPrompt. Answer is {{N.result}}.
+- make-ai-web-search:generateAResponse takes input. Answer is {{N.result}}.
+- telegram:SendReplyMessage takes chatId and text, with the connection in parameters.__IMTCONN__.
+- telegram:WatchUpdates takes the hook as parameters.__IMTHOOK__.
+
+Not built yet: reminders as Google Calendar events, the weekly Arsenal fixtures, memory, Sheet reading, the Tasks list for delegation.
