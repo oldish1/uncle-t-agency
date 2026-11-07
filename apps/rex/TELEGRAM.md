@@ -51,3 +51,7 @@ Not built yet: reminders as Google Calendar events, the weekly Arsenal fixtures,
 - Web and chat routes exclude messages starting with "remind".
 - Arsenal: scenario 8428725, Mondays 07:00 SAST. Web search lists fixtures, Telegram gets the list, each match becomes a calendar event. Fixture times come from a web search, so glance at them.
 - Rex replies in plain text (no markdown asterisks).
+
+## Correction 7 Nov 2026: Arsenal
+
+Web search guessed fixtures wrongly, so scenario 8428725 is switched OFF. Use the Sky Sports calendar feed instead (exact times, refreshes hourly): https://www.skysports.com/calendars/football/fixtures/teams/arsenal. Theo adds it once in Google Calendar on a computer (Other calendars, plus, From URL). Reminders route tested working.
