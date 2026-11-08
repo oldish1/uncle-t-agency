@@ -24,7 +24,7 @@
 
 ## Theo's steps
 
-### 1. Send Chanté's Google review link
+### 1. Send Chanté's Google review link (done 8 Nov: https://g.page/r/CfHUNmaFuJC9EBM/review, now on the page)
 Google Business Profile app (or Google "CHALES Hair Boutique" while signed in as her), **Ask for reviews**, copy the link (`g.page/r/...`). Until then the page's Google button opens her listing, where "Write a review" is one more tap.
 
 ### 2. Create the WhatsApp template (about 5 minutes)

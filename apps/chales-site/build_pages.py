@@ -477,7 +477,7 @@ def prices_page():
 # ---------------------------------------------------------------- review page
 # Until Theo sends Chanté's g.page/r/... review link, this opens her Google listing,
 # where "Write a review" is one tap away. Swap it here and rebuild.
-GOOGLE_REVIEW = MAPS
+GOOGLE_REVIEW = "https://g.page/r/CfHUNmaFuJC9EBM/review"
 FEEDBACK_HOOK = "https://hook.eu1.make.com/nf6ksj2psx35bu5aqo3c3nqgairov2tc"
 
 REVIEW_CSS = """
