@@ -202,3 +202,4 @@
 - 2026-11-06 22:30 · theo · offer/decision · Prices aligned to what outreach clients were told: Lexi R1,499 setup + R499/month; Lexi + website R1,499 + R799/month; website only R799 + R499/month. Updated site, outreach messages, pitch script, context docs.
 - 2026-11-08 09:00 · theo · uncletsautomation/ship · HTTPS padlock live on uncletsautomation.co.za (Let's Encrypt, auto-renews). Removed noindex so Google can index it; redeployed. Analytics ID and Search Console tag still needed from Theo.
 - 2026-11-08 11:15 · theo · uncletsautomation/ship · Google Analytics 4 live on the site (Measurement ID G-K6Y9ZHWHT8, stream Uncle Ts Website). Search Console tag still to come.
+- 2026-11-08 11:40 · theo · uncletsautomation/build · Added WhatsApp-tap, demo-tap and contact-form events to Analytics; wrote docs/client-site-analytics-and-google.md (repeatable steps for any client site) and indexed it.

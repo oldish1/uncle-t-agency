@@ -13,6 +13,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
+| Adding visitor counting, Google Analytics, Search Console or Google visibility to any site, or explaining what clients can see | `docs/client-site-analytics-and-google.md` | Step by step for Analytics and Search Console, what is and is not visible, how WhatsApp taps are tracked, how to sell it |
 
 ## Integrations
 

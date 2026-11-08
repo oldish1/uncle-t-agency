@@ -25,7 +25,7 @@
   const back = () => { if (step > 0) step--; };
   const pickBiz = (t) => { biz = t; if (t !== 'Something else') next(); };
   const pickNeed = (n) => { need = n; next(); };
-  function send(e) { e.preventDefault(); window.open(wa(msg), '_blank', 'noopener'); }
+  function send(e) { e.preventDefault(); if (window.gtag) window.gtag('event', 'contact_form_sent', { business: biz, need }); window.open(wa(msg), '_blank', 'noopener'); }
 </script>
 
 <div class="wiz">

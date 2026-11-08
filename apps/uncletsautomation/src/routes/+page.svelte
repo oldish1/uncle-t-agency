@@ -1,6 +1,7 @@
 <script>
   import { onMount, tick } from 'svelte';
-  import { views, WHATSAPP, wa, analytics, SITE_URL } from '$lib/content.js';
+  import { views, WHATSAPP, DEMO_WHATSAPP, wa, analytics, SITE_URL } from '$lib/content.js';
+  const DEMO_WA_ID = DEMO_WHATSAPP.split('/').pop();
   import Lenis from 'lenis';
   import { gsap, ScrollTrigger, reduced } from '$lib/motion.js';
   import HomeView from '$lib/views/HomeView.svelte';
@@ -46,6 +47,12 @@
 
   onMount(() => {
     view = fromHash();
+    const track = (e) => {
+      const a = e.target.closest && e.target.closest('a[href*="wa.me"]');
+      if (!a || !window.gtag || !analytics.gaId) return;
+      window.gtag('event', a.href.includes(DEMO_WA_ID) ? 'demo_whatsapp_click' : 'whatsapp_click', { page: view, label: (a.textContent || '').trim().slice(0, 40) });
+    };
+    document.addEventListener('click', track, true);
     if (analytics.gaId) {
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
@@ -64,7 +71,7 @@
     }
     const onPop = () => go(fromHash(), false);
     window.addEventListener('popstate', onPop);
-    return () => { window.removeEventListener('popstate', onPop); lenis?.destroy(); };
+    return () => { document.removeEventListener('click', track, true); window.removeEventListener('popstate', onPop); lenis?.destroy(); };
   });
 </script>
 
