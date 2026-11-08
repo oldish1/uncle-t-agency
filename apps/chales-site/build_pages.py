@@ -311,7 +311,7 @@ def head(title, desc, path, schema):
 
 SALON = {
     "@type": "HairSalon", "@id": SITE + "/#salon", "name": "CHALES Hair Boutique", "url": SITE,
-    "telephone": "+27 81 433 2756", "email": "info@chaleshairboutique.co.za", "priceRange": "R80 - R2200",
+    "telephone": "+27 81 433 2756", "email": "info@chaleshairboutique.co.za", "priceRange": "R80 - R2200", "foundingDate": "2025",
     "image": SITE + "/IMG-20260221-WA0079.jpg",
     "address": {"@type": "PostalAddress", "streetAddress": "46 Alexandra Street (inside the Vodacom building)", "addressLocality": "Bellville", "addressRegion": "Western Cape", "postalCode": "7530", "addressCountry": "ZA"},
     "geo": {"@type": "GeoCoordinates", "latitude": -33.8940119, "longitude": 18.6294225},
