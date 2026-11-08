@@ -117,7 +117,7 @@ export const bigStats = [
 /* Visitor counting and Google. Leave empty to switch off.
    gaId: Google Analytics 4 Measurement ID, like G-ABC123XYZ.
    gscVerification: the content value of Google Search Console's "HTML tag" verification meta. */
-export const analytics = { gaId: '', gscVerification: '' };
+export const analytics = { gaId: 'G-K6Y9ZHWHT8', gscVerification: '' };
 export const SITE_URL = 'https://uncletsautomation.co.za';
 
 export const frustrations = [

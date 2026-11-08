@@ -201,3 +201,4 @@
 - 2026-11-06 22:00 · theo · uncletsautomation/build · Contact number switched from personal to business WhatsApp 078 099 7932 across the site; demo line stays on Try Lexi button only.
 - 2026-11-06 22:30 · theo · offer/decision · Prices aligned to what outreach clients were told: Lexi R1,499 setup + R499/month; Lexi + website R1,499 + R799/month; website only R799 + R499/month. Updated site, outreach messages, pitch script, context docs.
 - 2026-11-08 09:00 · theo · uncletsautomation/ship · HTTPS padlock live on uncletsautomation.co.za (Let's Encrypt, auto-renews). Removed noindex so Google can index it; redeployed. Analytics ID and Search Console tag still needed from Theo.
+- 2026-11-08 11:15 · theo · uncletsautomation/ship · Google Analytics 4 live on the site (Measurement ID G-K6Y9ZHWHT8, stream Uncle Ts Website). Search Console tag still to come.
