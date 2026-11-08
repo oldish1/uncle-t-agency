@@ -55,3 +55,7 @@ Not built yet: reminders as Google Calendar events, the weekly Arsenal fixtures,
 ## Correction 7 Nov 2026: Arsenal
 
 Web search guessed fixtures wrongly, so scenario 8428725 is switched OFF. Use the Sky Sports calendar feed instead (exact times, refreshes hourly): https://www.skysports.com/calendars/football/fixtures/teams/arsenal. Theo adds it once in Google Calendar on a computer (Other calendars, plus, From URL). Reminders route tested working.
+
+## 8 Nov 2026: follow-ups via Telegram Reply
+
+Rex has no memory. Fix without storage: when Theo long-presses a Rex answer and taps Reply, {{1.message.reply_to_message.text}} is passed into the web prompt as context. Any reply (not starting with "remind") goes to the web route; normal chat route only takes non-replies. Web answers now name shop, branch and area where it matters.
