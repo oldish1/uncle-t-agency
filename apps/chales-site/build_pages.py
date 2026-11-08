@@ -523,17 +523,20 @@ addEventListener('DOMContentLoaded',function(){
  var btns=[].slice.call(document.querySelectorAll('.stars button'));
  btns.forEach(function(b){b.addEventListener('click',function(){
    rating=+b.dataset.v; btns.forEach(function(x){x.classList.toggle('on',+x.dataset.v<=rating);x.setAttribute('aria-pressed',+x.dataset.v<=rating)});
-   document.getElementById('happy').classList.toggle('show',rating>=4);
-   document.getElementById('unhappy').classList.toggle('show',rating<=3);
+   var low=rating<=3;
+   document.getElementById('after').classList.add('show');
+   document.getElementById('after-title').textContent=low?'Thanks for being straight with me':'Thanks, that means a lot';
+   document.getElementById('after-text').innerHTML=low?"I'm sorry it wasn't right. I'd like to call you before you leave a review, so I get the chance to make it right. Or WhatsApp me now on <a href='https://wa.me/27814332756'>081 433 2756</a>.":'A Google review helps a small salon like CHALES more than anything.';
+   document.getElementById('who').hidden=!low;
    send({});
-   var p=document.getElementById(rating>=4?'happy':'unhappy'); if(p.scrollIntoView)p.scrollIntoView({behavior:'smooth',block:'nearest'});
+   var p=document.getElementById('after'); if(p.scrollIntoView)p.scrollIntoView({behavior:'smooth',block:'nearest'});
  });});
- [['happy-send','happy-msg',null,null],['low-send','low-msg','low-name','low-phone']].forEach(function(s){
-   document.getElementById(s[0]).addEventListener('click',function(){
-     var m=document.getElementById(s[1]).value.trim(); if(!m){document.getElementById(s[1]).focus();return}
-     send({message:m,name:s[2]?document.getElementById(s[2]).value.trim():'',phone:s[3]?document.getElementById(s[3]).value.trim():''});
-     this.closest('.panel').querySelector('.sent').hidden=false; this.disabled=true; this.textContent='Sent';
-   });});
+ document.getElementById('send').addEventListener('click',function(){
+   var m=document.getElementById('msg').value.trim(); if(!m){document.getElementById('msg').focus();return}
+   var low=rating<=3;
+   send({message:m,name:low?document.getElementById('low-name').value.trim():'',phone:low?document.getElementById('low-phone').value.trim():''});
+   document.querySelector('#after .sent').hidden=false; this.disabled=true; this.textContent='Sent';
+ });
 });
 })();
 """ % FEEDBACK_HOOK
@@ -553,22 +556,17 @@ def review_page():
     </div>
     <noscript><p class="aside">Happy with your visit? <a href="{GOOGLE_REVIEW}">Leave a Google review</a>. Something not right? <a href="https://wa.me/27814332756">WhatsApp Chanté</a>.</p></noscript>
 
-    <div class="panel" id="happy" aria-live="polite">
-      <h2>Thank you, that means a lot</h2>
-      <p>A Google review helps a small salon like CHALES more than anything. It takes about 30 seconds.</p>
+    <div class="panel" id="after" aria-live="polite">
+      <h2 id="after-title">Thanks, that means a lot</h2>
+      <p id="after-text">A Google review helps a small salon like CHALES more than anything.</p>
       <div class="row"><a class="btn" href="{GOOGLE_REVIEW}" target="_blank" rel="noopener">Leave a review on Google</a></div>
-      <label>Anything you want Chanté to know? (optional)<textarea id="happy-msg" maxlength="600"></textarea></label>
-      <div class="row"><button class="btn ghost" type="button" id="happy-send">Send to Chanté</button><span class="sent" hidden>Thank you, Chanté will see it.</span></div>
-    </div>
-
-    <div class="panel" id="unhappy" aria-live="polite">
-      <h2>Thank you for being honest</h2>
-      <p>I'm sorry it wasn't right. Tell me what happened and I'll do my best to make it right. Chanté</p>
-      <label>What went wrong?<textarea id="low-msg" maxlength="600"></textarea></label>
-      <label>Your name<input id="low-name" autocomplete="name" maxlength="40"></label>
-      <label>Your WhatsApp number, so I can get back to you<input id="low-phone" type="tel" autocomplete="tel" maxlength="15"></label>
-      <div class="row"><button class="btn" type="button" id="low-send">Send to Chanté</button><span class="sent" hidden>Sent. Chanté will be in touch soon.</span></div>
-      <p class="aside small">Rather talk now? WhatsApp Chanté on <a href="https://wa.me/27814332756">{CHANTE_SHOW}</a>. You're also welcome to <a href="{GOOGLE_REVIEW}" target="_blank" rel="noopener">leave a Google review</a>.</p>
+      <p class="aside">Takes about 30 seconds. Say whatever's true for you.</p>
+      <label>Anything you want me to know? (optional)<textarea id="msg" maxlength="600"></textarea></label>
+      <div id="who" hidden>
+        <label>Your name<input id="low-name" autocomplete="name" maxlength="40"></label>
+        <label style="margin-top:14px">Your WhatsApp number, so I can call you back<input id="low-phone" type="tel" autocomplete="tel" maxlength="15"></label>
+      </div>
+      <div class="row"><button class="btn ghost" type="button" id="send">Send to Chanté</button><span class="sent" hidden>Thank you, Chanté will see it.</span></div>
     </div>
   </div>
   <div class="rv-pic"><img src="/IMG-20260221-WA0080.jpg" alt="Colour being finished in the chair at CHALES Hair Boutique, Bellville" width="1200" height="1600"></div>

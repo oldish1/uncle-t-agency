@@ -7,8 +7,10 @@
 1. **In the salon:** an NFC card (with a QR code on it too) at the mirror or the till. Tap or scan, and the CHALES review page opens.
 2. **That evening at 18:30 (Tue to Sat):** every client Lexi booked that day gets a WhatsApp: "How did Chanté do?" with a **Rate your visit** button. It opens the same page with their name already on it.
 3. **The page** (chaleshairboutique.co.za/review): 5 stars.
-   - **4 or 5 stars:** "Thank you, that means a lot" and a big **Leave a review on Google** button. Optional note to Chanté.
-   - **1 to 3 stars:** "Thank you for being honest, I'm sorry it wasn't right." A box to say what happened, with their name and number filled in when they came from WhatsApp. **Send to Chanté**, or WhatsApp her directly. The Google review link is still on the page, smaller (Google bans hiding it from unhappy clients).
+   Same layout as the video: stars, then a message, then the **Leave a review on Google** button, then "Anything you want me to know? (optional)" with **Send to Chanté**.
+   - **4 or 5 stars:** "Thanks, that means a lot. A Google review helps a small salon like CHALES more than anything."
+   - **1 to 3 stars:** "Thanks for being straight with me. I'm sorry it wasn't right. I'd like to call you before you leave a review, so I get the chance to make it right. Or WhatsApp me now on 081 433 2756." Name and number boxes appear (filled in when they came from WhatsApp). The Google button stays, as in the video (Google bans hiding it from unhappy clients).
+   - **Strangers:** the page isn't in her website menu and is hidden from Google search, so people only reach it through the WhatsApp button or the card. A rating on this page never goes to Google by itself; only the client can post a Google review.
 4. **Chanté's alert:** any 1 to 3 star rating, or any written note, reaches her WhatsApp within seconds: "Review page: 2 out of 5 from Thandi (2771...). They said: ..."
 
 ## What's built
@@ -32,7 +34,7 @@ WhatsApp Manager (business.facebook.com, WhatsApp Manager, Message templates, Cr
 - **Category:** Utility. Meta may move it to Marketing, which is fine (slightly higher cost per message).
 - **Language:** English
 - **Body:**
-  > Hi {{1}}, thank you for visiting CHALES Hair Boutique today. How did Chanté do? Tap below to rate your visit, it only takes 10 seconds.
+  > Hi {{1}}, it's Chanté from CHALES Hair Boutique. Thank you for coming in today, I just want to make sure you love your hair. How did I do, 1 to 5? Tap below to let me know.
   - Sample for {{1}}: `Thandi`
 - **Button:** Call to action, Visit website
   - Text: `Rate your visit`
