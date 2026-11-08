@@ -48,7 +48,7 @@ Approval usually takes minutes to a day. Tell Claude when it's approved.
 Buy **blank, rewritable** cards or stands (NTAG213 or NTAG215), not ones locked to the seller's platform. With a free app like **NFC Tools** (Android or iPhone): Write, Add a record, URL, `https://chaleshairboutique.co.za/review?s=card`, write, tap the card. Test with your own phone. Print or stick the QR code on the card as well.
 
 ### 4. Go live (Claude does these once you say go)
-1. Deploy the website (review page included).
+1. ~~Deploy the website (review page included).~~ Done 8 Nov 2026, live deploy 6af0c20b6aca41a5e4dd4ca3.
 2. When the template is approved: switch on the evening scenario, test it with a booking on Theo's number, then clear its test-mode number.
 3. Switch the alerts from Theo's number to Chanté's (27814332756).
 4. Swap in the real Google review link and redeploy.
