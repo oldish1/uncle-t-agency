@@ -59,3 +59,7 @@ Web search guessed fixtures wrongly, so scenario 8428725 is switched OFF. Use th
 ## 8 Nov 2026: follow-ups via Telegram Reply
 
 Rex has no memory. Fix without storage: when Theo long-presses a Rex answer and taps Reply, {{1.message.reply_to_message.text}} is passed into the web prompt as context. Any reply (not starting with "remind") goes to the web route; normal chat route only takes non-replies. Web answers now name shop, branch and area where it matters.
+
+## 8 Nov 2026: memory
+
+Sheet "Rex Memory" (id 1TcQnQ4NotmQq6gZdFv607RVlRewbJfNEmM7fOD1W1bY, tab "Untitled", A=Date, B=Memory). Scenario 8428548 now: Telegram trigger, google-sheets:filterRows (Theo only), util:TextAggregator (joins rows into {{41.text}}), router. Chat route gets the memory text in its prompt. Route 4: message starting "remember" / "note that" / "note this" adds a row and confirms. Keep at least one data row in the sheet (an empty sheet would stop the flow). Edit or delete rows in the sheet by hand to make Rex forget. Same modules port to the WhatsApp scenario.
