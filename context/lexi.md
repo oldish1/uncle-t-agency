@@ -69,3 +69,7 @@ Also since fix15b: names must be typed. A voice note at the name step gets "Plea
 ## Decision (25 Sept, late): Lexi frozen at fix14
 
 Theo and Claude agreed: Lexi runs fix14 (voice notes understood, service shortcut, photo confirmation) and gets **no more features**. Fix15/15b (spoken day and time) is shelved: taps already do that well and it caused the name-step bug. Voice replies inside WhatsApp are dropped. The next voice work is a separate product, a real-time voice receptionist (Vapi or Retell) built next to Lexi on the demo number, sharing her calendar and sheet. A clean-up pass to shrink the scenario comes after the first paying client.
+
+## Review machine (built 8 Nov 2026)
+
+Two separate Make scenarios next to Lexi, so Lexi's own scenario isn't touched. **Chales - Review Request (after visit)** (8445153) runs Tue to Sat at 18:30, finds today's Lexi bookings on Chanté's calendar and sends the `review_request` WhatsApp template with a "Rate your visit" button to chaleshairboutique.co.za/review. It's off until Meta approves the template, and in test mode (module 1 `onlyTo` = Theo's 27714304346; clear it to go live). **Chales - Review Feedback Alerts** (8445087) takes ratings from the review page through the webhook "Chales - Review page feedback" and sends any 1 to 3 star rating or written note to `alertTo` (module 2) using the existing `staff_alert` template. On, currently alerting Theo; switch `alertTo` to Chanté's 27814332756 at go-live. Setup and go-live steps: `outputs/2026-11-08-chales-review-machine-setup.md`.

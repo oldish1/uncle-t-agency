@@ -474,12 +474,120 @@ def prices_page():
 """
     return head("Prices | CHALES Hair Boutique, Bellville, Cape Town", "Full price list for CHALES Hair Boutique in Oakdale, Bellville: colour, highlights, balayage, Nanoplastia, keratin, Brazilian, hair botox, cuts and blow dries.", path, schema) + body + footer("prices")
 
+# ---------------------------------------------------------------- review page
+# Until Theo sends Chanté's g.page/r/... review link, this opens her Google listing,
+# where "Write a review" is one tap away. Swap it here and rebuild.
+GOOGLE_REVIEW = MAPS
+FEEDBACK_HOOK = "https://hook.eu1.make.com/nf6ksj2psx35bu5aqo3c3nqgairov2tc"
+
+REVIEW_CSS = """
+.rv{display:grid;grid-template-columns:1.1fr .9fr;min-height:calc(100vh - 70px)}
+.rv-main{padding:clamp(40px,7vw,100px) var(--edge) 72px;display:flex;flex-direction:column;gap:26px;max-width:760px}
+.rv-main h1{color:var(--gold);font-size:clamp(3rem,7vw,6.4rem)}
+.rv-pic{position:relative;overflow:hidden;min-height:50vh}
+.rv-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stars{display:flex;gap:6px}
+.stars button{background:none;border:0;cursor:pointer;padding:6px;line-height:0;transition:transform .15s}
+.stars button:hover{transform:scale(1.08)}
+.stars button:active{transform:scale(.94)}
+.stars svg{width:clamp(48px,9vw,64px);height:auto;fill:#6a6a62;transition:fill .2s}
+.stars button.on svg{fill:var(--gold)}
+.scale{display:flex;justify-content:space-between;max-width:360px;font-size:15px;color:var(--ink-2)}
+.panel{display:none;flex-direction:column;gap:18px;background:var(--ground-2);padding:28px clamp(20px,3vw,32px)}
+.panel.show{display:flex}
+.panel h2{font-size:clamp(2rem,3.6vw,3rem)}
+.panel label{font-size:15px;color:var(--ink-2);display:flex;flex-direction:column;gap:8px}
+.panel textarea,.panel input{font:inherit;font-size:17px;color:var(--ink);background:var(--ground-3);border:1px solid #4a4a44;padding:14px;width:100%}
+.panel textarea{min-height:110px;resize:vertical}
+.panel .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.panel .small a{color:var(--ink)}
+.sent{color:var(--gold-hi);font-weight:600}
+.btn.ghost{background:var(--ground-3);color:var(--ink)}
+.btn.ghost:hover{background:#45453f}
+@media (max-width:900px){.rv{grid-template-columns:1fr}.rv-pic{order:-1;min-height:28vh}}
+"""
+
+STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>'
+
+REVIEW_JS = """
+(function(){
+var HOOK='%s';
+var q=new URLSearchParams(location.search),name=(q.get('n')||'').slice(0,40),phone=(q.get('p')||'').replace(/[^0-9+]/g,'').slice(0,15),src=q.get('s')||(name?'whatsapp':'card');
+var rating=0;
+function send(extra){var b=new URLSearchParams({rating:String(rating),name:extra.name||name,phone:extra.phone||phone,message:extra.message||'',source:src,page:'review'});
+ try{fetch(HOOK+'?'+b.toString(),{method:'POST',mode:'no-cors'})}catch(e){}}
+addEventListener('DOMContentLoaded',function(){
+ if(name){document.getElementById('hi').textContent='Hi '+name+', thanks for coming in to CHALES.';}
+ var lowName=document.getElementById('low-name'),lowPhone=document.getElementById('low-phone');
+ if(name)lowName.value=name; if(phone)lowPhone.value=phone;
+ var btns=[].slice.call(document.querySelectorAll('.stars button'));
+ btns.forEach(function(b){b.addEventListener('click',function(){
+   rating=+b.dataset.v; btns.forEach(function(x){x.classList.toggle('on',+x.dataset.v<=rating);x.setAttribute('aria-pressed',+x.dataset.v<=rating)});
+   document.getElementById('happy').classList.toggle('show',rating>=4);
+   document.getElementById('unhappy').classList.toggle('show',rating<=3);
+   send({});
+   var p=document.getElementById(rating>=4?'happy':'unhappy'); if(p.scrollIntoView)p.scrollIntoView({behavior:'smooth',block:'nearest'});
+ });});
+ [['happy-send','happy-msg',null,null],['low-send','low-msg','low-name','low-phone']].forEach(function(s){
+   document.getElementById(s[0]).addEventListener('click',function(){
+     var m=document.getElementById(s[1]).value.trim(); if(!m){document.getElementById(s[1]).focus();return}
+     send({message:m,name:s[2]?document.getElementById(s[2]).value.trim():'',phone:s[3]?document.getElementById(s[3]).value.trim():''});
+     this.closest('.panel').querySelector('.sent').hidden=false; this.disabled=true; this.textContent='Sent';
+   });});
+});
+})();
+""" % FEEDBACK_HOOK
+
+def review_page():
+    path = "/review/"
+    schema = {"@context": "https://schema.org", "@graph": [SALON]}
+    stars = "".join(f'<button type="button" data-v="{i}" aria-label="{i} star{"s" if i>1 else ""}" aria-pressed="false">{STAR}</button>' for i in range(1, 6))
+    body = f"""
+<section class="rv">
+  <div class="rv-main">
+    <p class="lead" id="hi">Thanks for visiting CHALES Hair Boutique in Oakdale, Bellville.</p>
+    <h1>How did Chanté do?</h1>
+    <div>
+      <div class="stars" role="group" aria-label="Rate your visit">{stars}</div>
+      <div class="scale"><span>1 is bad</span><span>5 is great</span></div>
+    </div>
+    <noscript><p class="aside">Happy with your visit? <a href="{GOOGLE_REVIEW}">Leave a Google review</a>. Something not right? <a href="https://wa.me/27814332756">WhatsApp Chanté</a>.</p></noscript>
+
+    <div class="panel" id="happy" aria-live="polite">
+      <h2>Thank you, that means a lot</h2>
+      <p>A Google review helps a small salon like CHALES more than anything. It takes about 30 seconds.</p>
+      <div class="row"><a class="btn" href="{GOOGLE_REVIEW}" target="_blank" rel="noopener">Leave a review on Google</a></div>
+      <label>Anything you want Chanté to know? (optional)<textarea id="happy-msg" maxlength="600"></textarea></label>
+      <div class="row"><button class="btn ghost" type="button" id="happy-send">Send to Chanté</button><span class="sent" hidden>Thank you, Chanté will see it.</span></div>
+    </div>
+
+    <div class="panel" id="unhappy" aria-live="polite">
+      <h2>Thank you for being honest</h2>
+      <p>I'm sorry it wasn't right. Tell me what happened and I'll do my best to make it right. Chanté</p>
+      <label>What went wrong?<textarea id="low-msg" maxlength="600"></textarea></label>
+      <label>Your name<input id="low-name" autocomplete="name" maxlength="40"></label>
+      <label>Your WhatsApp number, so I can get back to you<input id="low-phone" type="tel" autocomplete="tel" maxlength="15"></label>
+      <div class="row"><button class="btn" type="button" id="low-send">Send to Chanté</button><span class="sent" hidden>Sent. Chanté will be in touch soon.</span></div>
+      <p class="aside small">Rather talk now? WhatsApp Chanté on <a href="https://wa.me/27814332756">{CHANTE_SHOW}</a>. You're also welcome to <a href="{GOOGLE_REVIEW}" target="_blank" rel="noopener">leave a Google review</a>.</p>
+    </div>
+  </div>
+  <div class="rv-pic"><img src="/IMG-20260221-WA0080.jpg" alt="Colour being finished in the chair at CHALES Hair Boutique, Bellville" width="1200" height="1600"></div>
+</section>
+"""
+    page = head("Rate your visit | CHALES Hair Boutique", "How did Chanté do? Rate your visit to CHALES Hair Boutique in Oakdale, Bellville.", path, schema) + body + footer("review")
+    page = page.replace("<head>", '<head>\n<meta name="robots" content="noindex">', 1)
+    page = page.replace("</style>", REVIEW_CSS + "</style>", 1)
+    page = page.replace("</head>", "<script>" + REVIEW_JS + "</script>\n</head>", 1)
+    return page
+
 def main():
     for t in TREATMENTS:
         os.makedirs(t["slug"], exist_ok=True)
         open(os.path.join(t["slug"], "index.html"), "w").write(treatment_page(t))
     os.makedirs("prices", exist_ok=True)
     open("prices/index.html", "w").write(prices_page())
+    os.makedirs("review", exist_ok=True)
+    open("review/index.html", "w").write(review_page())
     urls = ["/"] + [f"/{t['slug']}/" for t in TREATMENTS] + ["/prices/"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url><loc>{SITE}{u}</loc><lastmod>2026-11-04</lastmod></url>\n" for u in urls) + "</urlset>\n"

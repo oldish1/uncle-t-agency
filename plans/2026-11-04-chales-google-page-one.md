@@ -87,6 +87,7 @@ The worst clash is Saturday: Lexi books clients at 15:30 and 16:30, but Google t
 This is the part from the reel: the machine behind the website that gets customers and keeps them coming back. CHALES is where we build and prove it before selling it to anyone else (the rule already set in `context/offer.md`).
 
 ### Reviews machine
+*Built 8 Nov 2026: review page, evening WhatsApp and low-rating alerts. See `outputs/2026-11-08-chales-review-machine-setup.md`.*
 1. **This week, by hand:** Chanté WhatsApps her last 30 to 50 clients personally with the direct review link. A personal message from her will get far more reviews than any automation. Aim for 10 in the first two weeks.
 2. **Every visit, in person:** at the end of the appointment, "If you're happy, would you leave me a Google review? It really helps." A small card or sticker at the mirror with a QR code to the review link.
 3. **Automatic, through Lexi:** the evening after each appointment, Lexi sends a short thank-you with the review link. *(Claude builds this in Make. Messages sent outside the 24-hour chat window need a Meta-approved template, which carries a small per-message fee from Meta.)*
