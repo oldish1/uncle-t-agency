@@ -53,7 +53,7 @@ export const plans = [
   { id: 'lexi', name: 'Lexi', who: 'For salons, spas, groomers and trades who take bookings on WhatsApp.',
     incl: 'Setup, calendar connection, day-before reminders, cancel and reschedule, and ongoing support.',
     ticks: ['Her own dedicated WhatsApp number', 'Calendar connection', 'Reminders the day before', 'Cancel and reschedule in chat', 'Support from Theo'],
-    price: 'R799', per: 'a month, after R1,499 once-off setup', cta: 'Get Lexi', msg: "Hi Theo, I'd like Lexi for my business" },
+    price: 'R499', per: 'a month, after R1,499 once-off setup', cta: 'Get Lexi', msg: "Hi Theo, I'd like Lexi for my business" },
   { id: 'site', name: 'A website', who: 'One fast page that shows up on Google and sends customers to your WhatsApp.',
     incl: 'Built for phones, with your services, suburb and a map. Hosting and your domain are included in the monthly fee.',
     ticks: ['One fast page, built for phones', 'Services, suburb and a map', 'Hosting and domain included', 'Shows up on Google', 'WhatsApp button'],
