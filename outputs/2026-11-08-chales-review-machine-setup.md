@@ -50,7 +50,7 @@ Buy **blank, rewritable** cards or stands (NTAG213 or NTAG215), not ones locked 
 ### 4. Go live (Claude does these once you say go)
 1. ~~Deploy the website (review page included).~~ Done 8 Nov 2026, live deploy 6af0c20b6aca41a5e4dd4ca3.
 2. When the template is approved: switch on the evening scenario, test it with a booking on Theo's number, then clear its test-mode number.
-3. Switch the alerts from Theo's number to Chanté's (27814332756).
+3. ~~Switch the alerts from Theo's number to Chanté's (27814332756).~~ Done 9 Nov 2026.
 4. Swap in the real Google review link and redeploy.
 
 ## Rules that keep the Google profile safe
