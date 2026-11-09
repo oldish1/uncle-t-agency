@@ -67,3 +67,16 @@ Ten drafts are in the Messages tab of the Uncle T Pipeline sheet. Numbers, typed
 - [ ] Check the three failed Chales Sheets runs (403 errors).
 - [ ] Rex later gets memory, search and handing work to the other agents.
 - [ ] Rename the GitHub repo from chales-website to match Uncle T Agency.
+
+## Update 9 Nov 2026
+
+Done: Chales Google profile, agency website live on uncletsautomation.co.za (indexable, Table Mountain design), Rex on Telegram (chat, web, reminders, memory), Arsenal via Sky calendar feed.
+
+Next, in order:
+- [ ] Send Claude Chante's "Get more reviews" link: QR code and A5 poster, then print and put at her till.
+- [ ] Agency site shows R799 and R1,499. Offer is founding five: 30 days free, then R999 setup and R499 a month; standard R1,499 and R499. Decide and fix the site (R799 is wrong either way).
+- [ ] Test Rex memory ("remember ..." then ask about it) and Rex search plus Reply follow-up.
+- [ ] Round-one follow-ups: day 3 done on 3 Nov, day 10 follow-up is due now (Outreach desk session).
+- [ ] Meta: website is live, so resubmit business verification (needs business email, address, maybe CIPC). Activate Rex's SIM.
+- [ ] Traffic to the website: put the link in every outreach message, WhatsApp Business profile, Instagram and TikTok bio with the Lexi demo video, a "Built by Uncle T Agency" link in Chales' site footer, Cape Town salon-owner Facebook groups. Paid ads only after the site converts.
+- [ ] Security rotations (section 3), still open.
