@@ -80,3 +80,8 @@ Next, in order:
 - [ ] Meta: website is live, so resubmit business verification (needs business email, address, maybe CIPC). Activate Rex's SIM.
 - [ ] Traffic to the website: put the link in every outreach message, WhatsApp Business profile, Instagram and TikTok bio with the Lexi demo video, a "Built by Uncle T Agency" link in Chales' site footer, Cape Town salon-owner Facebook groups. Paid ads only after the site converts.
 - [ ] Security rotations (section 3), still open.
+
+## Update 10 Nov 2026
+- [ ] Google Search Console: add uncletsautomation.co.za, submit sitemap, request indexing (plan: plans/2026-11-10-website-traffic-plan.md).
+- [ ] WhatsApp Business profile: website, Parow, hours, plans.
+- [ ] Confirm website-only and Lexi plus website prices.
