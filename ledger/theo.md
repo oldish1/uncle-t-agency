@@ -157,3 +157,4 @@
 - 2026-11-08 21:29 · theo · chales/build · Website 'Est. 2024' changed to 'Est. 2025' (Theo: opened 2025), foundingDate 2025 added to Google's hidden business details. Netlify draft 6af0cda709bd7ae467419b06, waiting for Theo's publish.
 - 2026-11-08 21:30 · theo · chales/ship · Published the Est. 2025 update on Theo's OK (live deploy 6af0cda709bd7ae467419b06). Gave Theo Lexi's WhatsApp click-to-chat URL for the Google profile Chat field.
 - 2026-11-09 17:40 · theo · chales/ship · Review page low-rating alerts switched from Theo's number to Chanté's (27814332756) in Make 'Chales - Review Feedback Alerts' (8445087). Scenario still on and valid. No test sent to Chanté.
+- 2026-11-14 08:41 · theo · chales/build · Made an A4 printable review poster (white background, ink-friendly, CHALES-badge QR to the review page, 3 steps) for Chanté's wall until the NFC stand arrives on 24 Nov. Scan-tested at full and quarter size.
