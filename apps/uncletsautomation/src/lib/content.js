@@ -121,7 +121,13 @@ export const SITE_URL = 'https://uncletsautomation.co.za';
 export const frustrations = [
   ['The call you can\'t take', 'With colour on your hands and a client in the chair, the phone rings out. That caller books somewhere else.'],
   ['The 9pm message', 'Customers message when it suits them. By morning, they\'ve booked with whoever replied first.'],
-  ['The diary in your head', 'Paper, memory and WhatsApp scroll-back. Double bookings, forgotten reminders and no-shows follow.']
+  ['The same questions, all day', 'How much for braids? Are you open Saturday? Where do I park? You type the same answers again and again, between clients.'],
+  ['The no-show', 'Booked on Tuesday, a no-show on Saturday. An empty chair, and nobody reminded them the day before.'],
+  ['The back-and-forth', 'Which day? What time? Is that free? A booking that takes a long chat is one some clients never finish.'],
+  ['The auto-reply that gives clients homework', 'Send your name, your date, your services, your hair history. Some will. Some try the next salon instead.'],
+  ['The diary in your head', 'Paper, memory and WhatsApp scroll-back. Double bookings, forgotten reminders and no-shows follow.'],
+  ['The cancellation you hear about too late', 'A 6am cancellation for a 9am slot. By the time you see it, nobody else can take it.'],
+  ['The Monday catch-up', 'You open your phone after a full day, or a day off, to a pile of unread messages. Some of those clients booked elsewhere days ago.']
 ];
 
 /* A sample of what the owner sees in the morning */

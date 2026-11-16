@@ -71,7 +71,7 @@
   <section class="sec quiet">
     <div class="wrap">
       <h2 class="h2" data-words>Your chair is full. Your phone is <em>ringing</em>.</h2>
-      <p class="lead" data-reveal>Small business owners don't lose customers because the work is bad. They lose them in the gaps between jobs.</p>
+      <p class="lead" data-reveal>Small business owners don't lose customers because the work is bad. They lose them in the gaps between jobs. Count how many of these are your week.</p>
       <div class="frus">
         {#each frustrations as [t, d], i}
           <article class="fr" data-reveal>
@@ -208,10 +208,10 @@
   .track span::after { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--green); margin-left: 52px; vertical-align: middle; }
   @keyframes slide { to { transform: translateX(-50%); } }
 
-  .frus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: clamp(28px, 4vw, 48px); }
+  .frus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3vw, 44px) 28px; margin-top: clamp(28px, 4vw, 48px); }
   .fr { border-top: 1px solid var(--line); padding-top: 22px; }
   .fr h3 { font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem); margin-bottom: 10px; }
-  .fr p { color: var(--muted); max-width: 32ch; }
+  .fr p { color: var(--muted); max-width: 34ch; }
   .quiet .lead { margin-top: 16px; }
   .mgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(28px, 6vw, 96px); align-items: center; }
   .mon .lead { margin-top: 18px; }
