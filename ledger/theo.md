@@ -204,3 +204,4 @@
 - 2026-11-08 11:15 · theo · uncletsautomation/ship · Google Analytics 4 live on the site (Measurement ID G-K6Y9ZHWHT8, stream Uncle Ts Website). Search Console tag still to come.
 - 2026-11-08 11:40 · theo · uncletsautomation/build · Added WhatsApp-tap, demo-tap and contact-form events to Analytics; wrote docs/client-site-analytics-and-google.md (repeatable steps for any client site) and indexed it.
 - 2026-11-08 12:05 · theo · uncletsautomation/ship · Added Google Search Console HTML verification file (google6942b68927924b56.html) to the site and deployed. Theo to press Verify, submit sitemap.xml, request indexing.
+- 2026-11-17 06:30 · theo · chales/build · Built a Chales QR business card (front: QR to chaleshairboutique.co.za with utm tag so Analytics shows card scans; back: services, address, socials). Files in outputs/qr-cards/ (print PDF 90x55mm, PNGs, QR svg). QR tested: scans correctly even at small size. Not printed yet.
