@@ -44,7 +44,7 @@ def build_snapshot(g, cfg, key):
         d = step["data"]
         roots.append({"id": step["id"], "type": "end-call", "position": {"x": 400, "y": 520}, "data": {
             "name": d["name"], "prompt": d["prompt"], "settings": d["settings"], "variables": d["variables"],
-            "entry": {"mode": "llm", "label": d["name"], "alwaysPick": False, "conditions": [],
+            "entry": {"mode": "llm", "label": d["name"], "alwaysPick": True, "conditions": [],
                       "description": " or ".join(e["data"]["label"] for e in into)},
             "useStaticText": False, "loopWhile": "", "ignorePreviousExtractions": False, "useAudioExtraction": False,
         }})
@@ -52,10 +52,13 @@ def build_snapshot(g, cfg, key):
     scenario["data"]["name"] = scenario["data"]["rule"] = "Receptionist"
     scenario["data"]["entry"].update(label="Receptionist", description=(
         "Every caller belongs here for the whole call: booking, treatments, questions, banter, complaints, "
-        "asking if this is an AI. Only leave once the caller has said they have nothing else."))
+        "asking if this is an AI. Only leave once the caller has said they have nothing else. Never come back here "
+        "after the booking has been read back and Lexi has said goodbye: the call is over then, in English or Afrikaans."))
     hub = {"id": "agent", "type": "agent", "position": {"x": 400, "y": 160}, "data": {
         "prompt": "Never run the conversation yourself. Keep every caller in the Receptionist flow, "
-                  "and once they have said they have nothing else, end the call.",
+                  "and once they have said they have nothing else, end the call. A goodbye in Afrikaans "
+                  "(totsiens, baai, tot siens, lekker dag) or English (bye, cheers) after the booking is done "
+                  "always means end the call. Never restart the greeting.",
         "variables": [], "loopWhile": ""}}
     inbound = {"id": "inbound", "type": "inbound", "position": {"x": 400, "y": 0}, "data": {"number": ""},
                "deletable": False, "draggable": False}

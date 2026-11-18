@@ -15,9 +15,12 @@ Built 18 Nov 2026 from Jason Cooperson's MIT-licensed Bland template (github.com
 - In a cloud session the Bland key is a proxy-injected network secret on api.bland.ai (saved 18 Nov), and `stream-v2.aws.dc8.bland.ai` is on the allowed hosts for the test chat. `scripts/agents.py` was changed to tunnel the test chat through HTTPS_PROXY when one is set.
 - `.bland-state.json` (agent id) and `config.json` are git-ignored. If they are missing in a new session, recreate config from `config.example.json` and the state file as {"agent_id": "5809a051-cd8a-4315-893f-2971511985e2", "uploaded": true}.
 
-## Status and known issues (18 Nov)
-- Last round: 3 of 6 test calls hung up on their own. Every step works, but near the end Bland's routing sometimes loops back ("that's under Fatima, right?") or restarts the greeting. Next fix to try: fewer steps (merge Caller Name into Offer Availability), and stricter Wrap Up and exit wording. Go rule: 3 clean passes in a row for every test caller.
-- Fixed: Afrikaans half hours ("half twaalf" for 11:30, never "half elf"), not asking for a name twice, no spoken stage directions, Afrikaans goodbyes end the call.
+## Status and known issues (18 Nov, after the ending fix)
+- Flow is now: Greeting, Capture Treatment, Offer Availability (time and name together), Wrap Up (reads back, asks "anything else?", says the goodbye), Confirm And End ("Bye bye!" and hang up).
+- How Bland behaves: moving between steps inside the booking flow is instant, but leaving the flow to hang up always takes one more caller turn. So Lexi says goodbye, and the line drops when the caller says bye back. Designed around that rather than fighting it.
+- The end-call step is set to always be picked (`alwaysPick: true` in `scripts/agents.py`), and the hub prompt lists Afrikaans goodbyes and says never restart the greeting. Bland's API does not show whether `alwaysPick` was kept.
+- Test results after the fix: English callers 12 of 12 hung up cleanly (happy path, name given early, rude caller asking about AI, braids and price). Afrikaans caller 3 of the last 4. The occasional Afrikaans miss is the controller restarting the greeting after "Totsiens"; on a real call the caller would simply hang up.
+- Fixed earlier: Afrikaans half hours ("half twaalf" for 11:30, never "half elf"), never asking for a name twice, no spoken stage directions.
 
 ## Next steps
 1. Stabilise the ending (above).

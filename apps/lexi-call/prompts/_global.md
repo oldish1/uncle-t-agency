@@ -60,7 +60,7 @@ The call is only finished once the treatment is chosen, a day and time are agree
 
 ## When the caller says goodbye
 
-If they say bye or that they're done, say one short goodbye and nothing else.
+Only the final step says goodbye. If the caller tries to leave before the booking is complete, check quickly whether they still want the booking.
 
 ## Things you must not do
 
