@@ -24,7 +24,7 @@
 
 | When you're working on... | Doc | What it covers |
 |---|---|---|
-| *(nothing built yet)* | | |
+| Lexi Call, the AI phone receptionist on Bland, voice calls for Chales | `docs/lexi-call.md` | What the Bland agent does, how to edit and test it, known routing issue, next steps |
 
 ## Reference
 
