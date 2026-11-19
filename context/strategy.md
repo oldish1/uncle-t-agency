@@ -6,6 +6,8 @@
 2. **Land the first paying client.** Convert one of the five warm leads (Zanzibar, Sistergirl, Reeva, JEM, Jason) once Lexi is fast and stable.
 3. **Get CHALES more clients.** Chanté's business is slow and Theo is worried about losing the few clients she has. Highest-leverage first move: her TikTok (4,250 followers, real reach) has been sending leads to the wrong WhatsApp number instead of Lexi, see `context/marketing.md` and `outputs/2026-10-12-chales-tiktok-fix-and-growth-plan.md`. Fix written 12 Oct, not yet confirmed applied. After that: more of the content formats already proven to work, then Google review automation and an SEO push to get Chanté onto page one of Google. Then move to the same playbook for Nita's business.
 
+4. **Theo learns sales, 90-day curriculum (23 Nov 2026 to 21 Feb 2027).** Daily lessons and roleplays with the sales-coach skill, practised for real by running Chales's marketing (Theo is her marketing manager now). Plan: `outputs/2026-11-19-90-day-sales-and-chales-plan.md`.
+
 ## What success looks like
 
 Three paying recurring clients within 90 days. Five founding clients (discounted, testimonial for price) after that. Once five clients are stable, the plan is to leave the day job and grow toward a broader retainer model, priced for Western Cape small businesses rather than copied from US or UK agency rates.

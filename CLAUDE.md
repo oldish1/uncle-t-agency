@@ -63,6 +63,8 @@ plans/       build plans from /create-plan
 ## Tool routing
 
 - Writing anything: `reference/writing-style.md` rules apply.
+- Learning or practising sales (lessons, roleplays, objection drills, debriefing a real pitch, writing outreach or follow-ups): use the **sales-coach** skill. Theo is on a 90-day sales curriculum (Nov 2026 to Feb 2027), plan in `outputs/2026-11-19-90-day-sales-and-chales-plan.md`, practice log in `outputs/sales-dojo/log.md`.
+- Cinematic reels and video for Chales or clients: **Higgsfield** (connected via the app). Real footage of real work only, AI for the edit and grade, never for fake results. Free plan right now, Plus needed for regular reels.
 - Building or redesigning any website or landing page for a client: use the **design-taste-frontend** skill (Taste Skill v2, `.claude/skills/design-taste-frontend`) so the result is designed, not generic. Stack for client sites: Next.js, Tailwind, Framer Motion. Light background, dark text unless the client's brand says otherwise.
 - Researching or scraping the web: use **Firecrawl**, not the default fetch tools. It's set up (key in `.env`), high-quality scraping worth the money vs the basic built-in one: JavaScript-heavy sites, bot-protected pages, PDFs, cleaner content.
 - Scraping social platforms and marketplaces the other tools can't reach (Instagram, TikTok, LinkedIn): ask for **Apify**; the skill sets itself up on first use.

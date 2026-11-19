@@ -22,6 +22,16 @@ Fix and full data behind it: `outputs/2026-10-12-chales-tiktok-fix-and-growth-pl
 
 Drop bare hashtag-only posts with no offer and no call to action, they're a coin flip, not a strategy.
 
+## Status check, 19 Nov 2026
+
+- TikTok bio **still** shows 0814332756. The 12 Oct fix was never applied. 4,371 followers, 59.4K likes.
+- Instagram unchanged: 18 followers, 1 post.
+- Website exists with service pages but doesn't rank even for her own name; TikTok and Instagram come up first.
+- Not listed on Fresha or Booksy, where Bellville competitors are. Brazilian Bar has a dedicated "hair salon Bellville" page.
+- Google Business Profile status unknown, Theo to check on his phone.
+
+Theo is now Chales's marketing manager. The 90-day plan (Nov 2026 to Feb 2027) covering GBP, reviews, SEO, Instagram revival and cinematic Higgsfield reels: `outputs/2026-11-19-90-day-sales-and-chales-plan.md`. Instagram is now in scope again, as a repost channel for TikTok content plus local discovery, not as a separate content effort.
+
 ## Open next steps
 
 - Confirm the bio/caption fix actually landed, then run a TikTok-tagged push on the membership offer to see if it converts now that the number's right.
