@@ -59,7 +59,7 @@ Each week has one sales skill (learn it) and one Chales job (use it).
 - Learn: sort every "no" you hear into need, money, hurry, desire, trust.
 - Chales:
   - First cinematic reel (see the Higgsfield section below): her best Nanoplastia transformation, cut like a movie trailer.
-  - List her on Fresha and Booksy (free listings) so she shows up where Bellville clients already search. Point bookings to Lexi.
+  - Google Maps push, no Fresha or Booksy (Theo's call, 19 Nov): win the Maps top 3 on her own Google profile alone. Reviews that mention the service and "Bellville", 3 new photos a week, a weekly Google post, every service listed with a price, questions answered on the profile.
   - Ask 10 happy clients personally for a review (you or Chanté, in person or a voice note).
 - Target: 15 reviews total.
 
