@@ -32,3 +32,5 @@ Drop bare hashtag-only posts with no offer and no call to action, they're a coin
 Chales doesn't appear on Google Maps by name, and Lexi's directions pin has no business listing behind it. Oakdale rivals have 2 to 29 reviews, so page one locally is reachable. Full plan, review request and old-client win-back messages: `outputs/2026-10-28-chales-google-profile-and-win-back.md`. Status: waiting on Chanté to check/claim the profile at business.google.com.
 
 Site audit 28 Oct: no analytics, fake map embed ID, no sitemap, WhatsApp-sized photos. See `outputs/2026-10-28-chales-site-seo-audit.md`. Number decision: 081 is the phone on the profile and site, Lexi (071) is the booking link.
+
+AI search (19 Nov 2026): her TikTok shows up when her name is searched, her website doesn't; rivals appear on Fresha and Booksy lists, she doesn't. Plan: `outputs/2026-11-19-chales-ai-search-plan.md`. Apify free credit exhausted for the month, blocks Maps scans.
