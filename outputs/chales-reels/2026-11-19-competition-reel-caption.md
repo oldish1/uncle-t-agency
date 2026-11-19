@@ -1,18 +1,18 @@
 # Competition reel, post captions (19 Nov 2026)
 
-Video: `outputs/chales-reels/2026-11-19-competition-reel.mp4` (57 s, 1080x1920, watermark removed, picture un-mirrored, captions burned in).
+Video: `outputs/chales-reels/2026-11-19-competition-reel.mp4` (56 s, 1080x1920, watermark and TikTok outro removed, picture un-mirrored with the giveaway flyer kept the right way round, captions burned in, entry rules matched to Chanté's flyer).
 
 ## TikTok (Chanté posts)
 
-WIN A FREE HAIR MAKEOVER 💇🏽‍♀️✨ Highlights + toner + Nanoplastia (or Botox for my curly ladies) 🏆
+WIN A R1,500 HAIR MAKEOVER 💇🏽‍♀️✨ Nanoplastia + highlights + toner (or Botox for my curly ladies) 🏆
 
 How to enter:
 ✅ Follow @chales418
-✅ Like this post
-✅ Comment + tag your friends (tag as many as you want!)
-✅ Share it
+✅ Share this post to your story
+✅ Tag a friend
+✅ Comment "Done"
 
-Closes 28 November. Winner announced right after 🎉
+Winner announced 28 November 🎉
 
 📍 Oakdale, Bellville
 📲 Book on WhatsApp: 071 429 6057
@@ -29,5 +29,5 @@ Post type: Offer. Title: "Win a free hair makeover". Use the same prize and date
 
 ## Tips
 - In the TikTok app, add a trending sound at about 5% volume under her voice. It helps the algorithm and won't drown her out.
-- Pin her own comment on the post: "Tag your friends below 👇 winner announced after the 28th!"
+- Pin her own comment on the post: "Comment Done and tag a friend below 👇 winner announced 28 November!"
 - Reply to every comment in the first hour. Each reply pushes the video to more people.
