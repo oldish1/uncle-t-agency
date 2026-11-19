@@ -1,6 +1,8 @@
 # CHALES Hair Boutique website
 
-Live at chaleshairboutique.co.za (Netlify site `chaleshairboutique`, id ba8f5769-00ef-41c8-bf9a-0892e8ce14bc). This folder is the source: one `index.html`, 14 compressed photos, `hero.mp4`, `Lexi.jpg`, `sitemap.xml`, `robots.txt`. Deploy with `scripts/deploy_netlify.sh` after adding a `dist/` copy, or the draft route used on 28 Oct 2026.
+Live at chaleshairboutique.co.za (Netlify site `chaleshairboutique`, id ba8f5769-00ef-41c8-bf9a-0892e8ce14bc). `index.html` was synced from the live site on 19 Nov 2026 (it has the full price list, current hours and banking section). The compressed photos in this folder were made on 28 Oct and are NOT used by the live page yet; the live page still points at the original IMG-2026... files. Always sync from live before editing, never deploy an old copy over it.
+
+This folder holds: one `index.html`, 14 compressed photos, `hero.mp4`, `Lexi.jpg`, `sitemap.xml`, `robots.txt`. Deploy with `scripts/deploy_netlify.sh` after adding a `dist/` copy, or the draft route used on 28 Oct 2026.
 
 ## Still to add
 

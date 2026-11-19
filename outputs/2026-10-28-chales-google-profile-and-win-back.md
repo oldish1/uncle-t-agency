@@ -37,13 +37,13 @@ Proximity is about half of it and nobody can change that. The rest Chanté contr
 4. Primary category: **Hair salon**. Secondary categories: Hairdresser, Beauty salon, Hair treatment service (add whichever Google offers; pick up to 4).
 5. Phone: **081 433 2756** (Chanté's business number) goes on the profile as the main phone. Lexi (071 429 6057) is the booking assistant and goes in the "Appointment link" field as https://wa.me/27714296057. The profile, the website and the schema then all show 081 as the phone, which is what Google checks for consistency. Customers call or WhatsApp Chanté for questions, and tap Book to talk to Lexi. TikTok bio can say "Book: tap link" with the Lexi link and list 081 as the number to call.
 6. Website: https://chaleshairboutique.co.za
-7. Hours: Tuesday to Saturday, 08:00 to 17:00 (matches the site). Fix if the real hours differ, and make the site match.
+7. Hours: Tuesday to Friday 08:00 to 16:30, Saturday 09:00 to 15:00, Sunday and Monday closed (this is what the live site says as of 19 Nov 2026).
 8. Verification: Google will offer video, phone, or postcard. Video is fastest: she films the street outside, the salon sign, the inside, her chair and tools, then the shop key or something showing she works there. Takes under a day when it's accepted. Don't use a postcard unless video fails, it takes a week and gets lost.
 
 ## Step 2: Fill every section (Chanté and Theo, 1 hour)
 
 - **Description** (750 characters max, paste this, edit if anything's wrong):
-  > Hair salon in Oakdale, Bellville. Chanté and her team do colour, highlights, Brazilian blowouts, keratin, nanoplastia, Botox and Glowtox treatments, blow-dries and styling. Book on WhatsApp any time and get a reply straight away. Membership available: R650 for 6 wash and blow-dries with a flat iron finish. Open Tuesday to Saturday, 08:00 to 17:00.
+  > Hair salon in Oakdale, Bellville. Chanté and her team do colour, highlights, Brazilian blowouts, keratin, nanoplastia, Botox and Glowtox treatments, blow-dries and styling. Book on WhatsApp any time and get a reply straight away. Membership available: R650 for 6 wash and blow-dries with a flat iron finish. Open Tuesday to Friday 08:00 to 16:30 and Saturday 09:00 to 15:00.
 - **Services**: add each with a price from her real price list. Hair Colour and Highlights, Full Colour, Brazilian and Keratin, Nanoplastia, Botox and Glowtox, Wash and Blow-dry, Membership.
 - **Booking link**: https://wa.me/27714296057 (opens a chat with Lexi). Put it in the "Appointment link" field.
 - **Photos**: at least 15 real ones. Her work (before and after), the inside, the sign, the outside so people can find the door, and her at work. Phone photos are fine. Add 2 or 3 new ones every week, it counts as activity.

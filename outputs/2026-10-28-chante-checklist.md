@@ -19,7 +19,7 @@ Hi Chanté, this gets your salon showing on Google Maps so new clients can find 
    - Yes, customers visit me at this address
    - Phone: **081 433 2756**
    - Website: **https://chaleshairboutique.co.za**
-4. Hours: **Tuesday to Saturday, 08:00 to 17:00** (change if that's wrong).
+4. Hours: **Tuesday to Friday 08:00 to 16:30, Saturday 09:00 to 15:00**, Sunday and Monday closed (change if that's wrong).
 
 ## Part 2: Verify it (Google needs proof it's really your salon)
 
