@@ -37,7 +37,7 @@ Where CHALES already wins: "hair salon Oakdale Bellville" is owned by Chanté's 
 The service pages went live on 4 Nov and Google hasn't picked them up. Set up **Google Search Console** for the domain (verify via Netlify DNS or an HTML file), submit `sitemap.xml`, then use "Request indexing" on each service page. Without this, the service pages do nothing.
 
 ### 2. Google Business Profile (biggest single lever)
-For "hair salon near me" and "hair salon Bellville", Google shows the Maps pack *above* every website. If CHALES doesn't have a verified profile, create one at 46 Alexandra Street, Oakdale. If it does, fill it out completely: category "Hair salon", all services with prices, hours matching the site, 20+ photos, the website link, and the booking link pointing to Lexi's WhatsApp. Then post weekly (repurpose the TikToks).
+For "hair salon near me" and "hair salon Bellville", Google shows the Maps pack *above* every website. The site already links to a Google Maps listing (and the /review/ page points to its review form), so a profile exists. Fill it out completely: category "Hair salon", all services with prices, hours matching the site, 20+ photos, the website link, and the booking link pointing to Lexi's WhatsApp. Then post weekly (repurpose the TikToks).
 
 ### 3. Google reviews
 Already on the roadmap as review automation. The site says "5 Star Rated Salon" with nothing behind it. Reviews are the top ranking factor in the Maps pack. Have Lexi send a review link after each appointment. Target: 25 reviews in 60 days.
@@ -47,7 +47,6 @@ Already on the roadmap as review automation. The site says "5 Star Rated Salon" 
 - **H1 is just "CHALES".** Google reads the H1 as what the page is about. Make it "CHALES Hair Boutique, hair salon in Bellville" (keep the big logo look with CSS).
 - **Homepage never links to `/prices/`.** The nav goes to the `#pricelist` section instead. Add a "Full price list" link so Google sees the page matters.
 - **Add FAQPage structured data** for the existing FAQ section. Can earn extra space in results.
-- **Add Service + Offer structured data** to each service page with the rand prices.
 - **14 gallery photos all share one alt text** and are named `IMG-20260221-WA0079.jpg`. Rename (e.g. `balayage-bellville-chales.webp`) and give each a description of the actual style.
 - **Images are 240-300 KB JPGs.** Converting to WebP cuts them to roughly a third and speeds up mobile loading, which Google measures.
 
@@ -74,3 +73,10 @@ Brazilian Bar ranks #3 for "nanoplastia Cape Town" with "from R430". CHALES list
 | Review requests through Lexi | Claude builds, Theo approves | 1 to 2 hrs |
 | TikTok/IG bio links | Chanté | 5 min |
 | Fresha + Booksy listings | Chanté | 30 min each |
+
+## Update, same day
+
+- Correction: the service pages already carry Service, price and FAQ structured data, and a Google Business Profile exists. The first pass misread that.
+- Built: canonical fix, keyword H1, FAQ + full salon structured data on the homepage, price-page link, 15 photos converted to described WebP (4.1 MB to 1.3 MB), llms.txt, AI-crawler robots.txt, IndexNow key. Uploaded as a Netlify preview; live site unchanged until Theo approves.
+- Site source now saved at `apps/chales-site/`.
+- Tickable checklist of all 41 steps: https://claude.ai/artifact/YSHm1L3hynsiYNkBahbUqq

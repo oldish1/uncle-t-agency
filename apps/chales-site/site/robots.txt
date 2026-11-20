@@ -1,0 +1,22 @@
+# Everyone, including search engines and AI assistants, is welcome.
+User-agent: *
+Allow: /
+Disallow: /review/
+
+# AI search and assistant crawlers (named so there's no doubt)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /review/
+
+Sitemap: https://chaleshairboutique.co.za/sitemap.xml

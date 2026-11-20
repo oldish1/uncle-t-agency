@@ -12,7 +12,7 @@ Theo lives in two of these day to day: **WhatsApp** (client-facing, where Lexi r
 | Google Drive | Client runbook and documentation storage | connected |
 | WhatsApp Business / Cloud API | Client-facing channel for Lexi | not covered (no connector). Two numbers: Chales' live number (chaleshairboutique client-facing), and a separate demo number, "Uncle T Demo," +27 76 492 4196, for showing Lexi to prospects without touching real client data |
 | Meta Business Manager | WhatsApp Business profile config | not covered (no connector) |
-| Netlify | Hosting for demo pages and single-HTML sites | no connector. Deploys use `scripts/deploy_netlify.sh` (Netlify REST API). Theo added a Bearer secret for `api.netlify.com` in the environment, so the proxy attaches his token. Fallback: drag `dist/` onto app.netlify.com/drop |
+| Netlify | Hosting for demo pages and single-HTML sites | no connector. Deploys use `scripts/deploy_netlify.sh` (Netlify REST API). Theo added a Bearer secret for `api.netlify.com` in the environment, so the proxy attaches his token. Fallback: drag `dist/` onto app.netlify.com/drop | CHALES live site source: `apps/chales-site/site/` (Netlify site `chaleshairboutique`, not Git-linked; upload as draft, check, then publish).
 | domains.co.za | Client hosting and domains (CHALES: R109/month) | not covered (no connector) |
 | Claude API | Conversational AI layer inside Lexi, called via Make.com HTTP modules | n/a, called directly by Make.com |
 | GSAP / ScrollTrigger | Scroll animation on client sites | n/a, code library, not a connected service |

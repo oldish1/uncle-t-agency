@@ -1,0 +1,268 @@
+<title>CHALES Visibility Checklist</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a single working column of phases, each a numbered run of tickable steps; progress pinned up top. Light ground (Theo's default), CHALES gold as the one accent. */
+:root{
+  --bg:#FAF8F4; --surface:#FFFFFF; --ink:#1E1C18; --ink-2:#5E584D; --line:#E6E0D4;
+  --gold:#9C7A22; --gold-soft:#F3EBD6; --done:#2F7A4B; --done-soft:#E4F1E8;
+  --display:'Cormorant Garamond',Georgia,serif; --body:'Manrope',system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+header h1{font-family:var(--display);font-weight:600;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1;margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance}
+header p{margin:0;color:var(--ink-2);max-width:62ch}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.status{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin:28px 0 8px;padding-block:14px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar{flex:1 1 260px;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--done);transition:width .4s}
+.count{font-variant-numeric:tabular-nums;font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:99px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{font-size:14px;color:var(--ink-2);margin:6px 0 0}
+.phase{margin-top:44px}
+.phase-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.phase h2{font-family:var(--display);font-weight:600;font-size:1.9rem;margin:0;line-height:1.1}
+.phase .when{font-size:14px;color:var(--ink-2)}
+.phase .pc{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.phase-why{color:var(--ink-2);margin:10px 0 4px;max-width:65ch}
+ol{list-style:none;margin:0;padding:0}
+.task{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.task.is-done .t-title{color:var(--ink-2);text-decoration:line-through;text-decoration-color:var(--done)}
+.tick{width:28px;height:28px;border:2px solid var(--ink-2);border-radius:7px;background:var(--surface);cursor:pointer;display:grid;place-items:center;margin-top:1px;padding:0}
+.tick:focus-visible,.filters button:focus-visible,summary:focus-visible,.copy:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tick svg{width:16px;height:16px;opacity:0}
+.is-done .tick{background:var(--done);border-color:var(--done)}
+.is-done .tick svg{opacity:1}
+.tick:disabled{cursor:default;opacity:.7}
+.t-body{min-width:0}
+.t-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.num{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700;font-size:14px}
+.t-title{font-weight:600}
+.who{font-size:12px;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:var(--gold-soft);color:var(--gold)}
+.who.claude{background:#ECEAF4;color:#4B4380}
+.who.chante{background:#F6E6EA;color:#8A3550}
+.time{font-size:13px;color:var(--ink-2)}
+.t-why{margin:4px 0 0;color:var(--ink-2);font-size:15px;max-width:65ch}
+.ai{font-size:12px;font-weight:700;color:var(--done);background:var(--done-soft);padding:2px 8px;border-radius:99px}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--gold)}
+details ul{margin:8px 0 0;padding-left:20px;font-size:15px}
+details li{margin:4px 0}
+a{color:var(--gold);text-underline-offset:2px}
+.copybox{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14.5px;white-space:pre-wrap}
+.copy{font:inherit;font-size:13px;font-weight:600;margin-top:8px;border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:6px;cursor:pointer;color:var(--ink)}
+.stamp{font-size:13px;color:var(--done);margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--ink-2);margin-top:18px;align-items:center}
+footer{margin-top:56px;color:var(--ink-2);font-size:14px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">CHALES Hair Boutique · chaleshairboutique.co.za</div>
+    <h1>Get CHALES found on Google and AI</h1>
+    <p>Every step to get Chanté onto page one for Bellville hair searches, and recommended when someone asks ChatGPT, Gemini, Perplexity, Copilot or Siri for a salon. Work top to bottom. Tick each one as it's done; ticks save for everyone who opens this page.</p>
+    <div class="legend">
+      <span class="who">Theo</span><span class="who chante">Chanté</span><span class="who claude">Claude</span>
+      <span>who does it</span>
+      <span class="ai">AI</span><span>also helps ChatGPT, Gemini and the rest find her</span>
+    </div>
+  </header>
+
+  <div class="status" role="region" aria-label="Progress">
+    <span class="count" id="count">0 of 0 done</span>
+    <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+    <div class="filters" id="filters" role="group" aria-label="Show tasks for">
+      <button type="button" data-f="all" aria-pressed="true">Everyone</button>
+      <button type="button" data-f="Theo" aria-pressed="false">Theo</button>
+      <button type="button" data-f="Chanté" aria-pressed="false">Chanté</button>
+      <button type="button" data-f="Claude" aria-pressed="false">Claude</button>
+      <button type="button" data-f="open" aria-pressed="false">Not done</button>
+    </div>
+  </div>
+  <p class="note" id="syncnote">Loading ticks…</p>
+
+  <main id="phases"></main>
+
+  <footer>Built 20 Nov 2026 from the SEO audit of chaleshairboutique.co.za. Ask Claude to re-run the audit any time to see what moved.</footer>
+</div>
+
+<script>
+const PREVIEW = "https://6b005b787d1f8d5b7f4392ba--chaleshairboutique.netlify.app";
+const GBP_TEXT = `CHALES Hair Boutique is a hair salon in Oakdale, Bellville, run by stylist Chanté. We specialise in hair colour, highlights and balayage, and smoothing treatments: Nanoplastia (formaldehyde-free), keratin, Brazilian blowout and hair botox. We also do precision cuts, wash and blow dries, and monthly maintenance contracts.
+
+Find us at 46 Alexandra Street, inside the Vodacom building. Open Tuesday to Friday 08:00 to 16:30 and Saturday 09:00 to 15:00. Full prices are on our website.
+
+Book any time on WhatsApp with Lexi, our booking assistant, on 071 429 6057.`;
+const NAP_TEXT = `CHALES Hair Boutique
+46 Alexandra Street (inside the Vodacom building), Oakdale, Bellville, Cape Town, 7530
+Book on WhatsApp: 071 429 6057 · Call Chanté: 081 433 2756
+Tue to Fri 08:00 to 16:30 · Sat 09:00 to 15:00
+https://chaleshairboutique.co.za`;
+
+const PHASES = [
+ {id:"site", name:"Website fixes go live", when:"This week", why:"The fixes are built and waiting as a preview. Nothing else counts until Google can see all six pages.", tasks:[
+  {id:"site-build", who:"Claude", time:"Done", title:"Build the website fixes", why:"Fixed the duplicate address tag and the homepage heading. Added FAQ data and a link to the price page. Photos are now named and described, and 3 MB lighter.", ai:true},
+  {id:"site-ai-files", who:"Claude", time:"Done", title:"Add the AI files: llms.txt and an AI-friendly robots.txt", why:"llms.txt is a plain summary (address, hours, prices, services) written for AI assistants. robots.txt now names every AI crawler as welcome.", ai:true},
+  {id:"site-check", who:"Theo", time:"5 min", title:"Look over the preview and tell Claude 'go live'", why:"The live site hasn't changed yet. The preview link shows exactly what will go up.", link:[PREVIEW,"Open the preview"]},
+  {id:"site-publish", who:"Claude", time:"2 min", title:"Publish the fixes to chaleshairboutique.co.za", why:"One click once Theo says go. The old version can be restored from Netlify in seconds if anything looks off."},
+  {id:"site-indexnow", who:"Claude", time:"2 min", title:"Ping Bing and other search engines that the site changed", why:"Uses IndexNow, so Bing and Yandex re-read the pages within days. ChatGPT search and Copilot use Bing's index.", ai:true},
+ ]},
+ {id:"index", name:"Get every page into Google and Bing", when:"This week", why:"Right now Google only knows about the homepage. The four service pages and the price page are invisible.", tasks:[
+  {id:"gsc-verify", who:"Theo", time:"10 min", title:"Set up Google Search Console for the domain", why:"Google's free dashboard for the site: what people search, where she ranks, what's broken.", link:["https://search.google.com/search-console","search.google.com/search-console"], steps:["Sign in with the Google account that manages the Business Profile","Add property, choose 'URL prefix', type https://chaleshairboutique.co.za/","Pick 'HTML tag' verification, copy the tag and send it to Claude","Claude adds it to the site; you press Verify"]},
+  {id:"gsc-sitemap", who:"Theo", time:"2 min", title:"Submit the sitemap in Search Console", why:"Hands Google the list of all six pages.", steps:["Search Console, Sitemaps (left menu)","Type sitemap.xml and press Submit"]},
+  {id:"gsc-request", who:"Theo", time:"5 min", title:"Request indexing for the 5 inner pages", why:"Speeds up Google picking them up from weeks to days.", steps:["Paste each into the search bar at the top of Search Console, then press 'Request indexing':","chaleshairboutique.co.za/nanoplastia/","chaleshairboutique.co.za/keratin-brazilian-blowout/","chaleshairboutique.co.za/hair-botox-glowtox/","chaleshairboutique.co.za/hair-colour-highlights/","chaleshairboutique.co.za/prices/"]},
+  {id:"bing-wmt", who:"Theo", time:"5 min", title:"Set up Bing Webmaster Tools (import from Google)", why:"ChatGPT search, Microsoft Copilot and DuckDuckGo all lean on Bing. One click imports everything from Search Console.", ai:true, link:["https://www.bing.com/webmasters","bing.com/webmasters"], steps:["Sign in, choose 'Import from Google Search Console'","Approve, and the site and sitemap come across"]},
+  {id:"gsc-week2", who:"Claude", time:"5 min", title:"Two weeks later: confirm all 6 pages show in Google", why:"Claude re-runs the site: check and the ranking check from the audit."},
+ ]},
+ {id:"gbp", name:"Google Business Profile", when:"Next 2 weeks", why:"For 'hair salon near me', Google shows three Maps listings above every website. This profile is the biggest single lever, and Gemini and Google's AI answers read it directly.", tasks:[
+  {id:"gbp-access", who:"Chanté", time:"5 min", title:"Make sure Chanté can log in to the profile, and add Theo as a manager", why:"The site already links to a Google Maps listing. Someone needs to own it.", link:["https://business.google.com","business.google.com"], ai:true},
+  {id:"gbp-category", who:"Chanté", time:"2 min", title:"Primary category: Hair salon. Add Hairdresser and Beauty salon as extras", why:"The category decides which searches the listing can show up for."},
+  {id:"gbp-desc", who:"Chanté", time:"2 min", title:"Paste in the business description", why:"Says what she does, where, and how to book, in the words people search with.", copy:GBP_TEXT, ai:true},
+  {id:"gbp-services", who:"Theo", time:"20 min", title:"Add every service with its price", why:"Copy each line from the Prices page. Listings with services and prices match more searches like 'nanoplastia price Bellville'.", link:["https://chaleshairboutique.co.za/prices/","Prices page"]},
+  {id:"gbp-hours", who:"Chanté", time:"5 min", title:"Check hours match the website, and set festive-season hours", why:"Tue to Fri 08:00 to 16:30, Sat 09:00 to 15:00. Wrong hours lose bookings and Google trusts the listing less. Add December and January special hours now."},
+  {id:"gbp-links", who:"Theo", time:"3 min", title:"Website link, booking link (Lexi) and WhatsApp button", why:"Website: chaleshairboutique.co.za. Booking link: https://wa.me/27714296057. Turn on the WhatsApp chat option and use Lexi's number."},
+  {id:"gbp-photos", who:"Chanté", time:"20 min", title:"Upload 20+ photos: outside, entrance, inside, and real work", why:"Listings with lots of recent photos get far more clicks. Include the Vodacom building entrance so people can find the door."},
+  {id:"gbp-attrs", who:"Chanté", time:"3 min", title:"Fill in attributes (payments, accessibility, women-owned if Chanté wants it shown)", why:"Small details Google and AI assistants use to match questions like 'salon that takes card in Bellville'.", ai:true},
+  {id:"gbp-posts", who:"Theo", time:"10 min/week", title:"Post one update a week (reuse a TikTok clip or a before and after)", why:"Shows Google the business is active. Claude can write a month of posts in one go."},
+ ]},
+ {id:"reviews", name:"Google reviews", when:"Start now, ongoing", why:"Reviews are the top factor for the Maps listing, and AI assistants quote them when recommending a salon. The site claims '5 star rated'; reviews make that real.", tasks:[
+  {id:"rev-link", who:"Claude", time:"Done", title:"Review page set up at chaleshairboutique.co.za/review/", why:"It already sends happy clients to Google's review form and catches unhappy ones privately first."},
+  {id:"rev-lexi", who:"Claude", time:"1 to 2 hrs", title:"Have Lexi send the review link the day after every appointment", why:"Automatic, so it happens every time without Chanté remembering. Theo approves the wording first."},
+  {id:"rev-kickstart", who:"Chanté", time:"30 min", title:"Personally WhatsApp the last 20 to 30 happy clients for a review", why:"Gets the first batch in fast. A personal ask from Chanté works far better than any automated message."},
+  {id:"rev-reply", who:"Chanté", time:"2 min each", title:"Reply to every review within 48 hours", why:"Google rewards it, and new clients read the replies. Mention the service ('So glad you love your Nanoplastia!')."},
+  {id:"rev-25", who:"Chanté", time:"Goal", title:"Reach 25 Google reviews", why:"Roughly where a small salon starts showing in the top three on Maps for its suburb."},
+ ]},
+ {id:"nap", name:"Same details everywhere", when:"Next 3 weeks", why:"AI assistants and Google cross-check the salon's name, address and number across the web. When every listing matches, they trust it and recommend it. Use this exact block everywhere:", copy:NAP_TEXT, tasks:[
+  {id:"nap-ig", who:"Chanté", time:"3 min", title:"Instagram: website in bio, address and category set", why:"Instagram is linked from the site, so Google ties them together.", ai:true},
+  {id:"nap-tt", who:"Chanté", time:"5 min", title:"TikTok: website in bio, and stop the 'Beville' spelling", why:"TikTok already outranks the website for her own name. The bio link passes that on. 'Oakdale Beville' in captions splits the location signal."},
+  {id:"nap-fb", who:"Chanté", time:"5 min", title:"Facebook page: address, hours, website, category Hair Salon", why:"Facebook pages show up in Google and Bing, and Meta AI reads them.", ai:true},
+  {id:"nap-apple", who:"Theo", time:"15 min", title:"Apple Business Connect: claim the Apple Maps listing", why:"Every iPhone uses Apple Maps and Siri. Apple Intelligence answers come from here.", link:["https://businessconnect.apple.com","businessconnect.apple.com"], ai:true},
+  {id:"nap-bingplaces", who:"Theo", time:"10 min", title:"Bing Places: import the Google profile", why:"Feeds Bing Maps, Copilot and ChatGPT's local answers. Import from Google in one step.", link:["https://www.bingplaces.com","bingplaces.com"], ai:true},
+  {id:"nap-fresha", who:"Chanté", time:"30 min", title:"Free Fresha listing", why:"Fresha holds #1 for 'hair salon Bellville Cape Town'. A profile puts CHALES on page one through their page. Point bookings to Lexi.", link:["https://www.fresha.com/for-business","fresha.com/for-business"]},
+  {id:"nap-booksy", who:"Chanté", time:"30 min", title:"Free Booksy listing", why:"Booksy holds #2 for the same search.", link:["https://biz.booksy.com","biz.booksy.com"]},
+  {id:"nap-dirs", who:"Claude", time:"1 hr", title:"List on SA directories: Snupit, Brabys, Cylex, Hotfrog", why:"Each one is another matching mention and a link back to the site. Claude drafts each listing; Theo submits.", ai:true},
+ ]},
+ {id:"ai", name:"Get recommended by AI", when:"Month 2, then monthly", why:"ChatGPT, Gemini, Perplexity, Copilot and Claude recommend businesses that are described clearly on their own site and mentioned by other people elsewhere. The steps above do most of the work; these finish it off.", tasks:[
+  {id:"ai-baseline", who:"Claude", time:"15 min", title:"Baseline test: ask each AI for a salon in Bellville and record the answers", why:"Questions like 'best place for Nanoplastia in Bellville' and 'hair salon in Oakdale Cape Town'. Gives a before and after to measure against.", ai:true},
+  {id:"ai-groups", who:"Chanté", time:"Ongoing", title:"Answer local Facebook group posts asking for salon recommendations", why:"Posts like 'Nanoplastia salons in Durbanville?' already show up in Google. AI tools read these threads. Answer honestly, mention the price, link the service page. No spamming.", ai:true},
+  {id:"ai-mentions", who:"Theo", time:"1 hr", title:"Get CHALES into 2 or 3 'best salons in Bellville / Northern Suburbs' lists", why:"AI answers lean heavily on round-up lists from local blogs and news sites. Claude can find the lists and draft the pitch emails.", ai:true},
+  {id:"ai-tiktok", who:"Chanté", time:"Ongoing", title:"Say the service and suburb out loud in TikToks", why:"Spoken words become captions that Google and AI index. 'Nanoplastia here in Oakdale, Bellville' beats a silent clip.", ai:true},
+  {id:"ai-monthly", who:"Claude", time:"15 min/month", title:"Monthly recheck: rankings, Search Console, and the AI answers", why:"Shows what moved, and what to do next.", ai:true},
+ ]},
+ {id:"content", name:"More pages, more searches", when:"Month 2 to 3", why:"Each new page is another search CHALES can show up for. Only once the steps above are done.", tasks:[
+  {id:"c-balayage", who:"Claude", time:"1 hr", title:"Balayage in Bellville page", why:"Balayage is searched on its own and only gets a line on the colour page."},
+  {id:"c-suburbs", who:"Claude", time:"2 hrs", title:"Short pages for Parow, Durbanville and Goodwood clients", why:"People search 'hair salon Parow'. Each page: how to get there from that suburb, top services, real reviews from clients there."},
+  {id:"c-beforeafter", who:"Chanté", time:"Ongoing", title:"Send before and after photos for each treatment", why:"Claude adds them to the service pages. Real results make the pages stronger for Google and convince people to book."},
+  {id:"c-nanoprice", who:"Claude", time:"30 min", title:"Explain why the Nanoplastia price is worth it", why:"Brazilian Bar advertises Nanoplastia from R430 on Google. The CHALES page should say what the R1 800 includes (product, how long it lasts, results)."},
+ ]},
+];
+
+const ALL = PHASES.flatMap(p => p.tasks);
+const DEFAULT_DONE = new Set(["site-build","site-ai-files","rev-link"]);
+let ticks = {};      // id -> {done, by, at}
+let names = {};      // userId -> name
+let db = null, user = null, me = null, filter = "all", canWrite = true, mode = "loading";
+const $ = s => document.querySelector(s);
+const isDone = id => ticks[id] ? !!ticks[id].done : DEFAULT_DONE.has(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = iso => { try { return new Date(iso).toLocaleDateString("en-ZA",{day:"numeric",month:"short"}); } catch { return ""; } };
+const whoClass = w => w === "Claude" ? "who claude" : w === "Chanté" ? "who chante" : "who";
+const check = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+function stampText(id){
+  const t = ticks[id]; if (!t || !t.done) return "";
+  const who = t.by === "claude" ? "Claude" : (names[t.by] || "Someone");
+  return `Ticked by ${esc(who)}${t.at ? " · " + fmt(t.at) : ""}`;
+}
+
+function render(){
+  const visible = t => filter === "all" ? true : filter === "open" ? !isDone(t.id) : t.who === filter;
+  let n = 0;
+  $("#phases").innerHTML = PHASES.map(p => {
+    const done = p.tasks.filter(t => isDone(t.id)).length;
+    const items = p.tasks.map(t => { n++; return {t, n}; }).filter(x => visible(x.t));
+    if (!items.length) return "";
+    return `<section class="phase" aria-labelledby="h-${p.id}">
+      <div class="phase-head"><h2 id="h-${p.id}">${esc(p.name)}</h2><span class="when">${esc(p.when)} · <span class="pc">${done}/${p.tasks.length}</span></span></div>
+      <p class="phase-why">${esc(p.why)}</p>
+      ${p.copy ? copyBlock(p.id, p.copy) : ""}
+      <ol>${items.map(({t, n}) => `
+        <li class="task ${isDone(t.id) ? "is-done" : ""}">
+          <button type="button" class="tick" id="tick-${t.id}" data-id="${t.id}" role="checkbox" aria-checked="${isDone(t.id)}" aria-label="${esc(t.title)}" ${canWrite ? "" : "disabled"}>${check}</button>
+          <div class="t-body">
+            <div class="t-top"><span class="num">${String(n).padStart(2,"0")}</span><span class="t-title">${esc(t.title)}</span></div>
+            <div class="t-top" style="margin-top:4px"><span class="${whoClass(t.who)}">${esc(t.who)}</span><span class="time">${esc(t.time)}</span>${t.ai ? '<span class="ai">AI</span>' : ""}</div>
+            <p class="t-why">${esc(t.why)}</p>
+            ${t.link ? `<p class="t-why"><a href="${esc(t.link[0])}" target="_blank" rel="noopener">${esc(t.link[1])} ↗</a></p>` : ""}
+            ${t.steps ? `<details><summary>How to do it</summary><ul>${t.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ul></details>` : ""}
+            ${t.copy ? copyBlock(t.id, t.copy) : ""}
+            ${stampText(t.id) ? `<div class="stamp">${stampText(t.id)}</div>` : ""}
+          </div>
+        </li>`).join("")}</ol>
+    </section>`;
+  }).join("") || `<p class="phase-why" style="margin-top:32px">Nothing here. Every task in this view is ticked off.</p>`;
+  const total = ALL.length, done = ALL.filter(t => isDone(t.id)).length;
+  $("#count").textContent = `${done} of ${total} done`;
+  $("#fill").style.width = (100 * done / total) + "%";
+}
+function copyBlock(id, text){
+  return `<div class="copybox" id="copy-${id}">${esc(text)}</div><button type="button" class="copy" data-copy="${id}">Copy text</button>`;
+}
+
+document.addEventListener("click", async e => {
+  const f = e.target.closest("[data-f]");
+  if (f){ filter = f.dataset.f; document.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", b === f)); render(); return; }
+  const c = e.target.closest("[data-copy]");
+  if (c){
+    const box = document.getElementById("copy-" + c.dataset.copy);
+    try { await navigator.clipboard.writeText(box.textContent); c.textContent = "Copied"; }
+    catch { const r = document.createRange(); r.selectNodeContents(box); const s = getSelection(); s.removeAllRanges(); s.addRange(r); c.textContent = "Selected, press copy"; }
+    setTimeout(() => c.textContent = "Copy text", 2000); return;
+  }
+  const t = e.target.closest(".tick");
+  if (t && !t.disabled) toggle(t.dataset.id);
+});
+
+async function toggle(id){
+  const next = { done: !isDone(id), by: me || "someone", at: new Date().toISOString() };
+  const prev = ticks[id]; ticks[id] = next; render();
+  document.getElementById("tick-" + id)?.focus();
+  if (mode === "db"){
+    try { await db.collection("ticks").doc(id).set(next); }
+    catch (err){ if (prev) ticks[id] = prev; else delete ticks[id]; render(); $("#syncnote").textContent = "That tick didn't save. You may only have view access: ask Theo to give you edit access."; }
+  } else {
+    try { localStorage.setItem("chales-ticks", JSON.stringify(ticks)); } catch {}
+  }
+}
+
+function localMode(msg){
+  mode = "local";
+  try { ticks = JSON.parse(localStorage.getItem("chales-ticks") || "{}"); } catch { ticks = {}; }
+  $("#syncnote").textContent = msg; render();
+}
+
+render();
+(async () => {
+  const timer = setTimeout(() => { if (mode === "loading") localMode("Couldn't reach the shared list, so ticks are saving on this device only for now."); }, 10000);
+  try {
+    [db, user] = await Promise.all([window.claude?.use?.("db") ?? null, window.claude?.use?.("user") ?? null]);
+  } catch { db = null; }
+  if (!db){ clearTimeout(timer); localMode("Ticks are saving on this device only. Open the shared link signed in to claude.ai to tick for everyone."); return; }
+  try { me = await user?.id?.(); } catch {}
+  try { const ok = user?.can?.("data.write"); if (ok === false){ canWrite = false; } } catch {}
+  db.collection("ticks").onSnapshot(async snap => {
+    clearTimeout(timer); mode = "db";
+    const next = {}; snap.docs.forEach(d => { next[d.id] = d.data() || {}; }); ticks = next;
+    const ids = [...new Set(Object.values(ticks).map(t => t.by).filter(b => b && b !== "claude" && b !== "someone"))];
+    if (ids.length && user?.profiles){ try { const ps = await user.profiles(ids); ids.forEach(i => names[i] = (ps[i] && ps[i].name) || ""); } catch {} }
+    $("#syncnote").textContent = canWrite ? "Ticks save for everyone who opens this page." : "You can see progress here. Ask Theo for edit access to tick things off.";
+    render();
+  }, err => { clearTimeout(timer); localMode("The shared list stopped answering, so ticks are saving on this device only. Reload to reconnect."); });
+})();
+</script>
