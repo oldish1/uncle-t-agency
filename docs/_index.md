@@ -15,6 +15,7 @@
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
 | Finding clients, Scout, outreach, pipeline sheet, daily salon list | `docs/client-finding-agents.md` | How Scout and the Uncle T Pipeline sheet work, the daily routine, outreach rules |
 | Adding visitor counting, Google Analytics, Search Console or Google visibility to any site, or explaining what clients can see | `docs/client-site-analytics-and-google.md` | Step by step for Analytics and Search Console, what is and is not visible, how WhatsApp taps are tracked, how to sell it |
+| Rags to Riches WhatsApp booking bot (Make scenario 7645932, its sheet, calendar, Claude prompt) | `plans/rags-to-riches-booking-bot.md` + `apps/rags-to-riches-bot/README.md` | Full build spec, Nita's answers, build status, how to change and re-upload the bot |
 
 ## Integrations
 

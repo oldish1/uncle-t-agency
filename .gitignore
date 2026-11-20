@@ -34,3 +34,6 @@ node_modules/
 .seat
 .firecrawl/
 .taste-skill/
+apps/rags-to-riches-bot/blueprint.json
+apps/rags-to-riches-bot/full.json
+.firecrawl/
