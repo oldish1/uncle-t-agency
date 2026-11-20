@@ -1,5 +1,7 @@
 # CHALES on Google: profile, reviews and win-back plan
 
+> **Superseded 20 Nov 2026.** Written without seeing `plans/2026-11-04-chales-google-page-one.md` and the other sessions' work (live Google listing, treatment pages, review machine). Where this conflicts with that plan, the plan wins. Current Claude/AI playbook: `outputs/2026-11-20-chales-claude-ai-search-playbook.md`.
+
 > For Theo and Chanté. Findings first, then the steps in the order to do them, then copy-paste messages. Scan run 28 Oct 2026 with Apify's Google Maps scraper. Method borrowed from the claude-seo repo (`seo-local` skill, Whitespark 2026 ranking factors).
 
 ## What the scan found

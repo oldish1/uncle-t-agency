@@ -1,5 +1,7 @@
 # Chanté, super simple (send this)
 
+> **Superseded 20 Nov 2026.** Written without seeing `plans/2026-11-04-chales-google-page-one.md` and the other sessions' work (live Google listing, treatment pages, review machine). Where this conflicts with that plan, the plan wins. Current Claude/AI playbook: `outputs/2026-11-20-chales-claude-ai-search-playbook.md`.
+
 Hi Chanté. This puts your salon on Google Maps so new clients can find you. Do these 5 things at the salon, on your phone. Takes 20 minutes.
 
 1. Open the **Google Maps** app. Type **CHALES Hair Boutique**.

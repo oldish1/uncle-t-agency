@@ -1,5 +1,7 @@
 # CHALES website SEO audit, 28 Oct 2026
 
+> **Superseded 20 Nov 2026.** Written without seeing `plans/2026-11-04-chales-google-page-one.md` and the other sessions' work (live Google listing, treatment pages, review machine). Where this conflicts with that plan, the plan wins. Current Claude/AI playbook: `outputs/2026-11-20-chales-claude-ai-search-playbook.md`.
+
 > Run by hand with the claude-seo checks (technical, local, schema, tracking) against chaleshairboutique.co.za. The repo's full `/seo audit` needs the plugin installed in a fresh session, so this covers the same ground with direct fetches. Speed score is missing: Google's PageSpeed service refused the request (daily quota), rerun later.
 
 ## Verdict

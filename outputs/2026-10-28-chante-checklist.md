@@ -1,5 +1,7 @@
 # Chanté's checklist (send this as is)
 
+> **Superseded 20 Nov 2026.** Written without seeing `plans/2026-11-04-chales-google-page-one.md` and the other sessions' work (live Google listing, treatment pages, review machine). Where this conflicts with that plan, the plan wins. Current Claude/AI playbook: `outputs/2026-11-20-chales-claude-ai-search-playbook.md`.
+
 Hi Chanté, this gets your salon showing on Google Maps so new clients can find you and leave reviews. You do this one part today, about 20 minutes, **at the salon on your phone**. I do everything else.
 
 ## Before you start

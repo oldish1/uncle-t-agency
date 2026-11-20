@@ -1,5 +1,7 @@
 # CHALES in ChatGPT, Gemini and Claude: the AI search plan
 
+> **Superseded 20 Nov 2026.** Written without seeing `plans/2026-11-04-chales-google-page-one.md` and the other sessions' work (live Google listing, treatment pages, review machine). Where this conflicts with that plan, the plan wins. Current Claude/AI playbook: `outputs/2026-11-20-chales-claude-ai-search-playbook.md`.
+
 > AEO (answer engine optimisation) and GEO (generative engine optimisation) are two names for the same thing: getting AI tools to name your business when someone asks "who does nanoplastia in Bellville?". Method from the claude-seo repo (`seo-geo`, `local-search-behavior`), checked against a live search of what the web shows for CHALES on 19 Nov 2026.
 
 ## The honest version first
