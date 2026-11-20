@@ -12,6 +12,10 @@
 
 4. **Theo learns sales, 90-day curriculum (23 Nov 2026 to 21 Feb 2027).** Daily lessons and roleplays with the sales-coach skill, practised for real by running Chales's marketing (Theo is her marketing manager now). Plan: `outputs/2026-11-19-90-day-sales-and-chales-plan.md`.
 
+## The goal (set 2026-09-22)
+
+**5 paying clients by 31 December 2026**, all on the Founding 5 offer (R1,000 a month). That's R5,000 a month recurring going into 2027. Then keep adding batches of 5. The bigger target is R40,000 a month, which is 40 clients at R1,000. The week-by-week plan is in `plans/2026-09-22-five-clients-by-december.md`.
+
 ## What success looks like
 
 Three paying recurring clients within 90 days. Five founding clients (discounted, testimonial for price) after that. Once five clients are stable, the plan is to leave the day job and grow toward a broader retainer model, priced for Western Cape small businesses rather than copied from US or UK agency rates.

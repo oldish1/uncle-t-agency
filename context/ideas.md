@@ -37,3 +37,12 @@ Update 3 Nov 2026: first voice product is now Lexi Talk (two-way voice notes on 
 ## Local visibility (Google + AI) as a paid service
 
 Raised 20 Nov 2026. Theo thinks clients will pay to be found on Google and recommended by AI assistants, and wants CHALES as the proof: if she reaches page one for Bellville searches within 2 to 3 months, that's the case study. Can sell as an upsell to Lexi clients or as a separate service. The process is written up in `docs/local-visibility-playbook.md`; before/after tracking runs on `scripts/visibility_check.py` (CHALES baseline: `outputs/visibility/chales/2026-11-20.json`). Pricing and packaging not decided yet. Wait for CHALES results before selling it hard.
+## Lexi for other trades (researched 2026-09-22)
+
+After the 5 salons, not before. The overseas research (`outputs/research/2026-09-22-overseas-features-trades-and-salons.md`) suggests this order:
+
+1. **Cleaning next.** Same booking engine as salons, clients rebook every week, and Nita's Rags to Riches can be the free pilot. Needs prices by rooms and extras, recurring bookings, and access notes (gate codes, security estates).
+2. **Plumbers third, the bigger money.** Photo of the problem, rough quote, after-hours emergency triage, "on my way" message, invoice with a Yoco link, yearly geyser service reminder. Cape Town requires a plumbing COC on every property sale.
+3. **Electricians fourth.** 90% the same as plumbers. Electrical COCs and yearly inverter checks, now that load shedding has stopped.
+
+Medium salons (3 to 10 staff) get multi-stylist diaries, deposits and rebooking nudges from the Lexi 2.0 roadmap anyway.

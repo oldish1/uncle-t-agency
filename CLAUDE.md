@@ -83,6 +83,8 @@ plans/       build plans from /create-plan
 - Checking or improving how a business shows up on Google Maps, Google and AI tools (ChatGPT, Claude, Gemini), a free Found Check for a prospect, or monthly client reports: **/seo** (skill at `.claude/skills/seo`, helper `scripts/seo_check.py`). Before saying anything doesn't exist, check other branches and the live site.
 - A client signed and needs Lexi (and the website) set up and live: **/lexi-onboarding** (skill at `.claude/skills/lexi-onboarding`: intake, accounts, build from the CHALES template, safe testing, go-live, first week, and the lessons file).
 - SEO, Google ranking or AI visibility for any client: follow `docs/local-visibility-playbook.md`; measure with `scripts/visibility_check.py`.
+- Finding new prospects ("who should I pitch", "find salons in Parow"): run the **salon lead finder** (`apps/lead-finder/`, guide in `docs/lead-finder.md`). It ranks salons by the Lexi pain in their own Google reviews and drafts the first WhatsApp message. Needs `GOOGLE_PLACES_API_KEY`.
+- The daily run of everything ("what needs doing today", "is Lexi OK", "who do I follow up"): the **Chief of Staff** (`apps/chief-of-staff/PLAYBOOK.md`). It runs the other agents, checks every client's Lexi in Make.com, and writes a morning brief to `outputs/briefs/`. Read-only toward the outside world, drafts only. When a client goes live, add their scenario to its watch table.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
 - Connecting a business tool with no connector (a niche or regional platform, an internal API, a bespoke system): **/new-capability**. Check the connector list first.
 
