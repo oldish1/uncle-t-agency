@@ -1,0 +1,323 @@
+<title>Uncle T Brain</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: brain at the centre of an orbit of nine parts; the selected part opens in a panel below.
+     Palette: paper, ink, one signal blue for the brain and selection; status colours are separate. */
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #14181f;
+    --muted: #5a6270;
+    --line: #d5d9e0;
+    --accent: #1f4fd8;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6ecfc;
+    --ok: #1d7a4d;
+    --ok-soft: #e0f3e8;
+    --warn: #9a5b00;
+    --warn-soft: #fbeccd;
+    --bad: #b3261e;
+    --bad-soft: #fbe1de;
+    --idle: #4a5260;
+    --idle-soft: #e9ebef;
+    --font-head: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1218; --surface: #181c25; --ink: #eceef3; --muted: #9ba3b2; --line: #2b313d;
+      --accent: #6f93ff; --accent-ink: #0b1020; --accent-soft: #1d2744;
+      --ok: #55c68a; --ok-soft: #14301f; --warn: #e3a447; --warn-soft: #36280f;
+      --bad: #ff8a80; --bad-soft: #3b1a18; --idle: #aab1bf; --idle-soft: #252a35;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1218; --surface: #181c25; --ink: #eceef3; --muted: #9ba3b2; --line: #2b313d;
+    --accent: #6f93ff; --accent-ink: #0b1020; --accent-soft: #1d2744;
+    --ok: #55c68a; --ok-soft: #14301f; --warn: #e3a447; --warn-soft: #36280f;
+    --bad: #ff8a80; --bad-soft: #3b1a18; --idle: #aab1bf; --idle-soft: #252a35;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+    padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  h1 { font-family: var(--font-head); font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  .lede { color: var(--muted); max-width: 62ch; margin: 8px 0 0; }
+  .start { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .start .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .cmd { font-family: var(--font-mono); font-size: 17px; font-weight: 500; background: var(--accent-soft); color: var(--accent); padding: 4px 12px; border-radius: 8px; border: 0; cursor: pointer; }
+  .cmd:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .node:focus { outline: none; }
+  .node:focus-visible circle { stroke: var(--accent); stroke-width: 5; }
+  .start .why { flex: 1 1 260px; min-width: 0; color: var(--muted); font-size: 14px; }
+  .stage { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
+  svg { display: block; width: 100%; height: auto; max-width: 720px; margin: 0 auto; }
+  .orbit { fill: none; stroke: var(--line); stroke-width: 1.5; }
+  .orbit.dash { stroke-dasharray: 3 7; }
+  .spoke { stroke: var(--line); stroke-width: 2; }
+  .spoke.on { stroke: var(--accent); stroke-width: 3; }
+  .core { fill: var(--accent); }
+  .core-t { fill: var(--accent-ink); font-family: var(--font-head); font-weight: 700; font-size: 34px; letter-spacing: 0.04em; text-anchor: middle; }
+  .core-s { fill: var(--accent-ink); font-family: var(--font-body); font-size: 13px; text-anchor: middle; opacity: .85; }
+  .node { cursor: pointer; }
+  .node circle { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; transition: fill .15s, stroke .15s; }
+  .node:hover circle { stroke: var(--accent); fill: var(--accent-soft); }
+  .node.sel circle { fill: var(--accent); stroke: var(--accent); }
+  .node .gname { fill: var(--ink); font-family: var(--font-head); font-weight: 600; font-size: 16px; text-anchor: middle; }
+  .node .sub { fill: var(--muted); font-size: 11.5px; text-anchor: middle; }
+  .node.sel .gname, .node.sel .sub { fill: var(--accent-ink); }
+  .node.first circle { stroke: var(--accent); stroke-width: 3; }
+  .badge circle { fill: var(--bad); stroke: var(--surface); stroke-width: 2; }
+  .badge text { fill: #fff; font-family: var(--font-head); font-weight: 700; font-size: 13px; text-anchor: middle; }
+  .hint { text-align: center; color: var(--muted); font-size: 13px; margin: 4px 0 8px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .panel-head { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+  .panel h2 { font-family: var(--font-head); font-size: 24px; margin: 0; }
+  .path { font-family: var(--font-mono); font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  .what { margin: 0; max-width: 66ch; }
+  .rows { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto; gap: 4px 14px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .row .n { font-weight: 600; overflow-wrap: anywhere; }
+  .row .d { color: var(--muted); min-width: 0; overflow-wrap: anywhere; }
+  .chip { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; white-space: nowrap; justify-self: end; }
+  .chip.ok { background: var(--ok-soft); color: var(--ok); }
+  .chip.warn { background: var(--warn-soft); color: var(--warn); }
+  .chip.bad { background: var(--bad-soft); color: var(--bad); }
+  .chip.idle { background: var(--idle-soft); color: var(--idle); }
+  .chip.first { background: var(--accent-soft); color: var(--accent); }
+  .note { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px; }
+  .foot { color: var(--muted); font-size: 13px; max-width: 72ch; }
+  @media (max-width: 640px) {
+    .node .sub { display: none; }
+    .node .gname { font-size: 21px; }
+    .stage { padding: 4px; }
+    .row { grid-template-columns: minmax(0, 1fr) auto; }
+    .row .d { grid-column: 1 / -1; grid-row: 2; }
+    .panel { padding: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>The Uncle T brain</h1>
+    <p class="lede">Everything the workspace knows and can do, with the brain in the middle. Tap any part to see what is inside it and where it stands.</p>
+  </header>
+
+  <div class="start">
+    <span class="label">New session</span>
+    <button class="cmd" id="copy-prime" type="button" aria-label="Copy the command /prime">/prime</button>
+    <span class="why" id="copy-msg">Type this first. It loads the brain, shows the top three things to do, and asks if you want today's sales lesson.</span>
+  </div>
+
+  <section class="stage" aria-label="Brain diagram">
+    <svg id="map" viewBox="18 18 604 604" role="group" aria-label="The brain in the centre with nine connected parts"></svg>
+    <p class="hint">Highlighted ring: where to start. Red badge: needs you first.</p>
+  </section>
+
+  <section class="panel" id="panel" aria-live="polite"></section>
+
+  <p class="foot">Built from the workspace on 20 Nov 2026 (52 skills, 14 commands, 11 apps, 30 plans, 497 ledger rows). Statuses come from the ledger and plans, not from live checks.</p>
+</div>
+
+<script>
+  var GROUPS = [
+    { id: 'todo', name: 'To do', sub: 'start here', first: true, badge: '1',
+      path: 'todo/README.md',
+      what: 'Everything still open, split by area. Sales coaching sits first, every day. /prime shows the top three.',
+      items: [
+        ['Sales coaching', 'Daily lesson, 10 WhatsApps, one Chales post. This week: Value Equation and Grand Slam Offer', 'todo/sales.md', 'first', 'First'],
+        ['Security', 'The GitHub repo is public. Make it private, then rotate keys', 'todo/security.md', 'bad', 'Urgent'],
+        ['CHALES', 'TikTok bio fix, Google profile, reviews, reels, visibility checks', 'todo/chales.md', 'warn', 'Open'],
+        ['Lexi', 'Production upkeep, Lexi 2.0 fresh build, onboarding the next client', 'todo/lexi.md', 'warn', 'Open'],
+        ['Voice', 'Lexi Call phone receptionist and WhatsApp voice', 'todo/voice.md', 'warn', 'Open'],
+        ['Rex and agents', 'Rex on WhatsApp, Chief of Staff brief, Scout', 'todo/rex-and-agents.md', 'warn', 'Open'],
+        ['Agency business', 'Pricing sheet, Meta verification, registration, website traffic', 'todo/agency-business.md', 'warn', 'Open'],
+        ['Nita', 'Booking bot on a real number, site, host assistant', 'todo/nita.md', 'idle', 'Later'],
+        ['Workspace', 'Merge to main, skills to build, tool costs', 'todo/workspace.md', 'warn', 'Open']
+      ] },
+    { id: 'skills', name: 'Skills', sub: '52 recipe cards', badge: '',
+      path: '.claude/skills/',
+      what: 'Know-how Claude loads when a job matches. A skill keeps what a long session worked out, so it is not rebuilt each time.',
+      items: [
+        ['sales-coach', 'Daily lessons, roleplay against 7 Cape Town owners, objection drills', 'Hormozi, Voss, Belfort and others', 'first', 'Priority'],
+        ['outreach-writer', 'One tailored WhatsApp draft per salon from the Pipeline Sheet', 'you send, it drafts', 'ok', 'Built'],
+        ['lexi-onboarding', 'Intake to live for a signed client, with every Lexi lesson learned', 'not yet run on a real client', 'ok', 'Built'],
+        ['seo', 'Found Check, full audit, monthly visibility, fix', '/seo', 'ok', 'Built'],
+        ['web-builder', 'Researches, builds and checks client websites in a real browser', 'with taste, scroll-craft, hallmark, impeccable', 'ok', 'Built'],
+        ['ig-* (13)', 'Reels, captions, carousels, profile score, weekly plan, DMs', 'writes, you post', 'ok', 'Built'],
+        ['firecrawl, apify, supadata', 'Web pages, Maps and social, video transcripts', 'research and scraping', 'ok', 'Built'],
+        ['design and motion', 'gsap, transitions, extract-design, humanizer', 'polish for sites and copy', 'ok', 'Built'],
+        ['make-safe-edit', 'Stop repeating the same Make mistakes', 'next to build', 'idle', 'Planned'],
+        ['whatsapp-meta-setup', 'Webhooks, templates, number limits', 'next to build', 'idle', 'Planned']
+      ] },
+    { id: 'commands', name: 'Commands', sub: '14 buttons', badge: '',
+      path: '.claude/commands/',
+      what: 'Buttons you press to start something. A command is the button, a skill is the know-how behind it.',
+      items: [
+        ['/prime', 'Start every session. Loads the brain, shows the top three to do', 'first one, always', 'first', 'Start'],
+        ['/log', 'End a session. Records work in the ledger and saves it', 'last one', 'first', 'End'],
+        ['/handoff', 'Package a long session so the next one starts fresh', '', 'ok', 'Ready'],
+        ['/seo', 'Check how a business shows on Google Maps, Google and AI tools', '/seo <business or site>', 'ok', 'Ready'],
+        ['/explore, /create-plan, /implement, /test', 'The build loop: think, plan, build, check', '', 'ok', 'Ready'],
+        ['/document', 'File a write-up and update the doc index', '', 'ok', 'Ready'],
+        ['/new-capability', 'Connect a tool that has no connector', '', 'ok', 'Ready'],
+        ['/new-teammate', 'Give a teammate their own seat', '', 'ok', 'Ready']
+      ] },
+    { id: 'apps', name: 'Apps and agents', sub: '11 built', badge: '',
+      path: 'apps/',
+      what: 'Things built here that outgrew a chat. Each client product stands alone: own number, scenario, sheet and keys.',
+      items: [
+        ['Lexi', 'WhatsApp booking assistant for CHALES. Frozen at fix14', 'Make 5043763', 'ok', 'Live'],
+        ['Lexi 2.0', 'Fresh build, zero Make warnings by design', 'plans/lexi2-design.md', 'warn', 'Building'],
+        ['Lexi Call', 'Phone receptionist on Bland, English and Afrikaans', 'test calendar, no SA number yet', 'warn', 'Testing'],
+        ['Rex', "Theo's assistant", 'live on Telegram, WhatsApp blocked by the Meta number limit', 'warn', 'Partly live'],
+        ['Chief of Staff', 'Daily brief: Lexi health, follow-ups, diary', 'scheduled run needs Sheets access', 'warn', 'Playbook'],
+        ['Scout and lead finder', 'Finds salons with Lexi pain and drafts the first message', 'needs keys and credits', 'warn', 'Needs keys'],
+        ['CHALES website', 'Service pages, prices, review page, SEO pass', 'chaleshairboutique.co.za', 'ok', 'Live'],
+        ['Agency website', 'Uncle T Automation, nine owner pains', 'uncletsautomation.co.za', 'ok', 'Live'],
+        ["Nita's bot and site", 'Cleaning bookings on WhatsApp', 'test number only', 'idle', 'Test'],
+        ['T and T Engineering site', 'Built, lead closed', '', 'idle', 'Parked']
+      ] },
+    { id: 'connectors', name: 'Connectors', sub: 'tools it can reach', badge: '',
+      path: 'the Claude app + proxy',
+      what: 'How Claude reaches into the tools you run the business on. Check what is actually connected before promising anything.',
+      items: [
+        ['Gmail, Calendar', 'Read and draft mail, read and write diary', '', 'ok', 'Connected'],
+        ['Drive, Sheets, Docs, Slides', 'Pipeline Sheet, client sheets, documents', '', 'ok', 'Connected'],
+        ['Make', 'Read, build and edit scenarios', 'Lexi, Rex, alerts', 'ok', 'Connected'],
+        ['Netlify', 'Deploys for client sites', '', 'ok', 'Connected'],
+        ['GitHub', 'This repo', 'currently public', 'bad', 'Check'],
+        ['Firecrawl, Supadata', 'Web research, video transcripts', '', 'ok', 'Connected'],
+        ['Apify', 'Maps and social scraping', 'free credit used up this month', 'warn', 'Limited'],
+        ['Higgsfield, Muapi', 'Video and image generation for reels', 'Higgsfield on the free plan', 'warn', 'Limited']
+      ] },
+    { id: 'branches', name: 'One branch', sub: '22 merged', badge: '',
+      path: 'ccr-333f61cf-fmh4ca',
+      what: 'Parallel sessions each wrote to their own branch and could not see each other. They are now merged into one. New sessions start from main, so main has to receive it.',
+      items: [
+        ['22 branches merged', 'Agency site, Rex, Nita, Lexi 2.0, Lexi Call, Chales SEO, sales-coach and more', 'outputs/2026-11-20-branch-merge-notes.md', 'ok', 'Done'],
+        ['Merge into main', 'Until this happens a fresh session will not have the brain', 'say yes and a pull request is opened', 'warn', 'Next'],
+        ['Old branches', 'Kept as a backup, nothing deleted', '', 'idle', 'Kept'],
+        ['Ledger rule', 'Parallel sessions can no longer overwrite each other\'s rows', '.gitattributes', 'ok', 'Done']
+      ] },
+    { id: 'rules', name: 'Rules', sub: 'who we are', badge: '',
+      path: 'CLAUDE.md',
+      what: 'The constitution. It loads at the start of every session and decides how Claude behaves here.',
+      items: [
+        ['Sales comes first', 'Daily sales-coach practice, other work serves it', '', 'first', 'Priority'],
+        ['Done is deployed and making money', 'Ship it, fix it, move. Not polished', '', 'ok', 'Rule'],
+        ['Every client stands alone', 'Own number, scenario, sheet, calendar and key. Nothing shared', '', 'ok', 'Rule'],
+        ['Clients never touch the tech', 'Theo sets up, Claude does the rest', '', 'ok', 'Rule'],
+        ['Writing style', 'No em dashes, no AI words, contractions, specifics', 'reference/writing-style.md', 'ok', 'Rule'],
+        ['Gloria protocol', 'Say "Gloria" for brutally honest feedback', '', 'ok', 'Rule'],
+        ['Rand, Cape Town, light background', 'ZAR always, local context, dark text on light', '', 'ok', 'Rule']
+      ] },
+    { id: 'memory', name: 'Memory', sub: 'what it knows', badge: '',
+      path: 'context/ and ledger/',
+      what: 'The business in writing, plus the work diary. Claude reads the context first, then checks the ledger for what happened lately.',
+      items: [
+        ['context/', 'Business, offer, strategy, numbers, Lexi, marketing, tech stack, team, brain map', '13 files', 'ok', 'Loaded'],
+        ['ledger/theo.md', 'Every piece of work, one line each, in time order', '497 rows', 'ok', 'Loaded'],
+        ['docs/_index.md', 'Which doc to read for which job', '8 docs', 'ok', 'Loaded'],
+        ['context/brain.md', 'The map of every skill, app and tool', 'loads every session', 'ok', 'Loaded'],
+        ['numbers.md', 'Pricing rows disagree: founding five terms need your decision', 'todo/agency-business.md', 'warn', 'Check'],
+        ['private/', 'Margins and personal matters. Never syncs anywhere', 'this machine only', 'idle', 'Local']
+      ] },
+    { id: 'plans', name: 'Plans and outputs', sub: 'what we made', badge: '',
+      path: 'plans/ outputs/ reference/',
+      what: 'Everything written and built: plans, deliverables, research, handoffs, reels, QR cards, visibility checks.',
+      items: [
+        ['plans/', 'Build plans: Lexi 2.0, voice, Rex, Chales page one, painkiller ladder', '30 plans', 'ok', 'Filed'],
+        ['outputs/', 'Pitches, reels, posters, briefs, Found Checks, handoffs', '54 items', 'ok', 'Filed'],
+        ['reference/research/', 'Competitors, 30 salon challenges, what gets replies, sales masters', '13 reports', 'ok', 'Filed'],
+        ['90-day sales plan', '13 weeks, one sales skill and one Chales job each week', 'outputs/2026-11-19-90-day-sales-and-chales-plan.md', 'first', 'Active'],
+        ['Get Found offer', 'Free Found Check, then setup and monthly. Held until Chales shows numbers', 'outputs/2026-11-20-get-found-offer.md', 'idle', 'Held']
+      ] }
+  ];
+
+  var NS = 'http://www.w3.org/2000/svg', CX = 320, CY = 320, R = 232, NR = 58;
+  var svg = document.getElementById('map'), panel = document.getElementById('panel');
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  el('circle', { cx: CX, cy: CY, r: R, class: 'orbit dash' }, svg);
+  el('circle', { cx: CX, cy: CY, r: 128, class: 'orbit' }, svg);
+
+  var spokes = {}, nodes = {};
+  GROUPS.forEach(function (g, i) {
+    var a = -Math.PI / 2 + i * 2 * Math.PI / GROUPS.length;
+    g.x = CX + R * Math.cos(a); g.y = CY + R * Math.sin(a);
+    var sx = CX + 84 * Math.cos(a), sy = CY + 84 * Math.sin(a);
+    var ex = g.x - NR * Math.cos(a), ey = g.y - NR * Math.sin(a);
+    spokes[g.id] = el('line', { x1: sx, y1: sy, x2: ex, y2: ey, class: 'spoke' }, svg);
+  });
+
+  el('circle', { cx: CX, cy: CY, r: 84, class: 'core' }, svg);
+  el('text', { x: CX, y: CY + 6, class: 'core-t' }, svg).textContent = 'BRAIN';
+  el('text', { x: CX, y: CY + 30, class: 'core-s' }, svg).textContent = 'Uncle T Agency';
+
+  GROUPS.forEach(function (g) {
+    var n = el('g', { class: 'node' + (g.first ? ' first' : ''), tabindex: '0', role: 'button', 'aria-label': g.name + ', ' + g.sub, transform: 'translate(' + g.x.toFixed(1) + ',' + g.y.toFixed(1) + ')' }, svg);
+    el('circle', { r: NR }, n);
+    el('text', { class: 'gname', y: -1 }, n).textContent = g.name;
+    if (g.name === 'Apps and agents') { n.querySelector('.gname').textContent = 'Apps'; }
+    if (g.name === 'One branch') { n.querySelector('.gname').textContent = 'Branch'; }
+    if (g.name === 'Plans and outputs') { n.querySelector('.gname').textContent = 'Plans'; }
+    el('text', { class: 'sub', y: 17 }, n).textContent = g.sub;
+    if (g.badge) {
+      var b = el('g', { class: 'badge', transform: 'translate(' + (NR * 0.72) + ',' + (-NR * 0.72) + ')' }, n);
+      el('circle', { r: 11 }, b); el('text', { y: 4.5 }, b).textContent = g.badge;
+    }
+    n.addEventListener('click', function () { select(g.id); });
+    n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(g.id); } });
+    nodes[g.id] = n;
+  });
+
+  function select(id) {
+    var g = GROUPS.filter(function (x) { return x.id === id; })[0];
+    Object.keys(nodes).forEach(function (k) {
+      nodes[k].classList.toggle('sel', k === id);
+      spokes[k].setAttribute('class', 'spoke' + (k === id ? ' on' : ''));
+    });
+    panel.innerHTML = '';
+    var head = document.createElement('div'); head.className = 'panel-head';
+    var h = document.createElement('h2'); h.textContent = g.name;
+    var p = document.createElement('span'); p.className = 'path'; p.textContent = g.path;
+    head.appendChild(h); head.appendChild(p); panel.appendChild(head);
+    var w = document.createElement('p'); w.className = 'what'; w.textContent = g.what; panel.appendChild(w);
+    if (g.id === 'branches') {
+      var note = document.createElement('div'); note.className = 'note';
+      note.textContent = 'A fresh session starts from main. Until this work is merged into main, /prime in a new session will not find the brain.';
+      panel.appendChild(note);
+    }
+    var rows = document.createElement('div'); rows.className = 'rows';
+    g.items.forEach(function (it) {
+      var r = document.createElement('div'); r.className = 'row';
+      var n = document.createElement('div'); n.className = 'n'; n.textContent = it[0];
+      var d = document.createElement('div'); d.className = 'd';
+      d.textContent = it[1] + (it[2] ? ' · ' + it[2] : '');
+      var c = document.createElement('span'); c.className = 'chip ' + it[3]; c.textContent = it[4];
+      r.appendChild(n); r.appendChild(d); r.appendChild(c); rows.appendChild(r);
+    });
+    panel.appendChild(rows);
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+
+  var start = (location.hash || '').replace('#', '');
+  select(GROUPS.some(function (g) { return g.id === start; }) ? start : 'todo');
+
+  var cp = document.getElementById('copy-prime'), msg = document.getElementById('copy-msg'), orig = msg.textContent;
+  cp.addEventListener('click', function () {
+    var done = function () { msg.textContent = 'Copied. Paste it as your first message in the new session.'; setTimeout(function () { msg.textContent = orig; }, 3000); };
+    try { navigator.clipboard.writeText('/prime').then(done, function () {}); } catch (e) {}
+  });
+</script>
