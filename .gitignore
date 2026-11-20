@@ -36,4 +36,6 @@ node_modules/
 .taste-skill/
 apps/rags-to-riches-bot/blueprint.json
 apps/rags-to-riches-bot/full.json
+
+# Scratch cache for research tool output, not a deliverable
 .firecrawl/
