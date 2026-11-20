@@ -69,3 +69,12 @@ Also since fix15b: names must be typed. A voice note at the name step gets "Plea
 ## Decision (25 Sept, late): Lexi frozen at fix14
 
 Theo and Claude agreed: Lexi runs fix14 (voice notes understood, service shortcut, photo confirmation) and gets **no more features**. Fix15/15b (spoken day and time) is shelved: taps already do that well and it caused the name-step bug. Voice replies inside WhatsApp are dropped. The next voice work is a separate product, a real-time voice receptionist (Vapi or Retell) built next to Lexi on the demo number, sharing her calendar and sheet. A clean-up pass to shrink the scenario comes after the first paying client.
+
+## New booking alert for Chanté (built 20 Nov, waiting on Meta template)
+
+Chanté said she can't tell when Lexi books someone. Scenario `Chales - New Booking Alert (Chanté)` (8704735) runs every 15 minutes, finds calendar events created in the last 15 minutes that carry Lexi's "Client: / Phone: / Services:" notes (so Chanté's own manual entries are ignored), and WhatsApps the booking details from Lexi's number using the utility template `new_booking_alert` (about 15c per alert, Meta bills it). Lexi's main scenario is untouched. It sits beside it like the reminders.
+
+Status: built and switched OFF. Recipient is set to Theo's number (27714304346) for the first test. To go live: Theo creates the `new_booking_alert` template in WhatsApp Manager, Meta approves it, Claude activates and tests, then swaps the "to" number to Chanté's (27814332756).
+
+Template body (5 variables, English "en", category Utility):
+New booking from Lexi 📅 Client: {{1}} Service: {{2}} When: {{3}} at {{4}} Phone: {{5}} Booked automatically by Lexi for Chales Hair Boutique.
