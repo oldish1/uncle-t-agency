@@ -14,6 +14,7 @@
 |---|---|---|
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
 | Finding clients, Scout, outreach, pipeline sheet, daily salon list | `docs/client-finding-agents.md` | How Scout and the Uncle T Pipeline sheet work, the daily routine, outreach rules |
+| Adding visitor counting, Google Analytics, Search Console or Google visibility to any site, or explaining what clients can see | `docs/client-site-analytics-and-google.md` | Step by step for Analytics and Search Console, what is and is not visible, how WhatsApp taps are tracked, how to sell it |
 
 ## Integrations
 
@@ -26,6 +27,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | Rex, Theo's WhatsApp Commander Agent | `apps/rex/README.md` | System prompt, Make.com blueprint (webhook → Claude API → WhatsApp reply → Sheets log), and what still needs manual setup in Make before it's live |
+| The uncletsautomation.co.za website (Svelte, Bodoni, GSAP views) | `apps/uncletsautomation/README.md` | How to run, build and deploy it, where text, prices and motion live, and what to change before launch |
 
 ## Reference
 

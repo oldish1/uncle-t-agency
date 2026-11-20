@@ -22,7 +22,7 @@ Read `reference/research/2026-10-17-award-winning-websites.md` before the first 
 
 ## Process
 
-1. **Brief.** Business, suburb, owner's voice, 3 services, the one action they want, any photos/logo. Ask only for what is missing. Check `context/offer.md`: a site is R1,499 once-off, hosting and domain included in R499/month.
+1. **Brief.** Business, suburb, owner's voice, 3 services, the one action they want, any photos/logo. Ask only for what is missing. Check `context/offer.md`: a website is R799 setup and R499/month (hosting and domain included); Lexi is R1,499 and R799/month; both together R1,499 and R999/month.
 2. **Study (free, no paid tools).** Build a reference board from real winners, not from imagination. Pull full-page screenshots with Firecrawl and LOOK at them with the Read tool:
    ```bash
    curl -sS -X POST https://api.firecrawl.dev/v2/scrape -H 'Content-Type: application/json' \
@@ -35,6 +35,28 @@ Read `reference/research/2026-10-17-award-winning-websites.md` before the first 
 6. **Copy.** Follow `reference/writing-style.md`. Plain, local, in the owner's voice. Prices in Rand.
 7. **Check like a person.** Screenshot with Playwright and the pre-installed Chromium at 390px and 1440px, look at both, fix what's off. Run Lighthouse. Click every link and button.
 8. **Hand over.** Show Theo the screenshots and scores in plain English. Deployment is a separate decision for Theo.
+
+## Award-level process (Theo's standard, set 25 Oct 2026)
+
+Every client site follows plan, then research, then build. Never skip a step and never build first.
+1. **Plan.** Write the argument: one claim per section. Decide the one hero visual and the one live thing the visitor can do.
+2. **Research.** Use all of these, in this order: the `design-taste-frontend` skill (direction, house style, inspector), Mobbin's public section pages (hero, pricing, social proof, stats, about) through Firecrawl screenshots (the paid Mobbin MCP only if Theo has connected it: check with SearchMcpRegistry), Awwwards and HorizonX for craft, `reference/research/2026-10-17-premium-site-research.md` for what we already learned. Save findings and the plan in `reference/research/` before building.
+3. **Build.** SvelteKit plus Tailwind plus GSAP ScrollTrigger plus Lenis is the reference stack (`apps/uncletsautomation`). Small refined type (headline at most about 58px, body 15px), real photos or a drawn local scene as the hero, one pinned scroll story, bento for capabilities, reduced-motion and no-script fallbacks for everything.
+4. **Check.** Real browser at 390 and 1440px, click every control, no console errors, then show Theo screenshots.
+5. **Truth check.** Read every claim aloud: is it true today? (Lesson: Lexi has her own number and does not speak yet.)
+6. **Ledger.** Log the research, the plan and the build as separate rows.
+
+### Tools to use at each step (installed in `.claude/skills/`)
+- Art direction and inspector: `design-taste-frontend`. Scroll-driven, cinematic pages: `scroll-craft`.
+- Studying a reference site: `extract-design` (designlang) pulls its colours, type, spacing and motion into a spec. Study, never copy.
+- Animation: `gsap-core`, `gsap-timeline`, `gsap-scrolltrigger`, `gsap-react`, `gsap-frameworks`, `gsap-utils`, `gsap-performance`, `gsap-plugins` (official GreenSock skills). Read `gsap-scrolltrigger` and `gsap-performance` before any pinned or scroll-scrubbed section.
+- Transitions between views and states: `transitions-dev`, `transitions-polish`, `transitions-ui-generation`.
+- Final slop check before showing Theo anything: `impeccable`, plus `hallmark`'s checker (`node .claude/skills/hallmark/scripts/sloplint.mjs <built html or folder>`; add `--render` only if a browser is available). Fix real failures, and note where its rules conflict with a look Theo approved.
+- Copy: `writing-style`, then `humanizer`.
+
+### The "make it better" pass (run on any finished site, and every time we revisit one)
+"Look at the site first. Then innovate: think about the user experience and think outside the box. Make one bold change that improves conversions or the look and feel, not a small tweak. Use any tool you have. You must ship a change every time."
+Rules for the pass: view the live site in a real browser first; pick ONE bold change and say why it should lift bookings or the feel; build it, check at 390 and 1440px, deploy, log it. One real change per pass beats ten tweaks.
 
 ## Rules
 
