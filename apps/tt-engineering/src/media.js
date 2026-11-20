@@ -1,10 +1,9 @@
 /* Drop real files into public/media with these names and the site uses them automatically.
    Until a file exists, the frame shows the ember field instead. */
 export const MEDIA = {
-  hero: { src: 'media/hero.mp4', poster: 'media/hero.jpg' },
   laser: { src: 'media/laser.mp4', poster: 'media/laser.jpg' },
   brake: { src: 'media/brake.mp4', poster: 'media/brake.jpg' },
-  shop: ['media/shop-1.jpg', 'media/shop-2.jpg', 'media/shop-3.jpg', 'media/shop-4.jpg']
+  bend: { src: 'media/bend.mp4', poster: 'media/bend.jpg' }
 };
 
 /* public/media/manifest.json lists the files that really exist, so the site never requests a missing one. */

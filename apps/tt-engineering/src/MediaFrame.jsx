@@ -10,7 +10,8 @@ export default function MediaFrame({ media, cut = false, label, className = '' }
   const reduce = useReducedMotion();
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(true);
-  useEffect(() => { loadManifest().then(s => { if (s.has(media.src)) setFailed(false); }); }, [media.src]);
+  const [poster, setPoster] = useState(false);
+  useEffect(() => { loadManifest().then(s => { if (s.has(media.src)) setFailed(false); if (media.poster && s.has(media.poster)) setPoster(true); }); }, [media.src, media.poster]);
 
   useEffect(() => {
     const v = ref.current?.querySelector('video'); if (!v) return;
@@ -18,8 +19,8 @@ export default function MediaFrame({ media, cut = false, label, className = '' }
   }, [inView, reduce, ready]);
 
   return (
-    <div className={'media ' + className} ref={ref} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
-      {!ready && <Embers cut={cut} />}
+    <div className={'media ' + className} ref={ref} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} style={poster ? { backgroundImage: `url(${media.poster})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}>
+      {!ready && !poster && <Embers cut={cut} />}
       {!failed && (
         <video className={'media-video' + (ready ? ' is-ready' : '')} src={media.src} poster={media.poster} muted loop playsInline preload="metadata"
           onLoadedData={() => setReady(true)} onError={() => setFailed(true)} />
