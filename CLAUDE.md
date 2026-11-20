@@ -69,6 +69,7 @@ plans/       build plans from /create-plan
 - Video and YouTube content: **Supadata**. Big multi-platform questions: **deep-research**.
 - Doing anything in a business tool (email, calendar, CRM, payments, Slack, Notion, Sheets): **connectors**, built into the Claude app. Settings, Connectors, sign in once. Check what's actually on before promising it.
 - Checking or improving how a business shows up on Google Maps, Google and AI tools (ChatGPT, Claude, Gemini), a free Found Check for a prospect, or monthly client reports: **/seo** (skill at `.claude/skills/seo`, helper `scripts/seo_check.py`). Before saying anything doesn't exist, check other branches and the live site.
+- A client signed and needs Lexi (and the website) set up and live: **/lexi-onboarding** (skill at `.claude/skills/lexi-onboarding`: intake, accounts, build from the CHALES template, safe testing, go-live, first week, and the lessons file).
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
 - Connecting a business tool with no connector (a niche or regional platform, an internal API, a bespoke system): **/new-capability**. Check the connector list first.
 
