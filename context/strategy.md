@@ -8,6 +8,8 @@
 
 4. **Lexi Talk (voice note replies).** Next build. Two-way voice notes on WhatsApp, tap or talk, English and Afrikaans. Plan: `plans/2026-11-03-lexi-talk-voice-note-conversations.md`. Runs alongside the customer discovery work (`plans/2026-11-02-client-problem-discovery.md`), not instead of it.
 
+4. **Theo learns sales, 90-day curriculum (23 Nov 2026 to 21 Feb 2027).** Daily lessons and roleplays with the sales-coach skill, practised for real by running Chales's marketing (Theo is her marketing manager now). Plan: `outputs/2026-11-19-90-day-sales-and-chales-plan.md`.
+
 ## What success looks like
 
 Three paying recurring clients within 90 days. Five founding clients (discounted, testimonial for price) after that. Once five clients are stable, the plan is to leave the day job and grow toward a broader retainer model, priced for Western Cape small businesses rather than copied from US or UK agency rates.
