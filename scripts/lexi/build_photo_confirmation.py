@@ -45,7 +45,7 @@ const body = [
   `\u{1F487}‍♀️ *${clean(input.service)}*`,
   `\u{1F5D3}️ *${clean(input.day)}*`,
   `\u{1F550} *${clean(input.time)}*`,
-  '\u{1F4CD} 46 Alexandra Street, Oakdale, Bellville',
+  '\u{1F4CD} 46 Alexandra Street, Oakdale, Bellville (inside the Vodacom building)',
   '',
   'See you soon! — Chanté'
 ].join('\n');
