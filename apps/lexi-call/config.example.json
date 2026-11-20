@@ -1,0 +1,12 @@
+{
+  "shop_name": "Chales Hair Boutique",
+  "agent_name": "Lexi",
+  "phone_number": "",
+  "transfer_number": "+27814332756",
+  "voice_id": "",
+  "interruption_threshold": 250,
+  "interruptibility": 3,
+  "background_track": "none",
+  "record_calls": true,
+  "max_call_minutes": 10
+}
