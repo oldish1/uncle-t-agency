@@ -79,3 +79,11 @@ Theo reversed the 25 Sept "voice replies dropped" decision. After the voice mark
 ## Review machine (built 8 Nov 2026)
 
 Two separate Make scenarios next to Lexi, so Lexi's own scenario isn't touched. **Chales - Review Request (after visit)** (8445153) runs Tue to Sat at 18:30, finds today's Lexi bookings on Chanté's calendar and sends the `review_request` WhatsApp template with a "Rate your visit" button to chaleshairboutique.co.za/review. It's off until Meta approves the template, and in test mode (module 1 `onlyTo` = Theo's 27714304346; clear it to go live). **Chales - Review Feedback Alerts** (8445087) takes ratings from the review page through the webhook "Chales - Review page feedback" and sends any 1 to 3 star rating or written note to `alertTo` (module 2) using the existing `staff_alert` template. On, alerting Chanté (27814332756) since 9 Nov 2026. Setup and go-live steps: `outputs/2026-11-08-chales-review-machine-setup.md`.
+## New booking alert for Chanté (built 20 Nov, waiting on Meta template)
+
+Chanté said she can't tell when Lexi books someone. Scenario `Chales - New Booking Alert (Chanté)` (8704735) runs every 15 minutes, holds alerts overnight (quiet hours 20:00 to 08:00, the first run after 08:00 sends anything booked during the night), finds calendar events created in the last 15 minutes that carry Lexi's "Client: / Phone: / Services:" notes (so Chanté's own manual entries are ignored), and WhatsApps the booking details from Lexi's number using the utility template `new_booking_alert` (about 15c per alert, Meta bills it). Lexi's main scenario is untouched. It sits beside it like the reminders.
+
+Status: built and switched OFF. Recipient is set to Theo's number (27714304346) for the first test. To go live: Theo creates the `new_booking_alert` template in WhatsApp Manager, Meta approves it, Claude activates and tests, then swaps the "to" number to Chanté's (27814332756).
+
+Template body (5 variables, English "en", category Utility):
+New booking from Lexi 📅 Client: {{1}} Service: {{2}} When: {{3}} at {{4}} Phone: {{5}} Booked automatically by Lexi for Chales Hair Boutique.
