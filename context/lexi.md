@@ -72,7 +72,7 @@ Theo and Claude agreed: Lexi runs fix14 (voice notes understood, service shortcu
 
 ## New booking alert for Chanté (built 20 Nov, waiting on Meta template)
 
-Chanté said she can't tell when Lexi books someone. Scenario `Chales - New Booking Alert (Chanté)` (8704735) runs every 15 minutes, finds calendar events created in the last 15 minutes that carry Lexi's "Client: / Phone: / Services:" notes (so Chanté's own manual entries are ignored), and WhatsApps the booking details from Lexi's number using the utility template `new_booking_alert` (about 15c per alert, Meta bills it). Lexi's main scenario is untouched. It sits beside it like the reminders.
+Chanté said she can't tell when Lexi books someone. Scenario `Chales - New Booking Alert (Chanté)` (8704735) runs every 15 minutes, holds alerts overnight (quiet hours 20:00 to 08:00, the first run after 08:00 sends anything booked during the night), finds calendar events created in the last 15 minutes that carry Lexi's "Client: / Phone: / Services:" notes (so Chanté's own manual entries are ignored), and WhatsApps the booking details from Lexi's number using the utility template `new_booking_alert` (about 15c per alert, Meta bills it). Lexi's main scenario is untouched. It sits beside it like the reminders.
 
 Status: built and switched OFF. Recipient is set to Theo's number (27714304346) for the first test. To go live: Theo creates the `new_booking_alert` template in WhatsApp Manager, Meta approves it, Claude activates and tests, then swaps the "to" number to Chanté's (27814332756).
 
