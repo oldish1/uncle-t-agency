@@ -16,6 +16,7 @@
 | Finding clients, Scout, outreach, pipeline sheet, daily salon list | `docs/client-finding-agents.md` | How Scout and the Uncle T Pipeline sheet work, the daily routine, outreach rules |
 | Adding visitor counting, Google Analytics, Search Console or Google visibility to any site, or explaining what clients can see | `docs/client-site-analytics-and-google.md` | Step by step for Analytics and Search Console, what is and is not visible, how WhatsApp taps are tracked, how to sell it |
 | Rags to Riches WhatsApp booking bot (Make scenario 7645932, its sheet, calendar, Claude prompt) | `plans/rags-to-riches-booking-bot.md` + `apps/rags-to-riches-bot/README.md` | Full build spec, Nita's answers, build status, how to change and re-upload the bot |
+| SEO, Google ranking, Google Business Profile, getting a client recommended by ChatGPT/AI, the visibility upsell, case studies | `docs/local-visibility-playbook.md` | The step-by-step local Google + AI visibility process (first run: CHALES), `scripts/visibility_check.py` for before/after rankings, what the client must provide |
 
 ## Integrations
 

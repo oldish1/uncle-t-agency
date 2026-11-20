@@ -34,3 +34,6 @@ Idea, not live: sell Google Maps, Google and AI-search visibility (profile, serv
 See `plans/2026-11-03-voice-edge-and-launch-plan.md` and `reference/research/2026-11-03-voice-market-and-costs.md`. Voice alone is not a gap (8+ SA providers from R849/m); it works as part of one assistant across chat, voice notes and calls, priced under the market (Lexi + Voice about R1,298/m), aimed first at trades and clinics, and led by a free demo. Lexi Trade (voice note to quote PDF) is an unvalidated idea.
 
 Update 3 Nov 2026: first voice product is now Lexi Talk (two-way voice notes on WhatsApp, tap or talk), see `plans/2026-11-03-lexi-talk-voice-note-conversations.md`. Live calls come after.
+## Local visibility (Google + AI) as a paid service
+
+Raised 20 Nov 2026. Theo thinks clients will pay to be found on Google and recommended by AI assistants, and wants CHALES as the proof: if she reaches page one for Bellville searches within 2 to 3 months, that's the case study. Can sell as an upsell to Lexi clients or as a separate service. The process is written up in `docs/local-visibility-playbook.md`; before/after tracking runs on `scripts/visibility_check.py` (CHALES baseline: `outputs/visibility/chales/2026-11-20.json`). Pricing and packaging not decided yet. Wait for CHALES results before selling it hard.

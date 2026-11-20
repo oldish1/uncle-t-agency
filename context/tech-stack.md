@@ -14,6 +14,7 @@ Theo lives in two of these day to day: **WhatsApp** (client-facing, where Lexi r
 | Meta Business Manager | WhatsApp Business profile config | not covered (no connector) |
 | Bland (bland.ai) | AI phone receptionist (Lexi Call, in testing) | no connector. Key saved as a proxy secret on api.bland.ai in the cloud environment (18 Nov 2026). Agent "Chales Hair Boutique Receptionist", code in apps/lexi-call, doc docs/lexi-call.md |
 | Netlify | Hosting for demo pages and single-HTML sites | no connector. Deploys use `scripts/deploy_netlify.sh` (Netlify REST API). Theo added a Bearer secret for `api.netlify.com` in the environment, so the proxy attaches his token. Fallback: drag `dist/` onto app.netlify.com/drop |
+| Netlify | Hosting for demo pages and single-HTML sites | no connector. Deploys use `scripts/deploy_netlify.sh` (Netlify REST API). Theo added a Bearer secret for `api.netlify.com` in the environment, so the proxy attaches his token. Fallback: drag `dist/` onto app.netlify.com/drop | CHALES live site source: `apps/chales-site/site/` (Netlify site `chaleshairboutique`, not Git-linked; upload as draft, check, then publish).
 | domains.co.za | Client hosting and domains (CHALES: R109/month) | not covered (no connector) |
 | Claude API | Conversational AI layer inside Lexi, called via Make.com HTTP modules | n/a, called directly by Make.com |
 | GSAP / ScrollTrigger | Scroll animation on client sites | n/a, code library, not a connected service |
