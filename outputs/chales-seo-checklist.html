@@ -105,6 +105,36 @@ Book on WhatsApp: 071 429 6057 · Call Chanté: 081 433 2756
 Tue to Fri 08:00 to 16:30 · Sat 09:00 to 15:00
 https://chaleshairboutique.co.za`;
 
+const POSTS_TEXT = `WEEK 1 · Nanoplastia
+Frizz-free, shiny hair for 3 to 5 months, with no formaldehyde. Nanoplastia at CHALES in Oakdale, Bellville: R1 800 short to medium, R2 200 long. Book with Lexi on WhatsApp: 071 429 6057.
+
+WEEK 2 · Festive season
+December books up fast. Get your festive colour, highlights or a silky blow dry in before the rush. Tue to Fri 08:00 to 16:30, Sat 09:00 to 15:00. WhatsApp Lexi on 071 429 6057 to grab a slot.
+
+WEEK 3 · Colour
+Burgundy, chestnut, auburn or soft highlights. Full colour from R650, highlights from R650, balayage from R1 200. Chanté matches the shade to your skin tone. Book on WhatsApp: 071 429 6057.
+
+WEEK 4 · Monthly contract
+Always salon-fresh: 4 wash and blow dries a month for R900. Ask about the colour maintenance and treatment contracts too. WhatsApp Lexi on 071 429 6057.`;
+const REVIEW_TEXT = `Hi [name], it's Chanté from CHALES. Thank you so much for letting me do your hair! Would you mind leaving us a quick Google review? It really helps other ladies in Bellville find us, and it takes 30 seconds:
+https://g.page/r/CfHUNmaFuJC9EBM/review
+Thank you, I appreciate you!`;
+const DIR_TEXT = `Business name: CHALES Hair Boutique
+Category: Hair Salon (extras: Hairdresser, Beauty Salon)
+Address: 46 Alexandra Street (inside the Vodacom building), Oakdale, Bellville, Cape Town, 7530
+Phone: 081 433 2756 · WhatsApp bookings: 071 429 6057
+Email: info@chaleshairboutique.co.za
+Website: https://chaleshairboutique.co.za
+Hours: Tue to Fri 08:00 to 16:30, Sat 09:00 to 15:00, closed Sun and Mon
+
+Short description:
+Hair salon in Oakdale, Bellville. Colour, highlights, balayage, Nanoplastia, keratin and hair botox by Chanté. Book on WhatsApp: 071 429 6057.
+
+Long description:
+CHALES Hair Boutique is a hair salon in Oakdale, Bellville, run by stylist Chanté. We specialise in hair colour, highlights and balayage, and smoothing treatments: Nanoplastia (formaldehyde-free), keratin, Brazilian blowout and hair botox. We also do precision cuts, wash and blow dries, and monthly maintenance contracts. Prices from R250 for a wash and blow dry to R2 200 for Nanoplastia on long hair; the full list is on our website. Book any time on WhatsApp with Lexi, our booking assistant, on 071 429 6057.
+
+Keywords: hair salon Bellville, hairdresser Bellville, Nanoplastia Cape Town, keratin treatment Bellville, Brazilian blowout, hair botox, balayage, highlights, hair colour, Oakdale, Northern Suburbs`;
+
 const PHASES = [
  {id:"site", name:"Website fixes go live", when:"This week", why:"The fixes are built and waiting as a preview. Nothing else counts until Google can see all six pages.", tasks:[
   {id:"site-build", who:"Claude", time:"Done", title:"Build the website fixes", why:"Fixed the duplicate address tag and the homepage heading. Added FAQ data and a link to the price page. Photos are now named and described, and 3 MB lighter.", ai:true},
@@ -121,6 +151,14 @@ const PHASES = [
   {id:"bing-wmt", who:"Theo", time:"5 min", title:"Set up Bing Webmaster Tools (import from Google)", why:"ChatGPT search, Microsoft Copilot and DuckDuckGo all lean on Bing. One click imports everything from Search Console.", ai:true, link:["https://www.bing.com/webmasters","bing.com/webmasters"], steps:["Sign in, choose 'Import from Google Search Console'","Approve, and the site and sitemap come across"]},
   {id:"gsc-week2", who:"Claude", time:"5 min", title:"Two weeks later: confirm all 6 pages show in Google", why:"Claude re-runs the site: check and the ranking check from the audit."},
  ]},
+ {id:"tools", name:"Tracking tools", when:"This week", why:"These give the numbers for the showcase: visitors, Google clicks, rankings, site health, backlinks and what the AI assistants say about her.", tasks:[
+  {id:"ga4-create", who:"Theo", time:"10 min", title:"Create a Google Analytics (GA4) property and send Claude the Measurement ID", why:"Counts visitors, where they came from, and how many tap the WhatsApp booking button.", link:["https://analytics.google.com","analytics.google.com"], steps:["Sign in with the same Google account as Search Console","Admin, Create, Property. Name: CHALES Hair Boutique. Time zone: South Africa. Currency: Rand","Business: Beauty and fitness, small. Goal: generate leads","Choose Web, enter chaleshairboutique.co.za, name the stream CHALES website","Copy the Measurement ID (starts with G-) and paste it to Claude"]},
+  {id:"ga4-install", who:"Claude", time:"15 min", title:"Add Analytics to every page, and count WhatsApp booking taps", why:"Each tap on a Lexi or WhatsApp button shows in Analytics as a lead, so the showcase can say 'X booking enquiries from Google'."},
+  {id:"gsc-ga-link", who:"Theo", time:"2 min", title:"Link Search Console to Analytics", why:"Puts the Google search terms next to visitor numbers. Analytics, Admin, Search Console links, Link."},
+  {id:"openseo-connect", who:"Theo", time:"3 min", title:"Connect OpenSEO to Claude", why:"Lets Claude run site health audits, track rankings daily, see backlinks, and check what ChatGPT, Gemini, Perplexity and Google's AI answers say about CHALES.", ai:true, link:["https://claude.ai/directory/connectors/openseo","Add OpenSEO to Claude"]},
+  {id:"openseo-setup", who:"Claude", time:"30 min", title:"OpenSEO: CHALES project, Search Console, rank tracker, site audit, AI visibility baseline", why:"About $3 per full AI check across five assistants. This is the 'before' picture for the AI side of the case study.", ai:true},
+  {id:"windsor-connect", who:"Theo", time:"5 min", title:"Optional: connect Windsor.ai for one monthly report", why:"Pulls Analytics, Search Console, the Google Business Profile, Instagram, Facebook and TikTok into one place, so Claude can build a single monthly report for Chanté and later for every client. Worth it once there are 2 or more clients.", link:["https://windsor.ai/mcp/","About Windsor.ai (connect it from the card Claude sent in chat)"]},
+ ]},
  {id:"gbp", name:"Google Business Profile", when:"Next 2 weeks", why:"For 'hair salon near me', Google shows three Maps listings above every website. This profile is the biggest single lever, and Gemini and Google's AI answers read it directly.", tasks:[
   {id:"gbp-access", who:"Chanté", time:"5 min", title:"Make sure Chanté can log in to the profile, and add Theo as a manager", why:"The site already links to a Google Maps listing. Someone needs to own it.", link:["https://business.google.com","business.google.com"], ai:true},
   {id:"gbp-category", who:"Chanté", time:"2 min", title:"Primary category: Hair salon. Add Hairdresser and Beauty salon as extras", why:"The category decides which searches the listing can show up for."},
@@ -130,12 +168,12 @@ const PHASES = [
   {id:"gbp-links", who:"Theo", time:"3 min", title:"Website link, booking link (Lexi) and WhatsApp button", why:"Website: chaleshairboutique.co.za. Booking link: https://wa.me/27714296057. Turn on the WhatsApp chat option and use Lexi's number."},
   {id:"gbp-photos", who:"Chanté", time:"20 min", title:"Upload 20+ photos: outside, entrance, inside, and real work", why:"Listings with lots of recent photos get far more clicks. Include the Vodacom building entrance so people can find the door."},
   {id:"gbp-attrs", who:"Chanté", time:"3 min", title:"Fill in attributes (payments, accessibility, women-owned if Chanté wants it shown)", why:"Small details Google and AI assistants use to match questions like 'salon that takes card in Bellville'.", ai:true},
-  {id:"gbp-posts", who:"Theo", time:"10 min/week", title:"Post one update a week (reuse a TikTok clip or a before and after)", why:"Shows Google the business is active. Claude can write a month of posts in one go."},
+  {id:"gbp-posts", who:"Theo", time:"10 min/week", title:"Post one update a week (reuse a TikTok clip or a before and after)", why:"Shows Google the business is active. The first month is written below: one post per week, add a photo to each, button 'Book' linked to https://wa.me/27714296057.", copy:POSTS_TEXT},
  ]},
  {id:"reviews", name:"Google reviews", when:"Start now, ongoing", why:"Reviews are the top factor for the Maps listing, and AI assistants quote them when recommending a salon. The site claims '5 star rated'; reviews make that real.", tasks:[
   {id:"rev-link", who:"Claude", time:"Done", title:"Review page set up at chaleshairboutique.co.za/review/", why:"It already sends happy clients to Google's review form and catches unhappy ones privately first."},
   {id:"rev-lexi", who:"Claude", time:"1 to 2 hrs", title:"Have Lexi send the review link the day after every appointment", why:"Automatic, so it happens every time without Chanté remembering. Theo approves the wording first."},
-  {id:"rev-kickstart", who:"Chanté", time:"30 min", title:"Personally WhatsApp the last 20 to 30 happy clients for a review", why:"Gets the first batch in fast. A personal ask from Chanté works far better than any automated message."},
+  {id:"rev-kickstart", who:"Chanté", time:"30 min", title:"Personally WhatsApp the last 20 to 30 happy clients for a review", why:"Gets the first batch in fast. A personal ask from Chanté works far better than any automated message. Message ready below; put the client's name in.", copy:REVIEW_TEXT},
   {id:"rev-reply", who:"Chanté", time:"2 min each", title:"Reply to every review within 48 hours", why:"Google rewards it, and new clients read the replies. Mention the service ('So glad you love your Nanoplastia!')."},
   {id:"rev-25", who:"Chanté", time:"Goal", title:"Reach 25 Google reviews", why:"Roughly where a small salon starts showing in the top three on Maps for its suburb."},
  ]},
@@ -147,7 +185,7 @@ const PHASES = [
   {id:"nap-bingplaces", who:"Theo", time:"10 min", title:"Bing Places: import the Google profile", why:"Feeds Bing Maps, Copilot and ChatGPT's local answers. Import from Google in one step.", link:["https://www.bingplaces.com","bingplaces.com"], ai:true},
   {id:"nap-fresha", who:"Chanté", time:"30 min", title:"Free Fresha listing", why:"Fresha holds #1 for 'hair salon Bellville Cape Town'. A profile puts CHALES on page one through their page. Point bookings to Lexi.", link:["https://www.fresha.com/for-business","fresha.com/for-business"]},
   {id:"nap-booksy", who:"Chanté", time:"30 min", title:"Free Booksy listing", why:"Booksy holds #2 for the same search.", link:["https://biz.booksy.com","biz.booksy.com"]},
-  {id:"nap-dirs", who:"Claude", time:"1 hr", title:"List on SA directories: Snupit, Brabys, Cylex, Hotfrog", why:"Each one is another matching mention and a link back to the site. Claude drafts each listing; Theo submits.", ai:true},
+  {id:"nap-dirs", who:"Theo", time:"1 hr", title:"List on SA directories: Snupit, Brabys, Cylex, Hotfrog", why:"Each one is a backlink (another site linking to hers) and another matching mention. Claude wrote the listing; paste the same text into each.", ai:true, steps:["brabys.com: Add your business (free listing)","cylex.co.za: Add company","hotfrog.co.za: Add business","snupit.co.za: Join as a service provider, category Hair Salons"], copy:DIR_TEXT},
  ]},
  {id:"ai", name:"Get recommended by AI", when:"Month 2, then monthly", why:"ChatGPT, Gemini, Perplexity, Copilot and Claude recommend businesses that are described clearly on their own site and mentioned by other people elsewhere. The steps above do most of the work; these finish it off.", tasks:[
   {id:"ai-baseline", who:"Claude", time:"15 min", title:"Baseline test: ask each AI for a salon in Bellville and record the answers", why:"Questions like 'best place for Nanoplastia in Bellville' and 'hair salon in Oakdale Cape Town'. Gives a before and after to measure against.", ai:true},

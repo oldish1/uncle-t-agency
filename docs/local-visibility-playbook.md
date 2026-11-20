@@ -82,3 +82,10 @@ People do: anything behind a Google, Apple or Microsoft login (Claude can't sign
 - Bigger searches ("<service> Cape Town") take longer and depend on reviews and mentions
 
 Don't promise "number one on Google". Promise the work, and show the before and after.
+
+## Tools
+
+- **OpenSEO** (Claude connector, from $10/month, Agency plan $100/month for many clients): site audits, rank tracking, backlinks, keyword research, Search Console data, and AI visibility checks across ChatGPT, Gemini, Perplexity, Google AI Overviews and Claude (about $3 per five-assistant check). This is the main measuring tool once connected.
+- **Google Analytics 4**: visitors and WhatsApp booking taps (tracked as leads). Client creates the property; Claude installs the tag.
+- **Windsor.ai** (Claude connector, free plan available): pulls Analytics, Search Console, Business Profile and social stats into one place for a monthly client report. Add once there are 2+ clients to report on.
+- **`scripts/visibility_check.py`**: free fallback rank check through Firecrawl.
