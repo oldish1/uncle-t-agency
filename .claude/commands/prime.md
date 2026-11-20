@@ -40,6 +40,7 @@ Read, in order:
 4. `docs/_index.md`, the routing table. **Read the index, not the docs.** It tells you what documentation exists and when each doc is relevant; load an individual `docs/*.md` only when the task at hand matches its condition. This is what stops a growing workspace loading everything every session.
 5. If a teammate seat: `context/shared-manifest.md` decides the context list instead, plus `team/<seat>.md`
 6. The last 14 days of rows across ALL files in `ledger/` (interleave by date)
+7. `todo/README.md`: read the daily sales-coach block and the "This week" list. Load an area file in `todo/` only when the work touches it
 
 ## Phase 3: Report
 
@@ -47,8 +48,9 @@ Short and useful, not a book report:
 
 1. **The business in one line** (proof the context loaded)
 2. **Where things stand**: the 2-3 most recent threads from the ledger, across everyone
-3. **Anything needing attention**: unfinished work found in Phase 1, a stale-looking context doc, a backup that hasn't happened in a while
-4. **Ready.**
+3. **Top three from `todo/README.md`**, with sales coaching named first (Theo's priority). Ask if he wants today's lesson
+4. **Anything needing attention**: unfinished work found in Phase 1, a stale-looking context doc, a backup that hasn't happened in a while
+5. **Ready.**
 
 Then get to work.
 

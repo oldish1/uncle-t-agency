@@ -24,6 +24,7 @@ This repo was originally created as `chales-website`. Theo asked to rename it to
 - **Every session starts with `/prime`.** It pulls the latest, catches up anything a previous session left unfinished, loads the brain, and reports where things stand.
 - **Every session ends with `/log`.** It records the session's work in the ledger, checks whether any context doc drifted, and saves + backs everything up.
 - **Long session?** `/handoff` packages the thread and hands you the exact text to start fresh with.
+- **Sales comes first.** Theo's biggest need is sales skill and paying clients. Daily `sales-coach` practice sits at the top of `todo/README.md`, and other work serves it.
 - **Stuck, unsure, or don't know what's possible? Ask.** Plain English, no command needed. "How do I…", "can this even…", "what should I do about…". Claude knows what's in this workspace and will pick the right tool and run it. This is the one that matters most, because the commands only help someone who already knows they exist.
 
 If a session ends without /log, nothing is lost: the next /prime notices and catches up.
@@ -49,7 +50,7 @@ The full version, for anyone who wants it written down: `reference/how-to-use-th
 ## The map
 
 ```
-context/     the shared brain: business, you, offer, strategy, numbers, team, tech-stack
+context/     the shared brain: business, you, offer, strategy, numbers, team, tech-stack, brain.md (the map of every skill, app and tool)
 private/     owner-only drawer: git-ignored, this machine only
 team/        one profile per seat
 ledger/      the work record: one file per person, rows written by /log
@@ -60,6 +61,7 @@ skills/      capabilities (see .claude/skills/)
 reference/   how to use this workspace, writing rules, where keys come from, skills-explained.md, research/ findings
 outputs/     everything produced
 plans/       build plans from /create-plan
+todo/        everything still to do, by area. Start at todo/README.md. /prime shows the top three
 ```
 
 ## Tool routing

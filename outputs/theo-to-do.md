@@ -1,3 +1,5 @@
+> **Superseded 20 Nov 2026 by `todo/README.md`.** This file is kept as the record of the 26 Oct to 10 Nov list. Its open items were carried into the `todo/` folder.
+
 # Theo's list: everything still to do
 
 Last updated 26 Oct 2026. The daily brief at 07:00 reads this file and ticks things off as you tell it.
