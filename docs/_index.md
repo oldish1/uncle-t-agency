@@ -13,6 +13,7 @@
 | When you're working on... | Doc | What it covers |
 |---|---|---|
 | The lead scraper agent, prospecting, finding outreach targets | `docs/lead-scraper-agent.md` | How `scripts/lead_scraper.py` finds businesses with no website/booking system, setup needed, adding a new vertical |
+| SEO, Google ranking, Google Business Profile, getting a client recommended by ChatGPT/AI, the visibility upsell, case studies | `docs/local-visibility-playbook.md` | The step-by-step local Google + AI visibility process (first run: CHALES), `scripts/visibility_check.py` for before/after rankings, what the client must provide |
 
 ## Integrations
 

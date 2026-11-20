@@ -1,0 +1,147 @@
+{
+  "client": "CHALES Hair Boutique",
+  "date": "2026-11-20",
+  "results": [
+    {
+      "query": "CHALES Hair Boutique",
+      "website_pos": 5,
+      "any_own_positions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10
+      ],
+      "top3": [
+        "https://www.tiktok.com/@chales418",
+        "https://www.tiktok.com/@chales418/video/7527559507497766149",
+        "https://www.instagram.com/chaleshairboutique/"
+      ]
+    },
+    {
+      "query": "hair salon Bellville Cape Town",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://www.fresha.com/lp/en/bt/hair-salons/in/za-bellville/bellville",
+        "https://booksy.com/en-za/s/hair-salons/58256_bellville",
+        "https://studiopascal.co.za/"
+      ]
+    },
+    {
+      "query": "hair salon Oakdale Bellville",
+      "website_pos": null,
+      "any_own_positions": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "top3": [
+        "https://www.tiktok.com/@chales418",
+        "https://www.tiktok.com/@chales418/video/7638551696913763591",
+        "https://www.tiktok.com/@chales418/video/7697347181841272071"
+      ]
+    },
+    {
+      "query": "hairdresser Bellville",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://booksy.com/en-us/s/hair-salon/134613_baltimore",
+        "https://m.yelp.com/search?cflt=hair&find_loc=Roland+Park%2C+Baltimore%2C+MD+21210",
+        "https://www.cultivatehaircompany.com/"
+      ]
+    },
+    {
+      "query": "nanoplastia Cape Town",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://www.tiktok.com/discover/nanoplastia-hair-treatment-cape-town",
+        "https://myhairdepartment.co.za/nanoplastia-and-smoothing-treatments/",
+        "https://www.brazilianbar.co.za/nanoplastia/?srsltid=AYCX9vL4uVYy-s7AuzknjviaD12EqrO1JsVs18"
+      ]
+    },
+    {
+      "query": "nanoplastia Bellville",
+      "website_pos": null,
+      "any_own_positions": [
+        2,
+        10
+      ],
+      "top3": [
+        "https://www.facebook.com/61577911422824/videos/second-nanoplastia-same-obsession-nanoplast",
+        "https://www.tiktok.com/@chales418/video/7638551696913763591",
+        "https://depayolle.com/nanoplastia/"
+      ]
+    },
+    {
+      "query": "keratin treatment Bellville Cape Town",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://www.fresha.com/lp/en/tt/keratin-treatments/in/za-bellville/east-rock",
+        "https://keratinlab.co.za/",
+        "https://www.tiktok.com/@thekurtexperience/video/7342092041217674501"
+      ]
+    },
+    {
+      "query": "brazilian blowout Bellville Cape Town",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://www.brazilianbar.co.za/hair-salon-bellville/?srsltid=AYCX9vLt2yJTMZ5SlTCTlr29ASrxH",
+        "https://www.facebook.com/marketplace/fresnave-western-cape/brazilian-blowout-and-keratin-t",
+        "https://www.fresha.com/lp/en/tt/keratin-treatments/in/za-bellville/bellville"
+      ]
+    },
+    {
+      "query": "hair botox Cape Town",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://myhairdepartment.co.za/hair-botox-and-repair-treatments/",
+        "https://keratinlab.co.za/",
+        "https://hyperli.com/products/hair-botox-treatment-at-pure-beauty?srsltid=AYCX9vLEOqtAwAPrb"
+      ]
+    },
+    {
+      "query": "highlights Bellville",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://planmyweekend.ai/10-incredible-year-round-things-to-explore-in-belleville-illinois",
+        "https://www.youtube.com/shorts/t5-zsMmMp0s",
+        "https://www.hudl.com/video/2/36929/64ed35370dc9ef083c358d35"
+      ]
+    },
+    {
+      "query": "balayage Bellville",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://m.yelp.com/biz/salon-ablaze-by-tara-faye-circleville",
+        "https://app.acuityscheduling.com/schedule.php?owner=21177198",
+        "https://m.yelp.com/biz/color-bar-hair-studio-circleville"
+      ]
+    },
+    {
+      "query": "hair colour Bellville",
+      "website_pos": null,
+      "any_own_positions": [],
+      "top3": [
+        "https://m.yelp.com/search?cflt=hair&find_loc=Bellville%2C+TX+77418",
+        "https://curlyqbellvilleohio.glossgenius.com/",
+        "https://www.vagaro.com/blondieshairsalon-bellville"
+      ]
+    }
+  ],
+  "indexed_pages": [
+    "https://chaleshairboutique.co.za/"
+  ]
+}

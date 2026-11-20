@@ -25,3 +25,7 @@ No longer parked. Theo wants to build this now rather than wait for the first pa
 Shape of it: a separate Make scenario (not added to the main 146-module Lexi scenario), Retell as the voice platform, connected over the WhatsApp Business Calling API on Chales' existing number (free for calls the client makes, SIP already available). Reuses Lexi's proven calendar-check and booking-write logic. Tested on the demo number first, Chanté's live number never touched until proven.
 
 Research from 25 Sept 2026 still holds: `reference/research/2026-09-25-lexi-voice.md`. BizAI already sells a SA voice receptionist at R999/month, so this positions as a Lexi upgrade, not a standalone product.
+
+## Local visibility (Google + AI) as a paid service
+
+Raised 20 Nov 2026. Theo thinks clients will pay to be found on Google and recommended by AI assistants, and wants CHALES as the proof: if she reaches page one for Bellville searches within 2 to 3 months, that's the case study. Can sell as an upsell to Lexi clients or as a separate service. The process is written up in `docs/local-visibility-playbook.md`; before/after tracking runs on `scripts/visibility_check.py` (CHALES baseline: `outputs/visibility/chales/2026-11-20.json`). Pricing and packaging not decided yet. Wait for CHALES results before selling it hard.
