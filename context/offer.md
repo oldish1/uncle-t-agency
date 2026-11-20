@@ -19,3 +19,18 @@ Direct outreach, WhatsApp and in-person, not paid ads. A 20-prospect Cape Town s
 The strategy is five founding clients at a discounted rate in exchange for a testimonial and one trackable success metric each, banked as sales proof before any upsell gets offered. CHALES Hair Boutique is the live proof-of-concept client, referenceable and demoable right now.
 
 Warm leads in the pipeline: Zanzibar Hair and Beauty (replied), Sistergirl (asked about pricing), Reeva Hair, JEM Hair and Beauty Studio, and Jason, a tattoo artist at No Love Lost, referred in through Theo's sister.
+
+
+## Founding five deal (decided 25 Oct 2026)
+
+For the first five paying salons: first 30 days free, then setup R999 (normal R1,499) and R499 a month. If she cancels in the first month she owes nothing. Estimated real cost to us per salon for the free month: R100 to R150 (see `plans/2026-10-25-game-plan-pricing-chales-google.md`).
+
+**Positioning:** Lexi is the salon's personal assistant, not software. "Get found. Get booked. Get remembered." Competitors (Fresha, Booksy, Setmore) sell a tool the owner has to run; Lexi takes the WhatsApp work off the owner. Proof: Chales, about 100 real bookings since 10 June, about 34 clients.
+
+**After the founders** (draft, not final): Starter R499 (Lexi bookings and reminders), Plus R799 (adds review requests, win-back messages, memberships), Grow R1,299 (adds Google profile care, monthly results report, website).
+
+## The needle (29 Oct 2026)
+
+Competitor reviews show the loudest complaints are surprise fees, commission on new clients, and support that disappears (`reference/research/2026-10-29-competitor-complaints.md`). Our line: flat price, no commission, your clients stay yours in your own WhatsApp, and a real person answers. Use it on the website, in follow-ups and in demos. State it as fact, never attack a competitor by name. Don't promise "unlimited" bookings until cost per booking is measured.
+
+**Correction (29 Oct, South Africa check):** flat price and no commission are not unique here (Booklink is R79 flat, Salonz R199). The needle that holds in South Africa is: every other tool sells a booking link; Lexi answers the WhatsApp conversation itself, in the owner's own number, voice notes included. Lead with that. Price risk: R499 against R79 to R199, so justify it with bookings captured. Details: `reference/research/2026-10-29-competitor-complaints.md`.

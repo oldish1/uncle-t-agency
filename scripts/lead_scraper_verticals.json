@@ -1,6 +1,117 @@
 {
   "hair salon": {
-    "terms": ["hair salon", "hairdresser", "hair boutique", "hair studio"],
-    "suburbs": ["Bellville", "Mitchell's Plain", "Parow", "Goodwood"]
+    "terms": [
+      "hair salon",
+      "hairdresser",
+      "hair boutique",
+      "hair studio"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
+  },
+  "barber": {
+    "terms": [
+      "barber shop",
+      "barbershop",
+      "men's haircut"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
+  },
+  "nail tech": {
+    "terms": [
+      "nail salon",
+      "nail technician",
+      "nail bar"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
+  },
+  "lash and brow": {
+    "terms": [
+      "lash technician",
+      "brow studio",
+      "lash extensions"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
+  },
+  "beauty spa": {
+    "terms": [
+      "beauty salon",
+      "day spa",
+      "beauty therapist",
+      "massage"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
+  },
+  "dog groomer": {
+    "terms": [
+      "dog groomer",
+      "pet grooming"
+    ],
+    "suburbs": [
+      "Bellville",
+      "Mitchell's Plain",
+      "Parow",
+      "Goodwood",
+      "Khayelitsha",
+      "Athlone",
+      "Kuils River",
+      "Delft",
+      "Brackenfell",
+      "Durbanville"
+    ]
   }
 }

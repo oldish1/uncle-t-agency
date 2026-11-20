@@ -12,6 +12,7 @@
 | Prospect list (outreach) | 20 Cape Town salons | 2026-08-30 |
 | Lexi System pricing | R1,499 once-off + R499/month | 2026-08-30 |
 | Website pricing | R1,499 once-off + R499/month (hosting included) | 2026-08-30 |
+| Lexi plus website bundle | R1,499 once-off + R899/month (was R999, decided 16 Nov 2026) | 2026-11-16 |
 | 90-day target | 3 paying recurring clients | 2026-08-30 |
 | Growth milestone | 5 founding clients, then leave day job | 2026-08-30 |
 
