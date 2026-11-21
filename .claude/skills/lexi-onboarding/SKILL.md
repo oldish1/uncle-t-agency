@@ -16,9 +16,9 @@ Working rule from `CLAUDE.md`: done is deployed and making money, not polished. 
 
 ## Before anything: look first
 
-1. Check whether this client already has files: `outputs/clients/`, `outputs/`, `plans/`, other branches (`git branch -r`), the ledger.
+1. Check whether this client already has files: `clients/`, `outputs/`, `plans/`, other branches (`git branch -r`), the ledger. If there is no `clients/<slug>/` yet, run `/new-client <name>` first.
 2. Confirm the deal in `context/numbers.md` and the ledger (price, setup fee, free period, founding-five terms, whether the website is included). As of 16 Nov 2026: Lexi or website R1,499 setup + R499 a month, both for R899 a month, founding five at R999 setup, R499, 30 days free. Verify, prices change.
-3. Make the client file: `outputs/clients/<slug>/onboarding.md` (copy the table from `references/intake.md`). Keep all client facts there, never tokens.
+3. Put the intake answers into `clients/<slug>/` (profile, deal and assets, using the table in `references/intake.md`). Keep all client facts there, never tokens.
 
 ## The six phases
 

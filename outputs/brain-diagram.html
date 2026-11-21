@@ -90,6 +90,13 @@
   .chip.first { background: var(--accent-soft); color: var(--accent); }
   .note { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px; }
   .foot { color: var(--muted); font-size: 13px; max-width: 72ch; }
+  .howto { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .howto h3 { font-family: var(--font-head); font-size: 17px; margin: 0 0 6px; }
+  .howto ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .howto li { min-width: 0; overflow-wrap: anywhere; }
+  .howto code { font-family: var(--font-mono); font-size: 13px; background: var(--accent-soft); color: var(--accent); padding: 1px 6px; border-radius: 5px; }
+  .howto .gap { color: var(--warn); }
+  .howto .have { color: var(--ok); }
   @media (max-width: 640px) {
     .node .sub { display: none; }
     .node .gname { font-size: 21px; }
@@ -114,11 +121,45 @@
   </div>
 
   <section class="stage" aria-label="Brain diagram">
-    <svg id="map" viewBox="18 18 604 604" role="group" aria-label="The brain in the centre with nine connected parts"></svg>
+    <svg id="map" viewBox="18 18 604 604" role="group" aria-label="The brain in the centre with ten connected parts"></svg>
     <p class="hint">Highlighted ring: where to start. Red badge: needs you first.</p>
   </section>
 
   <section class="panel" id="panel" aria-live="polite"></section>
+
+  <section class="panel" aria-label="How to use your brain">
+    <h2>Use your brain</h2>
+    <div class="howto">
+      <div>
+        <h3>See what is inside</h3>
+        <ul>
+          <li>Ask Claude: <code>what's in todo?</code> or <code>show me the Chales plan</code></li>
+          <li>Tap the parts above</li>
+          <li>Browse the folders on GitHub, repo <code>oldish1/uncle-t-agency</code>, on the branch menu pick the brain branch until it is merged into main</li>
+          <li>Full guide in the repo: <code>reference/how-to-use-the-brain.md</code></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Add to the brain</h3>
+        <ul>
+          <li>New client: <code>/new-client Zanzibar</code></li>
+          <li>What an owner said: <code>add this to Zanzibar's conversations</code></li>
+          <li>A result: <code>log for Chales: 12 reviews</code></li>
+          <li>A method you repeat: <code>turn this into a skill</code></li>
+          <li>A new area: <code>make a folder for cleaning in the brain</code></li>
+          <li>Private stuff: <code>put this in private</code></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Data equity check</h3>
+        <ul>
+          <li class="have">In the brain: business, offer, pricing, strategy, Lexi lessons, 497 ledger rows, competitor and salon research, CHALES profile and baseline</li>
+          <li class="gap">Not yet: sales conversations (in the Pipeline Sheet), prospect statuses, Chanté's past clients, monthly results, the Lexi template (one machine only)</li>
+          <li>Rule: if only you know it, write it down the same day</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <p class="foot">Built from the workspace on 20 Nov 2026 (52 skills, 14 commands, 11 apps, 30 plans, 497 ledger rows). Statuses come from the ledger and plans, not from live checks.</p>
 </div>
@@ -227,6 +268,17 @@
         ['numbers.md', 'Pricing rows disagree: founding five terms need your decision', 'todo/agency-business.md', 'warn', 'Check'],
         ['private/', 'Margins and personal matters. Never syncs anywhere', 'this machine only', 'idle', 'Local']
       ] },
+    { id: 'clients', name: 'Clients', sub: 'data only we have', badge: '',
+      path: 'clients/',
+      what: 'One folder per client: who they are, what they bought, what the owner said, and the before and after numbers. This is the data nobody else has, and every new client makes the brain better.',
+      items: [
+        ['CHALES Hair Boutique', 'Profile, deal, where things live, conversations, results with a dated baseline', 'clients/chales-hair-boutique/', 'ok', 'Filled'],
+        ['_template', 'The six files every client folder starts from', 'clients/_template/', 'ok', 'Ready'],
+        ['/new-client', 'Say it when a client signs. Claude copies the template and wires it in', '/new-client <name>', 'first', 'Command'],
+        ['Rule: no secrets', 'No tokens, keys or webhook addresses. Those stay in Make and private/', 'clients/README.md', 'bad', 'Rule'],
+        ['Rule: repo private first', 'Customers\' personal details go in only after the GitHub repo is private', 'todo/security.md', 'bad', 'Urgent'],
+        ['Nita (Rags to Riches)', 'Still a page in context/. Moves to a client folder when it goes live', 'context/rags-to-riches.md', 'idle', 'Later']
+      ] },
     { id: 'plans', name: 'Plans and outputs', sub: 'what we made', badge: '',
       path: 'plans/ outputs/ reference/',
       what: 'Everything written and built: plans, deliverables, research, handoffs, reels, QR cards, visibility checks.',
@@ -239,7 +291,7 @@
       ] }
   ];
 
-  var NS = 'http://www.w3.org/2000/svg', CX = 320, CY = 320, R = 232, NR = 58;
+  var NS = 'http://www.w3.org/2000/svg', CX = 320, CY = 320, R = 232, NR = 56;
   var svg = document.getElementById('map'), panel = document.getElementById('panel');
 
   function el(name, attrs, parent) {

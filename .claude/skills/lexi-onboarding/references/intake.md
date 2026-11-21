@@ -1,6 +1,6 @@
 # Intake: questions and fill-in table
 
-Ask the owner in person or on a call, 20 minutes. Write the answers into `outputs/clients/<slug>/onboarding.md`.
+Ask the owner in person or on a call, 20 minutes. Write the answers into `clients/<slug>/` (profile.md, deal.md, assets.md).
 
 ## The business
 

@@ -9,6 +9,7 @@
 | Rules | `CLAUDE.md`, `reference/writing-style.md` | Who we are, how Claude behaves, tool routing |
 | Memory | `context/`, `ledger/`, `docs/_index.md` | The business, the work record, the doc index |
 | Open work | `todo/` (start at `todo/README.md`) | Everything still to do, by area |
+| Clients | `clients/` | One folder per client: profile, deal, conversations, results. This is the data only we have |
 | Plans and outputs | `plans/`, `outputs/`, `reference/research/` | Plans, deliverables, research |
 | Skills | `.claude/skills/` | Know-how Claude loads when a job matches |
 | Commands | `.claude/commands/` | Buttons: `/prime`, `/log`, `/seo`, `/handoff` and more |
@@ -39,6 +40,9 @@ Gmail, Google Calendar, Drive, Docs, Sheets, Slides, Make (read, build and edit 
 | Agency website | `apps/uncletsautomation` | Live at uncletsautomation.co.za |
 | Nita's bot and site | `apps/rags-to-riches-bot`, `apps/rags-to-riches-site` | Bot on test number |
 | T and T Engineering site | `apps/tt-engineering` | Built, lead closed |
+
+## Using and extending the brain
+How to see folders, add context, add a client and what counts as data equity: `reference/how-to-use-the-brain.md`. New client: `/new-client <name>`. The interactive map: https://claude.ai/artifact/KRgZRG18Dt6LVaAKnxeNna (source `outputs/brain-diagram.html`).
 
 ## How work flows
 1. `/prime` loads this brain and the top of `todo/`. 2. Work happens, ledger rows are written as it goes. 3. New method that repeats 3 or more times becomes a skill. 4. Anything left over goes into `todo/`. 5. `/log` ends the session.

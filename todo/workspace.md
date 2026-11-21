@@ -5,6 +5,13 @@
 - [ ] After the merge, delete or ignore the old branches. New sessions start from main
 - [ ] Review the merge notes: `outputs/2026-11-20-branch-merge-notes.md`
 
+## Brain upkeep
+- [ ] After the repo is private, fill the `clients/chales-hair-boutique/` gaps (pricing agreed, testimonial) and move Nita's business into a `clients/` folder when it goes live
+- [ ] Back up `private/lexi-client-template-blueprint.json` somewhere safe (it exists only on your machine)
+- [ ] After each sales chat, say "debrief" so the lessons land in the brain
+- [ ] First Monday monthly: `/seo monthly chales` adds a row to `clients/chales-hair-boutique/results.md`
+- [ ] New MCP tools appeared on 21 Nov (OpenSEO: local rank grid, AI visibility tracker, Google reviews; Windsor.ai: Search Console, GA4, Google Business Profile). They use credits. Try on Chales for real rankings
+
 ## Skills to build (ranked, `outputs/2026-11-20-skills-roadmap.md`)
 - [ ] make-safe-edit (Make bugs that keep repeating)
 - [ ] whatsapp-meta-setup (webhooks, templates, number limits)

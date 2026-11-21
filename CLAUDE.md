@@ -62,6 +62,7 @@ reference/   how to use this workspace, writing rules, where keys come from, ski
 outputs/     everything produced
 plans/       build plans from /create-plan
 todo/        everything still to do, by area. Start at todo/README.md. /prime shows the top three
+clients/     one folder per client (profile, deal, conversations, results). /new-client creates one. Never secrets in here. How to use the brain: reference/how-to-use-the-brain.md
 ```
 
 ## Tool routing
@@ -87,6 +88,7 @@ todo/        everything still to do, by area. Start at todo/README.md. /prime sh
 - SEO, Google ranking or AI visibility for any client: follow `docs/local-visibility-playbook.md`; measure with `scripts/visibility_check.py`.
 - Finding new prospects ("who should I pitch", "find salons in Parow"): run the **salon lead finder** (`apps/lead-finder/`, guide in `docs/lead-finder.md`). It ranks salons by the Lexi pain in their own Google reviews and drafts the first WhatsApp message. Needs `GOOGLE_PLACES_API_KEY`.
 - The daily run of everything ("what needs doing today", "is Lexi OK", "who do I follow up"): the **Chief of Staff** (`apps/chief-of-staff/PLAYBOOK.md`). It runs the other agents, checks every client's Lexi in Make.com, and writes a morning brief to `outputs/briefs/`. Read-only toward the outside world, drafts only. When a client goes live, add their scenario to its watch table.
+- A new client signs or is about to: **/new-client <name>** creates `clients/<slug>/`, then **/lexi-onboarding** takes them live.
 - Writing up something you built, or retiring a doc: **/document**. It files the doc and updates `docs/_index.md` so later sessions can find it.
 - Connecting a business tool with no connector (a niche or regional platform, an internal API, a bespoke system): **/new-capability**. Check the connector list first.
 
